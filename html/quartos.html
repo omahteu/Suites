@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Suits | Quartos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="../imagens/favicon-removebg-preview.png">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../css/matrix-style.css">
+    <link rel="stylesheet" href="../css/matrix-media.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/css2.css">
+    <link rel="stylesheet" href="../css/boxicons.min.css">
+    <link rel="stylesheet" href="../css/fullcalendar.min.css">
+    <link rel="stylesheet" href="../css/jquery.jqplot.min.css">
+    <link rel="stylesheet" href="../css/css2(1).css">
+    <link rel="stylesheet" href="../css/css2(2).css">
+    <link rel="stylesheet" href="../css/camareiras.css">k
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="stylesheet" href="../css/responsividade/quartos_responsividade.css">
+
+</head>
+
+<body>
+    <!--top-Header-menu-->
+    <div class="navebarn">
+        <div id="user-nav" class="navbar navbar-inverse"></div>
+        <div id="userr" style="padding-right:45px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;">
+            <div class="user-names userT0" id="saudacao_usuario"></div>
+            <div class="userT" id="usuario_sistema"></div>
+            <section style="display:block;position:absolute;right:10px">
+                <div class="profile">
+                    <div class="profile-img"> 
+                        <a href="#">
+                            <img src="../imagens/a2c0e016d91ff61639ec3d6cfea18e02.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div> 
+    <!-- End User -->
+
+    <div id="content">
+        <!--start-top-serch-->
+        <div id="content-header">
+            <!-- New Bem-vindos -->
+            <div class="bemv">Dashboard</div>
+            <div id="breadcrumb"> 
+              <a id="home" class="tip-bottom"> Início</a> 
+              <a href="" class="current tip-bottom"> Quartos </a> 
+            </div>
+        </div>
+        <div class="container-flu">
+            <div class="row-fluid">
+                <div class="span12">
+                    <!--Quartos-->
+                    <div class="span8">
+                        <div class="">
+                            <ul class="cardBox">
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Painel -->
+                    <div class="span4">
+                        <div class="widget-box">
+
+                            <!--Título-->
+                            <div class="widget-title"> 
+                              <h5>Cadastros do Sistema</h5>
+                            </div>
+
+                            <!--Abas-->
+                            <ul class="nav nav-tabs">
+                              <li class="active">
+                                <a data-toggle="tab" href="#painel">Painel</a>
+                              </li>
+                              <li>
+                                <a data-toggle="tab" href="#produtos">Produtos</a>
+                              </li>
+                              <li>
+                                <a data-toggle="tab" href="#patio">Patio</a>
+                              </li>
+                            </ul>
+            
+                            <form class="form-horizontal" id="formCadastros">
+                              <div class="widget-content nopadding tab-content">
+                                <!-- Painel -->
+                                <div id="painel" class="tab-pane fade in active">
+
+                                    <div class="control-group"> 
+                                        <div class="controls"> 
+
+                                            <!--Painel Primário-->
+                                            <div class="livia">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Quarto</th>
+                                                            <th>Hora Add</th>
+                                                            <th>Desconto</th>
+                                                            <th>Consumo</th>
+                                                            <th>Parcial</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="quarto_painel">0</td>
+                                                            <td>0:0</td>
+                                                            <td>R$ 0</td>
+                                                            <td>R$ <span id="consumo_painel">0</span></td>
+                                                            <td>R$ <span id="parcial_painel">0</span></td><!--preco_quarto-->
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                    
+                                            <!--Painel Produtos-->
+                                            <div class="livia">
+                                                <div>
+                                                    <h5 class="cardHeader">Produtos</h5>
+                                                </div>
+                                                <div class="new-bottons"> 
+                                                    <div >
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Descrição</th>
+                                                                    <th>Quantidade</th>
+                                                                    <th>Valor Unitário</th>
+                                                                    <th>Total</th>
+                                                                    <th>Ação</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="listaProdutosComprados"></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!--Painel Pátio-->
+                                            <div class="livia">
+                                                <div>
+                                                    <h5 class="cardHeader">Patio</h5>
+                                                </div>
+                                                <div class="new-bottons"> 
+                                                    <div >
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Placa</th>
+                                                                    <th>Modelo</th>
+                                                                    <th>Ação</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="listaveiculosguardados"></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Produtos -->
+                                <div id="produtos" class="tab-pane fade">
+            
+                                  <!--Código-->
+                                  <div class="control-group"> 
+                                    <div class="controls" id="campo_produtos"> 
+                                        <input type="text" id="codigo_produto" placeholder="Código">
+                                    </div>
+                                  </div>
+            
+                                  <!--Produtos-->
+                                  <div class="control-group"> 
+                                    <div class="controls" id="campo_produtos"> 
+                                        <select id="checkbox_produto">
+                                            <option hidden>Produto</option>
+                                        </select> 
+                                    </div>
+                                  </div>
+            
+                                  <!--Quantidade-->
+                                  <div class="control-group"> 
+                                    <div class="controls" id="campo_produtos"> 
+                                        <input type="text" id="quantidade" placeholder="Quantidade">
+                                    </div>
+                                  </div>
+            
+                                  <!--Descrição-->
+                                  <div class="control-group"> 
+                                    <div class="controls" id="campo_produtos"> 
+                                        <input type="text" id="descricao" placeholder="Descrição" disabled>
+                                    </div>
+                                  </div>
+            
+                                  <!--Valor Unitário-->
+                                  <div class="control-group">
+                                    <div class="controls" id="campo_produtos"> 
+                                        <input type="text" id="valor_unitario" placeholder="Valor Unitário" disabled>
+                                    </div>
+                                  </div>
+
+                                  <!--Valor Total-->
+                                  <div class="control-group">
+                                    <div class="controls" id="campo_produtos"> 
+                                        <input type="text" id="valor_total" placeholder="Valor Total" readonly>
+                                    </div>
+                                  </div>
+
+                                  <!--Botões-->
+                                  <div class="control-group"> 
+                                    <div class="controls" id="campo_produtos"> 
+                                        <button type="button" class="button btn btn-primary" id="registrar_produto"> 
+                                            <span class="button__icon">
+                                              <i class="fa-solid fa-floppy-disk"></i>
+                                            </span>
+                                            <span class="button__text2">Salvar</span>
+                                        </button>
+                                        <button type="button" class="button btn btn-danger" id=""> 
+                                            <span class="button__icon">
+                                              <i class="fa-solid fa-xmark"></i>
+                                            </span>
+                                            <span class="button__text2">Limpar</span>
+                                        </button>  
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+
+                                <!-- Patio -->
+                                <div id="patio" class="tab-pane fade">
+            
+                                  <!--Placa-->
+                                  <div class="control-group"> 
+                                    <div class="controls" id="campo_patio">
+                                        <input type="text" id="placa" placeholder="Placa">
+                                    </div>
+                                  </div>
+            
+                                  <!--Modelo-->
+                                  <div class="control-group"> 
+                                    <div class="controls" id="campo_patio"> 
+                                        <input type="text" id="modelo" placeholder="Modelo">
+                                    </div>
+                                  </div>
+
+                                  <!--Botões-->
+                                  <div class="control-group">
+                                      <div class="controls" id="campo_patio">
+                                          <button type="button" class="button btn btn-primary" id="registrar_veiculo"> 
+                                            <span class="button__icon">
+                                              <i class="fa-solid fa-floppy-disk"></i>
+                                            </span>
+                                            <span class="button__text2">Salvar</span>
+                                          </button>
+                                          <button type="button" class="button btn btn-danger" id=""> 
+                                            <span class="button__icon">
+                                              <i class="fa-solid fa-xmark"></i>
+                                            </span>
+                                            <span class="button__text2">Limpar</span>
+                                          </button>  
+                                      </div>
+                                  </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--MODAU MENU, CAMAREIRAS-->
+    <div id="modau-camareiras" class="modau-container">
+        <div class="modau">
+          <button class="fechar">X</button>
+          <h3 id="titulo_caixa">Ações</h3>
+          <form id="FormMain" name="botoes">
+            <button type="button" name="" id="botaoq1" class="btn manutencao">Manutenção</button>
+            <button type="button" name="" id="botaoq1" class="btn locado">Locação</button>
+            <button type="button" name="" id="botaoq1" class="btn faxina">Faxina</button>
+            <input type="button" id="botao_inferior_um" class="btn btn-warning acoes1" name="botao" value="">
+            <input type="button" id="botao_inferior_dois" class="btn btn-warning acoes2" name="botao" value="">
+            <input type="button" id="botao_inferior_tres"  class="btn btn-warning acoes3" name="botao" value="">
+            <select id="selecionar_camareira">
+                <option value="">Camareiras</option>
+            </select>
+            <button type="button" name="botao" class="btn btn-warning" id="camareira_limpeza" value="">OK</button>
+          </form>
+        </div>
+    </div>
+
+    <div id="modau-troca" class="modau-container">
+        <div class="modau">
+          <button class="fechar">X</button>
+          <h3 id="titulo_caixa">Troca de Suítes</h3>
+          <form id="FormMainTroca" name="botoes">
+            <input type="text" id="quarto_antigo" disabled>
+            <select id="quartos_disponiveis">
+                <option hidden>Suítes Disponíveis</option>
+            </select>
+            <button type="button" name="botao" class="btn btn-warning" id="substituir" value="">Substituir</button>
+          </form>
+        </div>
+    </div>
+
+    <div style="display: none;">
+        <h4>Entrada</h4>
+        <h5><span id="entrada">0:0</span></h5>
+        <h4>Quarto</h4>
+        <h5><span id="numquarto">0</span></h5>
+        <h4>Valor</h4>
+        <h5>R$ <span id="valor-quarto">0</span></h5>
+        <h4>Consumo</h4>
+        <h5>R$ 0</h5>
+        <span id="tipo" hidden>livre</span>
+        <span id="intervalo" hidden>0</span>
+        <span id="tabela_emvigor" hidden></span>
+        <span id="codigo_processo" hidden></span>
+    </div>
+
+</body>
+    <script src="../js/jquery.js"></script>
+
+    <script src="../js/estilo/bootstrap.min.js"></script>
+    <script src="../js/estilo/matrix.js"></script>
+    <script type="module" src="../js/estilo/viewQuartos.js"></script>
+    <script src="../js/estilo/nomes.js"></script>
+
+    <script src="../js/setup/sitePath.js"></script>
+    <script type="module" src="../js/setup/camareiras.js"></script>
+    <script type="module" src="../js/setup/reseta.js"></script>
+    <script type="module" src="../js/setup/permanencia.js"></script>
+    <script type="module" src="../js/setup/atualiza.js"></script>
+    <script type="module" src="../js/setup/tabela_emvigor.js"></script>
+    
+    <script src="../js/setup/cookiq.js"></script>
+    <script type="module" src="../js/setup/block.js"></script>
+
+    <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+
+    <script type="module" src="../js/acoes/hub.js"></script>
+
+    <script type="module" src="../js/botoes/manutencao.js"></script>
+    <script type="module" src="../js/botoes/locacao.js"></script>
+    <script type="module" src="../js/botoes/faxina.js"></script>
+    <script type="module" src="../js/acoes/triagem.js"></script>
+    
+    <script type="module" src="../js/contadores/reinicia_contador.js"></script>
+    <script type="module" src="../js/relatorios/getProduto.js"></script>
+    <script type="module" src="../js/relatorios/getExibeCamareira.js"></script>
+    <script type="module" src="../js/armazem/armazemProdutos.js"></script>
+    <script type="module" src="../js/armazem/armazemVeiculos.js"></script>
+    <script type="module" src="../js/relatorios/getExibicaoQuartos.js"></script>
+
+    <script type="module" src="../js/cadastros/postCamareira.js"></script>
+    <script type="module" src="../js/cadastros/postAuditoria.js"></script>
+    
+    <script type="module" src="../js/contadores/auditoria.js"></script>
+
+    <script type="module" src="../js/setup/troca.js"></script>
+
+    <script type="module" src="../js/relatorios/quartosDisponiveis.js"></script>
+
+    <script type="module" src="../js/setup/substituir.js"></script>
+</html>

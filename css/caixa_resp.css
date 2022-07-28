@@ -1,0 +1,12 @@
+@media screen and (max-width: 768px){
+    .form-horizontal .controls {
+        margin-left: 140px;
+    }
+
+    .form-horizontal 
+    #usarProdutosSemCaixa,
+    #usarFundoCaixa,
+    #usuario {
+        width: 220px;
+    }
+}

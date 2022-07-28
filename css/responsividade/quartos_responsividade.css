@@ -1,0 +1,22 @@
+@media screen and (max-width: 768px){
+    .form-horizontal .controls {
+        margin-left: 190px;
+        
+    }
+
+    .cardHeader {
+        font-size    : 1.45em;
+        margin-left: -15px;
+        margin-bottom: 0;
+    }
+
+    .new-bottons {
+        grid-template-columns: repeat(2, 2fr);
+        padding              : 5px 0px;
+    }
+
+    #campo_produtos {
+        margin-left: 130px;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Suits | Caixa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="../imagens/favicon-removebg-preview.png">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="../css/matrix-style.css">
+  <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/campo.css">
+  <link rel="stylesheet" href="../css/caixa_resp.css">
+
+</head>
+
+<body>
+  <!--top-Header-menu-->
+  <div class="navebarn">
+    <div id="user-nav" class="navbar navbar-inverse"></div>
+    <!-- New User -->
+    <div id="userr" style="padding-right:45px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;">
+      <div class="user-names userT0" id="saudacao_usuario"></div>
+      <div class="userT" id="usuario_sistema"></div>
+      <section style="display:block;position:absolute;right:10px">
+        <div class="profile">
+          <div class="profile-img"> 
+            <a href="">
+              <img src="../imagens/a2c0e016d91ff61639ec3d6cfea18e02.png" alt=""></a> 
+            </div>
+        </div>
+      </section>
+    </div>
+  </div> 
+  <!-- End User -->
+
+
+  <div id="content">
+    <!--start-top-serch-->
+    <div id="content-header">
+      <!-- New Bem-vindos -->
+      <div class="bemv">Dashboard</div>
+      <div id="breadcrumb"> 
+        <a id="home" class="tip-bottom"> Início</a> 
+        <a href="" class="current tip-bottom"> Caixa </a> 
+      </div>
+    </div>
+    <div class="container-flu">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid" style="margin-top:0">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title" style="margin: -20px 0 0"> 
+                  <span class="icon"> 
+                    <i class="fas fa-wrench"></i>
+                  </span>
+                  <h5>Caixa</h5>
+                </div>
+                <ul class="nav nav-tabs">
+
+                  <li class="active">
+                    <a data-toggle="tab" href="#af">Abrir/Fechar</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#historico">Histórico</a>
+                  </li>
+                </ul>
+
+                <form class="form-horizontal" id="formCadastros">
+                  <div class="widget-content nopadding tab-content">
+
+                    <!--Abrir/Fechar-->
+                    <div id="af" class="tab-pane fade in active">
+
+                      <!--Usuário-->
+                      <div class="control-group"> 
+                        <div class="controls"> 
+                          <input type="text" id="usuario" placeholder="Usuário" disabled> 
+                        </div>
+                      </div>
+
+                      <!--Usar Fundo de Caixa?-->
+                      <div class="control-group"> 
+                        <div class="controls"> 
+                          <select id="usarProdutosSemCaixa">
+                              <option hidden>Usar produtos sem estoque?</option>
+                              <option value="sim">Sim</option>
+                              <option value="nao">Não</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!--Usar Fundo de Caixa?-->
+                      <div class="control-group"> 
+                        <div class="controls"> 
+                          <select id="usarFundoCaixa">
+                              <option hidden>Usar Fundo de Caixa?</option>
+                              <option value="sim">Sim</option>
+                              <option value="nao">Não</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!--Valor Fundo de Caixa-->
+                      <div class="control-group"> 
+                        <div class="controls"> 
+                          <input type="text" id="valorFundoCaixa" placeholder="Valor Fundo de Caixa"> 
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions">
+                        <div class="span8">
+                          <div class="span9"> 
+                            <button type="button" class="button btn btn-primary" id="abrirCaixa"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Abrir Caixa</span>
+                            </button>
+                            <button type="button" class="button btn btn-danger" id="fecharCaixa"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Encerrar Caixa</span>
+                            </button>   
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!--Histórico-->
+                    <div id="historico" class="tab-pane fade">
+                        <table id="relQuartos" class="table table-bordered  dataTable no-footer" role="grid">
+                            <thead>
+                              <tr role="row">
+                                <th>Data</th>
+                                <th>Abertura</th>
+                                <th>Usuário</th>
+                                <th>Fundo de Caixa</th>
+                                <th>Total</th>
+                                <th>Fechamento</th>
+                            </thead>
+                            <tbody id="tabrlaRelatorioQuartos"></tbody>
+                        </table>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div id="footer" class="span12"> 
+      <a class="pecolor" href="">2022 © Ordem de Serviço</a>
+    </div>
+  </div>
+
+</body>
+  <script src="../js/jquery.js"></script>
+
+  <script src="../js/estilo/bootstrap.min.js"></script>
+  <script src="../js/estilo/nomes.js"></script>
+
+  <script src="../js/setup/blockCadastrosCaixa.js"></script>
+  <script src="../js/setup/sitePath.js"></script>
+  <script src="../js/setup/validacao.js"></script>
+
+
+  <script type="module" src="../js/cadastros/postAuditoria.js"></script>
+  
+  <script type="module" src="../js/relatorios/getCaixa.js"></script>
+  
+  
+  <script type="module" src="../js/botoes/caixa.js"></script>
+
+  <script type="module" src="../js/contadores/auditoria.js"></script>
+
+  
+
+  <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+</html>

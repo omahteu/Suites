@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Suits | Relatórios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="../imagens/favicon-removebg-preview.png">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="../css/matrix-style.css">
+  <link rel="stylesheet" href="../css/matrix-media.css">
+</head>
+
+<body>
+  <!--top-Header-menu-->
+  <div class="navebarn">
+    <div id="user-nav" class="navbar navbar-inverse">
+      <ul class="nav" style="width: auto; margin: 0px;"></ul>
+    </div> <!-- New User -->
+    <div id="userr" style="padding-right:45px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;">
+      <div class="user-names userT0" id="saudacao_usuario"></div>
+      <div class="userT" id="usuario_sistema"></div>
+      <section style="display:block;position:absolute;right:10px">
+        <div class="profile">
+          <div class="profile-img"> 
+            <a>
+              <img src="../imagens/a2c0e016d91ff61639ec3d6cfea18e02.png" alt="">
+            </a> 
+          </div>
+        </div>
+      </section>
+    </div>
+  </div> 
+  <!-- End User -->
+  <div id="content">
+    <!--start-top-serch-->
+    <div id="content-header">
+      <!-- New Bem-vindos -->
+      <div class="bemv">Dashboard</div>
+      <div id="breadcrumb"> 
+        <a id="home" class="tip-bottom"> Início</a> 
+        <a href="" class="current tip-bottom"> Relatórios </a> 
+      </div>
+    </div>
+    <div class="container-flu">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid" style="margin-top: 0">
+            <!-- Caixa de Impressão de Relatórios-->
+            <div class="span4">
+              <div class="widget-box">
+                <div class="widget-title"> 
+                  <span class="icon"> 
+                    <i class="fas fa-users"></i> 
+                  </span>
+                  <h5>Relatórios Rápidos</h5>
+                </div>
+                <div class="widget-content" id="relatorios_rapidos">
+
+                  <!-- PE Quartos -->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="peQuartos">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Todos os Quartos - PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="peQuartosx">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Todos os Quartos - EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!-- PE Igs -->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="peIgs">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Todos os IGS - PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="peIgsx">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Todos os IGS - EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!-- PE Emails -->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="peEmails">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Todos os Emails - PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="peemailsx">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Todos os Emails - EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!-- PE Camareiras -->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="peCamareiras">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Todos as Camareiras - PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="peCamareirasx">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Todos as Camareiras - EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!-- Ocupações -->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="peOcupacoes">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Todas as Ocupações - PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="peOcupacoesx">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Todas as Ocupações - EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <!-- PE Cartões -->
+                  <ul style="flex-direction: row;" class="site-stats">
+                    <li style="width: 200px;">
+                      <a id="peCartoes">
+                        <i class="fa-regular fa-file-pdf"></i>
+                        <small>Todos os Cartões - PDF</small>
+                      </a>
+                    </li>
+                    <li style="width: 200px;">
+                      <a id="peCartoesx">
+                        <i class="fa-regular fa-file-excel"></i>
+                        <small>Todos os Cartões - EXCEL</small>
+                      </a>
+                    </li>
+                  </ul>             
+                </div>
+              </div>
+            </div>
+            <div class="span8">
+              <div class="widget-box">
+                <div class="widget-title"> 
+                  <span class="icon"> 
+                    <i class="fas fa-users"></i> 
+                  </span>
+                  <h5>Relatórios</h5>
+                </div>
+
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a data-toggle="tab" href="#quartos">Quartos</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#ig">Informações Gerais</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#email">Email</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#camareira">Camareira</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#ocupacoes">Ocupações</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#cartoes">Cartões</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#auditoria">Auditoria</a>
+                  </li>
+                </ul>
+
+                <form action="" id="formConfigurar" method="post" class="form-horizontal">
+                  <div class="widget-content nopadding tab-content">
+
+                    <!-- Relatório de Quartos -->
+                    <div id="quartos" class="tab-pane fade in active">
+                      <table id="relQuartos" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Código</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Número</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Tipo Quarto</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Tipo Tabela</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Percentual</th>
+                        </thead>
+                        <tbody id="tabrlaRelatorioQuartos"></tbody>
+                      </table>
+                    </div>
+
+                    <!-- Relatório de Informações Gerais -->
+                    <div id="ig" class="tab-pane fade">
+                      <table id="relIg" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Social</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Fantasia</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Cnpj</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Cidade</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Endereco</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Número</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Bairro</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Telefone</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Telefone 2</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Telefone 3</th>
+                          </tr>
+                        </thead>
+                        <tbody id="relatorioTabelaIgs"></tbody>
+                      </table>
+                    </div>
+
+                    <!-- Relatório de Emails-->
+                    <div id="email" class="tab-pane fade">
+                      <table id="relEmail" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Usuário</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Senha</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Smtp</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Porta</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Timeout</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Email Destino</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Email Contabilidade</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Autênticacao</th>
+                          </tr>
+                        </thead>
+                        <tbody id="relatorioTabelaEmails"></tbody>
+                      </table>
+                    </div>
+
+                    <!-- Relatório de Camareiras -->
+                    <div id="camareira" class="tab-pane fade">
+                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Nome</th>
+                            <th class="sorting_disabled" rowspan="1" colspan="1">Código</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tabelaRelatorioCamareira"></tbody>
+                      </table>
+                    </div>
+
+                    <!-- Relatório de Ocupações-->
+                    <div id="ocupacoes" class="tab-pane fade">
+                      <table id="relOcupacoes" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Usuário</th>
+                            <th>Data</th>
+                            <th>Código</th>
+                            <th>Quarto</th>
+                            <th>Entrada</th>
+                            <th>Saída</th>
+                            <th>Total</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tabelaRelatorioOcupacoes"></tbody>
+                      </table>
+                    </div>
+
+                    <!-- Relatório de Cartões -->
+                    <div id="cartoes" class="tab-pane fade">
+                      <table id="relCartoes" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Tipo</th>
+                            <th>Bandeira</th>
+                            <th>Porcentagem</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tabelaRelatorioCartoes"></tbody>
+                      </table>
+                    </div>
+
+                    <!--Auditoria-->
+                    <div id="auditoria" class="tab-pane fade">
+                      <div class="control-group" id="relAuditoria"> 
+                        <div class="controls"> 
+                          <select id="selectUsuarios">
+                            <option value="" hidden>Usuário</option>
+                          </select>
+                          <input type="date" name="" id="data_relatorio">
+                          <button type="button" class="btn btn-primary" id="mostrarRelatorio">Mostrar</button>
+                        </div>
+                      </div>
+                      <table id="relAuditoria" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Data</th>
+                            <th>Usuário</th>
+                            <th>Ativo</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tabelaRelatorioAuditoria"></tbody>
+                      </table>
+                    </div>
+                   </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+    <script src="../js/jquery.js"></script>
+
+    <script src="../js/estilo/jquery-1.12.4.min.js"></script>
+    <script src="../js/estilo/shortcut.js"></script>
+    <script src="../js/estilo/funcoesGlobal.js"></script>
+    <script src="../js/estilo/datatables.min.js"></script>
+    <script src="../js/estilo/sweetalert.min.js"></script>
+    <script src="../js/estilo/bootstrap.min.js"></script>
+    
+    <script src="../js/estilo/nomes.js"></script>
+
+    <script src="../js/setup/blockRelatoriosCaixa.js"></script>
+    <script src="../js/setup/sitePath.js"></script>
+    <script src="../js/setup/blockImpressaoRelatoriosCaixa.js"></script>
+    <script src="../js/setup/validacao.js"></script>
+    
+    
+    <script type="module" src="../js/relatorios/getQuartos.js"></script>
+    <script type="module" src="../js/relatorios/getIg.js"></script>
+    <script type="module" src="../js/relatorios/getEmail.js"></script>
+    <script type="module" src="../js/relatorios/getCamareira.js"></script>
+    <script type="module" src="../js/relatorios/getOcupacoes.js"></script>
+    <script type="module" src="../js/relatorios/getCartoes.js"></script>
+    <script type="module" src="../js/relatorios/getUsuarios.js"></script>
+    <script type="module" src="../js/relatorios/getAuditoria.js"></script>
+
+
+    <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+
+    <script type="module" src="../js/contadores/auditoria.js"></script>
+
+    <script type="module" src="../js/cadastros/postAuditoria.js"></script>
+
+    <script type="module" src="../js/baixar/pdf_quartos.js"></script>
+    <script type="module" src="../js/baixar/pdf_igs.js"></script>
+    <script type="module" src="../js/baixar/pdf_emails.js"></script>
+    <script type="module" src="../js/baixar/pdf_camareiras.js"></script>
+    <script type="module" src="../js/baixar/pdf_ocupacoes.js"></script>
+    <script type="module" src="../js/baixar/pdf_cartoes.js"></script>
+
+    <script src="../js/baixar/excel_quartos.js"></script>
+    <script src="../js/baixar/excel_igs.js"></script>
+    <script src="../js/baixar/excel_emails.js"></script>
+    <script src="../js/baixar/excel_camareiras.js"></script>
+    <script src="../js/baixar/excel_ocupacoes.js"></script>
+    <script src="../js/baixar/excel_cartoes.js"></script>
+    
+</html>

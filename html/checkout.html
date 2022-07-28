@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Suits | Pagamento</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="../imagens/favicon-removebg-preview.png">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" href="../css/matrix-style.css">
+  <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/campo.css">
+</head>
+
+<body>
+  <!--top-Header-menu-->
+  <div class="navebarn">
+    <div id="user-nav" class="navbar navbar-inverse">
+      <ul class="nav" style="width: auto; margin: 0px;"></ul>
+    </div> <!-- New User -->
+    <div id="userr" style="padding-right:45px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;">
+      <div class="user-names userT0" id="saudacao_usuario"></div>
+      <div class="userT" id="usuario_sistema"></div>
+      <section style="display:block;position:absolute;right:10px">
+        <div class="profile">
+          <div class="profile-img"> 
+            <a href="https://osmaster.scriptphp.ru/index.php/mapos/minhaConta">
+              <img src="../imagens/a2c0e016d91ff61639ec3d6cfea18e02.png" alt="">
+            </a> 
+          </div>
+        </div>
+      </section>
+    </div>
+  </div> 
+  
+  <!-- End User -->
+
+  <div id="content">
+    <!--start-top-serch-->
+    <div id="content-header">
+      <!-- New Bem-vindos -->
+      <div class="bemv">Dashboard</div>
+      <div id="breadcrumb"> 
+        <a id="home" class="tip-bottom"> Início</a> 
+        <a href="" class="current tip-bottom"> Pagamento</a> 
+      </div>
+    </div>
+    <div class="container-flu">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid" style="margin-top: 0">
+
+            <!-- Caixa de Impressão de Relatórios-->
+            <div class="span8">
+              <div class="widget-box">
+                <div class="widget-title"> 
+                  <span class="icon"> 
+                    <i class="fas fa-users"></i> 
+                  </span>
+                  <h5>Encerramento</h5>
+                </div>
+
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a data-toggle="tab" href="#opcoes">Opções de Pagamento</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#detalhes">Detalhes</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#produtos">Produtos</a>
+                  </li>
+                  <li id="aba_desistencia">
+                    <a data-toggle="tab" href="#desisto">Desistência</a>
+                  </li>
+
+                </ul>
+
+                <form action="" id="formConfigurar" method="post" class="form-horizontal">
+                  <div class="widget-content nopadding tab-content">
+
+                    <!---->
+                    <div id="opcoes" class="tab-pane fade in active">
+
+                      <!--Porcentagem-->
+                      <div class="control-group"> 
+                        <div class="controls">
+                          <select id="modo_desconto">
+                            <option value="a" hidden>Modo</option>
+                            <option value="valor">Valor</option>
+                            <option value="porcento">Percentual</option>
+                          </select>
+                          <input type="text" id="valor_desconto" placeholder="Valor Desconto">
+                          <button type="button" class="btn btn-primary" id="aplicar_desconto">Aplicar</button>
+                        </div>
+                      </div>
+
+                      <!--Camareira-->
+                      <div class="control-group"> 
+                        <div class="controls">
+                          <select id="selecionaCamareira">
+                            <option value="" hidden>Camareira</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!--Pagamento-->
+                      <div class="control-group"> 
+                        <div class="controls">
+                          <form id="bandeiras_cartoes">
+                            <select id="modo_pagamento">
+                              <option value="" hidden>Método de Pagamento</option>
+                              <option value="dinheiro" selected>Dinheiro</option>
+                            </select>
+                            <input type="number" min="1" value="1" id="numero_parcelas" placeholder="P/">
+                            <button type="button" class="btn btn-primary" id="confirma_parcelas">Selecionar</button>
+                          </form>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!---->
+                    <div id="detalhes" class="tab-pane fade">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Valor Unitário</th>
+                            <th>Valor Total</th>
+                          </tr>
+                        </thead>
+                        <tbody id="itensComprados"></tbody>
+                      </table>
+                    </div>
+
+                    <!---->
+                    <div id="produtos" class="tab-pane fade">
+
+                      <!--Campo Pessoas
+                      <div class="control-group"> 
+                        <div class="controls"> 
+                          <input type="text" id="pessoasProduto" placeholder="Pessoas"> 
+                        </div>
+                      </div>-->
+                      <form id="produtos_checkout">
+                        <!--Campo Código-->
+                        <div class="control-group"> 
+                          <div class="controls"> 
+                            <input type="text" id="codigo_produto" placeholder="Código"> 
+                          </div>
+                        </div>
+
+                        <!--Campo Produto-->
+                        <div class="control-group"> 
+                          <div class="controls"> 
+                            <select name="" id="lista_produto">
+                              <option value="" hidden>Produto</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <!--Campo Quantidade-->
+                        <div class="control-group"> 
+                          <div class="controls"> 
+                            <input type="text" id="quantidade_produto" placeholder="Quantidade"> 
+                          </div>
+                        </div>
+
+                        <!--Campo Descrição-->
+                        <div class="control-group"> 
+                          <div class="controls"> 
+                            <input type="text" id="descricao_produto" placeholder="Descrição" disabled> 
+                          </div>
+                        </div>
+
+                        <!--Campo Valor Unitário-->
+                        <div class="control-group"> 
+                          <div class="controls"> 
+                            <input type="text" id="valor_unitario_produto" placeholder="Valor Unitário" disabled> 
+                          </div>
+                        </div>
+
+                        <!--Campo Total-->
+                        <div class="control-group"> 
+                          <div class="controls"> 
+                            <input type="text" id="total_produto" placeholder="Total" disabled> 
+                          </div>
+                        </div>
+
+                        <!--Botões-->
+                        <div class="form-actions">
+                          <div class="span8">
+                            <div class="span9"> 
+                              <button type="button" class="button btn btn-primary" id="adicionar_produto"> 
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-floppy-disk"></i>
+                                </span>
+                                <span class="button__text2">Cadastrar</span>
+                              </button>
+                              <button type="button" class="button btn btn-danger" id=""> 
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-xmark"></i>
+                                </span>
+                                <span class="button__text2">Limpar</span>
+                              </button>   
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+
+                    </div>
+
+                    <div id="desisto" class="tab-pane fade">
+
+                      <!--Motivo-->
+                      <div class="control-group"> 
+                        <div class="controls"> 
+                          <input type="text" id="mmotivo_desistencia" placeholder="Motivo da Desistência" required>
+                          <button type="button" class="btn btn-primary" id="aceitar_desistencia">OK</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!--Painel Lateral-->
+            <div class="span4">
+                <div class="widget-box">
+                  <div class="widget-title"> 
+                    <span class="icon"> 
+                      <i class="fas fa-users"></i> 
+                    </span>
+                    <h5>Fatura</h5>
+                  </div>
+                  <div class="widget-content">
+
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                            </tr>
+                            <!--Quarto-->
+                            <tr>
+                                <td>Quarto</td>
+                                <td>R$ <span id="valorQuarto">0</span></td>
+                            </tr>
+                            <!--Permanência-->
+                            <tr>
+                              <td>Permanência</td>
+                              <td id="tempoPermanencia">0</td>
+                            </tr>
+                            <!--Adicional Permanência-->
+                            <tr>
+                                <td>Add Permanência</td>
+                                <td>R$ 0</td>
+                            </tr>
+                            <!--Itens-->
+                            <tr>
+                                <td>Itens</td>
+                                <td>R$ <span id="valorItens">0</span></td>
+                            </tr>
+                            <!--Desconnto-->
+                            <tr>
+                                <td>Desconto</td>
+                                <td>R$ <span id="valorDesconto">0</span></td>
+                            </tr>
+                            <!--SubTotal-->
+                            <tr>
+                                <td>Subtotal</td>
+                                <td>R$ <span id="valor_subtotal">0</span></td>
+                            </tr>
+                            <!--Parcelas-->
+                            <tr>
+                                <td>Parcelas</td>
+                                <td><span id="nparcelas">0</span>x de R$ <span id="valor_parcelas">0</span></td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>R$ <span id="totalGeral">0</span></td>
+                            </tr>
+                            <tr>
+                              <td></td>
+                              <td>
+                                <button type="button" class="button btn btn-primary" id="encerrar"> 
+                                  <span class="button__icon">
+                                    <i class="fa-solid fa-check"></i>
+                                  </span>
+                                  <span class="button__text2">Finalizar</span>
+                                </button>
+                              </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+  <script src="../js/jquery.js"></script>
+
+  <script src="../js/estilo/shortcut.js"></script>
+  <script src="../js/estilo/funcoesGlobal.js"></script>
+  <script src="../js/estilo/datatables.min.js"></script>
+  <script src="../js/estilo/sweetalert.min.js"></script>
+  <script src="../js/estilo/bootstrap.min.js"></script>
+  <script src="../js/estilo/matrix.js"></script>
+
+  <script src="../js/setup/blockRelatoriosCaixa.js"></script>
+  <script src="../js/setup/sitePath.js"></script>
+  <script src="../js/setup/blockImpressaoRelatoriosCaixa.js"></script>
+  <script type="module" src="../js/setup/checkout.js"></script>
+
+  <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+
+  <script type="module" src="../js/relatorios/getExibeCamareira.js"></script>  
+
+  <script type="module" src="../js/botoes/pagamento.js"></script>
+  <script type="module" src="../js/botoes/encerrar.js"></script>
+  <script type="module" src="../js/armazem/armazemCheckout.js"></script>
+  <script type="module" src="../js/setup/carrega_produtos.js"></script>
+  <script type="module" src="../js/setup/desistencia.js"></script>
+  <script src="../js/estilo/nomes.js"></script>
+
+  <script type="module" src="../js/contadores/auditoria.js"></script>
+  <script type="module" src="../js/cadastros/postAuditoria.js"></script>
+
+  <script type="module" src="../js/bloqueadores/desistencia.js"></script>
+</html>

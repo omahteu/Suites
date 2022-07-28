@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Suits | Cadastros</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="../imagens/favicon-removebg-preview.png">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/matrix-style.css">
+  <link rel="stylesheet" href="../css/matrix-media.css">
+</head>
+
+<body>
+  <!--top-Header-menu-->
+  <div class="navebarn">
+    <div id="user-nav" class="navbar navbar-inverse"></div>
+    <!-- New User -->
+    <div id="userr" style="padding-right:45px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;">
+      <div class="user-names userT0" id="saudacao_usuario"></div>
+      <div class="userT" id="usuario_sistema"></div>
+      <section style="display:block;position:absolute;right:10px">
+        <div class="profile">
+          <div class="profile-img"> 
+            <a href="">
+              <img src="../imagens/a2c0e016d91ff61639ec3d6cfea18e02.png" alt=""></a> 
+            </div>
+        </div>
+      </section>
+    </div>
+  </div> 
+  <!-- End User -->
+
+
+  <div id="content">
+    <!--start-top-serch-->
+    <div id="content-header">
+      <!-- New Bem-vindos -->
+      <div class="bemv">Dashboard</div>
+      <div id="breadcrumb"> 
+        <a id="home" class="tip-bottom"> Início</a> 
+        <a href="" class="current tip-bottom"> Cadastros </a> 
+      </div>
+    </div>
+    <div class="container-flu">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid" style="margin-top:0">
+            <div class="span12">
+              <div class="widget-box">
+                <div class="widget-title" style="margin: -20px 0 0"> 
+                  <span class="icon"> 
+                    <i class="fas fa-wrench"></i>
+                  </span>
+                  <h5>Cadastros do Sistema</h5>
+                </div>
+                <ul class="nav nav-tabs">
+
+                  <li class="active">
+                    <a data-toggle="tab" href="#produtos">Produtos</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#quartos">Quartos</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#ig">Informações Gerais</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#email">Email</a>
+                  </li>
+                  <li>
+                    <a data-toggle="tab" href="#camareira">Camareira</a>
+                  </li>
+                </ul>
+
+                <form class="form-horizontal" id="formCadastros">
+                  <div class="widget-content nopadding tab-content">
+
+                    <!-- Produtos -->
+                    <div id="produtos" class="tab-pane fade in active">
+
+                      <!--Campo Código-->
+                      <div class="control-group" name="codProdutos"> 
+                        <div class="controls"> 
+                          <input type="text" id="codigoProduto" placeholder="Código"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Descrição-->
+                      <div class="control-group" name="codProdutos"> 
+                        <div class="controls"> 
+                          <input type="text" id="descricaoProduto" placeholder="Descrição"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Valor Unitário-->
+                      <div class="control-group" name="codProdutos"> 
+                        <div class="controls"> 
+                          <input type="text" id="valorUnitarioProduto" placeholder="Valor Unitário"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Categoria-->
+                      <div class="control-group" name="codProdutos"> 
+                        <div class="controls"> 
+                          <input type="text" id="categoriaProduto" placeholder="Categoria"> 
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions" name="codProdutos">
+                        <div class="span8">
+                          <div class="span9"> 
+                            <button type="button" class="button btn btn-primary" id="salvarFormPostProduto"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Cadastrar</span>
+                            </button>
+                            <button type="button" class="button btn btn-danger" id="limparFormPostProduto"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>   
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Quartos -->
+                    <div id="quartos" class="tab-pane fade">
+
+                      <!--Campo Código-->
+                      <div class="control-group" name="cadQuartos"> 
+                        <div class="controls"> 
+                          <input type="text" id="codigoQuarto" placeholder="Código do Quarto" required> 
+                        </div>
+                      </div>
+
+                      <!--Campo Adicionar Percentual-->
+                      <div class="control-group" name="cadQuartos"> 
+                        <div class="controls"> 
+                          <select name="per_page" id="adicionarPercentualQuarto">
+                            <option hidden>Adicionar Percentual</option>
+                            <option value="True">Sim</option>
+                            <option value="False">Não</option>
+                          </select> 
+                        </div>
+                      </div>
+
+                      <!--Campo Tipo Suíte-->
+                      <div class="control-group" name="cadQuartos"> 
+                        <div class="controls"> 
+                          <select id="tipoSuiteQuarto">
+                            <option hidden>Tipo Suíte</option>
+                            <option value="Ventilador">Ventilador</option>
+                            <option value="Ar">Ar</option>
+                          </select> 
+                        </div>
+                      </div>
+
+                      <!--Campo Tabela
+                      <div class="control-group" name="cadQuartos"> 
+                        <div class="controls"> 
+                          <select name="per_page" id="tabelaQuarto">
+                            <option hidden>Tabela</option>
+                          </select> 
+                        </div>
+                      </div>
+                      -->
+                      
+                      <!--Botões-->
+                      <div class="form-actions" name="cadQuartos">
+                        <div class="span8">
+                          <div class="span9"> 
+                            <button type="button" class="button btn btn-primary" id="salvarFormPostQuarto"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Cadastrar</span>
+                            </button>
+                            <button type="button" class="button btn btn-danger" id="limparFormPostQuarto"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>  
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+
+                    <!-- Informações Gerais -->
+                    <div id="ig" class="tab-pane fade">
+
+                      <!--Campo Razão Social-->
+                      <div class="control-group" name="cadIgs"> 
+                        <div class="controls"> 
+                          <input type="text" id="razaoSocialIg" placeholder="Razão Social"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Nome Fantasia-->
+                      <div class="control-group"name="cadIgs"> 
+                        <div class="controls"> 
+                          <input type="text" id="nomeFantasiaIg" placeholder="Nome Fantasia"> 
+                        </div>
+                      </div>
+
+                      <!--Campo CNPJ-->
+                      <div class="control-group"name="cadIgs"> 
+                        <div class="controls"> 
+                          <input type="text" id="cnpjIg" placeholder="CNPJ"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Cidade-->
+                      <div class="control-group"name="cadIgs"> 
+                        <div class="controls"> 
+                          <input type="text" id="cidadeIg" placeholder="Cidade"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Endereço-->
+                      <div class="control-group"name="cadIgs"> 
+                        <div class="controls"> 
+                          <input type="text" id="enderecoIg" placeholder="Endereço"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Número-->
+                      <div class="control-group"name="cadIgs"> 
+                        <div class="controls"> 
+                          <input type="text" id="numeroIg" placeholder="Número"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Bairro-->
+                      <div class="control-group"name="cadIgs"> 
+                        <div class="controls"> 
+                          <input type="text" id="bairroIg" placeholder="Bairro"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Telefone-->
+                      <div class="control-group"name="cadIgs"> 
+                        <div class="controls"> 
+                          <input type="text" id="telefoneIg" placeholder="Telefone"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Telefone 2-->
+                      <div class="control-group"name="cadIgs"> 
+                        <div class="controls"> 
+                          <input type="text" id="telefone2Ig" placeholder="Telefone 2"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Telefone 3-->
+                      <div class="control-group"name="cadIgs"> 
+                        <div class="controls"> 
+                          <input type="text" id="telefone3Ig" placeholder="Telefone 3"> 
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions"name="cadIgs">
+                        <div class="span8">
+                          <div class="span9"> 
+                            <button type="submit" class="button btn btn-primary" id="salvarFormPostIg"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Cadastrar</span>
+                            </button>
+                            <button type="button" class="button btn btn-danger" id="limparFormPostIg"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>   
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div id="email" class="tab-pane fade">
+
+                      <!--Campo Email-->
+                      <div class="control-group" name="cadEmail"> 
+                        <div class="controls"> 
+                          <input type="text" id="usuarioEmail" placeholder="Usuário"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Senha-->
+                      <div class="control-group" name="cadEmail"> 
+                        <div class="controls"> 
+                          <input type="text" id="senhaEmail" placeholder="Senha"> 
+                        </div>
+                      </div>
+
+                      <!--Campo SMTP-->
+                      <div class="control-group" name="cadEmail"> 
+                        <div class="controls"> 
+                          <input type="text" id="smtpEmail" placeholder="SMTP"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Porta-->
+                      <div class="control-group" name="cadEmail"> 
+                        <div class="controls"> 
+                          <input type="text" id="portaEmail" placeholder="Porta"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Timeout-->
+                      <div class="control-group" name="cadEmail"> 
+                        <div class="controls"> 
+                          <input type="text" id="timeoutEmail" placeholder="Timeout (segundos)"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Email Destino-->
+                      <div class="control-group" name="cadEmail"> 
+                        <div class="controls"> 
+                          <input type="text" id="emailDestinoEmail" placeholder="Email Destino"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Email COntabilidade-->
+                      <div class="control-group" name="cadEmail"> 
+                        <div class="controls"> 
+                          <input type="text" id="emailContabilidadeEmail" placeholder="Email Contabilidade"> 
+                        </div>
+                      </div>
+
+                      <!--Campo Adicionar Percentual-->
+                      <div class="control-group" name="cadQuartos"> 
+                        <div class="controls"> 
+                          <select name="" id="autenticacaoEmail">
+                            <option hidden>Requer Autênticação</option>
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions" name="cadEmail">
+                        <div class="span8">
+                          <div class="span9"> 
+                            <button type="submit" class="button btn btn-primary" id="salvarFormPostEmail"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Cadastrar</span>
+                            </button>
+                            <button type="button" class="button btn btn-danger" id="limparFormPostEmail"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>   
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Camareira -->
+                    <div id="camareira" class="tab-pane fade">
+
+                      <!--Campo Nome-->
+                      <div class="control-group" name="cadCamareiras"> 
+                        <div class="controls"> 
+                          <input type="text" id="nomeCamareira" placeholder="Nome"> 
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions" name="cadCamareiras">
+                        <div class="span8">
+                          <div class="span9"> 
+                            <button type="submit" class="button btn btn-primary" id="salvarFormPostCamareira"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Cadastrar</span>
+                            </button>
+                            <button type="button" class="button btn btn-danger" id="limparFormPostCamareira"> 
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>   
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+    <script src="../js/jquery.js"></script>
+
+    <script src="../js/estilo/shortcut.js"></script>
+    <script src="../js/estilo/funcoesGlobal.js"></script>
+    <script src="../js/estilo/datatables.min.js"></script>
+    <script src="../js/estilo/sweetalert.min.js"></script>
+    <script src="../js/estilo/bootstrap.min.js"></script>
+    <script src="../js/estilo/matrix.js"></script>
+    <script src="../js/estilo/nomes.js"></script>
+
+    <script src="../js/setup/blockCadastrosCaixa.js"></script>
+    <script src="../js/setup/sitePath.js"></script>
+    <script src="../js/setup/validacao.js"></script>
+
+    <script type="module" src="../js/contadores/auditoria.js"></script>
+
+    <script type="module" src="../js/cadastros/postProduto.js"></script>
+    <script type="module" src="../js/cadastros/postQuarto.js"></script>
+    <script type="module" src="../js/cadastros/postIG.js"></script>
+    <script type="module" src="../js/cadastros/postEmail.js"></script>
+    <script type="module" src="../js/cadastros/postCamareira.js"></script>
+
+    <script type="module" src="../js/cadastros/postAuditoria.js"></script>
+    <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+</html>
