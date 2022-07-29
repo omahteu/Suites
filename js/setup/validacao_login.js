@@ -7,6 +7,6 @@ function estar_logado(){
     if (!usuarioLogado) {
         window.location = "../index.html"
     } else {
-        window.location = "./paginas/home.html"
+        window.location = "./html/home.html"
     }
 }

@@ -70,7 +70,7 @@ export function reacao(status, id){
             var s = $(`#segundo${id}`).text()
             var permanencia = h + ":" + m + ":" + s
             localStorage.setItem("tt", permanencia)
-        }, 150)
+        }, 100)
         ver_quartos_disponiveis()
         setTimeout( () => {
             busca_permanencia(quarto, "passagem")
@@ -81,7 +81,7 @@ export function reacao(status, id){
             setTimeout( () => {busca_permanencia(quarto)}, 500)
             setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 1000)
             sessionStorage.setItem('quarto', quarto)
-            window.open('../paginas/checkout.html', '_blank')
+            window.open('../html/checkout.html', '_blank')
             setTimeout( () => {aguardando(quarto, rota, flags[0], flags[1], flags[2])}, 1500)
             setTimeout( () => {atualiza_status(quarto, "aguardando"), 1500})
             setTimeout( () => {fimModal()}, 1001)

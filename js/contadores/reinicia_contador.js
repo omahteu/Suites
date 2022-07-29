@@ -3,7 +3,6 @@ import { _crnmtra1 } from "../contadores/restart/c1.js"
 import { _crnmtra2 } from "../contadores/restart/c2.js"
 
 $(document).one("click", '[class="card"]', function() {
-    console.log('qwe')
     definindo_tempo()
 })
 

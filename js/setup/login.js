@@ -14,13 +14,13 @@ async function autenticacao(usuario, senha){
                     localStorage.setItem('usuarioLogado', 'admin')
                     localStorage.setItem('nome', elemento.nome)
                     localStorage.setItem('caixa', 'fechado')
-                    $(location).attr('href', './paginas/home.html')
+                    $(location).attr('href', './html/home.html')
                 } else {
                     alert('Login com Sucesso!')
                     localStorage.setItem('usuarioLogado', 'caixa')
                     localStorage.setItem('nome', elemento.nome)
                     localStorage.setItem('caixa', 'fechado')
-                    $(location).attr('href', './paginas/caixa.html')
+                    $(location).attr('href', './html/caixa.html')
                 }
             } else {
                 alert('Usuário e/ou Senha Inválidos!')

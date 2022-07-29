@@ -47,7 +47,6 @@ export function _crnmtrd1(id) {
     document.getElementById(`hora${id}`).innerText = _crnmtre1(hora)
     document.getElementById(`minuto${id}`).innerText = _crnmtre1(minuto)
     document.getElementById(`segundo${id}`).innerText = _crnmtre1(segundo)
-    console.log(document.getElementById(`segundo${id}`).innerText = _crnmtre1(segundo))
 }
 
 export function _crnmtre1(input) {

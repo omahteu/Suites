@@ -35,7 +35,7 @@ $("#abrirCaixa").click(function() {
         }
         $.post(link[2], dados, () => {
             alert('Caixa Aberto!')
-            $(location).attr('href', '../paginas/home.html')
+            $(location).attr('href', '../html/home.html')
         })
     } else if(utilizar_fundo_caixa == "sim" && usar_produtos_sem_caixa == "nao") {
         localStorage.setItem('caixa', 'aberto')
@@ -55,7 +55,7 @@ $("#abrirCaixa").click(function() {
         }
         $.post(link[2], dados, () => {
             alert('Caixa Aberto!')
-            $(location).attr('href', '../paginas/home.html')
+            $(location).attr('href', '../html/home.html')
         })
     } else if(utilizar_fundo_caixa == "nao" && usar_produtos_sem_caixa == "sim") {
         localStorage.setItem('caixa', 'aberto')
@@ -75,7 +75,7 @@ $("#abrirCaixa").click(function() {
         }
         $.post(link[2], dados, () => {
             alert('Caixa Aberto!')
-            $(location).attr('href', '../paginas/home.html')
+            $(location).attr('href', '../html/home.html')
         })
     } else if(utilizar_fundo_caixa == "nao" && usar_produtos_sem_caixa == "nao") {
         localStorage.setItem('caixa', 'aberto')
@@ -95,7 +95,7 @@ $("#abrirCaixa").click(function() {
         }
         $.post(link[2], dados, () => {
             alert('Caixa Aberto!')
-            $(location).attr('href', '../paginas/home.html')
+            $(location).attr('href', '../html/home.html')
         })
     }
 })

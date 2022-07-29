@@ -12,7 +12,6 @@ export async function ver_quartos_disponiveis(){
         suites.push(disponiveis[i].quarto)
     }
     for(var i = 0; i < dados.length; i++){
-        var itens = suites.includes(dados[i].numero)
         if(suites.includes(dados[i].numero) == false){
             $('#quartos_disponiveis').append('<option>' + dados[i].numero + '</option>')
         }
