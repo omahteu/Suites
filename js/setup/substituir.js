@@ -5,20 +5,19 @@ import { modos } from "../setup/box.js"
 import { locado } from "../tags/locacao.js"
 import { fimModal } from "../setup/camareiras.js"
 import { fimModalTroca } from "../setup/troca.js"
+import { aguardando } from "../tags/aguardo.js"
+import { desfazer } from "../tags/desfazer.js"
 
 $("#substituir").click(function(){
-/*
+
+    var pers = []
+
     $.get(link[5], function(e){
         var quarto = $("#quarto_antigo").val()
         var novo = $("#quartos_disponiveis").val()
         var dados = e.filter(item => item.quarto === quarto)
-        //console.log(dados)
-        //console.log(quarto, novo, dados)
         dados.forEach(el => {
             var id = el.id
-            console.log(id)
-            // PATCH COMANDA
-            
             $.ajax({
                 headers : {
                     'Accept' : 'application/json',
@@ -57,9 +56,9 @@ $("#substituir").click(function(){
                     console.log(`ERRO: ${textStatus} - ${errorThrown}`)
                 }
             })
-        });
+        })
     })
-    */
+
     var quarto = $("#quarto_antigo").val()
     var novo = $("#quartos_disponiveis").val()
     var hora = $(`#hora${quarto}`).text()
@@ -67,7 +66,6 @@ $("#substituir").click(function(){
     var segundos = $(`#segundo${quarto}`).text()
     var permanencia = [hora, minutos, segundos]
     var rota = $(this).attr('class')
-    console.log(quarto, permanencia[0], permanencia[1], permanencia[2])
     
     switch (quarto) {
         case "1":
@@ -79,36 +77,7 @@ $("#substituir").click(function(){
                 $.get(link[11], function(e){
                     var dados = e.filter(item => item.quarto === quarto)
                     dados.forEach(el => {
-                        var id = el.id
-                        $.ajax({
-                            headers : {
-                                'Accept' : 'application/json',
-                                'Content-Type' : 'application/json'
-                            },
-                            url : link[5] + id + "/",
-                            type : 'PATCH',
-                            data : JSON.stringify({quarto: novo}),
-                            success : function() {
-                                console.log("Troca Com Sucesso!");
-                            },
-                            error : function(textStatus, errorThrown) {
-                                console.log(`ERRO: ${textStatus} - ${errorThrown}`)
-                            }
-                        })    
-                    })
-                })
-            }, 1000)
-            break
-        case "2":
-            var flags = modos.slice(3, 6)
-            _crnmtra2(novo, permanencia[0], permanencia[1], permanencia[2])
-            locado(quarto, rota,  flags[0], flags[1], flags[2])
-            setTimeout( () => {
-                fimModalTroca()
-                console.log(novo)
-                $.get(link[11], function(e){
-                    var dados = e.filter(item => item.quarto === quarto)
-                    dados.forEach(el => {
+                        pers.push(el)
                         var id = el.id
                         $.ajax({
                             headers : {
@@ -128,9 +97,60 @@ $("#substituir").click(function(){
                     })
                 })
             }, 1000)
+            setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 1000)
+            setTimeout( () => {aguardando(quarto, rota, flags[0], flags[1], flags[2])}, 1500)
+            setTimeout( () => {
+                var dados = {
+                    datahora: pers[0].datahora,
+                    valor: pers[0].valor,
+                    quarto: pers[0].quarto,
+                    tipo: "aguardando"
+                }
+                $.post(link[11], dados, function(){})
+            }, 1550)
+            break
+        case "2":
+            var flags = modos.slice(3, 6)
+            _crnmtra2(novo, permanencia[0], permanencia[1], permanencia[2])
+            locado(quarto, rota,  flags[0], flags[1], flags[2])
+            setTimeout( () => {
+                fimModalTroca()
+                $.get(link[11], function(e){
+                    var dados = e.filter(item => item.quarto === quarto)
+                    dados.forEach(el => {
+                        pers.push(el)
+                        var id = el.id
+                        $.ajax({
+                            headers : {
+                                'Accept' : 'application/json',
+                                'Content-Type' : 'application/json'
+                            },
+                            url : link[11] + id + "/",
+                            type : 'PATCH',
+                            data : JSON.stringify({quarto: novo}),
+                            success : function() {
+                                console.log("Troca Com Sucesso!");
+                            },
+                            error : function(textStatus, errorThrown) {
+                                console.log(`ERRO: ${textStatus} - ${errorThrown}`)
+                            }
+                        })    
+                    })
+                })
+            }, 1000)
+            setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 1000)
+            setTimeout( () => {aguardando(quarto, rota, flags[0], flags[1], flags[2])}, 1500)
+            setTimeout( () => {
+                var dados = {
+                    datahora: pers[0].datahora,
+                    valor: pers[0].valor,
+                    quarto: pers[0].quarto,
+                    tipo: "aguardando"
+                }
+                $.post(link[11], dados, function(){})
+            }, 1550)
             break
         default:
             break;
     }
-    
 })

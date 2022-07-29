@@ -1,12 +1,11 @@
 import { hora_atual } from "../geradores/hora.js"
 import { link } from "../setup/index.js"
 
-export function locado(q, t,  x, y, z) {   
+export function locado(q, t, x, y, z) {
     // CSS
     $(`.cardBox .card:nth-child(${q})`).css({
         "background": "#FF0000"
     })
-    
     $(`[name=${q}]`).css('display', 'none')
     // Botões Inferiores
     $(".acoes1").css('display', 'inline-block')
