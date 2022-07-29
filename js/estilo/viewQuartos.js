@@ -1,6 +1,9 @@
 import { modos } from '../setup/box.js'
 import { locado } from "../tags/locacao.js"
+import { aguardando } from "../tags/aguardo.js"
 import { link } from "../setup/index.js"
+
+var rotax = "btn aguardando"
 
 function mostraProduto(identificador){
 	$.get(link[5], (retorno) => {
@@ -64,7 +67,10 @@ $(document).ready(function(){
 				$("#tipo").text('faxina')
 			} else if(cor == 'rgb(75, 192, 192)'){
 				$("#tipo").text('livre')
+			} else if(cor == 'rgb(255, 255, 255)'){
+				$("#tipo").text("aguardando")
 			}
+
 			if(e == '1'){
 				var flags = modos.slice(0, 3)
 				$(`#intervalo${e}`).text(modos.slice(0, 3))
@@ -101,7 +107,10 @@ $(document).on('click', '[class="card"]', function() {
 			$("#tipo").text('faxina')
 		} else if(cor == 'rgb(75, 192, 192)'){
 			$("#tipo").text('livre')
+		} else if(cor == 'rgb(255, 255, 255)'){
+			$("#tipo").text("aguardando")
 		}
+
 		if(identificador == '1'){
 			var flags = modos.slice(0, 3)
 			$("#intervalo").text(modos.slice(0, 3))
@@ -127,7 +136,6 @@ $(document).on('click', '[class="card"]', function() {
 		}
 	}, 800);
 })
-
 
 function backupInfos(instance, x, y, z){
 	mostraProduto()
@@ -178,6 +186,7 @@ function backupInfos(instance, x, y, z){
 				$(".acoes2").val('')
 				$(".acoes3").css('display', 'none')
 				$(".acoes3").val('')
+				aguardando(instance, rotax, x, y, z)
 			} else if(modo == "limpeza"){
 				$(`[name=${instance}]`).css('display', 'none')
 				$(".acoes1").css('display', 'inline-block')
