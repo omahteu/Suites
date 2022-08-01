@@ -1,11 +1,9 @@
-function zeroFill(n) {
-    return n < 9 ? `0${n}` : `${n}`;
-}
+import { numero } from "../geradores/numero.js"
 
 export function hora_atual(){
     var base = new Date();
-    var hora = zeroFill(base.getHours())
-    var minuto = zeroFill(base.getMinutes())
+    var hora = numero(base.getHours())
+    var minuto = numero(base.getMinutes())
     //var segundo = base.getSeconds()
     return `${hora}:${minuto}`
 }

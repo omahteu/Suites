@@ -1,16 +1,13 @@
 import { link } from "../setup/index.js"
-
-function zeroFill(n) {
-  return n < 9 ? `0${n}` : `${n}`;
-}
+import { numero } from "../geradores/numero.js"
 
 function formatDate(date) {
-  const d = zeroFill(date.getDate());
-  const mo = zeroFill(date.getMonth() + 1);
-  const y = zeroFill(date.getFullYear());
-  const h = zeroFill(date.getHours());
-  const mi = zeroFill(date.getMinutes());
-  const s = zeroFill(date.getSeconds());
+  const d = numero(date.getDate());
+  const mo = numero(date.getMonth() + 1);
+  const y = numero(date.getFullYear());
+  const h = numero(date.getHours());
+  const mi = numero(date.getMinutes());
+  const s = numero(date.getSeconds());
   return `${d}/${mo}/${y} ${h}:${mi}:${s}`;
 }
 

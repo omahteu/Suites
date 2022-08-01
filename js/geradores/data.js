@@ -1,11 +1,9 @@
-function zeroFill(n) {
-    return n < 9 ? `0${n}` : `${n}`;
-}
+import { numero } from "../geradores/numero.js"
 
 export function data_atual(){
     var base = new Date();
-    var dia = zeroFill(base.getDate())
-    var mes = zeroFill(base.getMonth() + 1)
-    var ano = zeroFill(base.getFullYear())
+    var dia = numero(base.getDate())
+    var mes = numero(base.getMonth() + 1)
+    var ano = numero(base.getFullYear())
     return `${String(dia)}/${String(mes)}/${String(ano)}`
 }
