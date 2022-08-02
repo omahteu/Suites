@@ -1,57 +1,15 @@
 import { modos } from '../setup/box.js'
 import { locado } from "../tags/locacao.js"
 import { aguardando } from "../tags/aguardo.js"
+import { limpeza } from "../tags/limpeza.js"
+import { manutencao } from "../tags/manutencao.js"
+import { faxina } from "../tags/faxina.js"
 import { link } from "../setup/index.js"
+import { leituraProdutosPlus } from "../armazem/leitura/produtos.js"
+import { leituraVeiculosPlus } from "../armazem/leitura/veiculos.js"
 
 var rotax = "btn aguardando"
-
-function mostraProduto(identificador){
-	$.get(link[5], (retorno) => {
-		var prateleira = document.getElementById('listaProdutosComprados');
-		prateleira.innerHTML = '';
-		try {
-			var dados = retorno.filter(quartos => quartos.quarto == identificador)
-			dados.forEach( (resultado) => {
-				var id = resultado.id
-				var descricao = resultado.descricao
-				var quantidade = resultado.quantidade
-				var valorUnitario = resultado.valor_unitario
-				var valorTotal = resultado.valor_total
-				prateleira.innerHTML += '<tr>'+
-											'<td>'+ descricao + '</td>' +
-											'<td>'+ quantidade + '</td>' +
-											'<td>'+ valorUnitario + '</td>' +
-											'<td>'+ valorTotal + '</td>' +
-											'<td><button type="button" onclick="removeProduto('+ id +')" class="btn btn-danger">Remover</button></td>'+
-										'</tr>';
-			})
-		} catch (error) {
-			localStorage.setItem('produtos', JSON.stringify([]))
-		}
-	})
-}
-
-function mostraVeiculo(identificador){
-	$.get(link[15], (retorno) => {
-		var patio = document.getElementById('listaveiculosguardados');
-		patio.innerHTML = '';
-		try {
-			var dados = retorno.filter(quartos => quartos.quarto == identificador)
-			dados.forEach( (resultado) => {
-				var id = resultado.id
-				var modelo = resultado.modelo
-				var placa = resultado.placa
-				patio.innerHTML += '<tr>'+
-										'<td>'+ placa + '</td>' +
-										'<td>'+ modelo + '</td>' +
-										'<td><button type="button" onclick="removeVeiculo('+ id +')" class="btn btn-danger">Remover</button></td>'+
-									'</tr>';
-			})
-		} catch (error) {
-			localStorage.setItem('produtos', JSON.stringify([]))
-		}
-	})
-}
+var rotal = "btn limpeza"
 
 $(document).ready(function(){
 	setTimeout( () => {
@@ -69,6 +27,8 @@ $(document).ready(function(){
 				$("#tipo").text('livre')
 			} else if(cor == 'rgb(255, 255, 255)'){
 				$("#tipo").text("aguardando")
+			} else if(cor  == "rgb(255, 255, 0)"){
+				$("#tipo").text("limpeza")
 			}
 
 			if(e == '1'){
@@ -109,6 +69,8 @@ $(document).on('click', '[class="card"]', function() {
 			$("#tipo").text('livre')
 		} else if(cor == 'rgb(255, 255, 255)'){
 			$("#tipo").text("aguardando")
+		} else if(cor  == "rgb(255, 255, 0)"){
+			$("#tipo").text("limpeza")
 		}
 
 		if(identificador == '1'){
@@ -131,14 +93,13 @@ $(document).on('click', '[class="card"]', function() {
 		let tipo = $("#tipo").text()
 		let tipos = ['locado']
 		if(tipos.includes(tipo)){
-			mostraProduto(identificador)
-			mostraVeiculo(identificador)
+			leituraProdutosPlus(identificador)
+			leituraVeiculosPlus(identificador)
 		}
 	}, 800);
 })
 
 function backupInfos(instance, x, y, z){
-	mostraProduto()
 	$.get(link[11], (retorno) => {
 		try {
 			var dados = retorno.filter(quartos => quartos.quarto == instance)
@@ -170,6 +131,8 @@ function backupInfos(instance, x, y, z){
 				$(".acoes2").val('Disponibilizar Quarto')		
 				$(".acoes3").css('display', 'inline-block')
 				$(".acoes3").val('Ligar Luz')
+				var rotam = $(".manutencao").attr("class")
+				manutencao(instance, rotam, x, y, z)
 			} else if(modo == "faxina"){
 				$(`[name=${instance}]`).css('display', 'none')
 				$(".acoes1").css('display', 'inline-block')
@@ -178,6 +141,8 @@ function backupInfos(instance, x, y, z){
 				$(".acoes2").val('')
 				$(".acoes3").css('display', 'none')
 				$(".acoes3").val('')
+				var rotaf = $(".faxina").attr("class")
+				faxina(instance, rotaf, x, y, z)
 			} else if(modo == "aguardando"){
 				$(`[name=${instance}]`).css('display', 'none')
 				$(".acoes1").css('display', 'inline-block')
@@ -195,9 +160,10 @@ function backupInfos(instance, x, y, z){
 				$(".acoes2").val('')
 				$(".acoes3").css('display', 'none')
 				$(".acoes3").val('')
+				limpeza(instance, rotal, x, y, z)
 			}
 			dados.forEach( (resultado) => {
-				$("#numquarto").text(resultado.quarto) // O VALOR N CHEGA
+				$("#numquarto").text(resultado.quarto)
 				$("#quarto_painel").text(resultado.quarto)
 				$("#entrada").text(resultado.datahora)
 				$("#valor-quarto").text(resultado.valor)
