@@ -7,3 +7,11 @@ export function hora_atual(){
     //var segundo = base.getSeconds()
     return `${hora}:${minuto}`
 }
+
+export function hora_atual_segundos(){
+    var base = new Date();
+    var hora = numero(base.getHours())
+    var minuto = numero(base.getMinutes())
+    var segundo = base.getSeconds()
+    return `${hora}:${minuto}:${segundo}`
+}

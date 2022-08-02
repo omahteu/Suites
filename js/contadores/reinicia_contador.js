@@ -23,6 +23,7 @@ async function definindo_tempo(){
         var hora_salva = e.datahora
         var tipo = e.tipo
         var hora_salva_formatada = String(hora_salva).split(":")
+        console.log(hora_salva_formatada)
         var hora_atual_formatada = String(hmi).split(":")
         var hora_salva_formatada_minutos = horas_para_minutos(hora_salva_formatada)
         var hora_atual_formatada_minutos = horas_para_minutos(hora_atual_formatada)
@@ -30,10 +31,12 @@ async function definindo_tempo(){
         var diferenca_formatada_horas = minutos_para_hora(diferenca)
         var diferenca_formatada_horas_texto = String(diferenca_formatada_horas).split(":")
 
+        /*
         if(quarto == "1" && tipo != "aguardando"){
             _crnmtra1(quarto, diferenca_formatada_horas_texto[0], diferenca_formatada_horas_texto[1], s)
         } else if(quarto == "2" && tipo != "aguardando"){
             _crnmtra2(quarto, diferenca_formatada_horas_texto[0], diferenca_formatada_horas_texto[1], s)
         }
+        */
     })
 }
