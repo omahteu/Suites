@@ -11,6 +11,7 @@ $(document).ready(function() {
     bloqueiaFundo()
     validarUsoFundoCaixa()
     bloqueioHome()
+    bloqueioUsoEstoque()
 })
 
 $("#abrirCaixa").click(function() {
@@ -119,6 +120,13 @@ function bloqueioHome(){
     var status = localStorage.getItem("caixa")
     if (status === "fechado"){
         $("#home").css("display", "none")
+    }
+}
+
+function bloqueioUsoEstoque(){
+    var status = localStorage.getItem("caixa")
+    if (status === "aberto"){
+        $("#usarProdutosSemCaixa").css("display", "none")
     }
 }
 
