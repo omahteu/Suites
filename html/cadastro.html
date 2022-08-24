@@ -292,117 +292,123 @@
                     <!-- Email -->
                     <div id="email" class="tab-pane fade">
 
-                      <!--Campo Email-->
-                      <div class="control-group" name="cadEmail">
-                        <div class="controls">
-                          <input type="text" id="usuarioEmail" placeholder="Usuário">
-                        </div>
-                      </div>
-
-                      <!--Campo Senha-->
-                      <div class="control-group" name="cadEmail">
-                        <div class="controls">
-                          <input type="text" id="senhaEmail" placeholder="Senha">
-                        </div>
-                      </div>
-
-                      <!--Campo SMTP-->
-                      <div class="control-group" name="cadEmail">
-                        <div class="controls">
-                          <input type="text" id="smtpEmail" placeholder="SMTP">
-                        </div>
-                      </div>
-
-                      <!--Campo Porta-->
-                      <div class="control-group" name="cadEmail">
-                        <div class="controls">
-                          <input type="text" id="portaEmail" placeholder="Porta">
-                        </div>
-                      </div>
-
-                      <!--Campo Timeout-->
-                      <div class="control-group" name="cadEmail">
-                        <div class="controls">
-                          <input type="text" id="timeoutEmail" placeholder="Timeout (segundos)">
-                        </div>
-                      </div>
-
-                      <!--Campo Email Destino-->
-                      <div class="control-group" name="cadEmail">
-                        <div class="controls">
-                          <input type="text" id="emailDestinoEmail" placeholder="Email Destino">
-                        </div>
-                      </div>
-
-                      <!--Campo Email COntabilidade-->
-                      <div class="control-group" name="cadEmail">
-                        <div class="controls">
-                          <input type="text" id="emailContabilidadeEmail" placeholder="Email Contabilidade">
-                        </div>
-                      </div>
-
-                      <!--Campo Adicionar Percentual-->
-                      <div class="control-group" name="cadQuartos">
-                        <div class="controls">
-                          <select name="" id="autenticacaoEmail">
-                            <option hidden>Requer Autênticação</option>
-                            <option value="sim">Sim</option>
-                            <option value="nao">Não</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <!--Botões-->
-                      <div class="form-actions" name="cadEmail">
-                        <div class="span8">
-                          <div class="span9">
-                            <button type="submit" class="button btn btn-primary" id="salvarFormPostEmail">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                              </span>
-                              <span class="button__text2">Cadastrar</span>
-                            </button>
-                            <button type="button" class="button btn btn-danger" id="limparFormPostEmail">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-xmark"></i>
-                              </span>
-                              <span class="button__text2">Limpar</span>
-                            </button>
+                      <form action="">
+                        <!--Campo Email-->
+                        <div class="control-group" name="cadEmail">
+                          <div class="controls">
+                            <input type="text" id="usuarioEmail" placeholder="Usuário" required>
                           </div>
                         </div>
-                      </div>
+
+                        <!--Campo Senha-->
+                        <div class="control-group" name="cadEmail">
+                          <div class="controls">
+                            <input type="text" id="senhaEmail" placeholder="Senha" required>
+                          </div>
+                        </div>
+
+                        <!--Campo SMTP-->
+                        <div class="control-group" name="cadEmail">
+                          <div class="controls">
+                            <input type="text" id="smtpEmail" placeholder="SMTP" required>
+                          </div>
+                        </div>
+
+                        <!--Campo Porta-->
+                        <div class="control-group" name="cadEmail">
+                          <div class="controls">
+                            <input type="text" id="portaEmail" placeholder="Porta" required>
+                          </div>
+                        </div>
+
+                        <!--Campo Timeout-->
+                        <div class="control-group" name="cadEmail">
+                          <div class="controls">
+                            <input type="text" id="timeoutEmail" placeholder="Timeout (segundos)" required>
+                          </div>
+                        </div>
+
+                        <!--Campo Email Destino-->
+                        <div class="control-group" name="cadEmail">
+                          <div class="controls">
+                            <input type="text" id="emailDestinoEmail" placeholder="Email Destino" required>
+                          </div>
+                        </div>
+
+                        <!--Campo Email COntabilidade-->
+                        <div class="control-group" name="cadEmail">
+                          <div class="controls">
+                            <input type="text" id="emailContabilidadeEmail" placeholder="Email Contabilidade" required>
+                          </div>
+                        </div>
+
+                        <!--Campo Adicionar Percentual-->
+                        <div class="control-group" name="cadQuartos">
+                          <div class="controls">
+                            <select name="" id="autenticacaoEmail">
+                              <option hidden>Requer Autênticação</option>
+                              <option value="sim">Sim</option>
+                              <option value="nao">Não</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <!--Botões-->
+                        <div class="form-actions" name="cadEmail">
+                          <div class="span8">
+                            <div class="span9">
+                              <button type="submit" class="button btn btn-primary" id="salvarFormPostEmail">
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-floppy-disk"></i>
+                                </span>
+                                <span class="button__text2">Cadastrar</span>
+                              </button>
+                              <button type="reset" class="button btn btn-danger" id="limparFormPostEmail">
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-xmark"></i>
+                                </span>
+                                <span class="button__text2">Limpar</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+
                     </div>
                     <!-- Email -->
 
                     <!-- Camareira -->
                     <div id="camareira" class="tab-pane fade">
 
-                      <!--Campo Nome-->
-                      <div class="control-group" name="cadCamareiras">
-                        <div class="controls">
-                          <input type="text" id="nomeCamareira" placeholder="Nome">
-                        </div>
-                      </div>
-
-                      <!--Botões-->
-                      <div class="form-actions" name="cadCamareiras">
-                        <div class="span8">
-                          <div class="span9">
-                            <button type="submit" class="button btn btn-primary" id="salvarFormPostCamareira">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                              </span>
-                              <span class="button__text2">Cadastrar</span>
-                            </button>
-                            <button type="button" class="button btn btn-danger" id="limparFormPostCamareira">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-xmark"></i>
-                              </span>
-                              <span class="button__text2">Limpar</span>
-                            </button>
+                      <form action="">
+                        <!--Campo Nome-->
+                        <div class="control-group" name="cadCamareiras">
+                          <div class="controls">
+                            <input type="text" id="nomeCamareira" placeholder="Nome">
                           </div>
                         </div>
-                      </div>
+
+                        <!--Botões-->
+                        <div class="form-actions" name="cadCamareiras">
+                          <div class="span8">
+                            <div class="span9">
+                              <button type="submit" class="button btn btn-primary" id="salvarFormPostCamareira">
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-floppy-disk"></i>
+                                </span>
+                                <span class="button__text2">Cadastrar</span>
+                              </button>
+                              <button type="button" class="button btn btn-danger" id="limparFormPostCamareira">
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-xmark"></i>
+                                </span>
+                                <span class="button__text2">Limpar</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+
                     </div>
                     <!-- Camareira -->
                   </div>
