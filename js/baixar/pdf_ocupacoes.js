@@ -1,42 +1,46 @@
 import { link } from "../setup/index.js"
 
 $("#peOcupacoes").click(function(){
+
+    var janela = window.open()
+    janela.document.write("<html>")
+    janela.document.write("<head>")
+    janela.document.write("<title>Suits | Relatórios | PDF</title>")
+    janela.document.write("</head>")
+    janela.document.write("<body>")
+    janela.document.write(
+        '<h1>Relatório de Ocupações</h1>'+
+        '<table border="1">'+
+            '<thead>'+
+                '<tr>'+
+                    "<th>Data</th>"+
+                    "<th>Código</th>"+
+                    "<th>Quarto</th>"+
+                    "<th>Entrada</th>"+
+                    "<th>Saída</th>"+
+                    "<th>Total</th>"+ 
+                '</tr>'+
+            '</thead>'
+    )
     $.get(link[13], function(e){
-        e.forEach(element => {
-            var janela = window.open()
+        e.forEach(el => {
             janela.document.write(
-                "<html>"+
-                    "<head>"+
-                        "<title>Relatório de Produtos | PDF</title>"+
-                    "</head>"+
-                    "<body>"+
-                        "<table border='1'>"+
-                            "<thead>"+
-                                "<tr>"+
-                                    "<th>Data</th>"+
-                                    "<th>Código</th>"+
-                                    "<th>Quarto</th>"+
-                                    "<th>Entrada</th>"+
-                                    "<th>Saída</th>"+
-                                    "<th>Total</th>"+
-                                "</tr>"+
-                            "</thead>"+
-                            "<tbody"+
-                                '<tr>'+
-                                    '<td>' + element.data + '</td>'+
-                                    '<td>' + element.codigo + '</td>'+
-                                    '<td>' + element.quarto + '</td>'+
-                                    '<td>' + element.entrada + '</td>'+
-                                    '<td>' + element.saida + '</td>'+
-                                    '<td>' + element.total + '</td>'+         
-                                '</tr>'+
-                            "</tbody"+
-                        "</table>"+
-                    "</body>"+
-                "</html>"
+                `<tbody>`+
+                    '<tr>'+
+                        `<td>${el.data}</td>`+
+                        `<td>${el.codigo}</td>`+
+                        `<td>${el.quarto}</td>`+
+                        `<td>${el.entrada}</td>`+
+                        `<td>${el.saida}</td>`+
+                        `<td>${el.total}</td>`+
+                    '</tr>'+
+                `</tbody>`
             )
-            janela.document.close()
-            janela.print()
         });
     })
+    janela.document.write("</body>")
+    janela.document.write("</html>")
+    setTimeout(() => {
+        janela.print()
+    }, 500);
 })

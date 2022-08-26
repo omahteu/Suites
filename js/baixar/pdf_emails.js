@@ -1,46 +1,50 @@
 import { link } from "../setup/index.js"
 
 $("#peEmails").click(function(){
+
+    var janela = window.open()
+    janela.document.write("<html>")
+    janela.document.write("<head>")
+    janela.document.write("<title>Suits | Relatórios | PDF</title>")
+    janela.document.write("</head>")
+    janela.document.write("<body>")
+    janela.document.write(
+        '<h1>Relatório de Emails</h1>'+
+        '<table border="1">'+
+            '<thead>'+
+                '<tr>'+
+                    "<th>Usuário</th>"+
+                    "<th>Senha</th>"+
+                    "<th>Smtp</th>"+
+                    "<th>Porta</th>"+
+                    "<th>Timeout</th>"+
+                    "<th>Email Destino</th>"+
+                    "<th>Email Contabilidade</th>"+
+                    "<th>Autênticacao</th>"+
+                '</tr>'+
+            '</thead>'
+    )
     $.get(link[9], function(e){
-        e.forEach(element => {
-            var janela = window.open()
+        e.forEach(el => {
             janela.document.write(
-                "<html>"+
-                    "<head>"+
-                        "<title>Relatório de Produtos | PDF</title>"+
-                    "</head>"+
-                    "<body>"+
-                        "<table border='1'>"+
-                            "<thead>"+
-                                "<tr>"+
-                                    "<th>Usuário</th>"+
-                                    "<th>Senha</th>"+
-                                    "<th>Smtp</th>"+
-                                    "<th>Porta</th>"+
-                                    "<th>Timeout</th>"+
-                                    "<th>Email Destino</th>"+
-                                    "<th>Email Contabilidade</th>"+
-                                    "<th>Autênticacao</th>"+
-                                "</tr>"+
-                            "</thead>"+
-                            "<tbody"+
-                                '<tr>'+
-                                    '<td>' + element.usuario + '</td>'+
-                                    '<td>' + element.senha + '</td>'+
-                                    '<td>' + element.smtp + '</td>'+
-                                    '<td>' + element.porta + '</td>'+
-                                    '<td>' + element.timeout + '</td>'+
-                                    '<td>' + element.email_destino + '</td>'+
-                                    '<td>' + element.email_contabilidade + '</td>'+  
-                                    '<td>' + element.autenticacao + '</td>'+          
-                                '</tr>'+
-                            "</tbody"+
-                        "</table>"+
-                    "</body>"+
-                "</html>"
+                `<tbody>`+
+                    '<tr>'+
+                        `<td>${el.usuario}</td>`+
+                        `<td>${el.senha}</td>`+
+                        `<td>${el.smtp}</td>`+
+                        `<td>${el.porta}</td>`+
+                        `<td>${el.timeout}</td>`+
+                        `<td>${el.email_destino}</td>`+
+                        `<td>${el.email_contabilidade}</td>`+
+                        `<td>${el.autenticacao}</td>`+
+                    '</tr>'+
+                `</tbody>`
             )
-            janela.document.close()
-            janela.print()
         });
     })
+    janela.document.write("</body>")
+    janela.document.write("</html>")
+    setTimeout(() => {
+        janela.print()
+    }, 500);
 })

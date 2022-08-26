@@ -2,66 +2,52 @@ import { link } from "../setup/index.js"
 
 $("#peCartoes").click(function(){
 
-
-    var jan = window.open()
-    janela.document.write(
-        "<html>"+
-            "<head>"+
-                "<title>Relatório de Produtos | PDF</title>"+
-            "</head>"+
-            "<body>"+
-                "<table border='1'>"+
-                    "<thead>"+
-                        "<tr>"+
-                            "<th>bandeira</th>"+
-                            "<th>porcentagem</th>"+
-                        "</tr>"+
-                    "</thead>"+
-                    "<tbody id='pdf_rel_cartoes'>"+
-                    "</tbody>"+
-                "</table>"+
-            "</body>"+
-        "</html>"
-    )
-    jan.innerHTML = tab
-    //rel_pdf_credito()
-})
-
-function rel_pdf_credito(){
-    /*
     var janela = window.open()
+    janela.document.write("<html>")
+    janela.document.write("<head>")
+    janela.document.write("<title>Suits | Relatórios | PDF</title>")
+    janela.document.write("</head>")
+    janela.document.write("<body>")
     janela.document.write(
-        "<html>"+
-            "<head>"+
-                "<title>Relatório de Produtos | PDF</title>"+
-            "</head>"+
-            "<body>"+
-                "<table border='1'>"+
-                    "<thead>"+
-                        "<tr>"+
-                            "<th>bandeira</th>"+
-                            "<th>porcentagem</th>"+
-                        "</tr>"+
-                    "</thead>"+
-                    "<tbody id='pdf_rel_cartoes'>"+
-                    "</tbody>"+
-                "</table>"+
-            "</body>"+
-        "</html>"
+        '<h1>Relatório de Cartões</h1>'+
+        "<table border='1'>"+
+            "<thead>"+
+                "<tr>"+
+                    "<th>Bandeira</th>"+
+                    "<th>Porcentagem</th>"+
+                    "<th>Tipo</th>"+
+                "</tr>"+
+            "</thead>"
     )
-    */
-
-    $.get(link[4], function(){
-        var lista = document.getElementById("pdf_rel_cartoes")
-        lista.innerHTML = ''
-        dados.forEach(e => {
-            console.log(e)
-            lista.innerHTML += '<tr>'+
-                                    '<td>' + e.bandeira + '</td>'+
-                                    '<td>' + e.porcentagem + '</td>'+        
-                                '</tr>'
+    $.get(link[4], function(e){
+        e.forEach(el => {
+            janela.document.write(
+                `<tbody>`+
+                    '<tr>'+
+                        `<td>${el.bandeira}</td>`+
+                        `<td>${el.porcentagem}</td>`+
+                        `<td>Crédito</td>`+
+                    '</tr>'+
+                `</tbody>`
+            )
         });
     })
-
-
-}
+    $.get(link[8], function(e){
+        e.forEach(el => {
+            janela.document.write(
+                `<tbody>`+
+                    '<tr>'+
+                        `<td>${el.bandeira}</td>`+
+                        `<td>${el.porcentagem}</td>`+
+                        `<td>Débito</td>`+
+                    '</tr>'+
+                `</tbody>`
+            )
+        });
+    })
+    janela.document.write("</body>")
+    janela.document.write("</html>")
+    setTimeout(() => {
+        janela.print()
+    }, 500);
+})
