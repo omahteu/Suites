@@ -5,6 +5,6 @@ $("#peIgsx").click(function(e){
     var url = window.URL.createObjectURL(dados)
     var a = document.createElement('a')
     a.href = url
-    a.download = "relatorios"
+    a.download = "relatorioIgs"
     a.click()
 })
