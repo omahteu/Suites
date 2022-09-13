@@ -1,3 +1,5 @@
 export function desligar_luz() {
-    $.ajax({ url: "http://192.168.0.3/?8d", success: function (data) { location.reload(true); } });
+    var dados = JSON.parse(localStorage.getItem("autos"))
+    var url = `http://${dados.placa}/?${dados.rele}d`
+    $.ajax({ url: url, success: function (data) { location.reload(true); } });
 }
