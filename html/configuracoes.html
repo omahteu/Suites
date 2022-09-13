@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/matrix-style.css">
   <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/camareiras.css">
 </head>
 
 <body>
@@ -73,6 +74,14 @@
                   <!--Valores-->
                   <li>
                     <a data-toggle="tab" href="#valores">Valores</a>
+                  </li>
+                  <!--Automação-->
+                  <li>
+                    <a data-toggle="tab" href="#automacao">Automação</a>
+                  </li>
+                  <!--Placa-->
+                  <li>
+                    <a data-toggle="tab" href="#placa">Placa</a>
                   </li>
                 </ul>
 
@@ -331,6 +340,107 @@
                     </div>
                     <!--Valores-->
 
+
+                    <!--Automação-->
+                    <div id="automacao" class="tab-pane fade">
+
+                      <!--Quartos-->
+                      <div class="control-group" name="">
+                        <div class="controls">
+                          <select name="" id="lista_quartos">
+                            <option hidden>Quartos</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!--Placa-->
+                      <div class="control-group" name="">
+                        <div class="controls">
+                          <select name="" id="lista_placa">
+                            <option value="" hidden>Placa</option>
+                          </select>
+                          <button type="button" class="btn btn-success" id="teste_placa">Teste Placa</button>
+                          <span id="testa_placa" style="visibility: hidden;">OK!</span>
+                        </div>
+                      </div>
+
+                      <!--Relé-->
+                      <div class="control-group" name="">
+                        <div class="controls">
+                          <input type="text" id="rele" placeholder="Relé" required>
+                        </div>
+                      </div>
+
+                      <!--Tabela de Automações-->
+                      <div id="quartos" class="tab-pane fade in active">
+                        <table id="relQuartos" class="table table-bordered  dataTable no-footer" role="grid">
+                          <thead>
+                            <tr role="row">
+                              <th>Quarto</th>
+                              <th>Placa</th>
+                              <th>Relé</th>
+                              <th>Ações</th>
+                          </thead>
+                          <tbody id="tabelaAutomacao"></tbody>
+                        </table>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions" name="config_valor">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="button" class="button btn btn-primary" id="salvarAuto">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2" id="salvarAuto">Cadastrar</span>
+                            </button>
+                            <button type="button" class="button btn btn-danger">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--Automação-->
+
+
+                    <!--Placa-->
+                    <div id="placa" class="tab-pane fade">
+
+                      <!--Nome-->
+                      <div class="control-group" name="">
+                        <div class="controls">
+                          <input type="text" name="" id="nome" placeholder="Nome">
+                        </div>
+                      </div>
+
+                      <!--IP-->
+                      <div class="control-group" name="">
+                        <div class="controls">
+                          <input type="text" name="" id="ip" placeholder="IP">
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions" name="">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="button" class="button btn btn-primary" id="salvarPlaca">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2" id="salvarPlaca">Cadastrar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--Placa-->
+
                   </div>
                 <!--</form>-->
               </div>
@@ -340,6 +450,17 @@
       </div>
     </div>
   </div>
+  <div id="modau-camareiras" class="modau-container">
+    <div class="modau">
+      <button class="fechar">X</button>
+      <h3 id="titulo_caixa">Ações</h3>
+      <form id="formEdit" name="formEdit">
+
+
+        <button type="button" name="botao" class="btn btn-warning" id="camareira_limpeza" value="">Atualizar</button>
+      </form>
+    </div>
+</div>
 </body>
 <script src="../js/jquery.js"></script>
 
@@ -363,5 +484,11 @@
 <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
 
 <script src="../qwertyu.js"></script>
+<script type="module" src="../js/configuracoes/quartos.js"></script>
+
+<script src="../js/provisoirio/banco.js"></script>
+<script src="../js/provisoirio/exibir.js"></script>
+<script src="../js/provisoirio/teste.js"></script>
+<script type="module" src="../js/provisoirio/editar.js"></script>
 
 </html>
