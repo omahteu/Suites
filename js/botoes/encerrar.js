@@ -1,10 +1,12 @@
 import { data_atual } from "../geradores/data.js"
 import { hora_atual } from "../geradores/hora.js"
 import { link } from "../setup/index.js"
+import { desligar_luz } from "../auto/desligar.js"
 
 $("#encerrar").click(function() {
     setTimeout( () => {registrando()}, 300)
     setTimeout( () => {ocupacao()}, 500)
+    setTimeout( () => {desligar_luz()}, 650)
     setTimeout( () => {limpando()}, 800)
     setTimeout( () => {
         window.close()

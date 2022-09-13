@@ -16,6 +16,7 @@ import { inicioModalTroca } from "../setup/troca.js"
 import { ver_quartos_disponiveis } from "../relatorios/quartosDisponiveis.js"
 import { crnmtra1, crnmtrb1, crnmtrc1 } from "../contadores/cronometros/c1.js"
 import { crnmtra2, crnmtrb2, crnmtrc2 } from "../contadores/cronometros/c2.js"
+import { desligar_luz } from "../auto/desligar.js"
 
 var rota = 'rota'
 
@@ -113,6 +114,7 @@ export function reacao(status, id){
         crnmtrc1(quarto)
         setTimeout( () => {fimModal()}, 500)
         setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 600)
+        setTimeout( () => {desligar_luz()}, 650)
         setTimeout( () => {ultima_limpeza(quarto)}, 800)
         setTimeout( () => {
             var recebido = JSON.parse(localStorage.getItem("limpeza"))

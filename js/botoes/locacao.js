@@ -4,6 +4,7 @@ import { index } from "../tags/particao.js"
 import { fimModal } from "../setup/camareiras.js"
 import { crnmtra1 } from "../contadores/cronometros/c1.js"
 import { crnmtra2 } from "../contadores/cronometros/c2.js"
+import { ligar_luz } from "../auto/ligar.js"
 
 $(".locado").click(function() {
     var quarto = $('#quarto_painel').text()
@@ -12,6 +13,7 @@ $(".locado").click(function() {
         if(quarto == "1"){
             var flags = modos.slice(0, 3)
             locado(quarto, rota,  flags[0], flags[1], flags[2])
+            setTimeout( () => {ligar_luz()}, 500)
             setTimeout( () => {fimModal()}, 1000)
             crnmtra1(quarto)
             setTimeout( () => {index()}, 1500)
