@@ -73,6 +73,9 @@
                   <li>
                     <a data-toggle="tab" href="#camareira">Camareira</a>
                   </li>
+                  <li>
+                    <a data-toggle="tab" href="#tipos">Tipos de Suítes</a>
+                  </li>
                 </ul>
 
                 <form class="form-horizontal" id="formCadastros">
@@ -107,6 +110,7 @@
                         <div class="control-group" name="codProdutos">
                           <div class="controls">
                             <input type="text" id="categoriaProduto" placeholder="Categoria" required>
+                            <button type="button" class="btn btn-primary">Nova Categoria</button>
                           </div>
                         </div>
 
@@ -161,8 +165,6 @@
                           <div class="controls">
                             <select id="tipoSuiteQuarto">
                               <option hidden>Tipo Suíte</option>
-                              <option value="Ventilador">Ventilador</option>
-                              <option value="Ar">Ar</option>
                             </select>
                           </div>
                         </div>
@@ -411,6 +413,53 @@
 
                     </div>
                     <!-- Camareira -->
+
+                    <!--Tipos-->
+                    <div id="tipos" class="tab-pane fade">
+
+                      <form action="" id="formTipo" name="formTipo">
+                        <!--Nome-->
+                        <div class="control-group" name="">
+                          <div class="controls">
+                            <input type="text" id="" placeholder="Nome" required>
+                          </div>
+                        </div>
+
+                        <!--Cobrança-->
+                        <div class="control-group" name="">
+                          <div class="controls">
+                            <select name="" id="tipo_cobranca">
+                              <option hidden>Cobrança</option>
+                              <option value="hora">Hora</option>
+                              <option value="fixa">Fixa</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <!--Botões-->
+                        <div class="form-actions" name="">
+                          <div class="span8">
+                            <div class="span9">
+                              <button type="submit" class="button btn btn-primary" id="salvarFormPostIg">
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-floppy-disk"></i>
+                                </span>
+                                <span class="button__text2">Cadastrar</span>
+                              </button>
+                              <button type="reset" class="button btn btn-danger" id="limparFormPostIg">
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-xmark"></i>
+                                </span>
+                                <span class="button__text2">Limpar</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+
+                    </div>
+                    <!--Tipos-->
+
                   </div>
                 </form>
               </div>
@@ -445,12 +494,6 @@
 
 <script type="module" src="../js/cadastros/postAuditoria.js"></script>
 <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+<script src="../js/provisoirio/estrutura.js"></script>
 
 </html>
-
-<!--
-
-Cadastrar Categorias
-
-
--->
