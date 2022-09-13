@@ -1,5 +1,5 @@
 $(document).on("click", "#teste_placa", function(){
-    $("#testa_placa").removeAttr("style")
+    //$("#testa_placa").removeAttr("style")
     $.ajax({
         url: "http://192.168.0.3",
         success: function(data, textStatus, xhr) {
