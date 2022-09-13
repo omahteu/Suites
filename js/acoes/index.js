@@ -17,6 +17,7 @@ import { ver_quartos_disponiveis } from "../relatorios/quartosDisponiveis.js"
 import { crnmtra1, crnmtrb1, crnmtrc1 } from "../contadores/cronometros/c1.js"
 import { crnmtra2, crnmtrb2, crnmtrc2 } from "../contadores/cronometros/c2.js"
 import { desligar_luz } from "../auto/desligar.js"
+import { ligar_luz } from "../auto/ligar.js" 
 
 var rota = 'rota'
 
@@ -57,6 +58,7 @@ export function reacao(status, id){
         alert(`DESEJA INICIAR LIMPEZA NO QUARTO ${quarto}?`)
         crnmtrc1(quarto)
         crnmtra1(quarto)
+        setTimeout( () => {ligar_luz()}, 600)
         setTimeout( () => {limpeza(quarto, rota, flags[0], flags[1], flags[2])}, 1000)
         setTimeout( () => {atualiza_status(quarto, "limpeza"), 1500})
         setTimeout( () => {fimModal()}, 1001)

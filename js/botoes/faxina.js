@@ -5,6 +5,7 @@ import { fimModal } from "../setup/camareiras.js"
 import { crnmtra1 } from "../contadores/cronometros/c1.js"
 import { crnmtra2 } from "../contadores/cronometros/c2.js"
 
+
 $(".faxina").click(function() {
     var quarto = $('#quarto_painel').text()
     var rota = $(this).attr('class')
