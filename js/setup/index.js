@@ -25,7 +25,9 @@ export var link = [
     "https://demomotelapi.herokuapp.com/faxina/",
     "https://demomotelapi.herokuapp.com/manutencao/",
     "https://demomotelapi.herokuapp.com/revisao/",
-    "https://demomotelapi.herokuapp.com/troca/"
+    "https://demomotelapi.herokuapp.com/troca/",
+    "https://demomotelapi.herokuapp.com/automacao/",
+    "https://demomotelapi.herokuapp.com/placa/"
 ]
 
 /*
@@ -56,4 +58,6 @@ export var link = [
 24: MANUTENÇÃO
 25: REVISÃO
 26: TROCA
+27: AUTOMAÇÃO
+28: PLACAS
 */
