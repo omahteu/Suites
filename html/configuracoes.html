@@ -87,7 +87,7 @@
 
 
 
-                <!--<form class="form-horizontal" id="formCadastros">-->
+                
                   <div class="widget-content nopadding tab-content">
 
                     <!-- Tempo -->
@@ -219,127 +219,144 @@
                     <!--Valores-->
                     <div id="valores" class="tab-pane fade">
 
-                      <!--Horas Locação-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="quantidadeHorasLocacaoQuarto" placeholder="Horas Locação" required>
-                        </div>
-                      </div>
+                      <form action="" method="post" class="form-horizontal">
+                        <!--Horas Locação
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="quantidadeHorasLocacaoQuarto" placeholder="Horas Locação" required>
+                          </div>
+                        </div>-->
 
-                      <!--Valor Locação-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="valorLocacaoQuarto" placeholder="Valor Locação" required>
-                        </div>
-                      </div>
-
-                      <!--Tempo Especial-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="tempoEspecialQuarto" placeholder="Tempo Especial" required>
-                        </div>
-                      </div>
-
-                      <!--Valor Especial-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="valorEspecialQuarto" placeholder="Valor Especial" required>
-                        </div>
-                      </div>
-
-                      <!--Horas Diária-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="quantidadeHorasDiariasQuarto" placeholder="Horas Diária" required>
-                        </div>
-                      </div>
-
-                      <!--Valor Diária-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="valorDiariaQuarto" placeholder="Valor Diária" required>
-                        </div>
-                      </div>
-
-                      <!--Tempo Adicional (minutos)-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="tempoAdicionalQuarto" placeholder="Tempo Adicional (minutos)" required>
-                        </div>
-                      </div>
-
-                      <!--Valor Adicional-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="valorHoraAdicionalQuarto" placeholder="Valor Adicional" required>
-                        </div>
-                      </div>
-
-                      <!--Tolerância-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="toleranciaQuarto" placeholder="Tolerância" required>
-                        </div>
-                      </div>
-
-                      <!--Valor 1 Hora-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="v1hQuarto" placeholder="Valor 1 Hora" required>
-                        </div>
-                      </div>
-
-                      <!--Valor 2 Hora-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="v2hQuarto" placeholder="Valor 2 Hora" required>
-                        </div>
-                      </div>
-
-                      <!--Valor 3 Hora-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="v3hQuarto" placeholder="Valor 3 Hora" required>
-                        </div>
-                      </div>
-
-                      <!--Valor 4 Hora-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="v4hQuarto" placeholder="Valor 4 Hora" required>
-                        </div>
-                      </div>
-
-                      <!--Valor 5 Hora-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="v5hQuarto" placeholder="Valor 5 Hora" required>
-                        </div>
-                      </div>
-
-                      <!--Valor 6 Hora-->
-                      <div class="control-group" name="config_valor">
-                        <div class="controls">
-                          <input type="text" id="v6hQuarto" placeholder="Valor 6 Hora" required>
-                        </div>
-                      </div>
-
-                      <!--Botões-->
-                      <div class="form-actions" name="config_valor">
-                        <div class="span8">
-                          <div class="span9">
-                            <button type="button" class="button btn btn-primary" id="SalvarConfigValores">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                              </span>
-                              <span class="button__text2" id="botao_tabela">Atualizar</span>
-                            </button>
+                        <!--Valor Locação-->
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="valorLocacaoQuarto" placeholder="Valor Locação" required>
+                            <span>Valor Hora Locação</span>
                           </div>
                         </div>
-                      </div>
+
+                        <!--Tempo Especial
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="tempoEspecialQuarto" placeholder="Tempo Especial" required>
+                          </div>
+                        </div>-->
+
+                        <!--Valor Especial-->
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="valorEspecialQuarto" placeholder="Valor Especial" required>
+                            <span>Valor Tempo Especial</span>
+                          </div>
+                        </div>
+
+                        <!--Horas Diária
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="quantidadeHorasDiariasQuarto" placeholder="Horas Diária" required>
+                          </div>
+                        </div>-->
+
+                        <!--Valor Diária
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="valorDiariaQuarto" placeholder="Valor Diária" required>
+                          </div>
+                        </div>-->
+
+                        <!--Tempo Adicional (minutos)
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="tempoAdicionalQuarto" placeholder="Tempo Adicional (minutos)" required>
+                          </div>
+                        </div>-->
+
+                        <!--Valor Adicional-->
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="valorHoraAdicionalQuarto" placeholder="Valor Adicional" required>
+                            <span>Valor Tempo Adicional</span>
+                          </div>
+                        </div>
+
+                        <!--Tolerância
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="toleranciaQuarto" placeholder="Tolerância" required>
+                          </div>
+                        </div>-->
+
+                        <!--Valor 1 Hora-->
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="v1hQuarto" placeholder="Valor 1 Hora" required>
+                            <span>Valor 1ª Hora</span>
+                          </div>
+                        </div>
+
+                        <!--Valor 2 Hora-->
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="v2hQuarto" placeholder="Valor 2 Hora" required>
+                            <span>Valor 2ª Hora</span>
+                          </div>
+                        </div>
+
+                        <!--Valor 3 Hora-->
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="v3hQuarto" placeholder="Valor 3 Hora" required>
+                            <span>Valor 3ª Hora</span>
+                          </div>
+                        </div>
+
+                        <!--Valor 4 Hora-->
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="v4hQuarto" placeholder="Valor 4 Hora" required>
+                            <span>Valor 4ª Hora</span>
+                          </div>
+                        </div>
+
+                        <!--Valor 5 Hora-->
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="v5hQuarto" placeholder="Valor 5 Hora" required>
+                            <span>Valor 5ª Hora</span>
+                          </div>
+                        </div>
+
+                        <!--Valor 6 Hora-->
+                        <div class="control-group" name="config_valor">
+                          <div class="controls">
+                            <input type="text" id="v6hQuarto" placeholder="Valor 6 Hora" required>
+                            <span>Valor 6ª Hora</span>
+                          </div>
+                        </div>
+
+                        <!--Botões-->
+                        <div class="form-actions" name="config_valor">
+                          <div class="span8">
+                            <div class="span9">
+                              <button type="button" class="button btn btn-primary" id="SalvarConfigValores">
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-floppy-disk"></i>
+                                </span>
+                                <span class="button__text2" id="botao_tabela">Salvar</span>
+                              </button>
+                              <button type="reset" class="button btn btn-danger">
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-xmark"></i>
+                                </span>
+                                <span class="button__text2">Limpar</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+
                     </div>
                     <!--Valores-->
-
 
                     <!--Automação-->
                     <div id="automacao" class="tab-pane fade">
@@ -407,7 +424,6 @@
                     </div>
                     <!--Automação-->
 
-
                     <!--Placa-->
                     <div id="placa" class="tab-pane fade">
 
@@ -442,7 +458,7 @@
                     <!--Placa-->
 
                   </div>
-                <!--</form>-->
+
               </div>
             </div>
           </div>
@@ -493,5 +509,7 @@
 
 
 <script  src="../js/provisoirio/teste.js"></script>
+
+<script type="module" src="../js/configuracoes/insercoes/valores.js"></script>
 
 </html>

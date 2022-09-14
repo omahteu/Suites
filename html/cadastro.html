@@ -424,24 +424,63 @@
                         <!--Código-->
                         <div class="control-group" name="">
                           <div class="controls">
-                            <input type="text" id="" placeholder="Código" required>
+                            <input type="text" id="suiteCodigo" placeholder="Código" required>
                           </div>
                         </div>
 
                         <!--Nome-->
                         <div class="control-group" name="">
                           <div class="controls">
-                            <input type="text" id="" placeholder="Nome" required>
+                            <input type="text" id="suiteNome" placeholder="Nome" required>
+                          </div>
+                        </div>
+
+                        <!--Horas Locação-->
+                        <div class="control-group" name="">
+                          <div class="controls">
+                            <input type="number" min="1" id="suiteHorasLocacao" placeholder="Horas Locação" required>
+                          </div>
+                        </div>
+
+                        <!--Tempo Especial-->
+                        <div class="control-group" name="">
+                          <div class="controls">
+                            <input type="number" min="1" id="suiteTempoEspecial" placeholder="Tempo Especial (Minutos)" required>
+                          </div>
+                        </div>
+
+                        <!--Tempo Adicional-->
+                        <div class="control-group" name="">
+                          <div class="controls">
+                            <input type="number" min="1" id="suiteTempoAdicional" placeholder="Tempo Adicional (Minutos)" required>
+                          </div>
+                        </div>
+
+                        <!--Tolerância-->
+                        <div class="control-group" name="">
+                          <div class="controls">
+                            <input type="number" min="1" id="suiteTolerancia" placeholder="Tolerância (Minutos)" required>
                           </div>
                         </div>
 
                         <!--Cobrança-->
                         <div class="control-group" name="">
                           <div class="controls">
-                            <select name="" id="tipo_cobranca">
+                            <select name="" id="suiteCobranca">
                               <option hidden>Cobrança</option>
                               <option value="hora">Hora</option>
                               <option value="fixa">Fixa</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <!--Excedente-->
+                        <div class="control-group" name="">
+                          <div class="controls">
+                            <select name="" id="suiteExcedente">
+                              <option hidden>Excedente</option>
+                              <option value="hora">Hora</option>
+                              <option value="minuto">Minuto</option>
                             </select>
                           </div>
                         </div>
@@ -450,13 +489,13 @@
                         <div class="form-actions" name="">
                           <div class="span8">
                             <div class="span9">
-                              <button type="submit" class="button btn btn-primary" id="salvarFormPostIg">
+                              <button type="submit" class="button btn btn-primary" id="salvarSuites">
                                 <span class="button__icon">
                                   <i class="fa-solid fa-floppy-disk"></i>
                                 </span>
                                 <span class="button__text2">Cadastrar</span>
                               </button>
-                              <button type="reset" class="button btn btn-danger" id="limparFormPostIg">
+                              <button type="reset" class="button btn btn-danger" id="">
                                 <span class="button__icon">
                                   <i class="fa-solid fa-xmark"></i>
                                 </span>
@@ -506,19 +545,21 @@
 <script type="module" src="../js/contadores/auditoria.js"></script>
 
 <script type="module" src="../js/cadastros/postProduto.js"></script>
-<script type="module" src="../js/cadastros/postQuarto.js"></script>
+<!--<script type="module" src="../js/cadastros/postQuarto.js"></script>-->
 <script type="module" src="../js/cadastros/postIG.js"></script>
 <script type="module" src="../js/cadastros/postEmail.js"></script>
 <script type="module" src="../js/cadastros/postCamareira.js"></script>
 
 <script type="module" src="../js/cadastros/postAuditoria.js"></script>
 <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
+<!--
 <script src="../js/cadastros/estrutural/valores.js"></script>
 <script src="../js/cadastros/estrutural/excedentes.js"></script>
-
+-->
 <script type="module" src="../js/cadastros/estrutural/botoes/nova_categoria.js"></script>
 <script type="module" src="../js/cadastros/botoes/adicionar_categoria.js"></script>
 
 <script type="module" src="../js/cadastros/exibicao/index.js"></script>
+<script type="module" src="../js/cadastros/insercoes/suites.js"></script>
 
 </html>
