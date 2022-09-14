@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/matrix-style.css">
   <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/menu.css">
 </head>
 
 <body>
@@ -109,8 +110,10 @@
                         <!--Campo Categoria-->
                         <div class="control-group" name="codProdutos">
                           <div class="controls">
-                            <input type="text" id="categoriaProduto" placeholder="Categoria" required>
-                            <button type="button" class="btn btn-primary">Nova Categoria</button>
+                            <select name="" id="listar_categorias">
+                              <option hidden>Categorias</option>
+                            </select>
+                            <button type="button" class="btn btn-primary" id="nova_categoria">Nova Categoria</button>
                           </div>
                         </div>
 
@@ -476,6 +479,15 @@
       </div>
     </div>
   </div>
+  <div id="modau-menu" class="modau-container">
+    <div class="modau">
+      <button class="fechar">X</button>
+      <h3 id="titulo_caixa">Ações</h3>
+      <form id="FormMain" name="botoes">
+
+      </form>
+    </div>
+  </div>
 </body>
 <script src="../js/jquery.js"></script>
 
@@ -503,5 +515,10 @@
 <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
 <script src="../js/cadastros/estrutural/valores.js"></script>
 <script src="../js/cadastros/estrutural/excedentes.js"></script>
+
+<script type="module" src="../js/cadastros/estrutural/botoes/nova_categoria.js"></script>
+<script type="module" src="../js/cadastros/botoes/adicionar_categoria.js"></script>
+
+<script type="module" src="../js/cadastros/exibicao/index.js"></script>
 
 </html>

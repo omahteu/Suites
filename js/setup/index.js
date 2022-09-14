@@ -27,7 +27,8 @@ export var link = [
     "https://demomotelapi.herokuapp.com/revisao/",
     "https://demomotelapi.herokuapp.com/troca/",
     "https://demomotelapi.herokuapp.com/automacao/",
-    "https://demomotelapi.herokuapp.com/placa/"
+    "https://demomotelapi.herokuapp.com/placa/",
+    "https://demomotelapi.herokuapp.com/categorias/"
 ]
 
 /*
@@ -60,4 +61,5 @@ export var link = [
 26: TROCA
 27: AUTOMAÇÃO
 28: PLACAS
+29: CATEGORIAS
 */
