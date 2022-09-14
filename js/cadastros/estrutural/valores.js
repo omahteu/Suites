@@ -1,8 +1,6 @@
 $(document).on("change", "#tipo_cobranca", function(){
     var item = $(this).val()
-    console.log(item)
     var form = document.forms.namedItem("formTipo").id
-    console.log(form)
 
     switch (item) {
         case "hora":
@@ -73,10 +71,10 @@ $(document).on("change", "#tipo_cobranca", function(){
 
                 '<div class="control-group" name="">'+
                   '<div class="controls">'+
-                    '<select name="" id="">'+
+                    '<select name="" id="excedentes">'+
                       '<option hidden>Excedente</option>'+
                       '<option value="hora">Hora</option>'+
-                      '<option value="fixa">Minuto</option>'+
+                      '<option value="minuto">Minuto</option>'+
                     '</select>'+
                   '</div>'+
                 '</div>'+
@@ -141,10 +139,10 @@ $(document).on("change", "#tipo_cobranca", function(){
 
               '<div class="control-group" name="">'+
                 '<div class="controls">'+
-                  '<select name="" id="">'+
+                  '<select name="" id="excedentes">'+
                     '<option hidden>Excedente</option>'+
                     '<option value="hora">Hora</option>'+
-                    '<option value="fixa">Minuto</option>'+
+                    '<option value="minuto">Minuto</option>'+
                   '</select>'+
                 '</div>'+
               '</div>'+
