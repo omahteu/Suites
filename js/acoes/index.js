@@ -16,8 +16,8 @@ import { inicioModalTroca } from "../setup/troca.js"
 import { ver_quartos_disponiveis } from "../relatorios/quartosDisponiveis.js"
 import { crnmtra1, crnmtrb1, crnmtrc1 } from "../contadores/cronometros/c1.js"
 import { crnmtra2, crnmtrb2, crnmtrc2 } from "../contadores/cronometros/c2.js"
-import { desligar_luz } from "../auto/desligar.js"
-import { ligar_luz } from "../auto/ligar.js" 
+import { desligar_luz } from "../automacao/desligar.js"
+import { ligar_luz } from "../automacao/ligar.js" 
 
 var rota = 'rota'
 
@@ -81,6 +81,7 @@ export function reacao(status, id){
     } else if(status == "Encerrar"){
         if(confirm(`DESEJA ENCERRAR o QUARTO ${quarto}?`)){
             quarto == "1" ? crnmtrb1() : quarto == "2" ? crnmtrb2() : "casa"
+            setTimeout( () => {localStorage.setItem("last", quarto)}, 100)
             setTimeout( () => {busca_permanencia(quarto)}, 500)
             setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 1000)
             sessionStorage.setItem('quarto', quarto)

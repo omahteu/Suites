@@ -1,16 +1,24 @@
 import { data_atual } from "../geradores/data.js"
 import { hora_atual } from "../geradores/hora.js"
 import { link } from "../setup/index.js"
-import { desligar_luz } from "../auto/desligar.js"
+import { desligar_luz } from "../automacao/desligar.js"
+
+$(document).ready(function(){
+    var ultimo = localStorage.getItem("last")
+    $("#last").text(ultimo)
+})
 
 $("#encerrar").click(function() {
-    setTimeout( () => {registrando()}, 300)
-    setTimeout( () => {ocupacao()}, 500)
-    setTimeout( () => {desligar_luz()}, 650)
-    setTimeout( () => {limpando()}, 800)
+    setTimeout( () => {registrando()}, 200)
+    setTimeout( () => {ocupacao()}, 300)
+    setTimeout( () => {
+        let id = $("#last").text()
+        desligar_luz(id)
+    }, 400)
+    setTimeout( () => {limpando()}, 500)
     setTimeout( () => {
         window.close()
-    }, 1000)
+    }, 800)
 })
 
 function clean(id){
