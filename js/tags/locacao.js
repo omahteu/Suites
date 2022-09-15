@@ -16,7 +16,33 @@ export function locado(q, t, x, y, z) {
     // Preço
     var tipoQuarto = $("#tipo_suite" + q).text()
     var tabela_emvigor = $("#tabela_emvigor").text()
+    //console.log(q)
 
+    $.get(link[17], (el) => {
+        //console.log(el)
+        var carde = el.filter(e => e.numero == q)
+        //console.log(carde)
+        let horas = carde[0].horas_locacao
+        let cobranca = carde[0].cobranca
+        //console.log(horas)
+        $.get(link[21], (ele) => {
+            //console.log(ele)
+            var h1 = ele[0].vh1
+
+            if (cobranca == "hora"){
+                //console.log("cobrando por hora")
+                var valorLocacao = Number(horas) * Number(h1)
+                console.log(valorLocacao)
+                $("#valor-quarto").text(valorLocacao)
+                $("#preco_quarto").text(valorLocacao)
+            } else {
+                console.log("cobrando fixo")
+            }
+        })
+    })
+
+
+/*
     if(tipoQuarto == "Ar"){
         if(t == 'btn locado' && tabela_emvigor == 'Locação'){
             $.get(link[21], (e) => {
@@ -64,6 +90,7 @@ export function locado(q, t, x, y, z) {
             })
         }
     }
+*/
     var hora = hora_atual()
     //$("#numquarto").text(q)
     $("#tipo").text('locado')

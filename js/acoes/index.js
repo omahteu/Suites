@@ -26,6 +26,7 @@ export function reacao(status, id){
     var flags = $("#intervalo").text().split(",")
     if(status == "Disponibilizar Quarto"){
         var condicao = $("#tipo").text()
+        var verificaoLuz = localStorage.getItem("luz")
         if(condicao == "faxina"){
             var h = $(`#hora${id}`).text()
             var m = $(`#minuto${id}`).text()
@@ -40,6 +41,13 @@ export function reacao(status, id){
             var tempo = `${h}:${m}:${s}`
             envia_dados_manutencao($("#usuario_sistema").text(), data_atual(), hora_atual(), $("#suite").text(), razao, tempo)
         }
+        setTimeout( () => {ultima_limpeza(quarto)}, 200)
+        if (verificaoLuz == "ligada"){
+            setTimeout( () => {
+                desligar_luz(quarto)
+                localStorage.setItem("luz", "desligada")
+            }, 500)
+        }
         setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 1000)
         setTimeout( () => {fimModal()}, 1001)
         setTimeout( () => {
@@ -52,13 +60,21 @@ export function reacao(status, id){
         quarto == "1" ? crnmtrb1() : quarto == "2" ? crnmtrb2() : "casa"
         crnmtrc1(quarto)
         crnmtra1(quarto)
+        setTimeout( () => {
+            ligar_luz(quarto)
+            localStorage.setItem("luz", "ligada")
+        }, 500)
+        setTimeout( () => {atualiza_status(quarto, "faxina"), 800})
         setTimeout( () => {faxina(quarto, rota, flags[0], flags[1], flags[2])}, 1000)
         setTimeout( () => {fimModal()}, 1001)
     } else if(status == "Iniciar Limpeza"){
         alert(`DESEJA INICIAR LIMPEZA NO QUARTO ${quarto}?`)
         crnmtrc1(quarto)
         crnmtra1(quarto)
-        setTimeout( () => {ligar_luz()}, 600)
+        setTimeout( () => {
+            ligar_luz(quarto)
+            localStorage.setItem("luz", "ligada")
+        }, 600)
         setTimeout( () => {limpeza(quarto, rota, flags[0], flags[1], flags[2])}, 1000)
         setTimeout( () => {atualiza_status(quarto, "limpeza"), 1500})
         setTimeout( () => {fimModal()}, 1001)
@@ -117,7 +133,10 @@ export function reacao(status, id){
         crnmtrc1(quarto)
         setTimeout( () => {fimModal()}, 500)
         setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 600)
-        setTimeout( () => {desligar_luz()}, 650)
+        setTimeout( () => {
+            desligar_luz(quarto)
+            localStorage.setItem("luz", "desligada")
+        }, 650)
         setTimeout( () => {ultima_limpeza(quarto)}, 800)
         setTimeout( () => {
             var recebido = JSON.parse(localStorage.getItem("limpeza"))
@@ -125,8 +144,14 @@ export function reacao(status, id){
             envia_dados_limpeza(recebido.caixa, recebido.data, recebido.hora, recebido.quarto, recebido.tempo, cam)
         }, 200)
     } else if(status == "Apagar Luz"){
-        console.log("Apagar Luz")
+        $("#botao_inferior_tres").val("Ligar Luz")
+        desligar_luz(quarto)
+        localStorage.setItem("status_botao", "desligado")
+        localStorage.setItem("luz", "desligada")
     } else if(status == "Ligar Luz"){
-        console.log("Ligar Luz")
+        $("#botao_inferior_tres").val("Apagar Luz")
+        ligar_luz(quarto)
+        localStorage.setItem("status_botao", "ligado")
+        localStorage.setItem("luz", "ligada")
     }
 }

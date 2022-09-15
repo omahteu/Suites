@@ -16,8 +16,39 @@ export function manutencao(q, x, y, z) {
     $(".acoes2").css('display', 'inline-block')
     $(".acoes2").val('Disponibilizar Quarto')
 
-    $(".acoes3").css('display', 'inline-block')
-    $(".acoes3").val('Ligar Luz')
+    var estado = localStorage.getItem("status_botao")
+    var luz = localStorage.getItem("luz")
+
+    switch (estado) {
+        // luz está desligada
+        case "desligado":
+
+            if (luz == "ligada"){
+                $(".acoes3").css('display', 'inline-block')
+                $(".acoes3").val('Apagar Luz')
+            } else {
+                $(".acoes3").css('display', 'inline-block')
+                $(".acoes3").val('Ligar Luz')
+            }
+            break;
+        
+        // luz está ligada
+        case "ligado":
+
+            if (luz == "desligada"){
+                $(".acoes3").css('display', 'inline-block')
+                $(".acoes3").val('Ligar Luz')
+            } else {
+                $(".acoes3").css('display', 'inline-block')
+                $(".acoes3").val('Apagar Luz')
+            }
+
+
+            break
+    
+        default:
+            break;
+    }
 
     var hora = hora_atual()
 

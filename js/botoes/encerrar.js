@@ -14,6 +14,7 @@ $("#encerrar").click(function() {
     setTimeout( () => {
         let id = $("#last").text()
         desligar_luz(id)
+        localStorage.setItem("luz", "desligada")
     }, 400)
     setTimeout( () => {limpando()}, 500)
     setTimeout( () => {
