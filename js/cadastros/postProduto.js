@@ -7,7 +7,7 @@ $("#salvarFormPostProduto").click(function() {
     let valor = $("#valorUnitarioProduto").val()
     var valor_formatadao = String(valor).replace(",", ".")
     let quantidade = "0"
-    let categoria = $("#categoriaProduto").val()
+    let categoria = $("#listar_categorias").val()
     let dataAtual = data_atual()
     var dados = {
             codigo: codigo,
