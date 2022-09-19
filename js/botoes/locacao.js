@@ -32,17 +32,17 @@ $(".locado").click(function() {
             locado(quarto, rota, flags[0], flags[1], flags[2])
             setTimeout( () => {fimModal()}, 1000)
             crnmtra2(quarto)
-            setTimeout( () => {index()}, 1500)
+            //setTimeout( () => {index()}, 1500)
         } else if(quarto == "3"){
             var flags = modos.slice(6, 9)
             locado(quarto, rota,  flags[0], flags[1], flags[2])
             setTimeout( () => {fimModal()}, 1000)
-            setTimeout( () => {index()}, 2000)
+            //setTimeout( () => {index()}, 2000)
         } else if(quarto == "4"){
             var flags = modos.slice(9, 12)
             locado(quarto, rota,  flags[0], flags[1], flags[2])
             setTimeout( () => {fimModal()}, 1000)
-            setTimeout( () => {index()}, 2000)
+            //setTimeout( () => {index()}, 2000)
         }
     } else {
         console.log('Troca de Suíte')

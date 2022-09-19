@@ -12,10 +12,14 @@ export function index(){
         quarto: quarto,
         tipo: tipo
     }
+
+    $.post(link[11], dados, () => {})
+/*
     $.get(link[11], (retorno) => {
         if(retorno.length == 0){
             $.post(link[11], dados,  () => {})
         }
+
         retorno.forEach( (item) => {
             if(item.quarto == quarto){
                 console.log('')
@@ -24,5 +28,7 @@ export function index(){
                 $.post(link[11], dados,  () => {})
             }
         })
+
     })
+*/
 }

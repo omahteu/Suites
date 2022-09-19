@@ -7,6 +7,7 @@ import { faxina } from "../tags/faxina.js"
 import { link } from "../setup/index.js"
 import { leituraProdutosPlus } from "../armazem/leitura/produtos.js"
 import { leituraVeiculosPlus } from "../armazem/leitura/veiculos.js"
+import { atualizaValores } from "../quartos/calculos/tempoValor.js"
 
 var rotax = "btn aguardando"
 var rotal = "btn limpeza"
@@ -32,18 +33,22 @@ $(document).ready(function(){
 			}
 
 			if(e == '1'){
+				atualizaValores(e)
 				var flags = modos.slice(0, 3)
 				$(`#intervalo${e}`).text(modos.slice(0, 3))
 				backupInfos(e, flags[0], flags[1], flags[2])
 			} else if(e == '2'){
+				atualizaValores(e)
 				var flags = modos.slice(3, 6)
 				$(`#intervalo${e}`).text(modos.slice(3, 6))
 				backupInfos(e, flags[0], flags[1], flags[2])
 			} else if(e == '3'){
+				atualizaValores(e)
 				var flags = modos.slice(6, 9)
 				$("#intervalo").text(modos.slice(6, 9))
 				backupInfos(e, flags[0], flags[1], flags[2])
 			} else if(e == '4'){
+				atualizaValores(e)
 				var flags = modos.slice(9, 12)
 				$("#intervalo").text(modos.slice(9, 12))
 				backupInfos(e, flags[0], flags[1], flags[2])
@@ -74,18 +79,22 @@ $(document).on('click', '[class="card"]', function() {
 		}
 
 		if(identificador == '1'){
+			atualizaValores(identificador)
 			var flags = modos.slice(0, 3)
 			$("#intervalo").text(modos.slice(0, 3))
 			backupInfos(identificador, flags[0], flags[1], flags[2])
 		} else if(identificador == '2'){
+			atualizaValores(identificador)
 			var flags = modos.slice(3, 6)
 			$("#intervalo").text(modos.slice(3, 6))
 			backupInfos(identificador, flags[0], flags[1], flags[2])
 		} else if(identificador == '3'){
+			atualizaValores(identificador)
 			var flags = modos.slice(6, 9)
 			$("#intervalo").text(modos.slice(6, 9))
 			backupInfos(identificador, flags[0], flags[1], flags[2])
 		} else if(identificador == '4'){
+			atualizaValores(identificador)
 			var flags = modos.slice(9, 12)
 			$("#intervalo").text(modos.slice(9, 12))
 			backupInfos(identificador, flags[0], flags[1], flags[2])
@@ -188,6 +197,6 @@ function backupInfos(instance, x, y, z){
 		var valor_quarto = $("#valor-quarto").text()
 		var valor_consumo = $("#consumo_painel").text()
 		var resultado = parseFloat(valor_quarto) + parseFloat(valor_consumo)
-		$("#parcial_painel").text(resultado)
+		//$("#parcial_painel").text(resultado)
 	}, 670)
 }
