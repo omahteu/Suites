@@ -40,8 +40,20 @@ $(document).ready(function(){
     console.log(s);
     */
 
+    var requisicao = $.get(link[11])
+
+    requisicao.done(function (data) {
+        $(data).each(function (index, tweet) {
+          //ul.append($("<li>").text(tweet.text));
+          console.log(`${index} | ${tweet.text}`)
+        });
+      });
+    //console.log(requisicao)
+
     setInterval( () =>  {
 
+        //console.log(dadosx())
+        //dadosx()
       
 
         $.get(link[11], (e) => {
@@ -50,8 +62,8 @@ $(document).ready(function(){
 
             let agora = hora_atual_segundos()
             let locao = `${entrada}:00`
-            console.log(entrada)
-            console.log(e)
+            //console.log(entrada)
+            //console.log(e)
     
             var ms = moment(agora,"HH:mm:ss").diff(moment(locao,"HH:mm:ss"));
             var d = moment.duration(ms);
