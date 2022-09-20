@@ -7,7 +7,7 @@ import { faxina } from "../tags/faxina.js"
 import { link } from "../setup/index.js"
 import { leituraProdutosPlus } from "../armazem/leitura/produtos.js"
 import { leituraVeiculosPlus } from "../armazem/leitura/veiculos.js"
-import { atualizaValores } from "../quartos/calculos/tempoValor.js"
+import { atualizaValores } from "../quartos/calculos/porHora.js"
 
 var rotax = "btn aguardando"
 var rotal = "btn limpeza"
@@ -196,7 +196,8 @@ function backupInfos(instance, x, y, z){
 	setTimeout( () => {
 		var valor_quarto = $("#valor-quarto").text()
 		var valor_consumo = $("#consumo_painel").text()
-		var resultado = parseFloat(valor_quarto) + parseFloat(valor_consumo)
-		//$("#parcial_painel").text(resultado)
+		var atualizacao_preco = $("#atualizacaoPreco").text() == "" ? "0" : $("#atualizacaoPreco").text()
+		var resultado = parseFloat(valor_quarto) + parseFloat(valor_consumo) + parseFloat(atualizacao_preco)
+		$("#parcial_painel").text(resultado)
 	}, 670)
 }

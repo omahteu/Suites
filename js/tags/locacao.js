@@ -1,5 +1,5 @@
 import { hora_atual } from "../geradores/hora.js"
-import { link } from "../setup/index.js"
+import { valoresIniciais } from "../quartos/calculos/inicial.js"
 
 export function locado(q, t, x, y, z) {
     // CSS
@@ -16,6 +16,8 @@ export function locado(q, t, x, y, z) {
     // Preço
     var tipoQuarto = $("#tipo_suite" + q).text()
     var tabela_emvigor = $("#tabela_emvigor").text()
+
+    valoresIniciais(q)
 
     /*
     $.get(link[17], (el) => {
