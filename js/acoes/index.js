@@ -128,21 +128,27 @@ export function reacao(status, id){
             console.log('cancelado')
         }
     } else if(status == "OK"){
+        
         alert('Camareira Selecionada')
+
         quarto == "1" ? crnmtrb1() : quarto == "2" ? crnmtrb2() : "casa"
+
         crnmtrc1(quarto)
-        setTimeout( () => {fimModal()}, 500)
-        setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 600)
-        setTimeout( () => {
-            desligar_luz(quarto)
-            localStorage.setItem("luz", "desligada")
-        }, 650)
-        setTimeout( () => {ultima_limpeza(quarto)}, 800)
+
         setTimeout( () => {
             var recebido = JSON.parse(localStorage.getItem("limpeza"))
             var cam = $("#selecionar_camareira").val()
             envia_dados_limpeza(recebido.caixa, recebido.data, recebido.hora, recebido.quarto, recebido.tempo, cam)
         }, 200)
+        setTimeout( () => {fimModal()}, 500)
+        setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 600)
+        /*
+        setTimeout( () => {
+            desligar_luz(quarto)
+            localStorage.setItem("luz", "desligada")
+        }, 650)
+        */
+        setTimeout( () => {ultima_limpeza(quarto)}, 800)
     } else if(status == "Apagar Luz"){
         $("#botao_inferior_tres").val("Ligar Luz")
         desligar_luz(quarto)
