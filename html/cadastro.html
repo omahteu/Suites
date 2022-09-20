@@ -62,9 +62,11 @@
                   <li class="active">
                     <a data-toggle="tab" href="#produtos">Produtos</a>
                   </li>
+                  <!--
                   <li>
                     <a data-toggle="tab" href="#quartos">Quartos</a>
                   </li>
+                  -->
                   <li>
                     <a data-toggle="tab" href="#ig">Informações Gerais</a>
                   </li>
@@ -87,28 +89,28 @@
 
                       <form action="">
                         <!--Campo Código-->
-                        <div class="control-group" name="codProdutos">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="codigoProduto" placeholder="Código" required>
                           </div>
                         </div>
 
                         <!--Campo Descrição-->
-                        <div class="control-group" name="codProdutos">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="descricaoProduto" placeholder="Descrição" required>
                           </div>
                         </div>
 
                         <!--Campo Valor Unitário-->
-                        <div class="control-group" name="codProdutos">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="valorUnitarioProduto" placeholder="Valor Unitário" required>
                           </div>
                         </div>
 
                         <!--Campo Categoria-->
-                        <div class="control-group" name="codProdutos">
+                        <div class="control-group">
                           <div class="controls">
                             <select name="" id="listar_categorias">
                               <option hidden>Categorias</option>
@@ -127,7 +129,7 @@
                                 </span>
                                 <span class="button__text2">Cadastrar</span>
                               </button>
-                              <button type="reset" class="button btn btn-danger" id="limparFormPostProduto">
+                              <button type="reset" class="button btn btn-danger">
                                 <span class="button__icon">
                                   <i class="fa-solid fa-xmark"></i>
                                 </span>
@@ -141,18 +143,18 @@
                     </div>
                     <!-- Produtos -->
 
-                    <!-- Quartos -->
+                    <!-- Quartos 
                     <div id="quartos" class="tab-pane fade">
 
                       <form action="">
-                        <!--Campo Código-->
+                        
                         <div class="control-group" name="cadQuartos">
                           <div class="controls">
                             <input type="text" id="codigoQuarto" placeholder="Código do Quarto" required>
                           </div>
                         </div>
 
-                        <!--Campo Adicionar Percentual-->
+                        
                         <div class="control-group" name="cadQuartos">
                           <div class="controls">
                             <select name="per_page" id="adicionarPercentualQuarto">
@@ -163,7 +165,7 @@
                           </div>
                         </div>
 
-                        <!--Campo Tipo Suíte-->
+                        
                         <div class="control-group" name="cadQuartos">
                           <div class="controls">
                             <select id="tipoSuiteQuarto">
@@ -172,7 +174,7 @@
                           </div>
                         </div>
 
-                        <!--Botões-->
+                        
                         <div class="form-actions" name="cadQuartos">
                           <div class="span8">
                             <div class="span9">
@@ -194,84 +196,94 @@
                       </form>
 
                     </div>
-                    <!-- Quartos -->
+                    -->
 
                     <!-- Informações Gerais -->
                     <div id="ig" class="tab-pane fade">
 
                       <form action="">
                         <!--Campo Razão Social-->
-                        <div class="control-group" name="cadIgs">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="razaoSocialIg" placeholder="Razão Social" required>
+                            <span>Razão Social</span>
                           </div>
                         </div>
 
                         <!--Campo Nome Fantasia-->
-                        <div class="control-group" name="cadIgs">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="nomeFantasiaIg" placeholder="Nome Fantasia" required>
+                            <span>Nome Fantasia</span>
                           </div>
                         </div>
 
                         <!--Campo CNPJ-->
-                        <div class="control-group" name="cadIgs">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="cnpjIg" placeholder="CNPJ" required>
+                            <span>CNPJ</span>
                           </div>
                         </div>
 
                         <!--Campo Cidade-->
-                        <div class="control-group" name="cadIgs">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="cidadeIg" placeholder="Cidade" required>
+                            <span>Cidade</span>
                           </div>
                         </div>
 
                         <!--Campo Endereço-->
-                        <div class="control-group" name="cadIgs">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="enderecoIg" placeholder="Endereço" required>
+                            <span>Endereço</span>
                           </div>
                         </div>
 
                         <!--Campo Número-->
-                        <div class="control-group" name="cadIgs">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="numeroIg" placeholder="Número" required>
+                            <span>Número</span>
                           </div>
                         </div>
 
                         <!--Campo Bairro-->
-                        <div class="control-group" name="cadIgs">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="bairroIg" placeholder="Bairro" required>
+                            <span>Bairro</span>
                           </div>
                         </div>
 
                         <!--Campo Telefone-->
-                        <div class="control-group" name="cadIgs">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="telefoneIg" placeholder="Telefone" required>
+                            <span>Telefone</span>
                           </div>
                         </div>
 
                         <!--Campo Telefone 2-->
-                        <div class="control-group" name="cadIgs">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="telefone2Ig" placeholder="Telefone 2" required>
+                            <span>Telefone 2</span>
                           </div>
                         </div>
 
                         <!--Campo Telefone 3-->
-                        <div class="control-group" name="cadIgs">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="telefone3Ig" placeholder="Telefone 3" required>
+                            <span>Telefone 3</span>
                           </div>
                         </div>
 
                         <!--Botões-->
-                        <div class="form-actions" name="cadIgs">
+                        <div class="form-actions">
                           <div class="span8">
                             <div class="span9">
                               <button type="submit" class="button btn btn-primary" id="salvarFormPostIg">
@@ -280,7 +292,7 @@
                                 </span>
                                 <span class="button__text2">Cadastrar</span>
                               </button>
-                              <button type="reset" class="button btn btn-danger" id="limparFormPostIg">
+                              <button type="reset" class="button btn btn-danger">
                                 <span class="button__icon">
                                   <i class="fa-solid fa-xmark"></i>
                                 </span>
@@ -299,56 +311,63 @@
 
                       <form action="">
                         <!--Campo Email-->
-                        <div class="control-group" name="cadEmail">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="usuarioEmail" placeholder="Usuário" required>
+                            <span>Usuário</span>
                           </div>
                         </div>
 
                         <!--Campo Senha-->
-                        <div class="control-group" name="cadEmail">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="senhaEmail" placeholder="Senha" required>
+                            <span>Senha</span>
                           </div>
                         </div>
 
                         <!--Campo SMTP-->
-                        <div class="control-group" name="cadEmail">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="smtpEmail" placeholder="SMTP" required>
+                            <span>SMTP</span>
                           </div>
                         </div>
 
                         <!--Campo Porta-->
-                        <div class="control-group" name="cadEmail">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="portaEmail" placeholder="Porta" required>
+                            <span>Porta</span>
                           </div>
                         </div>
 
                         <!--Campo Timeout-->
-                        <div class="control-group" name="cadEmail">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="timeoutEmail" placeholder="Timeout (segundos)" required>
+                            <span>Timeout</span>
                           </div>
                         </div>
 
                         <!--Campo Email Destino-->
-                        <div class="control-group" name="cadEmail">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="emailDestinoEmail" placeholder="Email Destino" required>
+                            <span>Email Destino</span>
                           </div>
                         </div>
 
-                        <!--Campo Email COntabilidade-->
-                        <div class="control-group" name="cadEmail">
+                        <!--Campo Email Contabilidade-->
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="emailContabilidadeEmail" placeholder="Email Contabilidade" required>
+                            <span>Email Contabilidade</span>
                           </div>
                         </div>
 
                         <!--Campo Adicionar Percentual-->
-                        <div class="control-group" name="cadQuartos">
+                        <div class="control-group">
                           <div class="controls">
                             <select name="" id="autenticacaoEmail">
                               <option hidden>Requer Autênticação</option>
@@ -368,7 +387,7 @@
                                 </span>
                                 <span class="button__text2">Cadastrar</span>
                               </button>
-                              <button type="reset" class="button btn btn-danger" id="limparFormPostEmail">
+                              <button type="reset" class="button btn btn-danger">
                                 <span class="button__icon">
                                   <i class="fa-solid fa-xmark"></i>
                                 </span>
@@ -387,14 +406,14 @@
 
                       <form action="">
                         <!--Campo Nome-->
-                        <div class="control-group" name="cadCamareiras">
+                        <div class="control-group">
                           <div class="controls">
-                            <input type="text" id="nomeCamareira" placeholder="Nome">
+                            <input type="text" id="nomeCamareira" placeholder="Nome" required>
                           </div>
                         </div>
 
                         <!--Botões-->
-                        <div class="form-actions" name="cadCamareiras">
+                        <div class="form-actions">
                           <div class="span8">
                             <div class="span9">
                               <button type="submit" class="button btn btn-primary" id="salvarFormPostCamareira">
@@ -403,7 +422,7 @@
                                 </span>
                                 <span class="button__text2">Cadastrar</span>
                               </button>
-                              <button type="button" class="button btn btn-danger" id="limparFormPostCamareira">
+                              <button type="reset" class="button btn btn-danger">
                                 <span class="button__icon">
                                   <i class="fa-solid fa-xmark"></i>
                                 </span>
@@ -422,49 +441,49 @@
 
                       <form action="" id="formTipo" name="formTipo">
                         <!--Código-->
-                        <div class="control-group" name="">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="suiteCodigo" placeholder="Código" required>
                           </div>
                         </div>
 
                         <!--Nome-->
-                        <div class="control-group" name="">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="text" id="suiteNome" placeholder="Nome" required>
                           </div>
                         </div>
 
                         <!--Horas Locação-->
-                        <div class="control-group" name="">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="number" min="1" id="suiteHorasLocacao" placeholder="Horas Locação" required>
                           </div>
                         </div>
 
                         <!--Tempo Especial-->
-                        <div class="control-group" name="">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="number" min="1" id="suiteTempoEspecial" placeholder="Tempo Especial (Minutos)" required>
                           </div>
                         </div>
 
                         <!--Tempo Adicional-->
-                        <div class="control-group" name="">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="number" min="1" id="suiteTempoAdicional" placeholder="Tempo Adicional (Minutos)" required>
                           </div>
                         </div>
 
                         <!--Tolerância-->
-                        <div class="control-group" name="">
+                        <div class="control-group">
                           <div class="controls">
                             <input type="number" min="1" id="suiteTolerancia" placeholder="Tolerância (Minutos)" required>
                           </div>
                         </div>
 
                         <!--Cobrança-->
-                        <div class="control-group" name="">
+                        <div class="control-group">
                           <div class="controls">
                             <select name="" id="suiteCobranca">
                               <option hidden>Cobrança</option>
@@ -475,7 +494,7 @@
                         </div>
 
                         <!--Excedente-->
-                        <div class="control-group" name="">
+                        <div class="control-group">
                           <div class="controls">
                             <select name="" id="suiteExcedente">
                               <option hidden>Excedente</option>
@@ -486,7 +505,7 @@
                         </div>
 
                         <!--Botões-->
-                        <div class="form-actions" name="">
+                        <div class="form-actions">
                           <div class="span8">
                             <div class="span9">
                               <button type="submit" class="button btn btn-primary" id="salvarSuites">
@@ -495,7 +514,7 @@
                                 </span>
                                 <span class="button__text2">Cadastrar</span>
                               </button>
-                              <button type="reset" class="button btn btn-danger" id="">
+                              <button type="reset" class="button btn btn-danger">
                                 <span class="button__icon">
                                   <i class="fa-solid fa-xmark"></i>
                                 </span>
@@ -561,5 +580,8 @@
 
 <script type="module" src="../js/cadastros/exibicao/index.js"></script>
 <script type="module" src="../js/cadastros/insercoes/suites.js"></script>
+
+<script type="module" src="../js/cadastros/exibicao/ig.js"></script>
+<script type="module" src="../js/cadastros/exibicao/email.js"></script>
 
 </html>

@@ -1,16 +1,17 @@
 import { link } from "../setup/index.js"
 
 $("#salvarFormPostIg").click(function() {
-    let bairro = $("#bairroIg").val()
-    let cidade = $("#cidadeIg").val()
-    let cnpj = $("#cnpjIg").val()
-    let endereco = $("#enderecoIg").val()
-    let fantasia = $("#nomeFantasiaIg").val()
-    let numero = $("#numeroIg").val()
-    let social = $("#razaoSocialIg").val()
-    let telefone = $("#telefoneIg").val()
-    let telefone2 = $("#telefone2Ig").val()
-    let telefone3 = $("#telefone3Ig").val()
+
+    let social = $("#razaoSocialIg").val() == "" ? $("#razaoSocialIg").attr("placeholder") : $("#razaoSocialIg").val() 
+    let fantasia = $("#nomeFantasiaIg").val() == "" ? $("#nomeFantasiaIg").attr("placeholder") : $("#nomeFantasiaIg").val()
+    let cnpj = $("#cnpjIg").val() == "" ? $("#cnpjIg").attr("placeholder") : $("#cnpjIg").val()
+    let cidade = $("#cidadeIg").val() == "" ? $("#cidadeIg").attr("placeholder") : $("#cidadeIg").val()
+    let endereco = $("#enderecoIg").val() == "" ? $("#enderecoIg").attr("placeholder") : $("#enderecoIg").val()
+    let numero = $("#numeroIg").val() == "" ? $("#numeroIg").attr("placeholder") : $("#numeroIg").val()
+    let bairro = $("#bairroIg").val() == "" ? $("#bairroIg").attr("placeholder") : $("#bairroIg").val()
+    let telefone = $("#telefoneIg").val() == "" ? $("#telefoneIg").attr("placeholder") : $("#telefoneIg").val()
+    let telefone2 = $("#telefone2Ig").val() == "" ? $("#telefone2Ig").attr("placeholder") : $("#telefone2Ig").val()
+    let telefone3 = $("#telefone3Ig").val() == "" ? $("#telefone3Ig").attr("placeholder") : $("#telefone3Ig").val() 
     var dados = {
         social: social,
         fantasia: fantasia,
@@ -28,8 +29,6 @@ $("#salvarFormPostIg").click(function() {
         alert("Informações Registradas!")
         document.getElementById('formCadastros').reset()
     })
+
 })
 
-$("#limparFormPostIg").click(function() {
-    document.getElementById('formCadastros').reset()
-})

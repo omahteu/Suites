@@ -67,10 +67,10 @@
                   <li>
                     <a data-toggle="tab" href="#cartoes">Cartões</a>
                   </li>
-                  <!--Quartos-->
+                  <!--Quartos
                   <li>
                     <a data-toggle="tab" href="#quartos">Quartos</a>
-                  </li>
+                  </li>-->
                   <!--Valores-->
                   <li>
                     <a data-toggle="tab" href="#valores">Valores</a>
@@ -87,332 +87,265 @@
 
 
 
-                
-                  <div class="widget-content nopadding tab-content">
 
-                    <!-- Tempo -->
-                    <div id="tempo" class="tab-pane fade in active">
+                <div class="widget-content nopadding tab-content">
 
-                      <form action="" class="form-horizontal" name="formTempo" id="formTempo">
-                        <!--Select-->
-                        <div class="control-group" name="config_tempo">
-                          <div class="controls">
-                            <select id="escolhe_tempo">
-                              <option value="" hidden>Escolha</option>
-                              <option value="troca">Troca de Quarto</option>
-                              <option value="desistencia">Desistência</option>
-                              <option value="limpeza">Limpeza</option>
-                              <option value="faxina">Faxina</option>
-                              <option value="manutencao">Manutenção</option>
-                            </select>
-                            <div class="control-group">
-                              <input type="text" name="" id="" style="display: none;">
-                            </div>
-                            
-                          </div>
-                        </div>
-                        <!--Select-->
+                  <!-- Tempo -->
+                  <div id="tempo" class="tab-pane fade in active">
 
-                        <!--Botões-->
-                        <div class="form-actions" name="config_tempo">
-                          <div class="span8">
-                            <div class="span9">
-                              <button type="button" class="button btn btn-primary" id="SalvarConfigEscohaTempos">
-                                <span class="button__icon">
-                                  <i class="fa-solid fa-floppy-disk"></i>
-                                </span>
-                                <span class="button__text2">Atualizar</span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <!--Botões-->
-                      </form>
-
-                    </div>
-                    <!-- Tempo -->
-
-
-                    <!-- VOLTAR PARAR ADICIONAR UM NAME UNICO PARA CADA CAMPO ACIMA-->
-
-
-
-                    <!-- Pernoite -->
-                    <div id="pernoite" class="tab-pane fade">
-
-                      <div class="form-actions" name="config_pernoite">
-                        <div class="span8">
-                          <div class="span9">
-                            <button type="submit" class="button btn btn-primary">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                              </span>
-                              <span class="button__text2">Salvar Alterações</span>
-                            </button>
-                            <button type="button" class="button btn btn-danger">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-xmark"></i>
-                              </span>
-                              <span class="button__text2">Limpar</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Pernoite -->
-
-                    <!-- Cartões -->
-                    <div id="cartoes" class="tab-pane fade">
-                      <div class="form-actions" name="config_cartoes">
-                        <div class="span8">
-                          <div class="span9">
-                            <button type="submit" class="button btn btn-primary">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                              </span>
-                              <span class="button__text2">Salvar Alterações</span>
-                            </button>
-                            <button type="button" class="button btn btn-danger">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-xmark"></i>
-                              </span>
-                              <span class="button__text2">Limpar</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Cartões -->
-
-                    <!--Quarto-->
-                    <div id="quartos" class="tab-pane fade">
-
-                      <!--Tabela-->
-                      <div class="control-group" name="config_quartos">
-                        <label for="codigoProduto" class="control-label">Código</label>
+                    <form action="" class="form-horizontal" name="formTempo" id="formTempo">
+                      <!--Select-->
+                      <div class="control-group" name="config_tempo">
                         <div class="controls">
-                          <select id="escolha_tabela_precos">
-                            <option hidden>Tabela de Preço</option>
-                            <option value="0">Locação</option>
-                            <option value="1">Diaria</option>
-                            <option value="2">Especial</option>
+                          <select id="escolhe_tempo">
+                            <option value="" hidden>Escolha</option>
+                            <option value="troca">Troca de Quarto</option>
+                            <option value="desistencia">Desistência</option>
+                            <option value="limpeza">Limpeza</option>
+                            <option value="faxina">Faxina</option>
+                            <option value="manutencao">Manutenção</option>
                           </select>
+                          <div class="control-group">
+                            <input type="text" name="" id="" style="display: none;">
+                          </div>
+
                         </div>
                       </div>
+                      <!--Select-->
 
                       <!--Botões-->
-                      <div class="form-actions" name="config_quartos">
+                      <div class="form-actions" name="config_tempo">
                         <div class="span8">
                           <div class="span9">
-                            <button type="button" class="button btn btn-primary" id="SalvarConfigEscolhaTabelaPreco">
+                            <button type="button" class="button btn btn-primary" id="SalvarConfigEscohaTempos">
                               <span class="button__icon">
                                 <i class="fa-solid fa-floppy-disk"></i>
                               </span>
-                              <span class="button__text2" id="botao_tabela">Atualizar</span>
+                              <span class="button__text2">Atualizar</span>
                             </button>
                           </div>
                         </div>
                       </div>
+                      <!--Botões-->
+                    </form>
+
+                  </div>
+                  <!-- Tempo -->
+
+                  <!-- Pernoite -->
+                  <div id="pernoite" class="tab-pane fade">
+
+                    <div class="form-actions" name="config_pernoite">
+                      <div class="span8">
+                        <div class="span9">
+                          <button type="submit" class="button btn btn-primary">
+                            <span class="button__icon">
+                              <i class="fa-solid fa-floppy-disk"></i>
+                            </span>
+                            <span class="button__text2">Salvar Alterações</span>
+                          </button>
+                          <button type="button" class="button btn btn-danger">
+                            <span class="button__icon">
+                              <i class="fa-solid fa-xmark"></i>
+                            </span>
+                            <span class="button__text2">Limpar</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <!--Quarto-->
+                  </div>
+                  <!-- Pernoite -->
 
-                    <!--Valores-->
-                    <div id="valores" class="tab-pane fade">
+                  <!-- Cartões -->
+                  <div id="cartoes" class="tab-pane fade">
 
-                      <form action="" method="post" class="form-horizontal">
-                        <!--Horas Locação
+                    <form action="" method="post" class="form-horizontal" id="taxa_cartoes">
+
+                    </form>
+
+                    <div class="form-actions">
+                      <div class="span8">
+                        <div class="span9">
+                          <button type="submit" class="button btn btn-primary">
+                            <span class="button__icon">
+                              <i class="fa-solid fa-floppy-disk"></i>
+                            </span>
+                            <span class="button__text2">Salvar Alterações</span>
+                          </button>
+                          <button type="reset" class="button btn btn-danger">
+                            <span class="button__icon">
+                              <i class="fa-solid fa-xmark"></i>
+                            </span>
+                            <span class="button__text2">Limpar</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <!-- Cartões -->
+
+                  <!--
+                  <div id="quartos" class="tab-pane fade">
+
+                    
+                    <div class="control-group" name="config_quartos">
+                      <label for="codigoProduto" class="control-label">Código</label>
+                      <div class="controls">
+                        <select id="escolha_tabela_precos">
+                          <option hidden>Tabela de Preço</option>
+                          <option value="0">Locação</option>
+                          <option value="1">Diaria</option>
+                          <option value="2">Especial</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    
+                    <div class="form-actions" name="config_quartos">
+                      <div class="span8">
+                        <div class="span9">
+                          <button type="button" class="button btn btn-primary" id="SalvarConfigEscolhaTabelaPreco">
+                            <span class="button__icon">
+                              <i class="fa-solid fa-floppy-disk"></i>
+                            </span>
+                            <span class="button__text2" id="botao_tabela">Atualizar</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  -->
+
+                  <!--Valores-->
+                  <div id="valores" class="tab-pane fade">
+
+                    <form action="" method="post" class="form-horizontal">
+                      <!--Horas Locação
                         <div class="control-group" name="config_valor">
                           <div class="controls">
                             <input type="text" id="quantidadeHorasLocacaoQuarto" placeholder="Horas Locação" required>
                           </div>
                         </div>-->
 
-                        <!--Valor Locação-->
-                        <div class="control-group" name="config_valor">
-                          <div class="controls">
-                            <input type="text" id="valorLocacaoQuarto" placeholder="Valor Locação" required>
-                            <span>Valor Hora Locação</span>
-                          </div>
+                      <!--Valor Locação-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" id="valorLocacaoQuarto" placeholder="Valor Locação" required>
+                          <span>Valor Hora Locação</span>
                         </div>
+                      </div>
 
-                        <!--Tempo Especial
+                      <!--Tempo Especial
                         <div class="control-group" name="config_valor">
                           <div class="controls">
                             <input type="text" id="tempoEspecialQuarto" placeholder="Tempo Especial" required>
                           </div>
                         </div>-->
 
-                        <!--Valor Especial-->
-                        <div class="control-group" name="config_valor">
-                          <div class="controls">
-                            <input type="text" id="valorEspecialQuarto" placeholder="Valor Especial" required>
-                            <span>Valor Tempo Especial</span>
-                          </div>
+                      <!--Valor Especial-->
+                      <div class="control-group" name="config_valor">
+                        <div class="controls">
+                          <input type="text" id="valorEspecialQuarto" placeholder="Valor Especial" required>
+                          <span>Valor Tempo Especial</span>
                         </div>
+                      </div>
 
-                        <!--Horas Diária
+                      <!--Horas Diária
                         <div class="control-group" name="config_valor">
                           <div class="controls">
                             <input type="text" id="quantidadeHorasDiariasQuarto" placeholder="Horas Diária" required>
                           </div>
                         </div>-->
 
-                        <!--Valor Diária
+                      <!--Valor Diária
                         <div class="control-group" name="config_valor">
                           <div class="controls">
                             <input type="text" id="valorDiariaQuarto" placeholder="Valor Diária" required>
                           </div>
                         </div>-->
 
-                        <!--Tempo Adicional (minutos)
+                      <!--Tempo Adicional (minutos)
                         <div class="control-group" name="config_valor">
                           <div class="controls">
                             <input type="text" id="tempoAdicionalQuarto" placeholder="Tempo Adicional (minutos)" required>
                           </div>
                         </div>-->
 
-                        <!--Valor Adicional-->
-                        <div class="control-group" name="config_valor">
-                          <div class="controls">
-                            <input type="text" id="valorHoraAdicionalQuarto" placeholder="Valor Adicional" required>
-                            <span>Valor Tempo Adicional</span>
-                          </div>
+                      <!--Valor Adicional-->
+                      <div class="control-group" name="config_valor">
+                        <div class="controls">
+                          <input type="text" id="valorHoraAdicionalQuarto" placeholder="Valor Adicional" required>
+                          <span>Valor Tempo Adicional</span>
                         </div>
+                      </div>
 
-                        <!--Tolerância
+                      <!--Tolerância
                         <div class="control-group" name="config_valor">
                           <div class="controls">
                             <input type="text" id="toleranciaQuarto" placeholder="Tolerância" required>
                           </div>
                         </div>-->
 
-                        <!--Valor 1 Hora-->
-                        <div class="control-group" name="config_valor">
-                          <div class="controls">
-                            <input type="text" id="v1hQuarto" placeholder="Valor 1 Hora" required>
-                            <span>Valor 1ª Hora</span>
-                          </div>
-                        </div>
-
-                        <!--Valor 2 Hora-->
-                        <div class="control-group" name="config_valor">
-                          <div class="controls">
-                            <input type="text" id="v2hQuarto" placeholder="Valor 2 Hora" required>
-                            <span>Valor 2ª Hora</span>
-                          </div>
-                        </div>
-
-                        <!--Valor 3 Hora-->
-                        <div class="control-group" name="config_valor">
-                          <div class="controls">
-                            <input type="text" id="v3hQuarto" placeholder="Valor 3 Hora" required>
-                            <span>Valor 3ª Hora</span>
-                          </div>
-                        </div>
-
-                        <!--Valor 4 Hora-->
-                        <div class="control-group" name="config_valor">
-                          <div class="controls">
-                            <input type="text" id="v4hQuarto" placeholder="Valor 4 Hora" required>
-                            <span>Valor 4ª Hora</span>
-                          </div>
-                        </div>
-
-                        <!--Valor 5 Hora-->
-                        <div class="control-group" name="config_valor">
-                          <div class="controls">
-                            <input type="text" id="v5hQuarto" placeholder="Valor 5 Hora" required>
-                            <span>Valor 5ª Hora</span>
-                          </div>
-                        </div>
-
-                        <!--Valor 6 Hora-->
-                        <div class="control-group" name="config_valor">
-                          <div class="controls">
-                            <input type="text" id="v6hQuarto" placeholder="Valor 6 Hora" required>
-                            <span>Valor 6ª Hora</span>
-                          </div>
-                        </div>
-
-                        <!--Botões-->
-                        <div class="form-actions" name="config_valor">
-                          <div class="span8">
-                            <div class="span9">
-                              <button type="button" class="button btn btn-primary" id="SalvarConfigValores">
-                                <span class="button__icon">
-                                  <i class="fa-solid fa-floppy-disk"></i>
-                                </span>
-                                <span class="button__text2" id="botao_tabela">Salvar</span>
-                              </button>
-                              <button type="reset" class="button btn btn-danger">
-                                <span class="button__icon">
-                                  <i class="fa-solid fa-xmark"></i>
-                                </span>
-                                <span class="button__text2">Limpar</span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-
-                    </div>
-                    <!--Valores-->
-
-                    <!--Automação-->
-                    <div id="automacao" class="tab-pane fade">
-
-                      <!--Quartos-->
-                      <div class="control-group" name="">
+                      <!--Valor 1 Hora-->
+                      <div class="control-group" name="config_valor">
                         <div class="controls">
-                          <select name="" id="lista_quartos">
-                            <option hidden>Quartos</option>
-                          </select>
+                          <input type="text" id="v1hQuarto" placeholder="Valor 1 Hora" required>
+                          <span>Valor 1ª Hora</span>
                         </div>
                       </div>
 
-                      <!--Placa-->
-                      <div class="control-group" name="">
+                      <!--Valor 2 Hora-->
+                      <div class="control-group" name="config_valor">
                         <div class="controls">
-                          <select name="" id="lista_placa">
-                            <option value="" hidden>Placa</option>
-                          </select>
-                          <button type="button" class="btn btn-success" id="teste_placa">Teste Placa</button>
-                          <span id="testa_placa" style="visibility: hidden;">OK!</span>
+                          <input type="text" id="v2hQuarto" placeholder="Valor 2 Hora" required>
+                          <span>Valor 2ª Hora</span>
                         </div>
                       </div>
 
-                      <!--Relé-->
-                      <div class="control-group" name="">
+                      <!--Valor 3 Hora-->
+                      <div class="control-group" name="config_valor">
                         <div class="controls">
-                          <input type="text" id="rele" placeholder="Relé" required>
+                          <input type="text" id="v3hQuarto" placeholder="Valor 3 Hora" required>
+                          <span>Valor 3ª Hora</span>
                         </div>
                       </div>
 
-                      <!--Tabela de Automações-->
-                      <div id="quartos" class="tab-pane fade in active">
-                        <table id="relQuartos" class="table table-bordered  dataTable no-footer" role="grid">
-                          <thead>
-                            <tr role="row">
-                              <th>Quarto</th>
-                              <th>Placa</th>
-                              <th>Relé</th>
-                              <th>Ações</th>
-                          </thead>
-                          <tbody id="tabelaAutomacao"></tbody>
-                        </table>
+                      <!--Valor 4 Hora-->
+                      <div class="control-group" name="config_valor">
+                        <div class="controls">
+                          <input type="text" id="v4hQuarto" placeholder="Valor 4 Hora" required>
+                          <span>Valor 4ª Hora</span>
+                        </div>
+                      </div>
+
+                      <!--Valor 5 Hora-->
+                      <div class="control-group" name="config_valor">
+                        <div class="controls">
+                          <input type="text" id="v5hQuarto" placeholder="Valor 5 Hora" required>
+                          <span>Valor 5ª Hora</span>
+                        </div>
+                      </div>
+
+                      <!--Valor 6 Hora-->
+                      <div class="control-group" name="config_valor">
+                        <div class="controls">
+                          <input type="text" id="v6hQuarto" placeholder="Valor 6 Hora" required>
+                          <span>Valor 6ª Hora</span>
+                        </div>
                       </div>
 
                       <!--Botões-->
                       <div class="form-actions" name="config_valor">
                         <div class="span8">
                           <div class="span9">
-                            <button type="button" class="button btn btn-primary" id="salvarAuto">
+                            <button type="button" class="button btn btn-primary" id="SalvarConfigValores">
                               <span class="button__icon">
                                 <i class="fa-solid fa-floppy-disk"></i>
                               </span>
-                              <span class="button__text2" id="salvarAuto">Cadastrar</span>
+                              <span class="button__text2" id="botao_tabela">Salvar</span>
                             </button>
-                            <button type="button" class="button btn btn-danger">
+                            <button type="reset" class="button btn btn-danger">
                               <span class="button__icon">
                                 <i class="fa-solid fa-xmark"></i>
                               </span>
@@ -421,43 +354,111 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <!--Automação-->
-
-                    <!--Placa-->
-                    <div id="placa" class="tab-pane fade">
-
-                      <!--Nome-->
-                      <div class="control-group" name="">
-                        <div class="controls">
-                          <input type="text" name="" id="nome" placeholder="Nome">
-                        </div>
-                      </div>
-
-                      <!--IP-->
-                      <div class="control-group" name="">
-                        <div class="controls">
-                          <input type="text" name="" id="ip" placeholder="IP">
-                        </div>
-                      </div>
-
-                      <!--Botões-->
-                      <div class="form-actions" name="">
-                        <div class="span8">
-                          <div class="span9">
-                            <button type="button" class="button btn btn-primary" id="salvarPlaca">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                              </span>
-                              <span class="button__text2" id="">Cadastrar</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--Placa-->
+                    </form>
 
                   </div>
+                  <!--Valores-->
+
+                  <!--Automação-->
+                  <div id="automacao" class="tab-pane fade">
+
+                    <!--Quartos-->
+                    <div class="control-group" name="">
+                      <div class="controls">
+                        <select name="" id="lista_quartos">
+                          <option hidden>Quartos</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!--Placa-->
+                    <div class="control-group" name="">
+                      <div class="controls">
+                        <select name="" id="lista_placa">
+                          <option value="" hidden>Placa</option>
+                        </select>
+                        <button type="button" class="btn btn-success" id="teste_placa">Teste Placa</button>
+                        <span id="testa_placa" style="visibility: hidden;">OK!</span>
+                      </div>
+                    </div>
+
+                    <!--Relé-->
+                    <div class="control-group" name="">
+                      <div class="controls">
+                        <input type="text" id="rele" placeholder="Relé" required>
+                      </div>
+                    </div>
+
+                    <!--Tabela de Automações-->
+                    <div id="quartos" class="tab-pane fade in active">
+                      <table id="relQuartos" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Quarto</th>
+                            <th>Placa</th>
+                            <th>Relé</th>
+                            <th>Ações</th>
+                        </thead>
+                        <tbody id="tabelaAutomacao"></tbody>
+                      </table>
+                    </div>
+
+                    <!--Botões-->
+                    <div class="form-actions" name="config_valor">
+                      <div class="span8">
+                        <div class="span9">
+                          <button type="button" class="button btn btn-primary" id="salvarAuto">
+                            <span class="button__icon">
+                              <i class="fa-solid fa-floppy-disk"></i>
+                            </span>
+                            <span class="button__text2" id="salvarAuto">Cadastrar</span>
+                          </button>
+                          <button type="button" class="button btn btn-danger">
+                            <span class="button__icon">
+                              <i class="fa-solid fa-xmark"></i>
+                            </span>
+                            <span class="button__text2">Limpar</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Automação-->
+
+                  <!--Placa-->
+                  <div id="placa" class="tab-pane fade">
+
+                    <!--Nome-->
+                    <div class="control-group" name="">
+                      <div class="controls">
+                        <input type="text" name="" id="nome" placeholder="Nome">
+                      </div>
+                    </div>
+
+                    <!--IP-->
+                    <div class="control-group" name="">
+                      <div class="controls">
+                        <input type="text" name="" id="ip" placeholder="IP">
+                      </div>
+                    </div>
+
+                    <!--Botões-->
+                    <div class="form-actions" name="">
+                      <div class="span8">
+                        <div class="span9">
+                          <button type="button" class="button btn btn-primary" id="salvarPlaca">
+                            <span class="button__icon">
+                              <i class="fa-solid fa-floppy-disk"></i>
+                            </span>
+                            <span class="button__text2" id="">Cadastrar</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Placa-->
+
+                </div>
 
               </div>
             </div>
@@ -476,7 +477,7 @@
         <button type="button" name="botao" class="btn btn-warning" id="camareira_limpeza" value="">Atualizar</button>
       </form>
     </div>
-</div>
+  </div>
 </body>
 <script src="../js/jquery.js"></script>
 
@@ -508,7 +509,7 @@
 <script type="module" src="../js/configuracoes/botoes/atualizar_automacao.js"></script>
 
 
-<script  src="../js/provisoirio/teste.js"></script>
+<script src="../js/provisoirio/teste.js"></script>
 
 <script type="module" src="../js/configuracoes/insercoes/valores.js"></script>
 

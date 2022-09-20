@@ -10,8 +10,9 @@ export async function busca_cartao(){
         var metade = Math.floor(string.length / 2);
         var resultado = string.substr(0,metade)+"."+string.substr(metade);
         // Setar a porcentagem no placeholder
-        $("#cartoes").prepend(
-            `<div class="control-group" name="">`+
+        var form = document.forms.namedItem("taxa_cartoes").id
+        $(`#${form}`).prepend(
+            `<div class="control-group">`+
                 `<div class="controls">`+
                     `<input type="text" class="credito" id="${dados[i].bandeira}" placeholder="Crédito: ${resultado}">`+
                 `</div>`+
@@ -22,8 +23,9 @@ export async function busca_cartao(){
         var string = dados2[i].porcentagem
         var metade = Math.floor(string.length / 2);
         var resultado2 = string.substr(0,metade)+"."+string.substr(metade);
-        $("#cartoes").prepend(
-            `<div class="control-group" name="">`+
+        var form = document.forms.namedItem("taxa_cartoes").id
+        $(`#${form}`).prepend(
+            `<div class="control-group">`+
                 `<div class="controls">`+
                     `<input type="text" class="debito" id="${dados2[i].bandeira}" placeholder="Débito: ${resultado2}">`+
                 `</div>`+
