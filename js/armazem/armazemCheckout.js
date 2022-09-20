@@ -1,15 +1,20 @@
 import { hora_atual } from "../geradores/hora.js"
 import { link } from "../setup/index.js"
 
-$("#adicionar_produto").click(function() {
-    registroProduto()
+$(document).on("click", "#adicionar_produto", function(){
+	registroProduto()
+})
+
+$(document).on("click", "#removerProduto", function(){
+	var id = $(this).val()
+	removeProduto(id)
 })
 
 function registroProduto(){
 	var descricao = $("#descricao_produto").val()
     var quantidade = $("#quantidade_produto").val()
 	var valorTotal = $("#total_produto").val()
-    var quarto =  localStorage.getItem("quarto")
+    var quarto =  localStorage.getItem("last")
     var valorUnitario = $("#valor_unitario_produto").val()
 	var hora = hora_atual()
 	var produto = {
@@ -23,14 +28,14 @@ function registroProduto(){
 	}
 	$.post(link[5], produto,  () => {
 		alert('Produto Adicionado!')
-		mostraProduto();
+		location.reload()
     })
 	document.getElementById('produtos_checkout').reset();
 }
 
-function removeProduto(operacao){
+function removeProduto(id){
 
-	motivo = prompt('Motivo da retirada do produto:')
+	var motivo = prompt('Motivo da retirada do produto:')
 
 	if (motivo == null){
 		alert('Produto não excluido!\nÉ necessário o motivo da exclusão do produto!')
@@ -39,7 +44,7 @@ function removeProduto(operacao){
 	} else {
 		// Requisição DELETE
 		$.ajax({
-			url: link[5] + operacao,
+			url: link[5] + id + "/",
 			method: 'DELETE',
 			dataType: 'json',
 			success:  () => {
@@ -52,8 +57,8 @@ function removeProduto(operacao){
 
 function mostraProduto(){
 	$.get(link[5], (retorno) => {
-		var nQuarto =  localStorage.getItem("quarto")
-		var prateleira = document.getElementById('itensComprados');
+		var nQuarto =  localStorage.getItem("last")
+		var prateleira = document.getElementById('comanda');
 		prateleira.innerHTML = '';
 		var dados = retorno.filter(quartos => quartos.quarto == nQuarto)
 		dados.forEach( (resultado) => {
@@ -62,13 +67,12 @@ function mostraProduto(){
 			var quantidade = resultado.quantidade
 			var valorUnitario = resultado.valor_unitario
 			var valorTotal = resultado.valor_total
-
 			prateleira.innerHTML += '<tr>'+
 										'<td>'+ descricao + '</td>' +
 										'<td>'+ quantidade + '</td>' +
 										'<td>'+ valorUnitario + '</td>' +
 										'<td>'+ valorTotal + '</td>' +
-										'<td><button type="button" onclick="removeProduto('+ id +')" class="btn btn-danger">Remover</button></td>'+
+										`<td><button type="button" id="removerProduto" value="${id}" class="btn btn-danger">Remover</button></td>`+
 									'</tr>';
 		})
 	})
