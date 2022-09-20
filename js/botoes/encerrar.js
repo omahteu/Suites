@@ -19,7 +19,7 @@ $("#encerrar").click(function() {
     setTimeout( () => {limpando()}, 500)
     setTimeout( () => {
         window.close()
-    }, 800)
+    }, 600)
 })
 
 function clean(id){

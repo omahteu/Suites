@@ -17,14 +17,12 @@ export function atualizaValores(quarto) {
   buscaTabelaPrecos()
   buscaLocacoes()
 
-
   var horaLocacao = JSON.parse(sessionStorage.getItem("test"))
   var infoQuartos = JSON.parse(sessionStorage.getItem("dq"))
   var precos = JSON.parse(sessionStorage.getItem("tp"))
 
   var filtroCobranca = infoQuartos.filter(e => e.numero == quarto)
   var infos = horaLocacao.filter(e => e.quarto == quarto)
-
 
   var quantidadeHoras = filtroCobranca[0].horas_locacao
   var tipoCobranca = filtroCobranca[0].cobranca

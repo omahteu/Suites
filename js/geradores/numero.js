@@ -1,3 +1,9 @@
 export function numero(n) {
-    return n < 9 ? `0${n}` : `${n}`;
+    if (n >= 10) {
+        return n
+    } else if (n >= 1 && n <= 9) {
+        return `0${n}`
+    } else if (n == 0) {
+        return `0${n}`
+    }
 }

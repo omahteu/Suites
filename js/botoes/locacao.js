@@ -11,9 +11,7 @@ $(".locado").click(function() {
     var rota = $(this).attr('class')
     if(confirm(`DESEJA INICIAR O QUARTO ${quarto}?`) == true){
         if(quarto == "1"){
-
             var flags = modos.slice(0, 3)
-
             locado(quarto, rota,  flags[0], flags[1], flags[2])
 /*
             setTimeout( () => {
@@ -21,12 +19,9 @@ $(".locado").click(function() {
                 localStorage.setItem("luz", "ligada")
             }, 500)
 */
-            setTimeout( () => {fimModal()}, 1000)
-
             crnmtra1(quarto)
-
-            setTimeout( () => {index()}, 1500)
-
+            setTimeout( () => {fimModal()}, 100)
+            setTimeout( () => {index()}, 200)
         } else if(quarto == "2"){
             var flags = modos.slice(3, 6)
             locado(quarto, rota, flags[0], flags[1], flags[2])

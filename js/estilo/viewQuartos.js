@@ -175,8 +175,7 @@ function backupInfos(instance, x, y, z){
 				$("#numquarto").text(resultado.quarto)
 				$("#quarto_painel").text(resultado.quarto)
 				$("#entrada").text(resultado.datahora)
-				$("#valor-quarto").text(resultado.valor)
-				$("#preco_quarto").text(resultado.valor)	
+				$("#valor-quarto").text(resultado.valor)	
 			})
 		} catch (error) {
 			localStorage.setItem('produtos', JSON.stringify([]))
@@ -189,7 +188,7 @@ function backupInfos(instance, x, y, z){
 			for(var a = 0; a < dados.length; a++){
 				sum += parseFloat(dados[a].valor_total.slice(2).trim())
 			}
-			$("#consumo_painel").text(sum)
+			$("#consumo_painel").text(sum.toFixed(2))
 		})
         
     }, 500)
@@ -198,6 +197,6 @@ function backupInfos(instance, x, y, z){
 		var valor_consumo = $("#consumo_painel").text()
 		var atualizacao_preco = $("#atualizacaoPreco").text() == "" ? "0" : $("#atualizacaoPreco").text()
 		var resultado = parseFloat(valor_quarto) + parseFloat(valor_consumo) + parseFloat(atualizacao_preco)
-		$("#parcial_painel").text(resultado)
+		$("#parcial_painel").text(resultado.toFixed(2))
 	}, 670)
 }
