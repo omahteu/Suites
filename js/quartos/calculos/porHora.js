@@ -1,15 +1,15 @@
 /*
     ESSA FUNÇÃO SERVE PARA CALCULAR O VALOR DA LOCAÇÃO, CONFORME O TEMPO DECORRIDO
-*/
+                                                                                    */
 
 import { hora_atual_segundos } from "../../geradores/hora.js"
 import { link } from "../../setup/index.js"
 
-
+var caixa = []
 
 /*
     FUNÇÃO PRINCIPAL
-*/
+                      */
 export function atualizaValores(quarto) {
 
   buscaHoraLocacao()
@@ -35,6 +35,7 @@ export function atualizaValores(quarto) {
   var tempoPassado = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
 
   var tpFormatado = String(tempoPassado).split(":")
+  var adicional = precos[0].valor_adicional
 
   if (tipoCobranca == "hora") {
     let um = precos[0].vh1
@@ -73,17 +74,79 @@ export function atualizaValores(quarto) {
         default:
           break;
       }
+      if (Number(diferenca) > 7) {
+        for (const x of Array(7).keys()) {
+          var i = x + 1
+          var valoracrescentado = parseFloat(adicional) * i
+          var acrecimo = parseFloat(valor) + parseFloat(valoracrescentado)
+          $("#atualizacaoPreco").text(acrecimo)
+        }
+      }
     }
   } else if (tipoCobranca == "fixa") {
-    var fixo = precos[0].valor_locacao
-    var acrecimo = parseFloat(valor) + parseFloat(fixo)
-    $("#atualizacaoPreco").text(acrecimo)
+
+    var h = $("#hora2").text()
+    var m = $("#minuto2").text()
+    var s = $("#segundo2").text()
+    console.log(h, m, s)
+
+    //var pin = localStorage.getItem("uh")
+
+    var pinHora = Number($("#hora2").text())
+
+    //console.log(typeof pinHora)
+    //if (p)
+
+
+    if (Number(pinHora) > Number(tpFormatado[0])) {
+      var inter = Number(pin) - Number(tpFormatado[0])
+      var adicional = precos[0].valor_adicional
+      //console.log(`add | ${adicional}`)
+      //console.log(`intervalo | ${inter}`)
+      for (const x of Array(Number(inter)).keys()) {
+        var i = x + 1
+        var valoracrescentado = parseFloat(adicional) * i
+        var acrecimo = parseFloat(valor) + parseFloat(valoracrescentado)
+        console.log(acrecimo)
+        $("#atualizacaoPreco").text(acrecimo)
+      }
+      localStorage.setItem("uh", tpFormatado[0])
+    }
+
+
+
+
+
+
+    /*
+        if (Number(hora) > 3){
+    
+          var inter = Number(hora) - 3
+    
+          var fixo = precos[0].valor_locacao
+          var adicional = precos[0].valor_adicional
+    
+          for (const x of Array(Number(inter)).keys()) {
+            var i = x + 1
+    
+            var valoracrescentado = parseFloat(adicional) * i
+    
+            var acrecimo = parseFloat(valor) + parseFloat(valoracrescentado)
+            
+          }
+          console.log(acrecimo)
+          $("#atualizacaoPreco").text(acrecimo)
+          //caixa.push(acrecimo)
+          //console.log(caixa)
+        }
+        */
+
   }
 }
 
 /*
     FUNÇÕES COMPLEMENTARES
-*/
+                            */
 
 function buscaHoraLocacao() {
   $.get(link[11], (e) => {

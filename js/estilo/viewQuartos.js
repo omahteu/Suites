@@ -196,7 +196,7 @@ function backupInfos(instance, x, y, z){
 		var valor_quarto = $("#valor-quarto").text()
 		var valor_consumo = $("#consumo_painel").text()
 		var atualizacao_preco = $("#atualizacaoPreco").text() == "" ? "0" : $("#atualizacaoPreco").text()
-		var resultado = parseFloat(valor_quarto) + parseFloat(valor_consumo) + parseFloat(atualizacao_preco)
+		var resultado = parseFloat(valor_consumo) + parseFloat(atualizacao_preco)
 		$("#parcial_painel").text(resultado.toFixed(2))
 	}, 670)
 }

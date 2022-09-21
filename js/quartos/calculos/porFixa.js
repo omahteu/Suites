@@ -77,6 +77,9 @@ export function atualizaValores(quarto) {
       }
     }
   } else if (tipoCobranca == "fixa") {
+
+    console.log(tpFormatado)
+
     var fixo = precos[0].valor_locacao
     var acrecimo = parseFloat(valor) + parseFloat(fixo)
     $("#atualizacaoPreco").text(acrecimo)
