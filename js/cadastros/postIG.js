@@ -1,7 +1,7 @@
 import { link } from "../setup/index.js"
 
 $("#salvarFormPostIg").click(function() {
-
+    let id_ig = "1"
     let social = $("#razaoSocialIg").val() == "" ? $("#razaoSocialIg").attr("placeholder") : $("#razaoSocialIg").val() 
     let fantasia = $("#nomeFantasiaIg").val() == "" ? $("#nomeFantasiaIg").attr("placeholder") : $("#nomeFantasiaIg").val()
     let cnpj = $("#cnpjIg").val() == "" ? $("#cnpjIg").attr("placeholder") : $("#cnpjIg").val()
@@ -24,11 +24,13 @@ $("#salvarFormPostIg").click(function() {
         telefone2: telefone2,
         telefone3: telefone3
     }
-
-    $.post(link[10], dados, () => {
-        alert("Informações Registradas!")
-        document.getElementById('formCadastros').reset()
+    $.ajax({
+        url: link[10] + id_ig + "/",
+        type: "PUT",
+        dataType: "json",
+        data: dados,
+        success:  () => {
+            alert("Atualizado")
+        }
     })
-
 })
-

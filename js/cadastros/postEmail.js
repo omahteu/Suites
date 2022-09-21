@@ -1,14 +1,15 @@
 import { link } from "../setup/index.js"
 
 $("#salvarFormPostEmail").click(function() {
-    let usuario = $("#usuarioEmail").val()
-    let senha = $("#senhaEmail").val()
-    let smtp = $("#smtpEmail").val()
-    let porta = $("#portaEmail").val()
-    let timeout = $("#timeoutEmail").val()
-    let destino = $("#emailDestinoEmail").val()
-    let contabilidade = $("#emailContabilidadeEmail").val()
-    let gridCheck = $("#autenticacaoEmail").val()
+    let id_email = "1"
+    let usuario = $("#usuarioEmail").val() == "" ? $("#usuarioEmail").attr("placeholder") : $("#usuarioEmail").val()
+    let senha = $("#senhaEmail").val() == "" ? $("#senhaEmail").attr("placeholder") : $("#senhaEmail").val()
+    let smtp = $("#smtpEmail").val() == "" ? $("#smtpEmail").attr("placeholder") : $("#smtpEmail").val()
+    let porta = $("#portaEmail").val() == "" ? $("#portaEmail").attr("placeholder") : $("#portaEmail").val()
+    let timeout = $("#timeoutEmail").val() == "" ? $("#timeoutEmail").attr("placeholder") : $("#timeoutEmail").val()
+    let destino = $("#emailDestinoEmail").val() == "" ? $("#emailDestinoEmail").attr("placeholder") : $("#emailDestinoEmail").val()
+    let contabilidade = $("#emailContabilidadeEmail").val() == "" ? $("#emailContabilidadeEmail").attr("placeholder") : $("#emailContabilidadeEmail").val()
+    let gridCheck = $("#autenticacaoEmail").val() == "" ? $("#autenticacaoEmail").attr("placeholder") : $("#autenticacaoEmail").val()
     let dados = {
         usuario: usuario,
         senha: senha,
@@ -19,13 +20,13 @@ $("#salvarFormPostEmail").click(function() {
         email_contabilidade: contabilidade,
         autenticacao: gridCheck
     }
-
-    $.post(link[9], dados,  () => {
-        alert("Email Registrado!")
-        document.getElementById('formCadastros').reset()
+    $.ajax({
+        url: link[9] + id_email + "/",
+        type: "PUT",
+        dataType: "json",
+        data: dados,
+        success:  () => {
+            alert("Atualizado")
+        }
     })
-})
-
-$("#limparFormPostEmail").click(function() {
-    document.getElementById('formCadastros').reset()
 })
