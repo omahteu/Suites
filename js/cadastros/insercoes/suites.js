@@ -19,8 +19,6 @@ $(document).on("click", "#salvarSuites", () => {
     let suiteNumero = nu + 1
     let suiteNome = $("#suiteNome").val()
     let suiteHorasLocacao = $("#suiteHorasLocacao").val()
-    let suiteTempoEspecial = $("#suiteTempoEspecial").val()
-    let suiteTempoAdicional = $("#suiteTempoAdicional").val()
     let suiteTolerancia = $("#suiteTolerancia").val()
     let suiteCobranca = $("#suiteCobranca").val()
     let suiteExcedente = $("#suiteExcedente").val()
@@ -29,8 +27,6 @@ $(document).on("click", "#salvarSuites", () => {
         numero: suiteNumero,
         nome: suiteNome,
         horas_locacao: suiteHorasLocacao,
-        tempo_especial: suiteTempoEspecial,
-        tempo_adicional: suiteTempoAdicional,
         tolerancia: suiteTolerancia,
         cobranca: suiteCobranca,
         excedente: suiteExcedente

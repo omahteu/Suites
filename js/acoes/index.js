@@ -142,12 +142,12 @@ export function reacao(status, id){
         }, 200)
         setTimeout( () => {fimModal()}, 500)
         setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 600)
-        /*
+
         setTimeout( () => {
             desligar_luz(quarto)
             localStorage.setItem("luz", "desligada")
         }, 650)
-        */
+
         setTimeout( () => {ultima_limpeza(quarto)}, 800)
     } else if(status == "Apagar Luz"){
         $("#botao_inferior_tres").val("Ligar Luz")

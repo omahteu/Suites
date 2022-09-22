@@ -15,12 +15,27 @@ export async function ver_tabela_tempos(){
 export function seleciona_tempo(){
     $("#escolhe_tempo").change(function() {
         var option = $(this).find(":selected").text()
+        
+
+        var card = document.forms.namedItem("formTempo")[1]
+
+        console.log(card)
+
+
+
+
         if(option == "Troca de Quarto"){
+
+            $(card).attr("placeholder", "Casa").removeAttr("style")
+            //console.log(card)
+            
+            /*
             $("#tempo_troca_quarto").css("display", "inline-block")
             $("#tempo_desistencia").css("display", "none")
             $("#tempo_limpeza").css("display", "none")
             $("#tempo_faxina").css("display", "none")
             $("#tempo_manutencao").css("display", "none")
+            */
         } else if(option == "Desistência"){
             $("#tempo_troca_quarto").css("display", "none")
             $("#tempo_desistencia").css("display", "inline-block")
@@ -46,5 +61,6 @@ export function seleciona_tempo(){
             $("#tempo_faxina").css("display", "none")
             $("#tempo_manutencao").css("display", "inline-block")
         }
+
     })
 }

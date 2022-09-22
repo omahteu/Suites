@@ -9,6 +9,5 @@ async function numero_quartos(){
     const dados = await resposta.json()
     dados.forEach(elemento => {
         $('#lista_quartos').append(`<option value="${elemento.numero}" >${elemento.numero}</option>`)
-
     });
 }

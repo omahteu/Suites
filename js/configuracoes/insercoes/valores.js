@@ -2,8 +2,6 @@ import { link } from "../../setup/index.js"
 
 $(document).on("click", "#SalvarConfigValores", () => {
     var valorLocacao = $("#valorLocacaoQuarto").val()
-    var valorEspecial = $("#valorEspecialQuarto").val()
-    var valorHoraAdicional = $("#valorHoraAdicionalQuarto").val()
     var valor1hora = $("#v1hQuarto").val()
     var valor2hora = $("#v2hQuarto").val()
     var valor3hora = $("#v3hQuarto").val()
@@ -16,8 +14,6 @@ $(document).on("click", "#SalvarConfigValores", () => {
         dataType: 'json',
         data: {
             valor_locacao: valorLocacao == "" || isNaN(valorLocacao) == true ? $("#valorLocacaoQuarto").attr('placeholder') : valorLocacao,
-            valor_especial: valorEspecial == "" || isNaN(valorEspecial) == true ? $("#valorEspecialQuarto").attr('placeholder') : valorEspecial,
-            valor_adicional: valorHoraAdicional == "" || isNaN(valorHoraAdicional) == true ? $("#valorHoraAdicionalQuarto").attr('placeholder') : valorHoraAdicional,
             vh1: valor1hora == "" || isNaN(valor1hora) == true ? $("#v1hQuarto").attr('placeholder') : valor1hora,
             vh2: valor2hora == "" || isNaN(valor2hora) == true ? $("#v2hQuarto").attr('placeholder') : valor2hora,
             vh3: valor3hora == "" || isNaN(valor3hora) == true ? $("#v3hQuarto").attr('placeholder') : valor3hora,

@@ -14,7 +14,8 @@ export async function busca_cartao(){
         $(`#${form}`).prepend(
             `<div class="control-group">`+
                 `<div class="controls">`+
-                    `<input type="text" class="credito" id="${dados[i].bandeira}" placeholder="Crédito: ${resultado}">`+
+                    `<input type="text" class="credito" id="${dados[i].bandeira}" placeholder="${resultado}%">`+
+                    `<span>${dados[i].bandeira} | Débito</span>`+
                 `</div>`+
             `</div>`
         )
@@ -27,7 +28,8 @@ export async function busca_cartao(){
         $(`#${form}`).prepend(
             `<div class="control-group">`+
                 `<div class="controls">`+
-                    `<input type="text" class="debito" id="${dados2[i].bandeira}" placeholder="Débito: ${resultado2}">`+
+                    `<input type="text" class="debito" id="${dados2[i].bandeira}" placeholder="${resultado2}%">`+
+                    `<span>${dados[i].bandeira} | Crédito</span>`+
                 `</div>`+
             `</div>`
         )
