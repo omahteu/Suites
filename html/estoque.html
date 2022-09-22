@@ -61,81 +61,45 @@
                   </li>
                 </ul>
 
-                <form class="form-horizontal" id="formEstoque">
-                  <div class="widget-content nopadding tab-content">
-                    <!-- Produtos -->
-                    <div id="cadastros" class="tab-pane fade in active">
+                <div class="widget-content nopadding tab-content">
+                  <!-- Produtos -->
+                  <div id="cadastros" class="tab-pane fade in active">
 
-
+                    <form action="" method="post" class="form-horizontal" id="formCadastroProdutos">
 
                       <!--Código-->
-                      <div class="control-group" name="codProdutos"> 
+                      <div class="control-group"> 
                         <div class="controls"> 
                           <input type="text" id="codigoProduto" placeholder="Código"> 
                         </div>
                       </div>
 
-                      <div class="control-group" name="codProdutos"> 
-                        <div class="controls"> 
-                          <h5 class="texto_produto" id="descricaoProduto"></h5>
-                        </div>
-                      </div>
+                    </form>
 
-
-                      <div class="control-group" name="codProdutos"> 
-                        <div class="controls"> 
-                          <h5 class="texto_produto" id="valorUnitarioProduto"></h5>
-                        </div>
-                      </div>
-
-                      <div class="control-group" name="codProdutos"> 
-                        <div class="controls"> 
-                          <h5 class="texto_produto" id="categoriaProduto"></h5>
-                        </div>
-                      </div>
-
-                      <!--Ação-->
-                      <div class="control-group" name="codProdutos"> 
-                        <div class="controls"> 
-                          <select name="" id="acao_movimentacao">
-                            <option value="" hidden>Ação</option>
-                            <option value="entrada">Entrada</option>
-                            <option value="saida">Saída</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div class="control-group" name="codProdutos"> 
-                        <div class="controls"> 
-                          <input type="text" id="quantidadeProduto" placeholder="Quantidade"> 
-                        </div>
-                      </div>
-
-
-
-                      <!--Botões-->
-                      <div class="form-actions" name="codProdutos">
-                        <div class="span8">
-                          <div class="span9"> 
-                            <button type="button" class="button btn btn-primary" id="BuscaInfoProduto"> 
-                              <span class="button__icon">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                              </span>
-                              <span class="button__text2">Buscar</span>
-                            </button>
-                            <button type="button" class="button btn btn-warning" id="SalvarMovimentoEstoque"> 
-                              <span class="button__icon">
-                                <i class="fa-solid fa-xmark"></i>
-                              </span>
-                              <span class="button__text2">Salvar</span>
-                            </button>   
-                          </div>
+                    <!--Botões-->
+                    <div class="form-actions" name="codProdutos">
+                      <div class="span8">
+                        <div class="span9"> 
+                          <button type="button" class="button btn btn-primary" id="BuscaInfoProduto"> 
+                            <span class="button__icon">
+                              <i class="fa-solid fa-floppy-disk"></i>
+                            </span>
+                            <span class="button__text2">Buscar</span>
+                          </button>
+                          <button type="button" class="button btn btn-warning" id="SalvarMovimentoEstoque"> 
+                            <span class="button__icon">
+                              <i class="fa-solid fa-xmark"></i>
+                            </span>
+                            <span class="button__text2">Salvar</span>
+                          </button>   
                         </div>
                       </div>
                     </div>
+                  </div>
 
-                    <!-- Relatório de Produtos -->
-                    <div id="relatorios" class="tab-pane fade">
+                  <!-- Relatório de Produtos -->
+                  <div id="relatorios" class="tab-pane fade">
+                    <div class="table-responsive">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
                           <tr role="row">
@@ -150,24 +114,25 @@
                         <tbody id="tabelaEstoque"></tbody>
                       </table>
                     </div>
-
-                    <!--Histórico Movimentações-->
-                    <div id="historico" class="tab-pane fade">
-                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
-                        <thead>
-                          <tr role="row">
-                            <th>Data</th>
-                            <th>Código</th>
-                            <th>Tipo</th>
-                            <th>Quantidade</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tabelaHistoricoMovimentacoes"></tbody>
-                      </table>
-                    </div>
-
                   </div>
-                </form>
+
+                  <!--Histórico Movimentações-->
+                  <div id="historico" class="tab-pane fade table-responsive">
+                    <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                      <thead>
+                        <tr role="row">
+                          <th>Data</th>
+                          <th>Código</th>
+                          <th>Tipo</th>
+                          <th>Quantidade</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tabelaHistoricoMovimentacoes"></tbody>
+                    </table>
+                  </div>
+
+                </div>
+
               </div>
             </div>
           </div>
