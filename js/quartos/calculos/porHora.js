@@ -26,6 +26,7 @@ export function atualizaValores(quarto) {
 
   var quantidadeHoras = filtroCobranca[0].horas_locacao
   var tipoCobranca = filtroCobranca[0].cobranca
+  var tolerancia = filtroCobranca[0].tolerancia
   var datahoraLocacao = infos[0].datahora
   var agora = hora_atual_segundos()
   var valor = infos[0].valor
@@ -35,7 +36,9 @@ export function atualizaValores(quarto) {
   var tempoPassado = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
 
   var tpFormatado = String(tempoPassado).split(":")
-  var adicional = precos[0].valor_adicional
+  var locacao = precos[0].valor_locacao
+  var horaLocada = tpFormatado[0]
+  var minutoLocado = tpFormatado[1]
 
   if (tipoCobranca == "hora") {
     let um = precos[0].vh1
@@ -44,8 +47,8 @@ export function atualizaValores(quarto) {
     let quatro = precos[0].vh4
     let cinco = precos[0].vh5
     let seis = precos[0].vh6
-    if (Number(tpFormatado[0]) > Number(quantidadeHoras)) {
-      var diferenca = Number(tpFormatado[0]) - Number(quantidadeHoras)
+    if (parseInt(horaLocada) > parseInt(quantidadeHoras) && parseInt(minutoLocado) > parseInt(tolerancia)) {
+      var diferenca = parseInt(horaLocada) - Number(quantidadeHoras)
       switch (Number(diferenca)) {
         case 1:
           var acrecimo = Number(valor) + Number(um)
@@ -77,70 +80,18 @@ export function atualizaValores(quarto) {
       if (Number(diferenca) > 7) {
         for (const x of Array(7).keys()) {
           var i = x + 1
-          var valoracrescentado = parseFloat(adicional) * i
+          var valoracrescentado = parseFloat(locacao) * i
           var acrecimo = parseFloat(valor) + parseFloat(valoracrescentado)
           $("#atualizacaoPreco").text(acrecimo)
         }
       }
     }
   } else if (tipoCobranca == "fixa") {
-
-    var h = $("#hora2").text()
-    var m = $("#minuto2").text()
-    var s = $("#segundo2").text()
-    console.log(h, m, s)
-
-    //var pin = localStorage.getItem("uh")
-
-    var pinHora = Number($("#hora2").text())
-
-    //console.log(typeof pinHora)
-    //if (p)
-
-
-    if (Number(pinHora) > Number(tpFormatado[0])) {
-      var inter = Number(pin) - Number(tpFormatado[0])
-      var adicional = precos[0].valor_adicional
-      //console.log(`add | ${adicional}`)
-      //console.log(`intervalo | ${inter}`)
-      for (const x of Array(Number(inter)).keys()) {
-        var i = x + 1
-        var valoracrescentado = parseFloat(adicional) * i
-        var acrecimo = parseFloat(valor) + parseFloat(valoracrescentado)
-        console.log(acrecimo)
-        $("#atualizacaoPreco").text(acrecimo)
-      }
-      localStorage.setItem("uh", tpFormatado[0])
+    console.log(`${horaLocada} | ${minutoLocado}`)
+    if (parseInt(horaLocada) >= 1 && parseInt(minutoLocado) > parseInt(tolerancia)){
+      var resultado = parseInt(horaLocada) * parseFloat(locacao)
+      $("#atualizacaoPreco").text(resultado.toFixed(2))
     }
-
-
-
-
-
-
-    /*
-        if (Number(hora) > 3){
-    
-          var inter = Number(hora) - 3
-    
-          var fixo = precos[0].valor_locacao
-          var adicional = precos[0].valor_adicional
-    
-          for (const x of Array(Number(inter)).keys()) {
-            var i = x + 1
-    
-            var valoracrescentado = parseFloat(adicional) * i
-    
-            var acrecimo = parseFloat(valor) + parseFloat(valoracrescentado)
-            
-          }
-          console.log(acrecimo)
-          $("#atualizacaoPreco").text(acrecimo)
-          //caixa.push(acrecimo)
-          //console.log(caixa)
-        }
-        */
-
   }
 }
 
@@ -148,24 +99,28 @@ export function atualizaValores(quarto) {
     FUNÇÕES COMPLEMENTARES
                             */
 
+// INFOS => test
 function buscaHoraLocacao() {
   $.get(link[11], (e) => {
     sessionStorage.setItem("test", JSON.stringify(e))
   })
 }
 
+// QUARTOS => dq
 function buscaDadosQuarto() {
   $.get(link[17], (e) => {
     sessionStorage.setItem("dq", JSON.stringify(e))
   })
 }
 
+// VALORES => tp
 function buscaTabelaPrecos() {
   $.get(link[21], (e) => {
     sessionStorage.setItem("tp", JSON.stringify(e))
   })
 }
 
+// INFOS => bl
 function buscaLocacoes() {
   $.get(link[11], (e) => {
     sessionStorage.setItem("bl", JSON.stringify(e))
