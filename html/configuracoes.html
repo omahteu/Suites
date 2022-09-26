@@ -57,36 +57,40 @@
                 <ul class="nav nav-tabs">
                   <!--Tempo-->
                   <li class="active">
-                    <a data-toggle="tab" href="#tempo">Tempo</a>
+                    <a data-toggle="tab" href="#automacao">Automação</a>
                   </li>
                   <!--Pernoite-->
                   <li>
-                    <a data-toggle="tab" href="#pernoite">Pernoite</a>
+                    <a data-toggle="tab" href="#cartao">Cartão</a>
                   </li>
                   <!--Cartões-->
                   <li>
-                    <a data-toggle="tab" href="#cartoes">Cartões</a>
+                    <a data-toggle="tab" href="#email">Email</a>
                   </li>
                   <!--Valores-->
                   <li>
-                    <a data-toggle="tab" href="#valores">Valores</a>
+                    <a data-toggle="tab" href="#ig">Informações Gerais</a>
                   </li>
                   <!--Automação-->
                   <li>
-                    <a data-toggle="tab" href="#automacao">Automação</a>
+                    <a data-toggle="tab" href="#pernoite">Pernoite</a>
                   </li>
-                  <!--Placa-->
+                  <!--Informações Gerais-->
                   <li>
-                    <a data-toggle="tab" href="#placa">Placa</a>
+                    <a data-toggle="tab" href="#tempo">Tempo</a>
+                  </li>
+                  <!--Email-->
+                  <li>
+                    <a data-toggle="tab" href="#valor">Valor</a>
                   </li>
                 </ul>
 
                 <div class="widget-content nopadding tab-content">
 
                   <!-- Tempo -->
-                  <div id="tempo" class="tab-pane fade in active">
+                  <div id="tempo" class="tab-pane fade">
 
-                    <form action="" class="form-horizontal" name="formTempo" id="formTempo">
+                    <form action="" method="post" class="form-horizontal" name="formTempo" id="formTempo">
                       
                       <!--Select-->
                       <div class="control-group">
@@ -117,7 +121,7 @@
                             <span class="button__icon">
                               <i class="fa-solid fa-floppy-disk"></i>
                             </span>
-                            <span class="button__text2">Atualizar</span>
+                            <span class="button__text2">Salvar Alterações</span>
                           </button>
                         </div>
                       </div>
@@ -156,7 +160,7 @@
                   <!-- Pernoite -->
 
                   <!-- Cartões -->
-                  <div id="cartoes" class="tab-pane fade">
+                  <div id="cartao" class="tab-pane fade">
 
                     <form action="" method="post" class="form-horizontal" id="taxa_cartoes">
 
@@ -184,7 +188,7 @@
                   <!-- Cartões -->
 
                   <!--Valores-->
-                  <div id="valores" class="tab-pane fade">
+                  <div id="valor" class="tab-pane fade">
 
                     <form action="" method="post" class="form-horizontal">
                       <!--Valor Locação-->
@@ -251,7 +255,7 @@
                               <span class="button__icon">
                                 <i class="fa-solid fa-floppy-disk"></i>
                               </span>
-                              <span class="button__text2" id="botao_tabela">Salvar</span>
+                              <span class="button__text2" id="botao_tabela">Salvar Alterações</span>
                             </button>
                             <button type="reset" class="button btn btn-danger">
                               <span class="button__icon">
@@ -268,39 +272,12 @@
                   <!--Valores-->
 
                   <!--Automação-->
-                  <div id="automacao" class="tab-pane fade">
+                  <div id="automacao" class="tab-pane fade in active">
 
                     <form action="" method="post" class="form-horizontal">
 
-                      <!--Quartos-->
-                      <div class="control-group">
-                        <div class="controls">
-                          <select name="" id="lista_quartos">
-                            <option hidden>Quartos</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <!--Placa-->
-                      <div class="control-group">
-                        <div class="controls">
-                          <select name="" id="lista_placa">
-                            <option value="" hidden>Placa</option>
-                          </select>
-                          <button type="button" class="btn btn-success" id="teste_placa">Teste Placa</button>
-                          <span id="testa_placa" style="visibility: hidden;">OK!</span>
-                        </div>
-                      </div>
-
-                      <!--Relé-->
-                      <div class="control-group">
-                        <div class="controls">
-                          <input type="text" id="rele" placeholder="Relé" required>
-                        </div>
-                      </div>
-
                       <!--Tabela de Automações-->
-                      <div id="quartos" class="tab-pane fade in active">
+                      <div id="" class="tab-pane fade in active">
                         <table id="relQuartos" class="table table-bordered  dataTable no-footer" role="grid">
                           <thead>
                             <tr role="row">
@@ -313,75 +290,213 @@
                         </table>
                       </div>
 
-                      <!--Botões-->
-                      <div class="form-actions">
-                        <div class="span8">
-                          <div class="span9">
-                            <button type="button" class="button btn btn-primary" id="salvarAuto">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                              </span>
-                              <span class="button__text2" id="salvarAuto">Cadastrar</span>
-                            </button>
-                            <button type="reset" class="button btn btn-danger">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-xmark"></i>
-                              </span>
-                              <span class="button__text2">Limpar</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
                     </form>
 
                   </div>
                   <!--Automação-->
 
-                  <!--Placa-->
-                  <div id="placa" class="tab-pane fade">
+                  <!-- Informações Gerais -->
+                  <div id="ig" class="tab-pane fade">
 
                     <form action="" method="post" class="form-horizontal">
-
-                      <!--Nome-->
-                      <div class="control-group">
+                        <!--Campo Razão Social-->
+                        <div class="control-group">
                         <div class="controls">
-                          <input type="text" name="" id="nome" placeholder="Nome" required>
+                            <input type="text" id="razaoSocialIg" placeholder="Razão Social">
+                            <span>Razão Social</span>
                         </div>
-                      </div>
+                        </div>
 
-                      <!--IP-->
-                      <div class="control-group">
+                        <!--Campo Nome Fantasia-->
+                        <div class="control-group">
                         <div class="controls">
-                          <input type="text" name="" id="ip" placeholder="IP" required>
+                            <input type="text" id="nomeFantasiaIg" placeholder="Nome Fantasia">
+                            <span>Nome Fantasia</span>
                         </div>
-                      </div>
+                        </div>
 
-                      <!--Botões-->
-                      <div class="form-actions">
+                        <!--Campo CNPJ-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="cnpjIg" placeholder="CNPJ">
+                            <span>CNPJ</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Cidade-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="cidadeIg" placeholder="Cidade">
+                            <span>Cidade</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Endereço-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="enderecoIg" placeholder="Endereço">
+                            <span>Endereço</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Número-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="numeroIg" placeholder="Número">
+                            <span>Número</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Bairro-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="bairroIg" placeholder="Bairro">
+                            <span>Bairro</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Telefone-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="telefoneIg" placeholder="Telefone">
+                            <span>Telefone</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Telefone 2-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="telefone2Ig" placeholder="Telefone 2">
+                            <span>Telefone 2</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Telefone 3-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="telefone3Ig" placeholder="Telefone 3">
+                            <span>Telefone 3</span>
+                        </div>
+                        </div>
+
+                        <!--Botões-->
+                        <div class="form-actions">
                         <div class="span8">
-                          <div class="span9">
-                            <button type="button" class="button btn btn-primary" id="salvarPlaca">
-                              <span class="button__icon">
+                            <div class="span9">
+                            <button type="submit" class="button btn btn-primary" id="salvarFormPostIg">
+                                <span class="button__icon">
                                 <i class="fa-solid fa-floppy-disk"></i>
-                              </span>
-                              <span class="button__text2" id="">Cadastrar</span>
+                                </span>
+                                <span class="button__text2">Salvar Alterações</span>
                             </button>
                             <button type="reset" class="button btn btn-danger">
-                              <span class="button__icon">
+                                <span class="button__icon">
                                 <i class="fa-solid fa-xmark"></i>
-                              </span>
-                              <span class="button__text2">Limpar</span>
+                                </span>
+                                <span class="button__text2">Limpar</span>
                             </button>
-                          </div>
+                            </div>
                         </div>
-                      </div>
-
+                        </div>
                     </form>
 
+                  </div>
+                  <!-- Informações Gerais -->
+
+                  <!-- Email -->
+                  <div id="email" class="tab-pane fade">
+
+                    <form action="" method="post" class="form-horizontal">
+                        <!--Campo Email-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="usuarioEmail" placeholder="Usuário">
+                            <span>Usuário</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Senha-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="senhaEmail" placeholder="Senha">
+                            <span>Senha</span>
+                        </div>
+                        </div>
+
+                        <!--Campo SMTP-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="smtpEmail" placeholder="SMTP">
+                            <span>SMTP</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Porta-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="portaEmail" placeholder="Porta">
+                            <span>Porta</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Timeout-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="timeoutEmail" placeholder="Timeout (segundos)">
+                            <span>Timeout</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Email Destino-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="emailDestinoEmail" placeholder="Email Destino">
+                            <span>Email Destino</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Email Contabilidade-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <input type="text" id="emailContabilidadeEmail" placeholder="Email Contabilidade">
+                            <span>Email Contabilidade</span>
+                        </div>
+                        </div>
+
+                        <!--Campo Adicionar Percentual-->
+                        <div class="control-group">
+                        <div class="controls">
+                            <select name="" id="autenticacaoEmail">
+                            <option hidden>Requer Autênticação</option>
+                            <option value="sim">Sim</option>
+                            <option value="nao">Não</option>
+                            </select>
+                        </div>
+                        </div>
+
+                        <!--Botões-->
+                        <div class="form-actions" name="cadEmail">
+                        <div class="span8">
+                            <div class="span9">
+                            <button type="submit" class="button btn btn-primary" id="salvarFormPostEmail">
+                                <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                </span>
+                                <span class="button__text2">Salvar Alterações</span>
+                            </button>
+                            <button type="reset" class="button btn btn-danger">
+                                <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                                </span>
+                                <span class="button__text2">Limpar</span>
+                            </button>
+                            </div>
+                        </div>
+                        </div>
+                    </form>
 
                   </div>
-                  <!--Placa-->
+                  <!-- Email -->
 
                 </div>
               </div>
