@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/matrix-style.css">
   <link rel="stylesheet" href="../css/matrix-media.css">
+  <link rel="stylesheet" href="../css/sangria.css">
 
 </head>
 
@@ -59,42 +60,49 @@
                   </li>
                 </ul>
 
-                <form class="form-horizontal" id="formCadastros">
+                
                   <div class="widget-content nopadding tab-content">
+
+                    <!--Campo Código-->
+                    <div class="control-group">
+                      <div class="controls">
+                        <h3>Valor em Caixa: R$ <span id="valor_emcaixa">0</span></h3>
+                      </div>
+                    </div>
 
                     <!--Sangria-->
                     <div id="sangria" class="tab-pane fade in active">
 
-                      <!--Campo Código-->
-                      <div class="control-group" name="">
-                        <div class="controls">
-                          <h3>Valor em Caixa: R$ <span id="valor_emcaixa">0</span></h3>
-                        </div>
-                      </div>
 
-                      <!--Campo retirada-->
-                      <div class="control-group" name="">
-                        <div class="controls">
-                          <input type="text" id="retirada" placeholder="Valor Retirado">
-                        </div>
-                      </div>
-
-                      <!--Botões-->
-                      <div class="form-actions" name="">
-                        <div class="span8">
-                          <div class="span9">
-                            <button type="button" class="button btn btn-primary" id="retirarSangria">
-                              <span class="button__icon">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                              </span>
-                              <span class="button__text2">Retirar</span>
-                            </button>
+                      <form action="" method="post" class="form-horizontal">
+                        <!--Campo retirada-->
+                        <div class="control-group sangria">
+                          <div class="controls">
+                            <input type="text" id="retirada" placeholder="Valor Retirado">
                           </div>
                         </div>
-                      </div>
+
+                        <!--Botões-->
+                        <div class="form-actions sangria">
+                          <div class="span8">
+                            <div class="span9">
+                              <button type="button" class="button btn btn-primary" id="retirarSangria">
+                                <span class="button__icon">
+                                  <i class="fa-solid fa-floppy-disk"></i>
+                                </span>
+                                <span class="button__text2">Retirar</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+
+
+
+
                     </div>
                   </div>
-                </form>
+                
               </div>
             </div>
           </div>
@@ -114,6 +122,8 @@
 
 
 <script type="module" src="../js/caixa/sangria/sangria.js"></script>
+<script type="module" src="../js/caixa/read/caixa.js"></script>
+<script type="module" src="../js/caixa/updat/sangria.js"></script>
 
 
 

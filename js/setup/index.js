@@ -29,7 +29,9 @@ export var link = [
     "https://demomotelapi.herokuapp.com/automacao/",
     "https://demomotelapi.herokuapp.com/placa/",
     "https://demomotelapi.herokuapp.com/categorias/",
-    "https://demomotelapi.herokuapp.com/receita/"
+    "https://demomotelapi.herokuapp.com/receita/",
+    "https://demomotelapi.herokuapp.com/teto/",
+    "https://demomotelapi.herokuapp.com/sangria/"
 ]
 
 /*
@@ -64,4 +66,6 @@ export var link = [
 28: PLACAS
 29: CATEGORIAS
 30: RECEITA
+31: TETO
+32: SANGRIA
 */
