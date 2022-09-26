@@ -60,22 +60,6 @@
                 </div>
                 <div class="widget-content" id="relatorios_rapidos">
 
-                  <!--PE Auditoria-->
-                  <ul style="flex-direction: row;" class="site-stats">
-                    <li style="width: 200px;">
-                      <a id="p_auditoria">
-                        <i class="fa-regular fa-file-pdf"></i>
-                        <small>Auditorias | PDF</small>
-                      </a>
-                    </li>
-                    <li style="width: 200px;">
-                      <a id="e_auditoria">
-                        <i class="fa-regular fa-file-excel"></i>
-                        <small>Auditorias | EXCEL</small>
-                      </a>
-                    </li>
-                  </ul>
-
                   <!--PE Camareiras-->
                   <ul style="flex-direction: row;" class="site-stats">
                     <li style="width: 200px;">
@@ -170,9 +154,6 @@
                 <ul class="nav nav-tabs">
 
                   <li class="active">
-                    <a data-toggle="tab" href="#auditoria">Auditorias</a>
-                  </li>
-                  <li>
                     <a data-toggle="tab" href="#camareiras">Camareiras</a>
                   </li>
                   <li>
@@ -210,7 +191,7 @@
                     </div>
 
                     <!-- Relatório de Camareiras -->
-                    <div id="camareiras" class="tab-pane fade tabRelatorios">
+                    <div id="camareiras" class="tab-pane fade tabRelatorios in active">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
                           <tr role="row">
@@ -251,29 +232,6 @@
                           </tr>
                         </thead>
                         <tbody id="tabelaRelatorioCartoes"></tbody>
-                      </table>
-                    </div>
-
-                    <!--Auditoria-->
-                    <div id="auditoria" class="tab-pane fade tabRelatorios in active">
-                      <div class="control-group" id="relAuditoria"> 
-                        <div class="controls"> 
-                          <select id="selectUsuarios">
-                            <option value="" hidden>Usuário</option>
-                          </select>
-                          <input type="date" name="" id="data_relatorio">
-                          <button type="button" class="btn btn-primary" id="mostrarRelatorio">Mostrar</button>
-                        </div>
-                      </div>
-                      <table id="relAuditoria" class="table table-bordered  dataTable no-footer" role="grid">
-                        <thead>
-                          <tr role="row">
-                            <th>Data</th>
-                            <th>Usuário</th>
-                            <th>Ativo</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tabelaRelatorioAuditoria"></tbody>
                       </table>
                     </div>
 
@@ -335,14 +293,12 @@
 
     <script type="module" src="../js/cadastros/postAuditoria.js"></script>
 
-    <script type="module" src="../js/baixar/pdf/auditorias.js"></script>
     <script type="module" src="../js/baixar/pdf/camareiras.js"></script>
     <script type="module" src="../js/baixar/pdf/cartoes.js"></script>
     <script type="module" src="../js/baixar/pdf/ocupacoes.js"></script>
     <script type="module" src="../js/baixar/pdf/sangrias.js"></script>
     <script type="module" src="../js/baixar/pdf/suites.js"></script>
 
-    <script src="../js/baixar/excel/auditorias.js"></script>
     <script src="../js/baixar/excel/camareiras.js"></script>
     <script src="../js/baixar/excel/cartoes.js"></script>
     <script src="../js/baixar/excel/ocupacoes.js"></script>

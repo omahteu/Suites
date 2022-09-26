@@ -143,7 +143,10 @@ function validarUsoFundoCaixa(){
 
 $("#fecharCaixa").click(function() {
     enviando_relatorio()
-    setTimeout( () => {busca_de_valores_de_caixa()}, 200)
+    setTimeout( () => {
+        busca_de_valores_de_caixa()
+        localStorage.removeItem("prod")
+    }, 200)
 })
 
 async function busca_de_valores_de_caixa(){
