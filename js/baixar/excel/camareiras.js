@@ -1,10 +1,10 @@
-$("#peOcupacoesx").click(function(e){
+$("#peCamareirasx").click(function(e){
     e.preventDefault()
-    var divTabela = document.getElementById("ocupacoes")
+    var divTabela = document.getElementById("camareira")
     var dados = new Blob(['\ufeff' + divTabela.outerHTML], {type:'application/vnd.ms-excel'})
     var url = window.URL.createObjectURL(dados)
     var a = document.createElement('a')
     a.href = url
-    a.download = "relatorioOcupacoes"
+    a.download = "relatorioCamareiras"
     a.click()
 })

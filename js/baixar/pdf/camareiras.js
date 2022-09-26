@@ -1,6 +1,6 @@
-import { link } from "../setup/index.js"
+import { link } from "../../setup/index.js"
 
-$("#peQuartos").click(function(){
+$("#p_camareiras").click(function(){
     var janela = window.open()
     janela.document.write("<html>")
     janela.document.write("<head>")
@@ -8,28 +8,23 @@ $("#peQuartos").click(function(){
     janela.document.write("</head>")
     janela.document.write("<body>")
     janela.document.write(
-        '<h1>Relatório de Quartos</h1>'+
+        '<h1>Relatório de Camareiras</h1>'+
         '<table border="1">'+
             '<thead>'+
                 '<tr>'+
+                    '<th>Nome</th>'+ 
                     '<th>Código</th>'+ 
-                    '<th>Número</th>'+ 
-                    '<th>Tipo Quarto</th>'+ 
-                    '<th>Tipo Tabela</th>'+ 
-                    '<th>Percentual</th>'+ 
                 '</tr>'+
             '</thead>'
     )
-    $.get(link[17], function(e){
+    $.get(link[3], function(e){
+        console.log(e)
         e.forEach(el => {
             janela.document.write(
                 `<tbody>`+
                     '<tr>'+
+                        `<td>${el.nome}</td>`+
                         `<td>${el.codigo}</td>`+
-                        `<td>${el.numero}</td>`+
-                        `<td>${el.tipo_quarto}</td>`+
-                        `<td>${el.tipo_tabela}</td>`+
-                        `<td>${el.percentual}</td>`+
                     '</tr>'+
                 `</tbody>`
             )

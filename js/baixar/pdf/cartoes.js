@@ -1,6 +1,6 @@
-import { link } from "../setup/index.js"
+import { link } from "../../setup/index.js"
 
-$("#peCartoes").click(function(){
+$("#p_cartoes").click(function(){
 
     var janela = window.open()
     janela.document.write("<html>")

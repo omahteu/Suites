@@ -12,15 +12,19 @@ async function relatorioQuartos(){
     dados.forEach(elemento => {
         var codigo = elemento.codigo
         var numero = elemento.numero
-        var tipo_quarto = elemento.tipo_quarto
-        var tipo_tabela = elemento.tipo_tabela
-        var percentual = elemento.percentual
+        var nome = elemento.nome
+        var horas_locacao = elemento.horas_locacao
+        let tolerancia = elemento.tolerancia
+        let cobranca = elemento.cobranca
+        let excendete = elemento.excedente
         tabela.innerHTML += '<tr>'+
-                                '<td>' + codigo + '</td>'+
-                                '<td>' + numero + '</td>'+
-                                '<td>' + tipo_quarto + '</td>'+
-                                '<td>' + tipo_tabela + '</td>'+
-                                '<td>' + percentual + '</td>'+
+                                `<td>${codigo}</td>`+
+                                `<td>${numero}</td>`+
+                                `<td>${nome}</td>`+
+                                `<td>${horas_locacao}</td>`+
+                                `<td>${tolerancia}</td>`+
+                                `<td>${cobranca}</td>`+
+                                `<td>${excendete}</td>`+
                             '</tr>'
     });
 }
