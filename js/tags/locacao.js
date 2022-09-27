@@ -12,10 +12,10 @@ export function locado(q, t, x, y, z) {
     $(".acoes1").val('Trocar Suíte')
     $(".acoes2").css('display', 'inline-block')
     $(".acoes2").val('Encerrar')
-    if(t != 'btn locado'){} 
+    //if(t != 'btn locado'){} 
     // Preço
-    var tipoQuarto = $("#tipo_suite" + q).text()
-    var tabela_emvigor = $("#tabela_emvigor").text()
+    //var tipoQuarto = $("#tipo_suite" + q).text()
+    //var tabela_emvigor = $("#tabela_emvigor").text()
 
     valoresIniciais(q)
 

@@ -3,8 +3,6 @@ export var quartoum = ['a1', 'a2', 'a3']
 export var quartodois = ['a4', 'a5', 'a6']
 export var nomeCamareiras = []
 
-const url = "https://defmoteapi.herokuapp.com/camareiras/"
-
 export function rg(){
 	var size = 3
 	var randomized = Math.ceil(Math.random() * Math.pow(10,size))
