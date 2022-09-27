@@ -13,7 +13,8 @@ async function autenticacao(usuario, senha){
                     alert('Login com Sucesso!')
                     localStorage.setItem('usuarioLogado', 'admin')
                     localStorage.setItem('nome', elemento.nome)
-                    localStorage.setItem('caixa', 'fechado')
+                    localStorage.setItem('caixa', 'aberto')
+                    localStorage.setItem("prod", "sim")
                     $(location).attr('href', './html/home.html')
                 } else {
                     alert('Login com Sucesso!')
