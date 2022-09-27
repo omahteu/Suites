@@ -8,7 +8,8 @@ $(document).ready(function(){
     $("#last").text(ultimo)
 })
 
-$("#encerrar").click(function() {
+$(document).on("click", "#encerrar", function() {
+    setTimeout( () => {registrar_pagamento()}, 100)
     setTimeout( () => {registrando()}, 200)
     setTimeout( () => {ocupacao()}, 300)
     setTimeout( () => {
@@ -134,4 +135,16 @@ function ocupacao(){
     $.post(link[13], dados, () => {
         console.log("Relatório Criado")
     })
+}
+
+function registrar_pagamento(){
+    let metodo_pagamento = $("#modo_pagamento :selected").text()
+    let parcelas = $("#numero_parcelas").val()
+    let pagamento = $("#totalGeral").text()
+    let dados = {
+        valor: parseFloat(pagamento).toFixed(2),
+        forma: metodo_pagamento,
+        parcelas: metodo_pagamento.slice(0, 3) != "Cré" ? "*" : parcelas
+    }
+    localStorage.setItem("tabPag", JSON.stringify(dados))
 }
