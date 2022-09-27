@@ -52,69 +52,90 @@
                     <i class="fas fa-wrench"></i>
                   </span>
                   <h5>Dados Caixa</h5>
-                  <form action="">
-                    <input type="text" name="" id="codigo_caixa" placeholder="Código Caixa">
-                    <input type="date" name="" id="data_filtro">
-                    <button type="button" name="botao" class="btn btn-warning" id="buscar_dados"
-                      value="">Buscar</button>
+                  <form action="" method="post" class="form-horizontal">
+                    <div class="control-group">
+                      <div class="controls">
+                        <input type="text" name="" id="codigo_caixa" placeholder="Código Caixa">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <div class="controls">
+                        <input type="date" name="" id="data_filtro">
+                        <button type="button" name="botao" class="btn btn-warning" id="buscar_dados">Buscar</button>
+                      </div>
+                    </div>
                   </form>
                 </div>
                 <ul class="nav nav-tabs">
-                  <!--CONFERÊNCIA-->
+                  <!--Atividade-->
                   <li class="active">
-                    <a data-toggle="tab" href="#conferencia">Conferência</a>
+                    <a data-toggle="tab" href="#atividade">Atividade</a>
                   </li>
-                  <!--ENCERRAMENTO DE CONTA-->
+                  <!--Cartões-->
                   <li>
-                    <a data-toggle="tab" href="#encerramento">Encerramento de Conta</a>
+                    <a data-toggle="tab" href="#cartoes">Cartões</a>
                   </li>
-                  <!--INÍCIO DE LIMPEZA-->
-                  <li>
-                    <a data-toggle="tab" href="#ilimpeza">Início de Limpeza</a>
-                  </li>
-                  <!--PAGAMENTOS-->
-                  <li>
-                    <a data-toggle="tab" href="#pagamentos">Pagamentos</a>
-                  </li>
-                  <!--LIMPEZA-->
-                  <li>
-                    <a data-toggle="tab" href="#limpeza">Limpeza</a>
-                  </li>
-                  <!--FAXINA-->
-                  <li>
-                    <a data-toggle="tab" href="#faxina">Faxina</a>
-                  </li>
-                  <!--MANUTENÇÃO-->
-                  <li>
-                    <a data-toggle="tab" href="#manutencao">Manutenção</a>
-                  </li>
-                  <!--LOCAÇÃO-->
-                  <li>
-                    <a data-toggle="tab" href="#locacao">Locações</a>
-                  </li>
-                  <!--REVISÃO-->
-                  <li>
-                    <a data-toggle="tab" href="#revisao">Revisões</a>
-                  </li>
-                  <!--TROCA DE QUARTO-->
-                  <li>
-                    <a data-toggle="tab" href="#tquarto">Troca de Quartos</a>
-                  </li>
-                  <!--DESISTÊNCIA-->
+                  <!--Desistências-->
                   <li>
                     <a data-toggle="tab" href="#desistencia">Desistências</a>
                   </li>
-                  <!--PRODUTO-->
+                  <!--Encerramento de Contas-->
+                  <li>
+                    <a data-toggle="tab" href="#encerramento">Encerramento de Contas</a>
+                  </li>
+                  <!--Faxinas-->
+                  <li>
+                    <a data-toggle="tab" href="#faxina">Faxinas</a>
+                  </li>
+                  <!--Limpezas-->
+                  <li>
+                    <a data-toggle="tab" href="#limpeza">Limpezas</a>
+                  </li>
+                  <!--Locações-->
+                  <li>
+                    <a data-toggle="tab" href="#locacao">Locações</a>
+                  </li>
+                  <!--Manutenções-->
+                  <li>
+                    <a data-toggle="tab" href="#manutencao">Manutenções</a>
+                  </li>
+                  <!--Pagamentos-->
+                  <li>
+                    <a data-toggle="tab" href="#pagamentos">Pagamentos</a>
+                  </li>
+                  <!--Produtos-->
                   <li>
                     <a data-toggle="tab" href="#produtos">Produtos</a>
+                  </li>
+                  <!--Revisões-->
+                  <li>
+                    <a data-toggle="tab" href="#revisao">Revisões</a>
+                  </li>
+                  <!--Troca de Quartos-->
+                  <li>
+                    <a data-toggle="tab" href="#tquarto">Troca de Quartos</a>
                   </li>
                 </ul>
 
                 <form class="form-horizontal" id="formCadastros">
                   <div class="widget-content nopadding tab-content">
 
-                    <!--CONFERÊNCIA-->
-                    <div id="conferencia" class="tab-pane fade in active">
+                    <!--ATIVIDADE-->
+                    <div id="atividade" class="tab-pane fade in active">
+                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Tipo</th>
+                            <th>Bandeira</th>
+                            <th>Porcentagem</th>
+                          </tr>
+                        </thead>
+                        <tbody id=""></tbody>
+                      </table>
+                    </div>
+
+                    <!--CARTÕES-->
+                    <div id="cartoes" class="tab-pane fade">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
                           <tr role="row">
@@ -326,5 +347,6 @@
 <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
 
 <script type="module" src="../js/caixa/dadosCaixa.js"></script>
+<script src="../js/home/validacoes/permissao.js"></script>
 
 </html>
