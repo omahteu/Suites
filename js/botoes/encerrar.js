@@ -146,5 +146,5 @@ function registrar_pagamento(){
         forma: metodo_pagamento,
         parcelas: metodo_pagamento.slice(0, 3) != "Cré" ? "*" : parcelas
     }
-    localStorage.setItem("tabPag", JSON.stringify(dados))
+    $.post(link[33], dados, () => {})
 }
