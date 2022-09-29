@@ -78,10 +78,10 @@ export function reacao(status, id){
         setTimeout( () => {
             ligar_luz(quarto)
             localStorage.setItem("luz", "ligada")
-        }, 600)
-        setTimeout( () => {limpeza(quarto, rota, flags[0], flags[1], flags[2])}, 1000)
-        setTimeout( () => {atualiza_status(quarto, "limpeza"), 1500})
-        setTimeout( () => {fimModal()}, 1001)
+        }, 500)
+        setTimeout( () => {limpeza(quarto, rota, flags[0], flags[1], flags[2])}, 700)
+        setTimeout( () => {atualiza_status(quarto, "limpeza"), 900})
+        setTimeout( () => {fimModal()}, 1000)
     } else if(status == "Trocar Suíte"){
         inicioModalTroca("modau-troca")
         fimModal()
