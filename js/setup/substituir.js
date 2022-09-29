@@ -8,14 +8,19 @@ import { locado } from "../tags/locacao.js"
 import { fimModalTroca } from "../setup/troca.js"
 import { aguardando } from "../tags/aguardo.js"
 import { desfazer } from "../tags/desfazer.js"
+import { registra_troca } from "../quartos/ajax/post/troca.js"
+import { tempo_pausado } from "../quartos/ajax/post/decorrido.js"
 
 
 
 $("#substituir").click(function(){
 
-    var pers = []
     var quarto = $("#quarto_antigo").val()
     var novo = $("#quartos_disponiveis").val()
+    var usuario = $("#usuario_sistema").text()
+    let hora = $(`#hora${quarto}`).text()
+    let minuto = $(`#minuto${quarto}`).text()
+    let segundo = $(`#segundo${quarto}`).text()
 
     $.get(link[5], function(e){
         var dados = e.filter(item => item.quarto === quarto)
@@ -59,10 +64,11 @@ $("#substituir").click(function(){
             })
         })
     })
+    setTimeout( () => {registra_troca(usuario, quarto, novo)}, 100)
+    setTimeout( () => {tempo_pausado(hora, minuto, segundo, quarto)}, 100)
     setTimeout( () => {iniciando(novo)}, 1000)
     setTimeout( () => {finalizando(quarto)}, 1500)
     
-
 })
 
 function iniciando(suite){

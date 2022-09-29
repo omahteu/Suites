@@ -16,13 +16,17 @@ import { ver_quartos_disponiveis } from "../relatorios/quartosDisponiveis.js"
 import { crnmtra1, crnmtrb1, crnmtrc1 } from "../contadores/cronometros/c1.js"
 import { crnmtra2, crnmtrb2, crnmtrc2 } from "../contadores/cronometros/c2.js"
 import { desligar_luz } from "../automacao/desligar.js"
-import { ligar_luz } from "../automacao/ligar.js" 
+import { ligar_luz } from "../automacao/ligar.js"
+import { tempo_pausado } from "../quartos/ajax/post/decorrido.js"
 
 var rota = 'rota'
 
 export function reacao(status, id){
     var quarto = $("#quarto_painel").text()
     var flags = $("#intervalo").text().split(",")
+    let hour = $(`#hora${quarto}`).text()
+    let minute = $(`#minuto${quarto}`).text()
+    let second = $(`#segundo${quarto}`).text()
     if(status == "Disponibilizar Quarto"){
         var condicao = $("#tipo").text()
         var verificaoLuz = localStorage.getItem("luz")
@@ -68,6 +72,7 @@ export function reacao(status, id){
         setTimeout( () => {fimModal()}, 1001)
     } else if(status == "Iniciar Limpeza"){
         alert(`DESEJA INICIAR LIMPEZA NO QUARTO ${quarto}?`)
+        localStorage.removeItem(`troca${quarto}`)
         crnmtrc1(quarto)
         crnmtra1(quarto)
         setTimeout( () => {
@@ -89,6 +94,7 @@ export function reacao(status, id){
         if(confirm(`DESEJA ENCERRAR o QUARTO ${quarto}?`)){
             quarto == "1" ? crnmtrb1() : quarto == "2" ? crnmtrb2() : "casa"
             setTimeout( () => {localStorage.setItem("last", quarto)}, 100)
+            setTimeout( () => {tempo_pausado(hour, minute, second, quarto)}, 300)
             setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 1000)
             sessionStorage.setItem('quarto', quarto)
             window.open('../html/checkout.html', '_blank')

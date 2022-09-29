@@ -1,4 +1,17 @@
-export var link = [
+/*
+0: ATIVIDADE    | 10: IGS       | 20: USUÁRIO       | 30: RECEITA
+1: AUDITORIA    | 11: INFOS     | 21: VALOR         | 31: TETO
+2: CAIXA        | 12: LIMPEZA   | 22: MOVIMENTAÇÃO  | 32: SANGRIA
+3: CAMAREIRA    | 13: OCUPAÇÃO  | 23: FAXINA        | 33: PAGAMENTO
+4: CRÉDITO      | 14: PAINEL    | 24: MANUTENÇÃO    |
+5: COMANDA      | 15: PÁTIO     | 25: REVISÃO       |
+6: DADOS        | 16: PRODUTO   | 26: TROCA         |
+7: DESISTÊNCIA  | 17: QUARTO    | 27: AUTOMAÇÃO     |
+8: DÉBITO       | 18: TABELA    | 28: PLACAS        |
+9: EMAIL        | 19: TEMPO     | 29: CATEGORIAS    |
+*/
+
+export const link = [
     "https://demomotelapi.herokuapp.com/atividade/", 
     "https://demomotelapi.herokuapp.com/auditoria/",
     "https://demomotelapi.herokuapp.com/caixa/",
@@ -34,40 +47,3 @@ export var link = [
     "https://demomotelapi.herokuapp.com/sangria/",
     "https://demomotelapi.herokuapp.com/pagamento/"
 ]
-
-/*
-0: ATIVIDADE
-1: AUDITORIA
-2: CAIXA
-3: CAMAREIRA
-4: CRÉDITO
-5: COMANDA
-6: DADOS
-7: DESISTÊNCIA
-8: DÉBITO
-9: EMAIL
-10: IGS
-11: INFOS
-12: LIMPEZA
-13: OCUPAÇÃO
-14: PAINEL
-15: PÁTIO
-16: PRODUTO
-17: QUARTO
-18: TABELA
-19: TEMPO
-20: USUÁRIO
-21: VALOR
-22: MOVIMENTAÇÃO
-23: FAXINA
-24: MANUTENÇÃO
-25: REVISÃO
-26: TROCA
-27: AUTOMAÇÃO
-28: PLACAS
-29: CATEGORIAS
-30: RECEITA
-31: TETO
-32: SANGRIA
-33: PAGAMENTO
-*/
