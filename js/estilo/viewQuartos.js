@@ -188,6 +188,7 @@ function backupInfos(instance, x, y, z){
 			for(var a = 0; a < dados.length; a++){
 				sum += parseFloat(dados[a].valor_total.slice(2).trim())
 			}
+			console.log(sum)
 			$("#consumo_painel").text(sum.toFixed(2))
 		})
         

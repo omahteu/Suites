@@ -4,7 +4,6 @@ import { faxina } from "../tags/faxina.js"
 import { limpeza } from "../tags/limpeza.js"
 import { camareiras } from "../tags/camareira.js"
 import { fimModal } from "../setup/camareiras.js"
-import { busca_permanencia } from "../setup/permanencia.js"
 import { atualiza_status } from "../setup/atualiza.js"
 import { ultima_limpeza } from "../botoes/limpar.js"
 import { data_atual } from "../geradores/data.js"
@@ -91,14 +90,10 @@ export function reacao(status, id){
             localStorage.setItem("tt", permanencia)
         }, 100)
         ver_quartos_disponiveis()
-        setTimeout( () => {
-            busca_permanencia(quarto, "passagem")
-        }, 200)
     } else if(status == "Encerrar"){
         if(confirm(`DESEJA ENCERRAR o QUARTO ${quarto}?`)){
             quarto == "1" ? crnmtrb1() : quarto == "2" ? crnmtrb2() : "casa"
             setTimeout( () => {localStorage.setItem("last", quarto)}, 100)
-            setTimeout( () => {busca_permanencia(quarto)}, 500)
             setTimeout( () => {desfazer(quarto, flags[0], flags[1], flags[2])}, 1000)
             sessionStorage.setItem('quarto', quarto)
             window.open('../html/checkout.html', '_blank')

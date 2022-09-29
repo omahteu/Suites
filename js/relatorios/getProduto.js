@@ -8,12 +8,11 @@ $(document).ready(function() {
             var permis = localStorage.getItem("prod")
             if(permis == "nao"){
                 if(estoque.length != 0){
-                    $('#checkbox_produto').append('<option>' + item.descricao + '</option>');
+                    $('#checkbox_produto').append(`<option>${item.descrica}</option>`)
                 }
             } else if(permis == "sim"){
-                $('#checkbox_produto').append('<option>' + item.descricao + '</option>');
+                $('#checkbox_produto').append(`<option>${item.descrica}</option>`)
             }
-
         });
         $('#checkbox_produto').change(function() {
             var option = $('#checkbox_produto').find(":selected").index()
@@ -23,7 +22,7 @@ $(document).ready(function() {
             $('#quantidade').keyup(function(){
                 var qtd = $(this).val()
                 var total = parseFloat(resultado[db]['valorunitario']) * parseInt(qtd)
-                $("#valor_total").val('R$ ' + total)
+                $("#valor_total").val(`R$ ${total}`)
             });
         });
 })
@@ -36,11 +35,11 @@ function produtoCodigo(){
             $.get(link[16], (resultado) => {
                 var db = 0
                 $("#descricao").val(resultado[db].descricao)
-                $("#valor_unitario").val('R$ ' + resultado[db].valorunitario)
+                $("#valor_unitario").val(`R$ ${resultado[db].valorunitari}`)
                 $('#quantidade').keyup( () => {
                     var qtd = $(this).val()
-                    var total = Number(resultado[db]['valorunitario']) * Number(qtd)
-                    $("#valor_total").val('R$ ' + total)
+                    var total = parseFloat(resultado[db]['valorunitario']) * Number(qtd)
+                    $("#valor_total").val(`R$ ${parseFloat(total).toFixed(2)}`)
                 });
             })
         }
