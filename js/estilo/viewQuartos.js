@@ -174,6 +174,7 @@ function backupInfos(instance, x, y, z){
 			dados.forEach( (resultado) => {
 				$("#numquarto").text(resultado.quarto)
 				$("#quarto_painel").text(resultado.quarto)
+				$("#vq_painel").text(resultado.valor)
 				$("#entrada").text(resultado.datahora)
 				$("#valor-quarto").text(resultado.valor)	
 			})
@@ -188,7 +189,6 @@ function backupInfos(instance, x, y, z){
 			for(var a = 0; a < dados.length; a++){
 				sum += parseFloat(dados[a].valor_total.slice(2).trim())
 			}
-			console.log(sum)
 			$("#consumo_painel").text(sum.toFixed(2))
 		})
         
@@ -197,7 +197,8 @@ function backupInfos(instance, x, y, z){
 		var valor_quarto = $("#valor-quarto").text()
 		var valor_consumo = $("#consumo_painel").text()
 		var atualizacao_preco = $("#atualizacaoPreco").text() == "" ? "0" : $("#atualizacaoPreco").text()
-		var resultado = parseFloat(valor_consumo) + parseFloat(atualizacao_preco)
+		var novo_valor = atualizacao_preco == 0 ? valor_quarto : parseFloat(atualizacao_preco) + parseFloat(valor_quarto)
+		var resultado = parseFloat(valor_consumo) + parseFloat(novo_valor)
 		$("#parcial_painel").text(resultado.toFixed(2))
 	}, 670)
 }

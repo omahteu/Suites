@@ -8,10 +8,10 @@ $(document).ready(function() {
             var permis = localStorage.getItem("prod")
             if(permis == "nao"){
                 if(estoque.length != 0){
-                    $('#checkbox_produto').append(`<option>${item.descrica}</option>`)
+                    $('#checkbox_produto').append(`<option>${item.descricao}</option>`)
                 }
             } else if(permis == "sim"){
-                $('#checkbox_produto').append(`<option>${item.descrica}</option>`)
+                $('#checkbox_produto').append(`<option>${item.descricao}</option>`)
             }
         });
         $('#checkbox_produto').change(function() {

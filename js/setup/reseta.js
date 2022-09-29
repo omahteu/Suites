@@ -16,6 +16,8 @@ function inativo() {
   $("#preco_quarto").text('0')
   $("#consumo_painel").text("0")
   $("#parcial_painel").text("0")
+  $("#vq_painel").text("0")
+  $("#vh_painel").text("0")
   $("#tipo").text('0')
   $("#entrada").text('')
 	var prateleiraResultado = document.getElementById('listaProdutosComprados')

@@ -17,6 +17,7 @@ export function valoresIniciais(quarto){
 
     var valorInicial = Number(valor_inicial_locacao) * Number(horas_iniciais_locacao)
     $("#valor-quarto").text(valorInicial)
+    //$("#vq_painel").text(valorInicial)
 }
 
 /*

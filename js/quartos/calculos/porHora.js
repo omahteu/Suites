@@ -53,26 +53,32 @@ export function atualizaValores(quarto) {
         case 1:
           var acrecimo = Number(valor) + Number(um)
           $("#atualizacaoPreco").text(acrecimo)
+          $("#vh_painel").text(acrecimo)
           break;
         case 2:
           var acrecimo = Number(valor) + Number(dois)
           $("#atualizacaoPreco").text(acrecimo)
+          $("#vh_painel").text(acrecimo)
           break;
         case 3:
           var acrecimo = Number(valor) + Number(tres)
           $("#atualizacaoPreco").text(acrecimo)
+          $("#vh_painel").text(acrecimo)
           break;
         case 4:
           var acrecimo = Number(valor) + Number(quatro)
           $("#atualizacaoPreco").text(acrecimo)
+          $("#vh_painel").text(acrecimo)
           break;
         case 5:
           var acrecimo = Number(valor) + Number(cinco)
           $("#atualizacaoPreco").text(acrecimo)
+          $("#vh_painel").text(acrecimo)
           break;
         case 6:
           var acrecimo = Number(valor) + Number(seis)
           $("#atualizacaoPreco").text(acrecimo)
+          $("#vh_painel").text(acrecimo)
           break;
         default:
           break;
@@ -83,14 +89,15 @@ export function atualizaValores(quarto) {
           var valoracrescentado = parseFloat(locacao) * i
           var acrecimo = parseFloat(valor) + parseFloat(valoracrescentado)
           $("#atualizacaoPreco").text(acrecimo)
+          $("#vh_painel").text(acrecimo)
         }
       }
     }
   } else if (tipoCobranca == "fixa") {
-    console.log(`${horaLocada} | ${minutoLocado}`)
     if (parseInt(horaLocada) >= 1 && parseInt(minutoLocado) > parseInt(tolerancia)){
       var resultado = parseInt(horaLocada) * parseFloat(locacao)
       $("#atualizacaoPreco").text(resultado.toFixed(2))
+      $("#vh_painel").text(resultado.toFixed(2))
     }
   }
 }

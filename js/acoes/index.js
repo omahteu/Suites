@@ -83,11 +83,6 @@ export function reacao(status, id){
         setTimeout( () => {
             var antigo = $("#quarto_painel").text()
             $("#quarto_antigo").val(antigo)
-            var h = $(`#hora${id}`).text()
-            var m = $(`#minuto${id}`).text()
-            var s = $(`#segundo${id}`).text()
-            var permanencia = h + ":" + m + ":" + s
-            localStorage.setItem("tt", permanencia)
         }, 100)
         ver_quartos_disponiveis()
     } else if(status == "Encerrar"){
