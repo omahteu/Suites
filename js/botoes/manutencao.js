@@ -1,6 +1,6 @@
 import { manutencao } from "../tags/manutencao.js"
 import { modos } from "../setup/box.js"
-//import { index } from "../tags/particao.js"
+import { index } from "../tags/particao.js"
 import { fimModal } from "../setup/camareiras.js"
 import { crnmtra1 } from "../contadores/cronometros/c1.js"
 import { crnmtra2 } from "../contadores/cronometros/c2.js"
@@ -13,9 +13,9 @@ $(".manutencao").click(function() {
         if(quarto == "1"){
             var flags = modos.slice(0, 3)
             manutencao(quarto, flags[0], flags[1], flags[2])
-            setTimeout( () => {fimModal()}, 1000)
+            setTimeout( () => {fimModal()}, 200)
             crnmtra1(quarto)
-            //setTimeout( () => {index()}, 2000);
+            setTimeout( () => {index()}, 500);
         } else if(quarto == "2"){
             var flags = modos.slice(3, 6)
             manutencao(quarto, flags[0], flags[1], flags[2])

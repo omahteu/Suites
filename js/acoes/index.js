@@ -59,17 +59,38 @@ export function reacao(status, id){
             crnmtrc1(quarto)
         }, 500)
     } else if(status == "Iniciar Faxina"){
-        alert(`DESEJA INICIAR FAXINA NO QUARTO ${quarto}?`)
-        quarto == "1" ? crnmtrb1() : quarto == "2" ? crnmtrb2() : "casa"
-        crnmtrc1(quarto)
-        crnmtra1(quarto)
-        setTimeout( () => {
-            ligar_luz(quarto)
-            localStorage.setItem("luz", "ligada")
-        }, 500)
-        setTimeout( () => {atualiza_status(quarto, "faxina"), 800})
-        setTimeout( () => {faxina(quarto, rota, flags[0], flags[1], flags[2])}, 1000)
-        setTimeout( () => {fimModal()}, 1001)
+        var tipo = $("#tipo").text()
+        if (tipo == "manutencao"){
+            var razao = localStorage.getItem("motivo")
+            var h = $(`#hora${id}`).text()
+            var m = $(`#minuto${id}`).text()
+            var s = $(`#segundo${id}`).text()
+            var tempo = `${h}:${m}:${s}`
+            envia_dados_manutencao($("#usuario_sistema").text(), data_atual(), hora_atual(), $("#suite").text(), razao, tempo)
+            alert(`DESEJA INICIAR FAXINA NO QUARTO ${quarto}?`)
+            quarto == "1" ? crnmtrb1() : quarto == "2" ? crnmtrb2() : "casa"
+            crnmtrc1(quarto)
+            crnmtra1(quarto)
+            setTimeout( () => {
+                ligar_luz(quarto)
+                localStorage.setItem("luz", "ligada")
+            }, 500)
+            setTimeout( () => {atualiza_status(quarto, "faxina"), 800})
+            setTimeout( () => {faxina(quarto, rota, flags[0], flags[1], flags[2])}, 1000)
+            setTimeout( () => {fimModal()}, 1001)
+        } else {    
+            alert(`DESEJA INICIAR FAXINA NO QUARTO ${quarto}?`)
+            quarto == "1" ? crnmtrb1() : quarto == "2" ? crnmtrb2() : "casa"
+            crnmtrc1(quarto)
+            crnmtra1(quarto)
+            setTimeout( () => {
+                ligar_luz(quarto)
+                localStorage.setItem("luz", "ligada")
+            }, 500)
+            setTimeout( () => {atualiza_status(quarto, "faxina"), 800})
+            setTimeout( () => {faxina(quarto, rota, flags[0], flags[1], flags[2])}, 1000)
+            setTimeout( () => {fimModal()}, 1001)
+        }
     } else if(status == "Iniciar Limpeza"){
         alert(`DESEJA INICIAR LIMPEZA NO QUARTO ${quarto}?`)
         localStorage.removeItem(`troca${quarto}`)

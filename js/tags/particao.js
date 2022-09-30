@@ -12,23 +12,5 @@ export function index(){
         quarto: quarto,
         tipo: tipo
     }
-
     $.post(link[11], dados, () => {})
-/*
-    $.get(link[11], (retorno) => {
-        if(retorno.length == 0){
-            $.post(link[11], dados,  () => {})
-        }
-
-        retorno.forEach( (item) => {
-            if(item.quarto == quarto){
-                console.log('')
-            } 
-            if(item.quarto != quarto){
-                $.post(link[11], dados,  () => {})
-            }
-        })
-
-    })
-*/
 }
