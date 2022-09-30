@@ -6,9 +6,7 @@ $(document).ready(function(){
     setTimeout( () => {
         let receitaDia = sessionStorage.getItem("diaCaixa")
         let teto = sessionStorage.getItem("teto")
-
-
-        if (parseFloat(receitaDia).toFixed(2) > parseFloat(teto).toFixed(2)){
+        if (parseFloat(receitaDia) > parseFloat(teto)){
             alert("Realizar Sangria!")
             $("#valor_emcaixa").css("color", "red")
             $(".sangria").css("visibility", "visible")
@@ -20,7 +18,11 @@ $(document).ready(function(){
 
 function retorna_valor_caixa(){
     $.get(link[30], (e) => {
-        sessionStorage.setItem("diaCaixa", e[0].caixa)
+        var sum = 0
+        e.forEach(el => {
+            sum += parseFloat(el.caixa)
+        });
+        sessionStorage.setItem("diaCaixa", sum)
     })
 }
 

@@ -6,9 +6,11 @@ import { link } from "../../setup/index.js"
 */
 $(document).ready(function(){
     $.get(link[33], (e) => {
-        dinheiro(e)
         debito(e)
         credito(e)
+    })
+    $.get(link[30], (el) => {
+        dinheiro(el)
     })
 })
 
@@ -16,10 +18,9 @@ $(document).ready(function(){
     FUNÇÕES COMPLEMENTARES
 */
 function dinheiro(e){
-    var dinheiro = e.filter(e => e.forma == "Dinheiro")
     var somaDinheiro = 0
-    for(var i = 0; i < dinheiro.length; i++){
-        somaDinheiro += parseFloat(dinheiro[i].valor)
+    for(var i = 0; i < e.length; i++){
+        somaDinheiro += parseFloat(e[i].caixa)
     }
     $("#valor_emcaixa").text(parseFloat(somaDinheiro).toFixed(2))
 }
