@@ -1,4 +1,6 @@
 import { link } from "./index.js"
+import { recupera_permanencia } from "../quartos/ajax/get/permanencia.js"
+import { atualizaValores } from "../quartos/calculos/porHora.js"
 
 $(document).ready(function () {
 	informacaoes()
@@ -51,16 +53,18 @@ function informacaoes() {
 		}
 
 		var preco_quarto = adicionalQuarto[0].valor
-		var permanencia = localStorage.getItem(numero_quarto)
-
-		$("#valorItens").text(sum)
+		
+		$("#valorItens").text(parseFloat(sum).toFixed(2))
 		$("#valorQuarto").text(preco_quarto)
-		$("#tempoPermanencia").text(permanencia)
+		
+		recupera_permanencia(numero_quarto)
+		atualizaValores(numero_quarto)
+	
+		var add = $("#valor_addPermanencia").text()
+		var ttgeral = parseFloat(preco_quarto) + parseFloat(sum) + parseFloat(add)
 
-		var ttgeral = parseFloat(preco_quarto) + parseFloat(sum)
-
-		$("#totalGeral").text(ttgeral.toFixed(2))
 		$("#valor_subtotal").text(ttgeral.toFixed(2))
+		$("#totalGeral").text(ttgeral.toFixed(2))
 
 		$(document).one('change', '#modo_desconto', () => {
 			var tipo_desconto = $('#modo_desconto').find(":selected").index()
@@ -106,7 +110,8 @@ async function InfosPrimario() {
 		valor_quarto = elemento.valor
 	});
 	$("#valorQuarto").text(valor_quarto)
-	$("#valorItens").text(sum)
-	var ttgeral = parseFloat(valor_quarto) + parseFloat(sum)
+	$("#valorItens").text(parseFloat(sum).toFixed(2))
+	var add = $("#valor_addPermanencia").text()
+	var ttgeral = parseFloat(valor_quarto) + parseFloat(sum) + parseFloat(add)
 	$("#totalGeral").text(ttgeral.toFixed(2))
 }

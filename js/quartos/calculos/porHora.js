@@ -54,31 +54,37 @@ export function atualizaValores(quarto) {
           var acrecimo = Number(valor) + Number(um)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
+          $("#valor_addPermanencia").text(acrecimo)
           break;
         case 2:
           var acrecimo = Number(valor) + Number(dois)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
+          $("#valor_addPermanencia").text(acrecimo)
           break;
         case 3:
           var acrecimo = Number(valor) + Number(tres)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
+          $("#valor_addPermanencia").text(acrecimo)
           break;
         case 4:
           var acrecimo = Number(valor) + Number(quatro)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
+          $("#valor_addPermanencia").text(acrecimo)
           break;
         case 5:
           var acrecimo = Number(valor) + Number(cinco)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
+          $("#valor_addPermanencia").text(acrecimo)
           break;
         case 6:
           var acrecimo = Number(valor) + Number(seis)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
+          $("#valor_addPermanencia").text(acrecimo)
           break;
         default:
           break;
@@ -90,6 +96,7 @@ export function atualizaValores(quarto) {
           var acrecimo = parseFloat(valor) + parseFloat(valoracrescentado)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
+          $("#valor_addPermanencia").text(acrecimo)
         }
       }
     }
@@ -98,6 +105,7 @@ export function atualizaValores(quarto) {
       var resultado = parseInt(horaLocada) * parseFloat(locacao)
       $("#atualizacaoPreco").text(resultado.toFixed(2))
       $("#vh_painel").text(resultado.toFixed(2))
+      $("#valor_addPermanencia").text(acrecimo)
     }
   }
 }
