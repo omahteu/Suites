@@ -1,6 +1,6 @@
 import { faxina } from "../tags/faxina.js"
 import { modos } from "../setup/box.js"
-//import { index } from "../tags/particao.js"
+import { index } from "../tags/particao.js"
 import { fimModal } from "../setup/camareiras.js"
 import { crnmtra1 } from "../contadores/cronometros/c1.js"
 import { crnmtra2 } from "../contadores/cronometros/c2.js"
@@ -18,9 +18,9 @@ $(".faxina").click(function() {
                 ligar_luz(quarto)
                 localStorage.setItem("luz", "ligada")
             }, 500)
-            setTimeout( () => {fimModal()}, 1001)
+            setTimeout( () => {fimModal()}, 200)
             crnmtra1(quarto)
-            //setTimeout( () => {index()}, 2000)
+            setTimeout( () => {index()}, 500)
         } else if(quarto == "2"){
             var flags = modos.slice(3, 6)
             faxina(quarto, rota, flags[0], flags[1], flags[2])
