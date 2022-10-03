@@ -6,15 +6,15 @@ $(document).on("click", "#buscar_dados", function () {
     let usuario = $("#codigo_caixa").val()
     let inicio = $("#inicio_filtro").val()
     let fim = $("#final_filtro").val()
-    dados_locacao(usuario, inicio, fim)
+    dados_manutencao(usuario, inicio, fim)
 })
 
-async function dados_locacao(user, inicio, fim) {
-    const requisicao = await fetch(link[13])
+async function dados_manutencao(user, inicio, fim) {
+    const requisicao = await fetch(link[24])
     const resposta = await requisicao.json()
-    var prontuario = document.getElementById("dados_locacoes")
+    var prontuario = document.getElementById("dados_manutencoes")
     prontuario.innerHTML = ""
-    let ficha = resposta.filter(e => e.usuario == user)
+    let ficha = resposta.filter(e => e.caixa == user)
     ficha.forEach(e => {
         var dts = dateToEN(e.data)
         var datas = new Date(dts)
@@ -22,13 +22,12 @@ async function dados_locacao(user, inicio, fim) {
         var date2 = new Date(fim)
         if (datas > date1 && datas < date2) {
             prontuario.innerHTML += `<tr>` +
-                                        `<td>${e.codigo}</td>` +
-                                        `<td>${e.usuario}</td>` +
+                                        `<td>${e.caixa}</td>` +
                                         `<td>${e.data}</td>` +
+                                        `<td>${e.hora}</td>` +
                                         `<td>${e.quarto}</td>` +
-                                        `<td>${e.entrada}</td>` +
-                                        `<td>${e.saida}</td>` +
-                                        `<td>${e.total}</td>`+
+                                        `<td>${e.motivo}</td>` +
+                                        `<td>${e.tempo}</td>` +
                                     `</tr>`
         }
     });
