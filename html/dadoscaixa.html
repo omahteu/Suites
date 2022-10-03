@@ -74,7 +74,7 @@
                 <ul class="nav nav-tabs">
                   <!--Atividade-->
                   <li class="active">
-                    <a data-toggle="tab" href="#atividade">Atividade</a>
+                    <a data-toggle="tab" href="#atividade">Atividades</a>
                   </li>
                   <!--Cartões-->
                   <li>
@@ -125,7 +125,7 @@
                 <form class="form-horizontal" id="formCadastros">
                   <div class="widget-content nopadding tab-content">
 
-                    <!--ATIVIDADE-->
+                    <!--Atividades-->
                     <div id="atividade" class="tab-pane fade in active">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
@@ -139,7 +139,7 @@
                       </table>
                     </div>
 
-                    <!--CARTÕES-->
+                    <!--Cartões-->
                     <div id="cartoes" class="tab-pane fade">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
@@ -153,7 +153,23 @@
                       </table>
                     </div>
 
-                    <!--ENCERRAMENTO-->
+                    <!--Desistência-->
+                    <div id="desistencia" class="tab-pane fade">
+                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Caixa</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Quarto</th>
+                            <th>Motivo</th>
+                          </tr>
+                        </thead>
+                        <tbody id="dados_desistencias"></tbody>
+                      </table>
+                    </div>
+
+                    <!--Encerramento-->
                     <div id="encerramento" class="tab-pane fade">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
@@ -168,8 +184,8 @@
                       </table>
                     </div>
 
-                    <!--I. LIMPEZA-->
-                    <div id="ilimpeza" class="tab-pane fade">
+                    <!--Faxina-->
+                    <div id="faxina" class="tab-pane fade">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
                           <tr role="row">
@@ -177,29 +193,14 @@
                             <th>Data</th>
                             <th>Hora</th>
                             <th>Quarto</th>
-                            <th>Tempo</th>
+                            <th>Duração</th>
                           </tr>
                         </thead>
-                        <tbody id=""></tbody>
+                        <tbody id="dados_faxinas"></tbody>
                       </table>
                     </div>
 
-                    <!--PAGAMENTOS-->
-                    <div id="pagamentos" class="tab-pane fade">
-                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
-                        <thead>
-                          <tr role="row">
-                            <th>Valor</th>
-                            <th>Forma</th>
-                            <th>Parcelas</th>
-                            <th>Data</th>
-                          </tr>
-                        </thead>
-                        <tbody id="dados_pagamentos"></tbody>
-                      </table>
-                    </div>
-
-                    <!--LIMPEZA-->
+                    <!--Limpeza-->
                     <div id="limpeza" class="tab-pane fade">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
@@ -216,40 +217,7 @@
                       </table>
                     </div>
 
-                    <!--FAXINA-->
-                    <div id="faxina" class="tab-pane fade">
-                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
-                        <thead>
-                          <tr role="row">
-                            <th>Caixa</th>
-                            <th>Data</th>
-                            <th>Hora</th>
-                            <th>Quarto</th>
-                            <th>Duração</th>
-                          </tr>
-                        </thead>
-                        <tbody id="dados_faxinas"></tbody>
-                      </table>
-                    </div>
-
-                    <!--MANUTENÇÃO-->
-                    <div id="manutencao" class="tab-pane fade">
-                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
-                        <thead>
-                          <tr role="row">
-                            <th>Caixa</th>
-                            <th>Data</th>
-                            <th>Hora</th>
-                            <th>Quarto</th>
-                            <th>Motivo</th>
-                            <th>Duração</th>
-                          </tr>
-                        </thead>
-                        <tbody id="dados_manutencoes"></tbody>
-                      </table>
-                    </div>
-
-                    <!--LOCAÇÃO-->
+                    <!--Locação-->
                     <div id="locacao" class="tab-pane fade">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
@@ -267,7 +235,55 @@
                       </table>
                     </div>
 
-                    <!--REVISÃO-->
+                    <!--Manutenção-->
+                    <div id="manutencao" class="tab-pane fade">
+                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Caixa</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Quarto</th>
+                            <th>Motivo</th>
+                            <th>Duração</th>
+                          </tr>
+                        </thead>
+                        <tbody id="dados_manutencoes"></tbody>
+                      </table>
+                    </div>
+
+                    <!--Pagamentos-->
+                    <div id="pagamentos" class="tab-pane fade">
+                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Valor</th>
+                            <th>Forma</th>
+                            <th>Parcelas</th>
+                            <th>Data</th>
+                          </tr>
+                        </thead>
+                        <tbody id="dados_pagamentos"></tbody>
+                      </table>
+                    </div>
+
+                    <!--Produtos-->
+                    <div id="produtos" class="tab-pane fade">
+                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
+                        <thead>
+                          <tr role="row">
+                            <th>Código do Produto</th>
+                            <th>Nome</th>
+                            <th>Data</th>
+                            <th>Tipo</th>
+                            <th>Quantidade</th>
+                          </tr>
+                        </thead>
+                        <tbody id="dados_produtos"></tbody>
+                      </table>
+                    </div>
+
+                    <!--Revisão-->
                     <div id="revisao" class="tab-pane fade">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
@@ -283,7 +299,7 @@
                       </table>
                     </div>
 
-                    <!--T. QUARTO-->
+                    <!--Troca de Quartos-->
                     <div id="tquarto" class="tab-pane fade">
                       <table id="" class="table table-bordered  dataTable no-footer" role="grid">
                         <thead>
@@ -296,36 +312,6 @@
                           </tr>
                         </thead>
                         <tbody id="dados_trocas"></tbody>
-                      </table>
-                    </div>
-
-                    <!--DESISTÊNCIA-->
-                    <div id="desistencia" class="tab-pane fade">
-                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
-                        <thead>
-                          <tr role="row">
-                            <th>Caixa</th>
-                            <th>Data</th>
-                            <th>Hora</th>
-                            <th>Quarto</th>
-                            <th>Motivo</th>
-                          </tr>
-                        </thead>
-                        <tbody id="dados_desistencias"></tbody>
-                      </table>
-                    </div>
-
-                    <!--PRODUTOD-->
-                    <div id="produtos" class="tab-pane fade">
-                      <table id="" class="table table-bordered  dataTable no-footer" role="grid">
-                        <thead>
-                          <tr role="row">
-                            <th>Tipo</th>
-                            <th>Bandeira</th>
-                            <th>Porcentagem</th>
-                          </tr>
-                        </thead>
-                        <tbody id="tabelaRelatorioCartoes"></tbody>
                       </table>
                     </div>
 
@@ -356,12 +342,15 @@
 
 <script type="module" src="../js/dados/caixas.js"></script>
 <script type="module" src="../js/dados/atividades.js"></script>
-<script type="module" src="../js/dados/pagamentos.js"></script>
+<script type="module" src="../js/dados/desistencias.js"></script>
 <script type="module" src="../js/dados/faxinas.js"></script>
 <script type="module" src="../js/dados/limpezas.js"></script>
 <script type="module" src="../js/dados/locacoes.js"></script>
 <script type="module" src="../js/dados/manutencoes.js"></script>
+<script type="module" src="../js/dados/pagamentos.js"></script>
+<script type="module" src="../js/dados/produtos.js"></script>
+
 <script type="module" src="../js/dados/trocas.js"></script>
-<script type="module" src="../js/dados/desistencias.js"></script>
+
 
 </html>
