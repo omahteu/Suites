@@ -66,6 +66,7 @@
                         <br>
                         <input placeholder="Até" class="textbox-n" type="text" onfocus="(this.type='date')" id="final_filtro" onblur="(this.type='text')" id="" />
                         <button type="button" class="btn btn-warning" id="buscar_dados">Buscar</button>
+                        <button type="reset" class="btn btn-danger" id="buscar_dados">Limpar</button>
                       </div>
                     </div>
                   </form>
@@ -294,7 +295,7 @@
                             <th>Novo Quarto</th>
                           </tr>
                         </thead>
-                        <tbody id=""></tbody>
+                        <tbody id="dados_trocas"></tbody>
                       </table>
                     </div>
 
@@ -310,7 +311,7 @@
                             <th>Motivo</th>
                           </tr>
                         </thead>
-                        <tbody id=""></tbody>
+                        <tbody id="dados_desistencias"></tbody>
                       </table>
                     </div>
 
@@ -359,5 +360,7 @@
 <script type="module" src="../js/dados/limpezas.js"></script>
 <script type="module" src="../js/dados/locacoes.js"></script>
 <script type="module" src="../js/dados/manutencoes.js"></script>
+<script type="module" src="../js/dados/trocas.js"></script>
+<script type="module" src="../js/dados/desistencias.js"></script>
 
 </html>
