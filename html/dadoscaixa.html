@@ -55,13 +55,17 @@
                   <form action="" method="post" class="form-horizontal">
                     <div class="control-group">
                       <div class="controls">
-                        <input type="text" name="" id="codigo_caixa" placeholder="Código Caixa">
+                        <select name="" id="codigo_caixa">
+                          <option hidden>Caixa</option>
+                        </select>
                       </div>
                     </div>
                     <div class="control-group">
                       <div class="controls">
-                        <input type="date" name="" id="data_filtro">
-                        <button type="button" name="botao" class="btn btn-warning" id="buscar_dados">Buscar</button>
+                        <input placeholder="De" class="textbox-n" type="text" onfocus="(this.type='date')" id="inicio_filtro" onblur="(this.type='text')" id="" />
+                        <br>
+                        <input placeholder="Até" class="textbox-n" type="text" onfocus="(this.type='date')" id="final_filtro" onblur="(this.type='text')" id="" />
+                        <button type="button" class="btn btn-warning" id="buscar_dados">Buscar</button>
                       </div>
                     </div>
                   </form>
@@ -345,9 +349,9 @@
 
 <script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
 
-<script type="module" src="../js/caixa/dadosCaixa.js"></script>
 <script src="../js/home/validacoes/permissao.js"></script>
 
+<script type="module" src="../js/dados/caixas.js"></script>
 <script type="module" src="../js/dados/pagamentos.js"></script>
 
 </html>

@@ -7,3 +7,7 @@ export function data_atual(){
     var ano = numero(base.getFullYear())
     return `${String(dia)}/${String(mes)}/${String(ano)}`
 }
+
+export function dateToEN(date) {
+    return date.split('/').reverse().join('-');
+}

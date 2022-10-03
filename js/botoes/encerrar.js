@@ -145,7 +145,8 @@ function registrar_pagamento(){
         valor: parseFloat(pagamento).toFixed(2),
         forma: metodo_pagamento,
         parcelas: metodo_pagamento.slice(0, 3) != "Cré" ? "*" : parcelas,
-        data: data_atual()
+        data: data_atual(),
+        usuario: $("#usuario_sistema").text()
     }
     $.post(link[33], dados, () => {})
     $.post(link[30], {caixa: parseFloat(pagamento).toFixed(2)}, () => {})
