@@ -1,6 +1,6 @@
 import { link } from "../setup/index.js"
-import { _crnmtra1, _crnmtrb1 } from "../contadores/restart/c1.js"
-import { _crnmtra2, _crnmtrb2 } from "../contadores/restart/c2.js"
+import { _crnmtra1 } from "../contadores/restart/c1.js"
+import { _crnmtra2 } from "../contadores/restart/c2.js"
 import { crnmtrb1 } from "../contadores/cronometros/c1.js"
 import { crnmtrb2 } from "../contadores/cronometros/c2.js"
 import { modos } from "../setup/box.js"

@@ -15,7 +15,6 @@ import { inicioModalTroca } from "../setup/troca.js"
 import { ver_quartos_disponiveis } from "../relatorios/quartosDisponiveis.js"
 import { crnmtra1, crnmtrb1, crnmtrc1 } from "../contadores/cronometros/c1.js"
 import { crnmtra2, crnmtrb2, crnmtrc2 } from "../contadores/cronometros/c2.js"
-//import { _crnmtra1, _crnmtrb1, _crnmtrc1 } from "../contadores/restart/c1.js"
 import { desligar_luz } from "../automacao/desligar.js"
 import { ligar_luz } from "../automacao/ligar.js"
 import { tempo_pausado } from "../quartos/ajax/post/decorrido.js"
@@ -62,7 +61,7 @@ export function reacao(status, id){
             alert(`DESEJA INICIAR FAXINA NO QUARTO ${id}?`)
             id == "1" ? crnmtrb1() : id == "2" ? crnmtrb2() : "casa"
             crnmtrc1(id)
-            crnmtra1(id)
+            crnmtra1(id, "0", "0", "0")
             setTimeout( () => {
                 ligar_luz(id)
                 localStorage.setItem("luz", "ligada")
@@ -74,7 +73,7 @@ export function reacao(status, id){
             alert(`DESEJA INICIAR FAXINA NO QUARTO ${id}?`)
             id == "1" ? crnmtrb1() : id == "2" ? crnmtrb2() : "casa"
             crnmtrc1(id)
-            crnmtra1(id)
+            crnmtra1(id, "0", "0", "0")
             setTimeout( () => {
                 ligar_luz(id)
                 localStorage.setItem("luz", "ligada")
@@ -87,7 +86,7 @@ export function reacao(status, id){
         alert(`DESEJA INICIAR LIMPEZA NO QUARTO ${id}?`)
         localStorage.removeItem(`troca${id}`)
         crnmtrc1(id)
-        crnmtra1(id)
+        crnmtra1(id, "0", "0", "0")
         setTimeout( () => {
             ligar_luz(id)
             localStorage.setItem("luz", "ligada")

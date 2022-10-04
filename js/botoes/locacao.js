@@ -19,7 +19,7 @@ $(".locado").click(function() {
                 localStorage.setItem("luz", "ligada")
             }, 500)
 */
-            crnmtra1(quarto)
+            crnmtra1(quarto, "0", "0", "0")
             setTimeout( () => {fimModal()}, 100)
             setTimeout( () => {index()}, 200)
         } else if(quarto == "2"){

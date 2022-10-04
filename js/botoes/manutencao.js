@@ -14,7 +14,7 @@ $(".manutencao").click(function() {
             var flags = modos.slice(0, 3)
             manutencao(quarto, flags[0], flags[1], flags[2])
             setTimeout( () => {fimModal()}, 200)
-            crnmtra1(quarto)
+            crnmtra1(quarto, "0", "0", "0")
             setTimeout( () => {index()}, 500);
         } else if(quarto == "2"){
             var flags = modos.slice(3, 6)

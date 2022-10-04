@@ -21,7 +21,7 @@ $(".faxina").click(function() {
             }, 500)
             */
             setTimeout( () => {fimModal()}, 200)
-            crnmtra1(quarto)
+            crnmtra1(quarto, "0", "0", "0")
             setTimeout( () => {index()}, 500)
         } else if(quarto == "2"){
             var flags = modos.slice(3, 6)
