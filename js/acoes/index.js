@@ -20,7 +20,9 @@ import { desligar_luz } from "../automacao/desligar.js"
 import { ligar_luz } from "../automacao/ligar.js"
 import { tempo_pausado } from "../quartos/ajax/post/decorrido.js"
 import { abrirMenu } from "../quartos/estrutural/caixas.js"
+import { fecharMenu } from "../quartos/estrutural/caixas.js"
 import { camareira_faxina } from "../quartos/estrutural/camareira_faxina.js"
+import { listar_camareiras } from "../quartos/estrutural/lista_camareiras.js"
 
 var rota = 'rota'
 
@@ -170,9 +172,28 @@ export function reacao(status, id){
         fimModal()
         abrirMenu("modau-menu")
         camareira_faxina()
+        listar_camareiras()
     } else if(status == "Selecionar"){
         let camareira = $("#camareiras :selected").text()
-        console.log(camareira)
-        envia_dados_faxina($("#usuario_sistema").text(), data_atual(), hora_atual(), $("#suite").text(), tempo)
+        let usuario = $("#usuario_sistema").text()
+        let suite = $("#suite").text()
+        envia_dados_faxina(usuario, data_atual(), hora_atual(), suite, tempo, camareira)
+        fecharMenu()
+        setTimeout( () => {ultima_limpeza(id)}, 200)
+        /*
+        if (verificaoLuz == "ligada"){
+            setTimeout( () => {
+                desligar_luz(id)
+                localStorage.setItem("luz", "desligada")
+            }, 500)
+        }
+        */
+        setTimeout( () => {desfazer(id, flags[0], flags[1], flags[2])}, 1000)
+        setTimeout( () => {fimModal()}, 1001)
+        setTimeout( () => {
+            alert(`DESEJA DISPONIBILIZAR O QUARTO ${id}?`)
+            id == "1" ? crnmtrb1() : id == "2" ? crnmtrb2() : "casa"
+            crnmtrc1(id)
+        }, 500)
     }
 }
