@@ -19,6 +19,8 @@ import { crnmtra2, crnmtrb2, crnmtrc2 } from "../contadores/cronometros/c2.js"
 import { desligar_luz } from "../automacao/desligar.js"
 import { ligar_luz } from "../automacao/ligar.js"
 import { tempo_pausado } from "../quartos/ajax/post/decorrido.js"
+import { abrirMenu } from "../quartos/estrutural/caixas.js"
+import { camareira_faxina } from "../quartos/estrutural/camareira_faxina.js"
 
 var rota = 'rota'
 
@@ -32,9 +34,7 @@ export function reacao(status, id){
     if(status == "Disponibilizar Quarto"){
         var condicao = $("#tipo").text()
         var verificaoLuz = localStorage.getItem("luz")
-        if(condicao == "faxina"){
-            envia_dados_faxina($("#usuario_sistema").text(), data_atual(), hora_atual(), $("#suite").text(), tempo)
-        } else if(condicao == "manutencao"){
+        if(condicao == "manutencao"){
             var razao = localStorage.getItem("motivo")
             envia_dados_manutencao($("#usuario_sistema").text(), data_atual(), hora_atual(), $("#suite").text(), razao, tempo)
         }
@@ -52,7 +52,6 @@ export function reacao(status, id){
             id == "1" ? crnmtrb1() : id == "2" ? crnmtrb2() : "casa"
             crnmtrc1(id)
         }, 500)
-
     } else if(status == "Iniciar Faxina"){
         var tipo = $("#tipo").text()
         if (tipo == "manutencao"){
@@ -167,5 +166,13 @@ export function reacao(status, id){
         ligar_luz(id)
         localStorage.setItem("status_botao", "ligado")
         localStorage.setItem("luz", "ligada")
+    } else if(status == "Encerrar Faxina"){
+        fimModal()
+        abrirMenu("modau-menu")
+        camareira_faxina()
+    } else if(status == "Selecionar"){
+        let camareira = $("#camareiras :selected").text()
+        console.log(camareira)
+        envia_dados_faxina($("#usuario_sistema").text(), data_atual(), hora_atual(), $("#suite").text(), tempo)
     }
 }

@@ -6,6 +6,7 @@ $(document).ready(function() {
             $('#comboCamareiras').append('<option>' + item.nome + '</option>');
             $('#selecionaCamareira').append('<option>' + item.nome + '</option>');
             $("#selecionar_camareira").append('<option>' + item.nome + '</option>')
+            $("#camareiras").append('<option>' + item.nome + '</option>')
         });
     })
 })

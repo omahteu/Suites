@@ -12,7 +12,7 @@ export function faxina(q, t, x, y, z) {
 
     // Botões Inferiores
     $(".acoes1").css('display', 'inline-block')
-    $(".acoes1").val('Disponibilizar Quarto')
+    $(".acoes1").val('Encerrar Faxina')
 
     if(t != 'btn faxina'){
         $(".acoes2").css('display', 'none')

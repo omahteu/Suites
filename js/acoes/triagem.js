@@ -1,6 +1,6 @@
 import { reacao } from "./index.js"
 
-$("[name=botao]").click(function(){
+$(document).on("click", "[name=botao]", function(){
     var status = $(this).val()
     let numeroQuarto = $("#quarto_painel").text()
 	let valorQuarto = $("#valor-quarto").text()
