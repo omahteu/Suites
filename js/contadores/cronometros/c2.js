@@ -1,33 +1,32 @@
 "use strict";
 
-export let hora = 0;
-export let minuto = 0;
-export let segundo = 0;
-export let msegundo = 0;
+let hora = 0;
+let minuto = 0;
+let segundo = 0;
+let msegundo = 0;
+let contagem;
+let suite
 
-export let kronos;
-export let id
-
-export  function crnmtra2(id) {
-  crnmtrb2();
-  kronos = setInterval(() => { crnmtrd2(id); }, 10);
+export  function iniciar2(suite) {
+  parar2();
+  contagem = setInterval(() => { correr2(suite); }, 10);
 }
 
-export function crnmtrb2() {
-  clearInterval(kronos);
+export function parar2() {
+  clearInterval(contagem);
 }
 
-export function crnmtrc2(id) {
+export function zerar(suite) {
   hora = 0;
   minuto = 0;
   segundo = 0;
   msegundo = 0;
-  document.getElementById(`hora${id}`).innerText = '00';
-  document.getElementById(`minuto${id}`).innerText = '00';
-  document.getElementById(`segundo${id}`).innerText = '00';
+  document.getElementById(`hora${suite}`).innerText = '00';
+  document.getElementById(`minuto${suite}`).innerText = '00';
+  document.getElementById(`segundo${suite}`).innerText = '00';
 }
 
-export function crnmtrd2(id) {
+export function correr2(suite) {
   if ((msegundo += 10) == 1000) {
     msegundo = 0;
     segundo++;
@@ -40,12 +39,12 @@ export function crnmtrd2(id) {
     minuto = 0;
     hora++;
   }
-  document.getElementById(`hora${id}`).innerText = crnmtre2(hora);
-  document.getElementById(`minuto${id}`).innerText = crnmtre2(minuto);
-  document.getElementById(`segundo${id}`).innerText = crnmtre2(segundo);
+  document.getElementById(`hora${suite}`).innerText = formatar2(hora);
+  document.getElementById(`minuto${suite}`).innerText = formatar2(minuto);
+  document.getElementById(`segundo${suite}`).innerText = formatar2(segundo);
 }
 
-export function crnmtre2(input) {
+export function formatar2(input) {
   if(input >= 10){
     return input
   } else if(input >= 1 && input <= 9){

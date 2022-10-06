@@ -13,8 +13,8 @@ import { envia_dados_faxina } from "../caixa/faxina.js"
 import { envia_dados_manutencao } from "../caixa/manutencao.js"
 import { inicioModalTroca } from "../setup/troca.js"
 import { ver_quartos_disponiveis } from "../relatorios/quartosDisponiveis.js"
-import { crnmtra1, crnmtrb1, crnmtrc1 } from "../contadores/cronometros/c1.js"
-import { crnmtra2, crnmtrb2, crnmtrc2 } from "../contadores/cronometros/c2.js"
+import { iniciar, parar, zerar } from "../contadores/cronometros/c1.js"
+import { iniciar2, parar2, zerar2 } from "../contadores/cronometros/c2.js"
 import { desligar_luz } from "../automacao/desligar.js"
 import { ligar_luz } from "../automacao/ligar.js"
 import { tempo_pausado } from "../quartos/ajax/post/decorrido.js"
@@ -50,8 +50,8 @@ export function reacao(status, id){
         setTimeout( () => {fimModal()}, 1001)
         setTimeout( () => {
             alert(`DESEJA DISPONIBILIZAR O QUARTO ${id}?`)
-            id == "1" ? crnmtrb1() : id == "2" ? crnmtrb2() : "casa"
-            crnmtrc1(id)
+            id == "1" ? parar() : id == "2" ? parar2() : "casa"
+            zerar(id)
         }, 500)
     } else if(status == "Iniciar Faxina"){
         var tipo = $("#tipo").text()
@@ -59,9 +59,9 @@ export function reacao(status, id){
             var razao = localStorage.getItem("motivo")
             envia_dados_manutencao($("#usuario_sistema").text(), data_atual(), hora_atual(), $("#suite").text(), razao, tempo)
             alert(`DESEJA INICIAR FAXINA NO QUARTO ${id}?`)
-            id == "1" ? crnmtrb1() : id == "2" ? crnmtrb2() : "casa"
-            crnmtrc1(id)
-            crnmtra1(id, "0", "0", "0")
+            id == "1" ? parar() : id == "2" ? parar2() : "casa"
+            zerar(id)
+            iniciar(id, "0", "0", "0")
             setTimeout( () => {
                 ligar_luz(id)
                 localStorage.setItem("luz", "ligada")
@@ -71,9 +71,9 @@ export function reacao(status, id){
             setTimeout( () => {fimModal()}, 1001)
         } else {    
             alert(`DESEJA INICIAR FAXINA NO QUARTO ${id}?`)
-            id == "1" ? crnmtrb1() : id == "2" ? crnmtrb2() : "casa"
-            crnmtrc1(id)
-            crnmtra1(id, "0", "0", "0")
+            id == "1" ? parar() : id == "2" ? parar2() : "casa"
+            zerar(id)
+            iniciar(id, "0", "0", "0")
             setTimeout( () => {
                 ligar_luz(id)
                 localStorage.setItem("luz", "ligada")
@@ -85,8 +85,8 @@ export function reacao(status, id){
     } else if(status == "Iniciar Limpeza"){
         alert(`DESEJA INICIAR LIMPEZA NO QUARTO ${id}?`)
         localStorage.removeItem(`troca${id}`)
-        crnmtrc1(id)
-        crnmtra1(id, "0", "0", "0")
+        zerar(id)
+        iniciar(id, "0", "0", "0")
         setTimeout( () => {
             ligar_luz(id)
             localStorage.setItem("luz", "ligada")
@@ -104,7 +104,7 @@ export function reacao(status, id){
         ver_quartos_disponiveis()
     } else if(status == "Encerrar"){
         if(confirm(`DESEJA ENCERRAR o QUARTO ${id}?`)){
-            id == "1" ? crnmtrb1() : id == "2" ? crnmtrb2() : "casa"
+            id == "1" ? parar() : id == "2" ? parar2() : "casa"
             setTimeout( () => {localStorage.setItem("last", id)}, 100)
             setTimeout( () => {tempo_pausado(hour, minute, second, id)}, 300)
             setTimeout( () => {desfazer(id, flags[0], flags[1], flags[2])}, 1000)
@@ -139,9 +139,9 @@ export function reacao(status, id){
         
         alert('Camareira Selecionada')
 
-        id == "1" ? crnmtrb1() : id == "2" ? crnmtrb2() : "casa"
+        id == "1" ? parar() : id == "2" ? parar2() : "casa"
 
-        crnmtrc1(id)
+        zerar(id)
 
         setTimeout( () => {
             var recebido = JSON.parse(localStorage.getItem("limpeza"))
@@ -191,8 +191,8 @@ export function reacao(status, id){
         setTimeout( () => {fimModal()}, 1001)
         setTimeout( () => {
             alert(`DESEJA DISPONIBILIZAR O QUARTO ${id}?`)
-            id == "1" ? crnmtrb1() : id == "2" ? crnmtrb2() : "casa"
-            crnmtrc1(id)
+            id == "1" ? parar() : id == "2" ? parar2() : "casa"
+            zerar(id)
         }, 500)
     }
 }

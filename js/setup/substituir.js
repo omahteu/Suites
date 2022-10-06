@@ -1,8 +1,8 @@
 import { link } from "../setup/index.js"
 import { _crnmtra1 } from "../contadores/restart/c1.js"
 import { _crnmtra2 } from "../contadores/restart/c2.js"
-import { crnmtrb1 } from "../contadores/cronometros/c1.js"
-import { crnmtrb2 } from "../contadores/cronometros/c2.js"
+import { parar } from "../contadores/cronometros/c1.js"
+import { parar2 } from "../contadores/cronometros/c2.js"
 import { modos } from "../setup/box.js"
 import { locado } from "../tags/locacao.js"
 import { fimModalTroca } from "../setup/troca.js"
@@ -104,7 +104,7 @@ function iniciando(suite){
 
 function finalizando(suite){
     let flags = suite == "1" ? modos.slice(0, 3) : modos.slice(3, 6)
-    suite == "1" ? crnmtrb1() : crnmtrb2()
+    suite == "1" ? parar() : parar2()
     setTimeout( () => {desfazer(suite, flags[0], flags[1], flags[2])}, 200)
     setTimeout( () => {aguardando(suite, flags[0], flags[1], flags[2])}, 300)
     setTimeout( () => {
