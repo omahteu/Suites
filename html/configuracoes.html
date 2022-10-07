@@ -135,6 +135,49 @@
 
                     <form action="" method="post" class="form-horizontal">
 
+                      <!--Permanência Automatica-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="checkbox" name="" id="">
+                          <span>Pernoite Automática</span>
+                        </div>
+                      </div>
+
+                      <!--Permanência-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" id="" placeholder="" required>
+                          <span>Permanência</span>
+                        </div>
+                      </div>
+
+                      <!--Início-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="time" name="" id="">
+                          <span>Início da Pernoite</span>
+                        </div>
+                      </div>
+
+                      <!--Fim-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="time" name="" id="">
+                          <span>Fim da Pernoite</span>
+                        </div>
+                      </div>
+
+                      <!--Tipo Pernoite-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <select name="" id="">
+                            <option value="" hidden>Tipo Pernoite</option>
+                            <option value="">Automática</option>
+                            <option value="">Fixa</option>
+                          </select>
+                        </div>
+                      </div>
+
                       <div class="form-actions">
                         <div class="span8">
                           <div class="span9">
@@ -196,6 +239,14 @@
                         <div class="controls">
                           <input type="text" id="valorLocacaoQuarto" placeholder="Valor Locação" required>
                           <span>Valor Hora Locação</span>
+                        </div>
+                      </div>
+
+                      <!--Valor Pernoite-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" id="" placeholder="Valor Pernoite" required>
+                          <span>Valor Pernoite</span>
                         </div>
                       </div>
 
@@ -526,7 +577,6 @@
 
 <script src="../js/setup/sitePath.js"></script>
 <script src="../js/setup/validacao.js"></script>
-<script src="../js/setup/blockConfigsCaixa.js"></script>
 
 
 <script type="module" src="../js/cadastros/postAuditoria.js"></script>

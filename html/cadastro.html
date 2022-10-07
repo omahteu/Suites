@@ -78,6 +78,10 @@
                   <li>
                     <a data-toggle="tab" href="#suite">Suíte</a>
                   </li>
+                  <!--Usuário-->
+                  <li>
+                    <a data-toggle="tab" href="#usuario">Usuário</a>
+                  </li>
                 </ul>
 
                 <div class="widget-content nopadding tab-content">
@@ -356,6 +360,59 @@
                   </div>
                   <!--Placa-->
 
+                  <!--Usuário-->
+                  <div id="usuario" class="tab-pane fade">
+
+                    <form action="" method="post" class="form-horizontal" id="formTipo" name="formTipo">
+                      <!--Nome-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" id="suiteCodigo" placeholder="Nome" required>
+                        </div>
+                      </div>
+
+                      <!--Senha-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="password" id="suiteNome" placeholder="Senha" required>
+                        </div>
+                      </div>
+
+                      <!--Status-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <select name="" id="">
+                            <option value="" hidden>Permissão</option>
+                            <option value="">Administrador</option>
+                            <option value="">Caixa</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="submit" class="button btn btn-primary" id="">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2">Cadastrar</span>
+                            </button>
+                            <button type="reset" class="button btn btn-danger">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                  <!--Usuário-->
+
                 </div>
               </div>
             </div>
@@ -384,7 +441,6 @@
 <script src="../js/estilo/matrix.js"></script>
 <script src="../js/estilo/nomes.js"></script>
 
-<script src="../js/setup/blockCadastrosCaixa.js"></script>
 <script src="../js/setup/sitePath.js"></script>
 <script src="../js/setup/validacao.js"></script>
 
