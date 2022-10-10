@@ -29,31 +29,7 @@ export function listaCamareiras(camareira){
     })
 }
 
-export function espera(){
-    console.log('esperando')
-}
-
 export function ret(){
     var nome_camareira = $("#camareira").text()
     return nome_camareira
 }
-
-$("#limparFormPostQuarto").click(function() {
-    document.getElementById('formPostQuarto').reset()
-})
-
-$("#limparFormPostProduto").click(function() {
-    document.getElementById('formPostProduto').reset()
-})
-
-$("#limparFormPostIg").click(function() {
-    document.getElementById('formPostIG').reset()
-})
-
-$("#limparFormPostEmail").click(function() {
-    document.getElementById('formPostEmail').reset()
-})
-
-$("#limparFormPostCamareira").click(function() {
-    document.getElementById('formPostCamareira').reset()
-})
