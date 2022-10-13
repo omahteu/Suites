@@ -12,55 +12,29 @@ export async function ver_tabela_tempos(){
     });
 }
 
-export function seleciona_tempo(){
-    $("#escolhe_tempo").change(function() {
-        var option = $(this).find(":selected").text()
-        
-
-        var card = document.forms.namedItem("formTempo")[1]
-
-        console.log(card)
-
-
-
-
-        if(option == "Troca de Quarto"){
-
-            $(card).attr("placeholder", "Casa").removeAttr("style")
-            //console.log(card)
+export async function seleciona_tempo(){
+    const resposta = await fetch(link[19])
+    const dados = await resposta.json()
+    dados.forEach(e => {
+        $("#escolhe_tempo").change(function() {
+            var option = $(this).find(":selected").text()
             
-            /*
-            $("#tempo_troca_quarto").css("display", "inline-block")
-            $("#tempo_desistencia").css("display", "none")
-            $("#tempo_limpeza").css("display", "none")
-            $("#tempo_faxina").css("display", "none")
-            $("#tempo_manutencao").css("display", "none")
-            */
-        } else if(option == "Desistência"){
-            $("#tempo_troca_quarto").css("display", "none")
-            $("#tempo_desistencia").css("display", "inline-block")
-            $("#tempo_limpeza").css("display", "none")
-            $("#tempo_faxina").css("display", "none")
-            $("#tempo_manutencao").css("display", "none")
-        } else if(option == "Limpeza"){
-            $("#tempo_troca_quarto").css("display", "none")
-            $("#tempo_desistencia").css("display", "none")
-            $("#tempo_limpeza").css("display", "inline-block")
-            $("#tempo_faxina").css("display", "none")
-            $("#tempo_manutencao").css("display", "none")
-        } else if(option == "Faxina"){
-            $("#tempo_troca_quarto").css("display", "none")
-            $("#tempo_desistencia").css("display", "none")
-            $("#tempo_limpeza").css("display", "none")
-            $("#tempo_faxina").css("display", "inline-block")
-            $("#tempo_manutencao").css("display", "none")
-        } else if(option == "Manutenção"){
-            $("#tempo_troca_quarto").css("display", "none")
-            $("#tempo_desistencia").css("display", "none")
-            $("#tempo_limpeza").css("display", "none")
-            $("#tempo_faxina").css("display", "none")
-            $("#tempo_manutencao").css("display", "inline-block")
-        }
-
+            var card = document.forms.namedItem("formTempo")[1]
+    
+            console.log(card)
+    
+            if(option == "Troca de Quarto"){
+                $(card).attr("placeholder", e.troca).removeAttr("style")
+            } else if(option == "Desistência"){
+                $(card).attr("placeholder", e.desistencia).removeAttr("style")
+            } else if(option == "Limpeza"){
+                $(card).attr("placeholder", e.limpeza).removeAttr("style")
+            } else if(option == "Faxina"){
+                $(card).attr("placeholder", e.faxina).removeAttr("style")
+            } else if(option == "Manutenção"){
+                $(card).attr("placeholder", e.manutencao).removeAttr("style")
+            }
+        })
     })
+
 }
