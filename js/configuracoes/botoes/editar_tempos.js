@@ -1,23 +1,21 @@
 import { link } from "../../setup/index.js"
 
 $(document).on("click", "#scet", function(){
-    let tempo = $("#escolhe_tempo").val()
+    var tempo = $("#escolhe_tempo").val()
     //let valor = $(`#${tempo}`).val()
 
-    var dados = {
-        tempo : valor
-    }
+    var dados = [tempo, "casa"]
+    var dds = JSON.stringify(dados)
 
-    console.log(dados)
-/*
+
     $.ajax({
         url: link[19] + "1" + "/",
         type: 'PATCH',
         dataType: 'json',
-        data: {tempo: valor},
+        data: dds,
         success: function() {
             alert("Valores Salvos!")
             location.reload()
         }
-    })*/
+    })
 })
