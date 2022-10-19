@@ -5,6 +5,7 @@ import { fimModal } from "../setup/camareiras.js"
 import { iniciar } from "../contadores/cronometros/c1.js"
 import { iniciar2 } from "../contadores/cronometros/c2.js"
 import { ligar_luz } from "../automacao/ligar.js"
+import { registraLimite } from "../../qwertyu.js"
 
 $(".faxina").click(function() {
     var quarto = $('#quarto_painel').text()
@@ -22,6 +23,7 @@ $(".faxina").click(function() {
             */
             setTimeout( () => {fimModal()}, 200)
             iniciar(quarto, "0", "0", "0")
+            registraLimite(quarto, "d", "faxina")
             setTimeout( () => {index()}, 500)
         } else if(quarto == "2"){
             var flags = modos.slice(3, 6)
