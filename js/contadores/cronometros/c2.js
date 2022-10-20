@@ -16,7 +16,7 @@ export function parar2() {
   clearInterval(contagem);
 }
 
-export function zerar(suite) {
+export function zerar2(suite) {
   hora = 0;
   minuto = 0;
   segundo = 0;

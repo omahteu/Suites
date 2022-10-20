@@ -5,6 +5,7 @@ import { fimModal } from "../setup/camareiras.js"
 import { iniciar } from "../contadores/cronometros/c1.js"
 import { iniciar2 } from "../contadores/cronometros/c2.js"
 import { ligar_luz } from "../automacao/ligar.js"
+import { registraLimite } from "../../qwertyu.js"
 
 $(".locado").click(function() {
     var quarto = $('#quarto_painel').text()
@@ -20,6 +21,7 @@ $(".locado").click(function() {
             }, 500)
 */
             iniciar(quarto, "0", "0", "0")
+            registraLimite(quarto, "a", "troca")
             setTimeout( () => {fimModal()}, 100)
             setTimeout( () => {index()}, 200)
         } else if(quarto == "2"){

@@ -15,15 +15,13 @@ $(".faxina").click(function() {
         if(quarto == "1"){
             var flags = modos.slice(0, 3)
             faxina(quarto, rota, flags[0], flags[1], flags[2])
-            /*
             setTimeout( () => {
                 ligar_luz(quarto)
                 localStorage.setItem("luz", "ligada")
             }, 500)
-            */
             setTimeout( () => {fimModal()}, 200)
             iniciar(quarto, "0", "0", "0")
-            registraLimite(quarto, "d", "faxina")
+            registraLimite(quarto, "a", "faxina")
             setTimeout( () => {index()}, 500)
         } else if(quarto == "2"){
             var flags = modos.slice(3, 6)

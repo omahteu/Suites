@@ -23,6 +23,7 @@ import { fecharMenu } from "../quartos/estrutural/caixas.js"
 import { camareira_faxina } from "../quartos/estrutural/camareira_faxina.js"
 import { listar_camareiras } from "../quartos/estrutural/lista_camareiras.js"
 import { finalizaTarefa } from "../../qwertyu.js"
+import { registraLimite } from "../../qwertyu.js"
 
 var rota = 'rota'
 
@@ -89,6 +90,7 @@ export function reacao(status, id){
         localStorage.removeItem(`troca${id}`)
         zerar(id)
         iniciar(id, "0", "0", "0")
+        registraLimite(id, "a", "limpreza")
         setTimeout( () => {
             ligar_luz(id)
             localStorage.setItem("luz", "ligada")

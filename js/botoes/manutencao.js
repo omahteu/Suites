@@ -4,7 +4,8 @@ import { index } from "../tags/particao.js"
 import { fimModal } from "../setup/camareiras.js"
 import { iniciar } from "../contadores/cronometros/c1.js"
 import { iniciar2 } from "../contadores/cronometros/c2.js"
-import { registraLimite } from "../../qwertyu.js"
+import { ligar_luz } from "../automacao/ligar.js"
+import { registraLimiteManutencao } from "../../qwertyu.js"
 
 $(".manutencao").click(function() {
     var quarto = $('#quarto_painel').text()
@@ -14,9 +15,13 @@ $(".manutencao").click(function() {
         if(quarto == "1"){
             var flags = modos.slice(0, 3)
             manutencao(quarto, flags[0], flags[1], flags[2])
+            setTimeout( () => {
+                ligar_luz(quarto)
+                localStorage.setItem("luz", "ligada")
+            }, 500)
             setTimeout( () => {fimModal()}, 200)
             iniciar(quarto, "0", "0", "0")
-            registraLimite(quarto, "a", "manutencao")
+            registraLimiteManutencao(quarto, "a", "manutencao")
             setTimeout( () => {index()}, 500);
         } else if(quarto == "2"){
             var flags = modos.slice(3, 6)
