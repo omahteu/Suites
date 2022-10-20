@@ -1,3 +1,6 @@
-export function bloqueio(id){
-    $(id).css('display', 'none')
+export function bloqueio(tempo, id){
+    const time = parseInt(tempo) * 1000
+    setTimeout( () => {
+        $(id).css('display', 'none')
+    }, time)
 }

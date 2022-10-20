@@ -22,6 +22,7 @@ import { abrirMenu } from "../quartos/estrutural/caixas.js"
 import { fecharMenu } from "../quartos/estrutural/caixas.js"
 import { camareira_faxina } from "../quartos/estrutural/camareira_faxina.js"
 import { listar_camareiras } from "../quartos/estrutural/lista_camareiras.js"
+import { finalizaTarefa } from "../../qwertyu.js"
 
 var rota = 'rota'
 
@@ -38,6 +39,7 @@ export function reacao(status, id){
         if(condicao == "manutencao"){
             var razao = localStorage.getItem("motivo")
             envia_dados_manutencao($("#usuario_sistema").text(), data_atual(), hora_atual(), $("#suite").text(), razao, tempo)
+            finalizaTarefa($("#suite").text())
         }
         setTimeout( () => {ultima_limpeza(id)}, 200)
         if (verificaoLuz == "ligada"){
