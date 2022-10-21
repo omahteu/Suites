@@ -119,22 +119,29 @@ $(document).ready(function () {
                         case "manutencao":
                             if (modo != "b"){
                                 if (String(horario) == String(hora_atual())){
-                                    desligar_luz(suite)
-                                    $.ajax({
-                                        headers : {
-                                            'Accept' : 'application/json',
-                                            'Content-Type' : 'application/json'
-                                        },
-                                        url : link[34] + id + "/",
-                                        type : 'PATCH',
-                                        data : JSON.stringify({"modo": "b"}),
-                                        success : function() {
-                                            console.log("Troca Com Sucesso!");
-                                        },
-                                        error : function(textStatus, errorThrown) {
-                                            console.log(`ERRO: ${textStatus} - ${errorThrown}`)
-                                        }
-                                    })
+                                    setTimeout( () => {
+                                        desligar_luz(suite)
+                                        $.ajax({
+                                            headers : {
+                                                'Accept' : 'application/json',
+                                                'Content-Type' : 'application/json'
+                                            },
+                                            url : link[34] + id + "/",
+                                            type : 'PATCH',
+                                            data : JSON.stringify({"modo": "b"}),
+                                            success : function() {
+                                                console.log("Troca Com Sucesso!");
+                                            },
+                                            error : function(textStatus, errorThrown) {
+                                                console.log(`ERRO: ${textStatus} - ${errorThrown}`)
+                                            }
+                                        })
+                                        $("#botao_inferior_tres").css("display", "none")
+                                    }, 30000)
+                                }
+                            } else {
+                                if (tipo == "manutencao"){
+                                    $("#botao_inferior_tres").css("display", "none")
                                 }
                             }
                             break
@@ -213,3 +220,4 @@ export function registraLimiteManutencao(suite, modo, tipo){
         })
     })
 }
+
