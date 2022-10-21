@@ -25,6 +25,8 @@ import { listar_camareiras } from "../quartos/estrutural/lista_camareiras.js"
 import { finalizaTarefa } from "../../qwertyu.js"
 import { registraLimite } from "../../qwertyu.js"
 import { registraLimiteManutencao } from "../../qwertyu.js"
+import { registraLimiteDesistencia } from "../../qwertyu.js"
+import { registraLimiteLimpeza } from "../../qwertyu.js"
 
 var rota = 'rota'
 
@@ -91,7 +93,7 @@ export function reacao(status, suite){
         localStorage.removeItem(`troca${suite}`)
         zerar(suite)
         iniciar(suite, "0", "0", "0")
-        registraLimite(suite, "a", "limpreza")
+        registraLimiteLimpeza(suite, "a", "limpeza")
         setTimeout( () => {
             ligar_luz(suite)
             localStorage.setItem("luz", "ligada")
@@ -109,6 +111,7 @@ export function reacao(status, suite){
         ver_quartos_disponiveis()
     } else if(status == "Encerrar"){
         if(confirm(`DESEJA ENCERRAR o QUARTO ${suite}?`)){
+            registraLimiteDesistencia(suite, "a", "desistencia")
             suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
             setTimeout( () => {localStorage.setItem("last", suite)}, 100)
             setTimeout( () => {tempo_pausado(hour, minute, second, suite)}, 300)
