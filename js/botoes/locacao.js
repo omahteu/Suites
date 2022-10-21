@@ -4,7 +4,6 @@ import { index } from "../tags/particao.js"
 import { fimModal } from "../setup/camareiras.js"
 import { iniciar } from "../contadores/cronometros/c1.js"
 import { iniciar2 } from "../contadores/cronometros/c2.js"
-import { ligar_luz } from "../automacao/ligar.js"
 import { registraLimiteTroca } from "../../qwertyu.js"
 
 $(".locado").click(function() {
