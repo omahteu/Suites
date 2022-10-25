@@ -4,7 +4,7 @@
 2: CAIXA        | 12: LIMPEZA   | 22: MOVIMENTAÇÃO  | 32: SANGRIA
 3: CAMAREIRA    | 13: OCUPAÇÃO  | 23: FAXINA        | 33: PAGAMENTO
 4: CRÉDITO      | 14: PAINEL    | 24: MANUTENÇÃO    | 34: TAREFA
-5: COMANDA      | 15: PÁTIO     | 25: REVISÃO       |
+5: COMANDA      | 15: PÁTIO     | 25: REVISÃO       | 35: PERNOITE
 6: DADOS        | 16: PRODUTO   | 26: TROCA         |
 7: DESISTÊNCIA  | 17: QUARTO    | 27: AUTOMAÇÃO     |
 8: DÉBITO       | 18: TABELA    | 28: PLACAS        |
@@ -46,5 +46,6 @@ export const link = [
     "https://demomotelapi.herokuapp.com/teto/",
     "https://demomotelapi.herokuapp.com/sangria/",
     "https://demomotelapi.herokuapp.com/pagamento/",
-    "https://demomotelapi.herokuapp.com/tarefa/"
+    "https://demomotelapi.herokuapp.com/tarefa/",
+    "https://demomotelapi.herokuapp.com/pernoite/"
 ]
