@@ -6,7 +6,7 @@ export function ultima_limpeza(suite){
     localStorage.removeItem("quarto")
     $.get(link[11], (e) =>{
         var dados = e.filter(quartos => quartos.quarto == suite)
-        var id = dados[0].id
+        var id =    dados[0].id
         $.ajax({
             url: link[11] + id + "/",
             type: 'DELETE'

@@ -13,4 +13,3 @@ function iai() {
 }
 
 
-su == "1" ? oi() : su == "2" ? ola() : iai()
