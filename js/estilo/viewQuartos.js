@@ -4,6 +4,7 @@ import { aguardando } from "../tags/aguardo.js"
 import { limpeza } from "../tags/limpeza.js"
 import { manutencao } from "../tags/manutencao.js"
 import { faxina } from "../tags/faxina.js"
+import { pernoite } from '../tags/pernoite.js'
 import { link } from "../setup/index.js"
 import { leituraProdutosPlus } from "../armazem/leitura/produtos.js"
 import { leituraVeiculosPlus } from "../armazem/leitura/veiculos.js"
@@ -30,6 +31,8 @@ $(document).ready(function(){
 				$("#tipo").text("aguardando")
 			} else if(cor  == "rgb(255, 255, 0)"){
 				$("#tipo").text("limpeza")
+			} else if(cor == "rgb(139, 0, 139)"){
+				$("#tipo").text("pernoite")
 			}
 
 			if(e == '1'){
@@ -76,6 +79,8 @@ $(document).on('click', '[class="card"]', function() {
 			$("#tipo").text("aguardando")
 		} else if(cor  == "rgb(255, 255, 0)"){
 			$("#tipo").text("limpeza")
+		} else if(cor == "rgb(139, 0, 139)"){
+			$("#tipo").text("pernoite")
 		}
 
 		if(identificador == '1'){
@@ -170,13 +175,38 @@ function backupInfos(instance, x, y, z){
 				$(".acoes3").css('display', 'none')
 				$(".acoes3").val('')
 				limpeza(instance, rotal, x, y, z)
+			} else if(modo == "pernoite"){
+				$(`[name=${instance}]`).css('display', 'none')
+				$(".acoes1").css('display', 'inline-block')
+				$(".acoes1").val('Encerrar')
+				$(".acoes2").css('display', 'none')
+				$(".acoes2").val('')
+				$(".acoes3").css('display', 'none')
+				$(".acoes3").val('')
+				pernoite(instance, "", x, y, z)
 			}
 			dados.forEach( (resultado) => {
-				$("#numquarto").text(resultado.quarto)
-				$("#quarto_painel").text(resultado.quarto)
-				$("#vq_painel").text(resultado.valor)
-				$("#entrada").text(resultado.datahora)
-				$("#valor-quarto").text(resultado.valor)	
+				if (modo != "pernoite"){
+					$("#numquarto").text(resultado.quarto)
+					$("#quarto_painel").text(resultado.quarto)
+					$("#vq_painel").text(resultado.valor)
+					$("#entrada").text(resultado.datahora)
+					$("#valor-quarto").text(resultado.valor)
+				} else {
+					
+					$("#numquarto").text(resultado.quarto)
+					$("#quarto_painel").text(resultado.quarto)
+					
+					$("#entrada").text(resultado.datahora)
+					$("#valor-quarto").text(resultado.valor)
+					setTimeout( () => {
+						$.get(link[21], (e) => {
+							var avalor = $("#vh_painel").text()
+							$("#vq_painel").text(parseFloat(avalor) + parseFloat(e[0].tempo_pernoite))
+						})
+					}, 100)
+				}
+	
 			})
 		} catch (error) {
 			localStorage.setItem('produtos', JSON.stringify([]))

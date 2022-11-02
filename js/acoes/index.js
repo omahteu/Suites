@@ -26,6 +26,7 @@ import { finalizaTarefa } from "../../qwertyu.js"
 import { registraLimiteManutencao } from "../../qwertyu.js"
 import { registraLimiteDesistencia } from "../../qwertyu.js"
 import { registraLimiteLimpeza } from "../../qwertyu.js"
+import { link } from "../setup/index.js"
 
 var rota = 'rota'
 
@@ -110,6 +111,16 @@ export function reacao(status, suite){
         ver_quartos_disponiveis()
     } else if(status == "Encerrar"){
         if(confirm(`DESEJA ENCERRAR o QUARTO ${suite}?`)){
+            $.get(link[21], (e) => {
+                var avalor = $("#vh_painel").text()
+                console.log(parseFloat(avalor) + parseFloat(e[0].tempo_pernoite))
+                $("#vh_painel").text(parseFloat(avalor) + parseFloat(e[0].tempo_pernoite))
+            })
+            setTimeout( () => {
+                console.log("caixa preta")
+
+            },1000)
+            /*
             registraLimiteDesistencia(suite, "a", "desistencia")
             suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
             setTimeout( () => {localStorage.setItem("last", suite)}, 100)
@@ -119,7 +130,7 @@ export function reacao(status, suite){
             window.open('../html/checkout.html', '_blank')
             setTimeout( () => {aguardando(suite, rota, flags[0], flags[1], flags[2])}, 1500)
             setTimeout( () => {atualiza_status(suite, "aguardando"), 1500})
-            setTimeout( () => {fimModal()}, 1001)
+            setTimeout( () => {fimModal()}, 1001)*/
         }
     } else if(status == "Encerrar Limpeza"){
         if(confirm('DESEJA DISPONIBILIZAR O QUARTO ' + suite + ' ?') == true){

@@ -10,7 +10,7 @@ import { link } from "../../setup/index.js"
 /*
     FUNÇÃO PRINCIPAL
 */
-export function atualizaValores(quarto) {
+export function atualizjaValores(quarto) {
 
   buscaHoraLocacao()
   buscaDadosQuarto()
@@ -21,21 +21,16 @@ export function atualizaValores(quarto) {
   var horaLocacao = JSON.parse(sessionStorage.getItem("test"))
   var infoQuartos = JSON.parse(sessionStorage.getItem("dq"))
   var precos = JSON.parse(sessionStorage.getItem("tp"))
-
   var filtroCobranca = infoQuartos.filter(e => e.numero == quarto)
   var infos = horaLocacao.filter(e => e.quarto == quarto)
-
-
   var quantidadeHoras = filtroCobranca[0].horas_locacao
   var tipoCobranca = filtroCobranca[0].cobranca
   var datahoraLocacao = infos[0].datahora
   var agora = hora_atual_segundos()
   var valor = infos[0].valor
-
   var ms = moment(agora, "HH:mm:ss").diff(moment(datahoraLocacao, "HH:mm:ss"));
   var d = moment.duration(ms);
   var tempoPassado = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
-
   var tpFormatado = String(tempoPassado).split(":")
 
   if (tipoCobranca == "hora") {
@@ -77,9 +72,6 @@ export function atualizaValores(quarto) {
       }
     }
   } else if (tipoCobranca == "fixa") {
-
-    console.log(tpFormatado)
-
     var fixo = precos[0].valor_locacao
     var acrecimo = parseFloat(valor) + parseFloat(fixo)
     $("#atualizacaoPreco").text(acrecimo)

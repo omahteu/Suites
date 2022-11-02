@@ -20,6 +20,7 @@ function inativo() {
   $("#vh_painel").text("0")
   $("#tipo").text('0')
   $("#entrada").text('')
+  $("#atualizacaoPreco").text("0")
 	var prateleiraResultado = document.getElementById('listaProdutosComprados')
 	prateleiraResultado.innerHTML = '';
   var patioResultado = document.getElementById('listaveiculosguardados')
