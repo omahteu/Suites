@@ -3,6 +3,14 @@ export var quartoum = ['a1', 'a2', 'a3']
 export var quartodois = ['a4', 'a5', 'a6']
 export var nomeCamareiras = []
 
+export var tick = {
+	"1": ["x1", "x2", "x3"],
+	"2": ["x4", "x5", "x6"],
+	"3": ["x7", "x8", "x9"],
+	"4": ["x10", "x11", "x12"],
+	"5": ["x13", "x14", "x15"]
+}
+
 export function rg(){
 	var size = 3
 	var randomized = Math.ceil(Math.random() * Math.pow(10,size))

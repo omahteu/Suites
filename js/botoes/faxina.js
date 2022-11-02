@@ -1,46 +1,26 @@
 import { faxina } from "../tags/faxina.js"
-import { modos } from "../setup/box.js"
 import { index } from "../tags/particao.js"
 import { fimModal } from "../setup/camareiras.js"
 import { iniciar } from "../contadores/cronometros/c1.js"
 import { iniciar2 } from "../contadores/cronometros/c2.js"
 import { ligar_luz } from "../automacao/ligar.js"
 import { registraLimite } from "../../qwertyu.js"
+import { tick } from "../setup/box.js"
 
-$(".faxina").click(function() {
-    var suite = $('#quarto_painel').text()
-    var rota = $(this).attr('class')
-
-    if(confirm(`DESEJA INICIAR A FAXINA NO QUARTO ${suite}`) == true){
-        if(suite == "1"){
-            var flags = modos.slice(0, 3)
-            faxina(suite, rota, flags[0], flags[1], flags[2])
-            setTimeout( () => {
-                ligar_luz(suite)
-                localStorage.setItem("luz", "ligada")
-            }, 500)
-            setTimeout( () => {fimModal()}, 200)
-            iniciar(suite, "0", "0", "0")
-            registraLimite(suite, "a", "faxina")
-            setTimeout( () => {index()}, 500)
-        } else if(suite == "2"){
-            var flags = modos.slice(3, 6)
-            faxina(suite, rota, flags[0], flags[1], flags[2])
-            setTimeout( () => {fimModal()}, 1001)
-            iniciar2(suite)
-            //setTimeout( () => {index()}, 2000)
-        } else if(suite == "3"){
-            var flags = modos.slice(6, 9)
-            faxina(suite, rota, flags[0], flags[1], flags[2])
-            setTimeout( () => {fimModal()}, 1001)
-            //iniciar(suite)
-            //setTimeout( () => {index()}, 2000)
-        } else if(suite == "4"){
-            var flags = modos.slice(9, 12)
-            faxina(suite, rota, flags[0], flags[1], flags[2])
-            setTimeout( () => {fimModal()}, 1001)
-            //iniciar(suite)
-            //setTimeout( () => {index()}, 2000)
-        }
+$(document).on("click", ".faxina", function(){
+    const suite =   $('#quarto_painel').text()
+    const rota =    $(this).attr('class')
+    if (confirm(`Iniciar Faxina na Suíte ${suite}?`) == true){
+        let t = tick[`${suite}`]
+        setTimeout ( () => {faxina(suite, rota, t[0], t[1], t[2])       }, 1)
+        setTimeout ( () => {ligar_luz(suite)
+                    localStorage.setItem("luz", "ligada")               }, 100)
+        setTimeout ( () => {registraLimite(suite, "a", "faxina")        }, 200)
+        setTimeout ( () => {fimModal()                                  }, 300)
+        setTimeout ( () => {index()                                     }, 400)
+        setTimeout ( () => {
+            suite == "1" ? iniciar(suite) : 
+            suite == "2" ? iniciar2(suite) : ""
+                                                                        }, 500)
     }
 })

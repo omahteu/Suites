@@ -15,39 +15,41 @@ export function atualizaValores(quarto) {
   buscaDadosQuarto()
   buscaTabelaPrecos()
   buscaLocacoes()
-  var horaLocacao = JSON.parse(sessionStorage.getItem("test"))
-  var infoQuartos = JSON.parse(sessionStorage.getItem("dq"))
-  var precos = JSON.parse(sessionStorage.getItem("tp"))
-  var filtroCobranca = infoQuartos.filter(e => e.numero == quarto)
-  var infos = horaLocacao.filter(e => e.quarto == quarto)
-  var quantidadeHoras = filtroCobranca[0].horas_locacao
-  var xquantidadeHoras = parseInt(quantidadeHoras) + 1
-  var tipoCobranca = filtroCobranca[0].cobranca
-  var tolerancia = filtroCobranca[0].tolerancia
-  var datahoraLocacao = infos[0].datahora
-  var agora = hora_atual_segundos()
-  var valor = infos[0].valor
-  var ms = moment(agora, "HH:mm:ss").diff(moment(datahoraLocacao, "HH:mm:ss"));
-  var d = moment.duration(ms);
-  var tempoPassado = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
-  var tpFormatado = String(tempoPassado).split(":")
-  var locacao = precos[0].valor_locacao
-  var horaLocada = tpFormatado[0]
-  var minutoLocado = tpFormatado[1]
+  var horaLocacao =       JSON.parse(sessionStorage.getItem("test"))
+  var infoQuartos =       JSON.parse(sessionStorage.getItem("dq"))
+  var precos =            JSON.parse(sessionStorage.getItem("tp"))
+  var filtroCobranca =    infoQuartos.filter(e => e.numero == quarto)
+  var infos =             horaLocacao.filter(e => e.quarto == quarto)
+  var quantidadeHoras =   filtroCobranca[0].horas_locacao
+  var xquantidadeHoras =  parseInt(quantidadeHoras) + 1
+  var tipoCobranca =      filtroCobranca[0].cobranca
+  var tolerancia =        filtroCobranca[0].tolerancia
+  var datahoraLocacao =   infos[0].datahora
+  var agora =             hora_atual_segundos()
+  var valor =             infos[0].valor
+  var ms =                moment(agora, "HH:mm:ss").diff(moment(datahoraLocacao, "HH:mm:ss"));
+  var d =                 moment.duration(ms);
+  var tempoPassado =      Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
+  var tpFormatado =       String(tempoPassado).split(":")
+  var locacao =           precos[0].valor_locacao
+  var horaLocada =        tpFormatado[0]
+  var minutoLocado =      tpFormatado[1]
 
   if (tipoCobranca == "hora") {
 
-    let um = precos[0].vh1
-    let dois = precos[0].vh2
-    let tres = precos[0].vh3
-    let quatro = precos[0].vh4
-    let cinco = precos[0].vh5
-    let seis = precos[0].vh6
+    let um =      precos[0].vh1
+    let dois =    precos[0].vh2
+    let tres =    precos[0].vh3
+    let quatro =  precos[0].vh4
+    let cinco =   precos[0].vh5
+    let seis =    precos[0].vh6
 
-
-    if (parseInt(horaLocada) > parseInt(quantidadeHoras) && parseInt(horaLocada) < parseInt(xquantidadeHoras) && parseInt(minutoLocado) > parseInt(tolerancia)) {
-      var diferenca = parseInt(horaLocada) - Number(quantidadeHoras)
-      switch (Number(diferenca)) {
+    if (parseInt(horaLocada) > parseInt(quantidadeHoras) && 
+        parseInt(horaLocada) < parseInt(xquantidadeHoras) && 
+        parseInt(minutoLocado) > parseInt(tolerancia)) 
+    {
+      var diferenca = parseInt(horaLocada) - parseInt(quantidadeHoras)
+      switch (parseInt(diferenca)) {
         case 1:
           var acrecimo = Number(valor) + Number(um)
           $("#atualizacaoPreco").text(acrecimo)
@@ -104,26 +106,25 @@ export function atualizaValores(quarto) {
       
       switch (Number(diferenca)) {
         case 1:
-          var acrecimo = Number(valor) + Number(tres)
+          var acrecimo = Number(valor) + Number(um)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
           $("#valor_addPermanencia").text(acrecimo)
           break;
         case 2:
-          var acrecimo = Number(valor) + Number(quatro)
+          var acrecimo = Number(valor) + Number(dois)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
           $("#valor_addPermanencia").text(acrecimo)
           break;
         case 3:
-          var acrecimo = Number(valor) + Number(cinco)
-          console.log(valor, cinco)
+          var acrecimo = Number(valor) + Number(tres)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
           $("#valor_addPermanencia").text(acrecimo)
           break;
         case 4:
-          var acrecimo = Number(valor) + Number(seis)
+          var acrecimo = Number(valor) + Number(quatro)
           $("#atualizacaoPreco").text(acrecimo)
           $("#vh_painel").text(acrecimo)
           $("#valor_addPermanencia").text(acrecimo)
