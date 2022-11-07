@@ -3,7 +3,7 @@ import { index }        from "../tags/particao.js"
 import { fimModal }     from "../setup/camareiras.js"
 import { iniciar }      from "../contadores/cronometros/c1.js"
 import { iniciar2 }     from "../contadores/cronometros/c2.js"
-import { tick }         from "../setup/index.js"
+import { tick }         from "../setup/box.js"
 
 $(document).on("click", ".manutencao", function(){
     const suite =   $('#quarto_painel').text()
