@@ -33,19 +33,21 @@ $(document).ready(function(){
                                 if (condicaoTres){
                                     var flags =             modos.slice(0, 3)
                                     let tempoTolerancia =   tolerancia.filter(i => i.numero == suite)
-                                    let minutoTolerancia =  tempoTolerancia[0].tolerancia
+                                    let minutoTolerancia =  parseInt(tempoTolerancia[0].tolerancia)
                                     let valorpernoite =     valor_pernoite[0].tempo_pernoite
                                     let agora =             hora_atual_segundos()
                                     let datahoraLocacao =   ele.datahora
                                     var ms =                moment(agora, "HH:mm:ss").diff(moment(datahoraLocacao, "HH:mm:ss"));
                                     var d =                 moment. duration(ms);
                                     var tempoPassado =      Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
-                                    let condicaoQuatro =    parseInt(tempoPassado.charAt(0)) >= parseInt(permanencia)
-                                    let condicaoCinco =     parseInt(tempoPassado.charAt(0)) == parseInt(permanenciaX)
-                                    let condicaoSeis =      parseInt(tempoPassado.slice(2, 4)) > parseInt(minutoTolerancia)
-                                    let condicaoSete =      parseInt(tempoPassado.charAt(0)) > parseInt(permanenciaX)
+                                    let horaPassada =       parseInt(tempoPassado.charAt(0))
+                                    let minutoPassado =     parseInt(tempoPassado.slice(2, 4))
+                                    let condicaoQuatro =    horaPassada >= permanencia
+                                    let condicaoCinco =     horaPassada <= permanenciaX
+                                    let condicaoSeis =      minutoPassado > minutoTolerancia
+                                    let condicaoSete =      horaPassada > permanenciaX
                                     let mensagem =          `Pernoite na Suíte ${suite} ativada às ${hora_atual_segundos()}!`
-                                    if (condicaoQuatro || condicaoCinco && condicaoSeis){
+                                    if (condicaoQuatro && condicaoCinco && condicaoSeis){
                                         
                                         pernoite(suite, flags[0], flags[1], flags[2])
                                         var dados = {
