@@ -1,15 +1,15 @@
-import { modos } from '../setup/box.js'
-import { locado } from "../tags/locacao.js"
-import { aguardando } from "../tags/aguardo.js"
-import { limpeza } from "../tags/limpeza.js"
-import { manutencao } from "../tags/manutencao.js"
-import { faxina } from "../tags/faxina.js"
-import { pernoite } from '../tags/pernoite.js'
-import { link } from "../setup/index.js"
-import { leituraProdutosPlus } from "../armazem/leitura/produtos.js"
-import { leituraVeiculosPlus } from "../armazem/leitura/veiculos.js"
-import { atualizaValores } from "../quartos/calculos/porHora.js"
-import { tick } from '../setup/box.js'
+import { modos } 				from '../setup/box.js'
+import { locado } 				from "../tags/locacao.js"
+import { aguardando } 			from "../tags/aguardo.js"
+import { limpeza } 				from "../tags/limpeza.js"
+import { manutencao } 			from "../tags/manutencao.js"
+import { faxina } 				from "../tags/faxina.js"
+import { pernoite } 			from '../tags/pernoite.js'
+import { link } 				from "../setup/index.js"
+import { leituraProdutosPlus } 	from "../armazem/leitura/produtos.js"
+import { leituraVeiculosPlus } 	from "../armazem/leitura/veiculos.js"
+import { atualizaValores } 		from "../quartos/calculos/porHora.js"
+import { tick } 				from '../setup/box.js'
 
 var rotax = "btn aguardando"
 var rotal = "btn limpeza"

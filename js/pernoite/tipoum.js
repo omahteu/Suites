@@ -45,9 +45,6 @@ $(document).ready(function(){
                                     let condicaoSeis =      parseInt(tempoPassado.slice(2, 4)) > parseInt(minutoTolerancia)
                                     let condicaoSete =      parseInt(tempoPassado.charAt(0)) > parseInt(permanenciaX)
                                     let mensagem =          `Pernoite na Suíte ${suite} ativada às ${hora_atual_segundos()}!`
-                                    console.log(condicaoQuatro)
-                                    console.log(condicaoCinco)
-                                    console.log(condicaoSeis)
                                     if (condicaoQuatro || condicaoCinco && condicaoSeis){
                                         
                                         pernoite(suite, flags[0], flags[1], flags[2])
