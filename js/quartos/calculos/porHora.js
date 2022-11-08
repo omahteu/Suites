@@ -4,13 +4,14 @@
 
 import { hora_atual_segundos }  from "../../geradores/hora.js"
 import { link }                 from "../../setup/index.js"
+import { alterarValor }         from "../ajax/alterar.js"
 
 var caixa = []
 
 /*
     FUNÇÃO PRINCIPAL
                       */
-export function atualizaValores(quarto) {
+export function atualizaValores(suite) {
   buscaHoraLocacao()
   buscaDadosQuarto()
   buscaTabelaPrecos()
@@ -18,8 +19,8 @@ export function atualizaValores(quarto) {
   var horaLocacao =       JSON.parse(sessionStorage.getItem("test"))
   var infoQuartos =       JSON.parse(sessionStorage.getItem("dq"))
   var precos =            JSON.parse(sessionStorage.getItem("tp"))
-  var filtroCobranca =    infoQuartos.filter(e => e.numero == quarto)
-  var infos =             horaLocacao.filter(e => e.quarto == quarto)
+  var filtroCobranca =    infoQuartos.filter(e => e.numero == suite)
+  var infos =             horaLocacao.filter(e => e.quarto == suite)
   var quantidadeHoras =   filtroCobranca[0].horas_locacao
   var xquantidadeHoras =  parseInt(quantidadeHoras) + 1
   var tipoCobranca =      filtroCobranca[0].cobranca
@@ -49,93 +50,108 @@ export function atualizaValores(quarto) {
     let seis =    precos[0].vh6
     if (condicaoUm && condicaoDois && condicaoTres) {
       if (parseInt(diferenca) == 1) {
-        var acrecimo = Number(valor) + Number(um)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(um)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) == 2) {
-        var acrecimo = Number(valor) + Number(dois)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(dois)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) == 3) {
-        var acrecimo = Number(valor) + Number(tres)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(tres)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) == 4) {
-        var acrecimo = Number(valor) + Number(quatro)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(quatro)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) == 5) {
-        var acrecimo = Number(valor) + Number(cinco)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(cinco)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) == 6) {
-        var acrecimo = Number(valor) + Number(seis)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(seis)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) > 7) {
         for (const x of Array(7).keys()) {
           var i = x + 1
           var valoracrescentado = parseFloat(locacao) * i
-          var acrecimo = parseFloat(valor) + parseFloat(valoracrescentado)
-          $("#atualizacaoPreco").text(acrecimo)
-          $("#vh_painel").text(acrecimo)
-          $("#valor_addPermanencia").text(acrecimo)
+          var acrescimo = parseFloat(valor) + parseFloat(valoracrescentado)
+          alterarValor(suite, acrescimo)
+          //$("#atualizacaoPreco").text(acrescimo)
+          //$("#vh_painel").text(acrescimo)
+          //$("#valor_addPermanencia").text(acrescimo)
         }
       }
     } else if (condicaoQuatro) {
       if (parseInt(diferenca) == 1) {
-        var acrecimo = Number(valor) + Number(um)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(um)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) == 2) {
-        var acrecimo = Number(valor) + Number(dois)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(dois)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) == 3) {
-        var acrecimo = Number(valor) + Number(tres)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(tres)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) == 4) {
-        var acrecimo = Number(valor) + Number(quatro)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(quatro)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) == 5) {
-        var acrecimo = Number(valor) + Number(cinco)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(cinco)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) == 6) {
-        var acrecimo = Number(valor) + Number(seis)
-        $("#atualizacaoPreco").text(acrecimo)
-        $("#vh_painel").text(acrecimo)
-        $("#valor_addPermanencia").text(acrecimo)
+        var acrescimo = Number(valor) + Number(seis)
+        alterarValor(suite, acrescimo)
+        //$("#atualizacaoPreco").text(acrescimo)
+        //$("#vh_painel").text(acrescimo)
+        //$("#valor_addPermanencia").text(acrescimo)
       } else if (parseInt(diferenca) > 7) {
         for (const x of Array(7).keys()) {
           var i = x + 1
           var valoracrescentado = parseFloat(locacao) * i
-          var acrecimo = parseFloat(valor) + parseFloat(valoracrescentado)
-          $("#atualizacaoPreco").text(acrecimo)
-          $("#vh_painel").text(acrecimo)
-          $("#valor_addPermanencia").text(acrecimo)
+          var acrescimo = parseFloat(valor) + parseFloat(valoracrescentado)
+          alterarValor(suite, acrescimo)
+          //$("#atualizacaoPreco").text(acrescimo)
+          //$("#vh_painel").text(acrescimo)
+          //$("#valor_addPermanencia").text(acrescimo)
         }
       }
     }
   } else if (tipoCobranca == "fixa") {
     if (parseInt(horaLocada) >= 1 && parseInt(minutoLocado) > parseInt(tolerancia)) {
       var resultado = parseInt(horaLocada) * parseFloat(locacao)
-      $("#atualizacaoPreco").text(resultado.toFixed(2))
-      $("#vh_painel").text(resultado.toFixed(2))
-      $("#valor_addPermanencia").text(acrecimo)
+      alterarValor(suite, resultado)
+      //$("#atualizacaoPreco").text(resultado.toFixed(2))
+      //$("#vh_painel").text(resultado.toFixed(2))
+      //$("#valor_addPermanencia").text(acrescimo)
     }
   }
 }

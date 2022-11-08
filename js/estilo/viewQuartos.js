@@ -9,55 +9,22 @@ import { link } from "../setup/index.js"
 import { leituraProdutosPlus } from "../armazem/leitura/produtos.js"
 import { leituraVeiculosPlus } from "../armazem/leitura/veiculos.js"
 import { atualizaValores } from "../quartos/calculos/porHora.js"
+import { tick } from '../setup/box.js'
 
 var rotax = "btn aguardando"
 var rotal = "btn limpeza"
 
 $(document).ready(function(){
 	setTimeout( () => {
-		var identificador = $("[id='suite']").text()
-		const strReverse = identificador.split('')
-		strReverse.forEach(e => {
-			var cor = $(`.cardBox .card:nth-child(${e})`).css("background-color")
-			if(cor == 'rgb(169, 169, 169)'){
-				$("#tipo").text('manutencao')
-			} else if(cor == 'rgb(255, 0, 0)'){
-				$("#tipo").text('locado')
-			} else if(cor == 'rgb(255, 228, 196)'){
-				$("#tipo").text('faxina')
-			} else if(cor == 'rgb(75, 192, 192)'){
-				$("#tipo").text('livre')
-			} else if(cor == 'rgb(255, 255, 255)'){
-				$("#tipo").text("aguardando")
-			} else if(cor  == "rgb(255, 255, 0)"){
-				$("#tipo").text("limpeza")
-			} else if(cor == "rgb(139, 0, 139)"){
-				$("#tipo").text("pernoite")
-			}
-
-			if(e == '1'){
-				atualizaValores(e)
-				var flags = modos.slice(0, 3)
-				$(`#intervalo${e}`).text(modos.slice(0, 3))
-				backupInfos(e, flags[0], flags[1], flags[2])
-			} else if(e == '2'){
-				atualizaValores(e)
-				var flags = modos.slice(3, 6)
-				$(`#intervalo${e}`).text(modos.slice(3, 6))
-				backupInfos(e, flags[0], flags[1], flags[2])
-			} else if(e == '3'){
-				atualizaValores(e)
-				var flags = modos.slice(6, 9)
-				$("#intervalo").text(modos.slice(6, 9))
-				backupInfos(e, flags[0], flags[1], flags[2])
-			} else if(e == '4'){
-				atualizaValores(e)
-				var flags = modos.slice(9, 12)
-				$("#intervalo").text(modos.slice(9, 12))
-				backupInfos(e, flags[0], flags[1], flags[2])
-			}
+		let id = $("[id='suite']").text()
+		const suites = id.split('')
+		suites.forEach(e => {
+			let t = tick[`${e}`]
+			atualizaValores(e)
+			$(`#intervalo${e}`).text(String(t)) // VERIFICAR A NECESSIDADE DE AINDA USAR ISSO
+			backupInfos(e, t[0], t[1], t[2])
 		})
-	}, 500)
+	}, 2000)
 })
 
 $(document).on('click', '[class="card"]', function() {
@@ -67,6 +34,7 @@ $(document).on('click', '[class="card"]', function() {
 	var identificador = ind3.text()
 	setTimeout( () => {
 		var cor = $(`.cardBox .card:nth-child(${identificador})`).css("background-color")
+		// console.log(cor)
 		if(cor == 'rgb(169, 169, 169)'){
 			$("#tipo").text('manutencao')
 		} else if(cor == 'rgb(255, 0, 0)'){

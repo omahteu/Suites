@@ -18,7 +18,7 @@ $(document).ready(function(){
             if (condicaoUm){
                 retorno.forEach(e => {
                     let tipo =          e.tipo
-                    let permanencia =   e.permanencia
+                    let permanencia =   parseInt(e.permanencia)
                     let permanenciaX =  parseInt(permanencia) + 1
                     let condicaoDois =  tipo == "Automática"
                     if (condicaoDois){
@@ -40,13 +40,16 @@ $(document).ready(function(){
                                     var ms =                moment(agora, "HH:mm:ss").diff(moment(datahoraLocacao, "HH:mm:ss"));
                                     var d =                 moment. duration(ms);
                                     var tempoPassado =      Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
-                                    let condicaoQuatro =    parseInt(tempoPassado.charAt(0)) > parseInt(permanencia)
+                                    let condicaoQuatro =    parseInt(tempoPassado.charAt(0)) >= parseInt(permanencia)
                                     let condicaoCinco =     parseInt(tempoPassado.charAt(0)) == parseInt(permanenciaX)
                                     let condicaoSeis =      parseInt(tempoPassado.slice(2, 4)) > parseInt(minutoTolerancia)
                                     let condicaoSete =      parseInt(tempoPassado.charAt(0)) > parseInt(permanenciaX)
                                     let mensagem =          `Pernoite na Suíte ${suite} ativada às ${hora_atual_segundos()}!`
-
-                                    if (condicaoQuatro && condicaoCinco && condicaoSeis){
+                                    console.log(condicaoQuatro)
+                                    console.log(condicaoCinco)
+                                    console.log(condicaoSeis)
+                                    if (condicaoQuatro || condicaoCinco && condicaoSeis){
+                                        
                                         pernoite(suite, flags[0], flags[1], flags[2])
                                         var dados = {
                                             datahora: hora,
@@ -61,7 +64,7 @@ $(document).ready(function(){
                                             data: dados,
                                             success:  () => {console.log(mensagem)}
                                         })
-                                        insereValor(suite, valor_pernoite, "pernoite")
+                                        insereValor(suite, valorpernoite, "pernoite")
                                     } else if (condicaoSete){
                                         pernoite(suite, flags[0], flags[1], flags[2])
                                         var dados = {
