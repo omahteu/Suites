@@ -18,5 +18,9 @@ $(document).on("click", ".manutencao", function(){
             suite == "1" ? iniciar(suite) : 
             suite == "2" ? iniciar2(suite) : ""
                                                                 }, 300)
+        setTimeout ( () => {
+            localStorage.setItem("botao", "desligado")
+            localStorage.setItem("luz", "desligado")
+                                                                }, 400)
     }
 })

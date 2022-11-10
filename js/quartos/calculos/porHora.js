@@ -31,7 +31,6 @@ export function atualizaValores(suite) {
   var ms =                moment(agora, "HH:mm:ss").diff(moment(datahoraLocacao, "HH:mm:ss"))
   var d =                 moment.duration(ms)
   var tempoPassado =      Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss")
-  console.log(tempoPassado)
   var tpFormatado =       String(tempoPassado).split(":")
   var locacao =           precos[0].valor_locacao
   var horaLocada =        tpFormatado[0]

@@ -4,7 +4,7 @@ import { link }                 from "../setup/index.js"
 import { hora_atual_segundos }  from "../geradores/hora.js"
 import { pernoite }             from "../tags/pernoite.js"
 import { modos }                from "../setup/box.js"
-import { insereValor } from "./ajax/inserir.js"
+import { insereValor }          from "./ajax/inserir.js"
 
 
 $(document).ready(function(){
@@ -48,7 +48,6 @@ $(document).ready(function(){
                                     let condicaoSete =      horaPassada > permanenciaX
                                     let mensagem =          `Pernoite na Suíte ${suite} ativada às ${hora_atual_segundos()}!`
                                     if (condicaoQuatro && condicaoCinco && condicaoSeis){
-                                        
                                         pernoite(suite, flags[0], flags[1], flags[2])
                                         var dados = {
                                             datahora: hora,

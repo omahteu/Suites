@@ -6,7 +6,6 @@ var timeout = setTimeout(inativo, tempoDeEspera);
 function actividade(e) {
   clearInterval(timeout);
   timeout = setTimeout(inativo, tempoDeEspera);
-  console.log('...');
 }
 
 function inativo() {
