@@ -12,7 +12,7 @@ $(document).on("click", ".locado", function(){
     const suite = $('#quarto_painel').text()
     if (confirm(`Iniciar a Suíte ${suite}?`) == true){
         let t = tick[`${suite}`]
-        setTimeout ( () => {locado(suite, "", t[0], t[1], t[2])     }, 1)
+        setTimeout ( () => {locado(suite, t[0], t[1], t[2])     }, 1)
         /*setTimeout ( () => {ligar_luz(suite)
                         localStorage.setItem("luz", "ligada")       }, 100)*/
         setTimeout ( () => {registraLimiteTroca(suite, "a", "troca")}, 200)

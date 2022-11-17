@@ -2,7 +2,7 @@ import { link } from "../../../setup/index.js"
 import { hora_atual_segundos } from "../../../geradores/hora.js"
 
 export function recupera_permanencia(suite){
-    $.get(link[11], (resposta) => {
+    $.get(link[11], resposta => {
         var dados = resposta.filter(e => e.quarto == suite)
         dados.forEach(e => {
             let inicio = e.datahora

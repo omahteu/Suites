@@ -3,69 +3,50 @@ import { recupera_permanencia } from "../quartos/ajax/get/permanencia.js"
 import { atualizaValores } from "../quartos/calculos/porHora.js"
 
 $(document).ready(function () {
-	informacaoes()
+	var suite = JSON.parse(localStorage.getItem('last'))
+	informacaoes(suite)
+	comanda(suite)
+	somaComanda(suite)
+	quarto(suite)
+	recupera_permanencia(suite)
+	atualizaValores(suite)
+	subtotal(suite)
+	adicionais(suite)
+	desconto()
 })
 
-function informacaoes() {
-	var numero_quarto = JSON.parse(localStorage.getItem('last'))
+
+
+function desconto(){
+	$(document).on("change", "#modo_desconto", function(){
+		let tpd = $("#modo_desconto :selected").text()
+		if (tpd == "Valor"){
+			$(document).on("click", "#aplicar_desconto", function(){
+				let sub = parseFloat($("#valor_subtotal").text())
+				let descontar = parseFloat($("#valor_desconto").val().replace(",", "."))
+				//let descontado = sub - descontar
+				$("#valorDesconto").text(descontar)
+				$("#valor_desconto").attr("disabled", true)
+				$("#aplicar_desconto").attr("disabled", true)
+			})
+		} else if (tpd == "Percentual"){
+			console.log("maria")
+		}
+	})
+}
+
+
+
+
+
+function informacaoes(suite) {
 	$.get(link[5], (retorno) => {
 		var sum = 0
-		var valor_quarto
-		var adicionalQuarto = JSON.parse(localStorage.getItem('dadosQuarto'))
-		var prateleira = document.getElementById('comanda')
-		prateleira.innerHTML = ''
-		try {
-			var dados = retorno.filter(quartos => quartos.quarto == numero_quarto)
-			var existe = dados.length
-			if (existe == 0) {
-				InfosPrimario()
-			} else {
-				dados.forEach(elemento => {
-					var id = elemento.id
-					var descricao = elemento.descricao
-					var quantidade = elemento.quantidade
-					var valor_total = elemento.valor_total
-					var valor_unitario = elemento.valor_unitario
-					valor_quarto = elemento.valor_quarto
-					prateleira.innerHTML += '<tr>' +
-												'<td>' + descricao + '</td>' +
-												'<td>' + quantidade + '</td>' +
-												'<td>' + valor_unitario + '</td>' +
-												'<td id="total">' + valor_total + '</td>' +
-												`<td><button type="button" id="removerProduto" value="${id}" class="btn btn-danger">Remover</button></td>`+
-											'</tr>';
-
-				});
-			}
-		} catch (error) {
-			localStorage.setItem('produtos', JSON.stringify([]))
-		}
-
-		var precoProdutos = $("[id=total]").text()
-		var somaPrecoProdutos = precoProdutos.split('R$')
-
-		var totalPrecoProdutos = somaPrecoProdutos.filter((i) => {
-			return i;
-		})
-
-		for (var a = 0; a < totalPrecoProdutos.length; a++) {
-			sum += parseFloat(totalPrecoProdutos[a])
-		}
-
-		var preco_quarto = adicionalQuarto[0].valor
 		
-		$("#valorItens").text(parseFloat(sum).toFixed(2))
-		$("#valorQuarto").text(preco_quarto)
-		
-		recupera_permanencia(numero_quarto)
-		atualizaValores(numero_quarto)
-	
-		var add = $("#valor_addPermanencia").text()
 		var ttgeral = parseFloat(preco_quarto) + parseFloat(sum) + parseFloat(add)
 
-		$("#valor_subtotal").text(ttgeral.toFixed(2))
 		$("#totalGeral").text(ttgeral.toFixed(2))
-
+/*
 		$(document).one('change', '#modo_desconto', () => {
 			var tipo_desconto = $('#modo_desconto').find(":selected").index()
 			if (tipo_desconto == "1") {
@@ -95,7 +76,7 @@ function informacaoes() {
 					$("#aplicar_desconto").attr("disabled", true)
 				})
 			}
-		})
+		})*/
 	})
 }
 
@@ -114,4 +95,64 @@ async function InfosPrimario() {
 	var add = $("#valor_addPermanencia").text()
 	var ttgeral = parseFloat(valor_quarto) + parseFloat(sum) + parseFloat(add)
 	$("#totalGeral").text(ttgeral.toFixed(2))
+}
+
+function comanda(suite){
+	$.get(link[5], e => {
+		let ficha = e.filter(i => i.quarto == suite)
+		let nota = document.getElementById("comanda")
+		nota.innerHTML = ""
+		ficha.forEach(el => {
+			let infos = [el.id, el.descricao, el.quantidade, el.valor_total, el.valor_unitario]
+			nota.innerHTML +=	'<tr>'+
+									`<td>${infos[1]}</td>`+
+									`<td>${infos[2]}</td>`+
+									`<td>${infos[4]}</td>`+
+									`<td id="total">${infos[3]}</td>`+
+									`<td><button type="button" id="removerProduto" value="${infos[0]}" class="btn btn-danger">Remover</button></td>`+
+								'</tr>'
+		})
+	})
+}
+
+function somaComanda(suite){
+	let total = 0
+	$.get(link[5], e => {
+		let ficha = e.filter(i => i.quarto == suite)
+		ficha.forEach(el => {
+			const valores = el.valor_total
+			total += parseFloat(valores.slice(3))
+		})
+		$("#valorItens").text(parseFloat(total).toFixed(2))
+		
+	})
+}
+
+function quarto(suite){
+	$.get(link[11], e => {
+		let ficha = e.filter(i => i.quarto == suite)
+		$("#valorQuarto").text(parseFloat(ficha[0].valor).toFixed(2))
+	})
+}
+
+function adicionais(suite){
+	setTimeout(() => {
+		let quarto = $("#valorQuarto").text()
+		$.get(link[36], e => {
+			let ficha = e.filter(i => i.suite == suite)
+			let atual = ficha[0].valor
+			let adicionado = parseFloat(atual) - parseFloat(quarto)
+			$("#valor_addPermanencia").text(adicionado)
+		})
+	}, 1000);
+}
+
+function subtotal(suite){
+	setTimeout(() => {
+		let quarto = parseFloat($("#valorQuarto").text())
+		let comanda = parseFloat($("#valorItens").text())
+		let adicional = parseFloat($("#valor_addPermanencia").text())
+		let subTotal = quarto + comanda + adicional
+		$("#valor_subtotal").text(subTotal.toFixed(2))
+	}, 1500);
 }
