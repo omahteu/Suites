@@ -1,8 +1,3 @@
-export var modos = ['x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9', 'x10', 'x11', 'x12']
-export var quartoum = ['a1', 'a2', 'a3']
-export var quartodois = ['a4', 'a5', 'a6']
-export var nomeCamareiras = []
-
 export var tick = {
 	"1": ["x1", "x2", "x3"],
 	"2": ["x4", "x5", "x6"],
@@ -10,6 +5,20 @@ export var tick = {
 	"4": ["x10", "x11", "x12"],
 	"5": ["x13", "x14", "x15"]
 }
+
+export var acao = [
+	"Disponibilizar Quarto",	// 0
+	"Iniciar Faxina",			// 1
+	"Iniciar Limpeza",			// 2
+	"Trocar Suíte",				// 3
+	"Encerrar",					// 4
+	"Encerrar Limpeza",			// 5
+	"OK",						// 6
+	"Apagar Luz",				// 7
+	"Ligar Luz",				// 8
+	"Encerrar Faxina",			// 9
+	"Selecionar"				// 10
+]
 
 export function rg(){
 	var size = 3

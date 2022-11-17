@@ -3,7 +3,7 @@
 import { link }                 from "../setup/index.js"
 import { hora_atual_segundos }  from "../geradores/hora.js"
 import { pernoite }             from "../tags/pernoite.js"
-import { modos }                from "../setup/box.js"
+import { tick }                from "../setup/box.js"
 import { insereValor }          from "./ajax/inserir.js"
 
 
@@ -31,7 +31,7 @@ $(document).ready(function(){
                                 let tipo =          ele.tipo
                                 let condicaoTres =  tipo != "pernoite"
                                 if (condicaoTres){
-                                    var flags =             modos.slice(0, 3)
+                                    var flags =             tick[`${suite}`]
                                     let tempoTolerancia =   tolerancia.filter(i => i.numero == suite)
                                     let minutoTolerancia =  parseInt(tempoTolerancia[0].tolerancia)
                                     let valorpernoite =     valor_pernoite[0].tempo_pernoite

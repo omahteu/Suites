@@ -3,13 +3,13 @@ import { _crnmtra1 } from "../contadores/restart/c1.js"
 import { _crnmtra2 } from "../contadores/restart/c2.js"
 import { parar } from "../contadores/cronometros/c1.js"
 import { parar2 } from "../contadores/cronometros/c2.js"
-import { modos } from "../setup/box.js"
 import { locado } from "../tags/locacao.js"
 import { fimModalTroca } from "../setup/troca.js"
 import { aguardando } from "../tags/aguardo.js"
 import { desfazer } from "../tags/desfazer.js"
 import { registra_troca } from "../quartos/ajax/post/troca.js"
 import { tempo_pausado } from "../quartos/ajax/post/decorrido.js"
+import { tick } from "../setup/box.js"
 
 
 
@@ -77,7 +77,7 @@ function iniciando(suite){
     var minutos = $(`#minuto${quarto}`).text()
     var segundos = $(`#segundo${quarto}`).text()
     var permanencia = [hora, minutos, segundos]
-    let flags = suite == "1" ? modos.slice(0, 3) : modos.slice(3, 6)
+    let flags = tick[`${suite}`]
     setTimeout( () => {locado(suite, flags[0], flags[1], flags[2])}, 200)
     setTimeout( () => {suite == "1" ? _crnmtra1(suite, permanencia[0], permanencia[1], permanencia[2]) : _crnmtra2(suite, permanencia[0], permanencia[1], permanencia[2])}, 300)
     setTimeout( () => {fimModalTroca()}, 400)
@@ -103,7 +103,7 @@ function iniciando(suite){
 }
 
 function finalizando(suite){
-    let flags = suite == "1" ? modos.slice(0, 3) : modos.slice(3, 6)
+    let flags = tick[`${suite}`]
     suite == "1" ? parar() : parar2()
     setTimeout( () => {desfazer(suite, flags[0], flags[1], flags[2])}, 200)
     setTimeout( () => {aguardando(suite, flags[0], flags[1], flags[2])}, 300)

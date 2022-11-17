@@ -27,125 +27,121 @@ import { registraLimiteManutencao } from "../../qwertyu.js"
 import { registraLimiteDesistencia } from "../../qwertyu.js"
 import { registraLimiteLimpeza } from "../../qwertyu.js"
 import { link } from "../setup/index.js"
+import { acao } from "../setup/box.js"
+import { tick } from "../setup/box.js"
 
 var rota = 'rota'
 
-export function reacao(status, suite){
-    var flags = $("#intervalo").text().split(",")
+export function reacao(status, suite) {
+    var flags = tick[`${suite}`]
     let h = $(`#hora${suite}`).text()
     let m = $(`#minuto${suite}`).text()
     let s = $(`#segundo${suite}`).text()
     let tempo = `${h}:${m}:${s}`
+    let usuario = $("#usuario_sistema").text()
 
-    if(status == "Disponibilizar Quarto"){
+    if (status == acao[0]) {
         var condicao = $("#tipo").text()
         var verificaoLuz = localStorage.getItem("luz")
-        if(condicao == "manutencao"){
+        if (condicao == "manutencao") {
             var razao = localStorage.getItem("motivo")
-            envia_dados_manutencao($("#usuario_sistema").text(), data_atual(), hora_atual(), $("#suite").text(), razao, tempo)
-            finalizaTarefa($("#suite").text())
+            envia_dados_manutencao(usuario, data_atual(), hora_atual(), suite, razao, tempo)
+            finalizaTarefa(suite)
         }
-        setTimeout( () => {ultima_limpeza(suite)}, 200)
-        if (verificaoLuz == "ligada"){
-            setTimeout( () => {
+        setTimeout(() => { ultima_limpeza(suite) }, 200)
+        if (verificaoLuz == "ligada") {
+            setTimeout(() => {
                 desligar_luz(suite)
                 localStorage.setItem("luz", "desligada")
             }, 500)
         }
-        setTimeout( () => {desfazer(suite, flags[0], flags[1], flags[2])}, 1000)
-        setTimeout( () => {fimModal()}, 1001)
-        setTimeout( () => {
-            alert(`DESEJA DISPONIBILIZAR O QUARTO ${suite}?`)
+        setTimeout(() => { desfazer(suite, flags[0], flags[1], flags[2]) }, 1000)
+        setTimeout(() => { fimModal() }, 1001)
+        setTimeout(() => {
+            alert(`Disponibilizar a Suíte ${suite}?`)
             suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
             zerar(suite)
         }, 500)
-    } else if(status == "Iniciar Faxina"){
+    } else if (status == acao[1]) {
         var tipo = $("#tipo").text()
-        if (tipo == "manutencao"){
+        if (tipo == "manutencao") {
             var razao = localStorage.getItem("motivo")
-            envia_dados_manutencao($("#usuario_sistema").text(), data_atual(), hora_atual(), $("#suite").text(), razao, tempo)
-            alert(`DESEJA INICIAR FAXINA NO QUARTO ${suite}?`)
+            envia_dados_manutencao(usuario, data_atual(), hora_atual(), suite, razao, tempo)
+            alert(`Iniciar faxina na Suíte ${suite}?`)
             suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
             zerar(suite)
-            iniciar(suite, "0", "0", "0")
-            setTimeout( () => {
+            iniciar(suite)
+            setTimeout(() => {
                 ligar_luz(suite)
                 localStorage.setItem("luz", "ligada")
             }, 500)
-            setTimeout( () => {atualiza_status(suite, "faxina"), 800})
-            setTimeout( () => {faxina(suite, rota, flags[0], flags[1], flags[2])}, 1000)
-            setTimeout( () => {fimModal()}, 1001)
-        } else {    
-            alert(`DESEJA INICIAR FAXINA NO QUARTO ${suite}?`)
+            setTimeout(() => { atualiza_status(suite, "faxina"), 800 })
+            setTimeout(() => { faxina(suite, rota, flags[0], flags[1], flags[2]) }, 1000)
+            setTimeout(() => { fimModal() }, 1001)
+        } else {
+            alert(`Iniciar faxina na Suíte ${suite}?`)
             suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
             zerar(suite)
-            iniciar(suite, "0", "0", "0")
-            setTimeout( () => {
+            iniciar(suite)
+            setTimeout(() => {
                 ligar_luz(suite)
                 localStorage.setItem("luz", "ligada")
             }, 500)
-            setTimeout( () => {atualiza_status(suite, "faxina"), 800})
-            setTimeout( () => {faxina(suite, rota, flags[0], flags[1], flags[2])}, 1000)
-            setTimeout( () => {fimModal()}, 1001)
+            setTimeout(() => { atualiza_status(suite, "faxina"), 800 })
+            setTimeout(() => { faxina(suite, rota, flags[0], flags[1], flags[2]) }, 1000)
+            setTimeout(() => { fimModal() }, 1001)
         }
-    } else if(status == "Iniciar Limpeza"){
-        alert(`DESEJA INICIAR LIMPEZA NO QUARTO ${suite}?`)
+    } else if (status == acao[2]) {
+        alert(`Iniciar limpeza na Suíte ${suite}?`)
         localStorage.removeItem(`troca${suite}`)
         zerar(suite)
-        iniciar(suite, "0", "0", "0")
+        iniciar(suite)
         registraLimiteLimpeza(suite, "a", "limpeza")
-        setTimeout( () => {
+        setTimeout(() => {
             ligar_luz(suite)
             localStorage.setItem("luz", "ligada")
         }, 500)
-        setTimeout( () => {limpeza(suite, rota, flags[0], flags[1], flags[2])}, 700)
-        setTimeout( () => {atualiza_status(suite, "limpeza"), 900})
-        setTimeout( () => {fimModal()}, 1000)
-    } else if(status == "Trocar Suíte"){
+        setTimeout(() => { limpeza(suite, flags[0], flags[1], flags[2]) }, 700)
+        setTimeout(() => { atualiza_status(suite, "limpeza"), 900 })
+        setTimeout(() => { fimModal() }, 1000)
+    } else if (status == acao[3]) {
         inicioModalTroca("modau-troca")
         fimModal()
-        setTimeout( () => {
+        setTimeout(() => {
             var antigo = $("#quarto_painel").text()
             $("#quarto_antigo").val(antigo)
         }, 100)
         ver_quartos_disponiveis()
-    } else if(status == "Encerrar"){
-        if(confirm(`DESEJA ENCERRAR o QUARTO ${suite}?`)){
-            $.get(link[21], (e) => {
+    } else if (status == acao[4]) {
+        if (confirm(`Encerrar a Suíte ${suite}?`)) {
+            /*$.get(link[21], (e) => {
                 var avalor = $("#vh_painel").text()
                 console.log(parseFloat(avalor) + parseFloat(e[0].tempo_pernoite))
                 $("#vh_painel").text(parseFloat(avalor) + parseFloat(e[0].tempo_pernoite))
-            })
-            setTimeout( () => {
-                console.log("caixa preta")
+            })*/
 
-            },1000)
-            /*
             registraLimiteDesistencia(suite, "a", "desistencia")
-            suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
-            setTimeout( () => {localStorage.setItem("last", suite)}, 100)
-            setTimeout( () => {tempo_pausado(hour, minute, second, suite)}, 300)
-            setTimeout( () => {desfazer(suite, flags[0], flags[1], flags[2])}, 1000)
+            suite == "1" ? parar() :
+                suite == "2" ? parar2() : "casa"
+            setTimeout(() => { localStorage.setItem("last", suite) }, 100)
+            setTimeout(() => { tempo_pausado(h, m, s, suite) }, 300)
+            setTimeout(() => { desfazer(suite, flags[0], flags[1], flags[2]) }, 1000)
             sessionStorage.setItem('quarto', suite)
             window.open('../html/checkout.html', '_blank')
-            setTimeout( () => {aguardando(suite, rota, flags[0], flags[1], flags[2])}, 1500)
-            setTimeout( () => {atualiza_status(suite, "aguardando"), 1500})
-            setTimeout( () => {fimModal()}, 1001)*/
+            setTimeout(() => { aguardando(suite, rota, flags[0], flags[1], flags[2]) }, 1500)
+            setTimeout(() => { atualiza_status(suite, "aguardando"), 1500 })
+            setTimeout(() => { fimModal() }, 1001)
         }
-    } else if(status == "Encerrar Limpeza"){
-        if(confirm('DESEJA DISPONIBILIZAR O QUARTO ' + suite + ' ?') == true){
+    } else if (status == acao[5]) {
+        if (confirm(`Disponibilizar a Suíte ${suite}?`) == true) {
             camareiras()
-            setTimeout( () => {
-                var h = $(`#hora${suite}`).text()
-                var m = $(`#minuto${suite}`).text()
-                var s = $(`#segundo${suite}`).text()
-                var permanencia = h + ":" + m + ":" + s
+            setTimeout(() => {
                 var dados = {
-                    caixa: $("#usuario_sistema").text(),
+                    caixa: usuario,
                     data: data_atual(),
                     hora: hora_atual(),
-                    quarto: $("#suite").text(),
-                    tempo: permanencia,
+                    quarto: suite,
+                    tempo: tempo,
                     camareira: ""
                 }
                 localStorage.setItem("limpeza", JSON.stringify(dados))
@@ -153,51 +149,49 @@ export function reacao(status, suite){
         } else {
             console.log('cancelado')
         }
-    } else if(status == "OK"){
-        
+    } else if (status == acao[6]) {
+
         alert('Camareira Selecionada')
 
         suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
 
         zerar(suite)
 
-        setTimeout( () => {
+        setTimeout(() => {
             var recebido = JSON.parse(localStorage.getItem("limpeza"))
             var cam = $("#selecionar_camareira").val()
             envia_dados_limpeza(recebido.caixa, recebido.data, recebido.hora, recebido.quarto, recebido.tempo, cam)
         }, 200)
-        setTimeout( () => {fimModal()}, 500)
-        setTimeout( () => {desfazer(suite, flags[0], flags[1], flags[2])}, 600)
+        setTimeout(() => { fimModal() }, 500)
+        setTimeout(() => { desfazer(suite, flags[0], flags[1], flags[2]) }, 600)
 
-        setTimeout( () => {
+        setTimeout(() => {
             desligar_luz(suite)
             localStorage.setItem("luz", "desligada")
         }, 650)
 
-        setTimeout( () => {ultima_limpeza(suite)}, 800)
-    } else if(status == "Apagar Luz"){
+        setTimeout(() => { ultima_limpeza(suite) }, 800)
+    } else if (status == acao[7]) {
         $("#botao_inferior_tres").val("Ligar Luz")
         desligar_luz(suite)
         localStorage.setItem("status_botao", "desligado")
         localStorage.setItem("luz", "desligada")
-    } else if(status == "Ligar Luz"){
+    } else if (status == acao[8]) {
         registraLimiteManutencao(suite, "a", "manutencao")
         $("#botao_inferior_tres").val("Apagar Luz")
         ligar_luz(suite)
         localStorage.setItem("status_botao", "ligado")
         localStorage.setItem("luz", "ligada")
-    } else if(status == "Encerrar Faxina"){
+    } else if (status == acao[9]) {
         fimModal()
         abrirMenu("modau-menu")
         camareira_faxina()
         listar_camareiras()
-    } else if(status == "Selecionar"){
+    } else if (status == acao[10]) {
         let camareira = $("#camareiras :selected").text()
-        let usuario = $("#usuario_sistema").text()
-        let suite = $("#suite").text()
         envia_dados_faxina(usuario, data_atual(), hora_atual(), suite, tempo, camareira)
         fecharMenu()
-        setTimeout( () => {ultima_limpeza(suite)}, 200)
+        setTimeout(() => { ultima_limpeza(suite) }, 200)
         /*
         if (verificaoLuz == "ligada"){
             setTimeout( () => {
@@ -206,10 +200,10 @@ export function reacao(status, suite){
             }, 500)
         }
         */
-        setTimeout( () => {desfazer(suite, flags[0], flags[1], flags[2])}, 1000)
-        setTimeout( () => {fimModal()}, 1001)
-        setTimeout( () => {
-            alert(`DESEJA DISPONIBILIZAR O QUARTO ${suite}?`)
+        setTimeout(() => { desfazer(suite, flags[0], flags[1], flags[2]) }, 1000)
+        setTimeout(() => { fimModal() }, 1001)
+        setTimeout(() => {
+            alert(`Disponibilizar a Suíte ${suite}?`)
             suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
             zerar(suite)
         }, 500)

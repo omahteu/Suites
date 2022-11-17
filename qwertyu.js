@@ -39,7 +39,7 @@ $(document).ready(function () {
                     let modo = e.modo
                     let tipo = e.tipo
                     let horario = e.horario
-
+                    
                     switch (tipo) {
                         case "desistencia":
                             if (modo != "b") {
@@ -158,7 +158,7 @@ $(document).ready(function () {
                                             },
                                             url: link[34] + id + "/",
                                             type: 'PATCH',
-                                            data: JSON.stringify({ "modo": "b" }),
+                                            data: JSON.stringify({ "modo": "b", "tipo": "pernoite" }),
                                             success: function () {
                                                 console.log("Troca Com Sucesso!");
                                             },
@@ -168,9 +168,11 @@ $(document).ready(function () {
                                         })
                                     })
                                 }
-                            } else {
-                                $("#botao_inferior_um").css("display", "none")
                             }
+                            break
+
+                        case "pernoite":
+                            $(`[name=${suite}]`).css('display', 'none')
                             break
 
                         default:
