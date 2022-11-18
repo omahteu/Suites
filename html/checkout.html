@@ -84,19 +84,6 @@
                     <!---->
                     <div id="opcoes" class="tab-pane fade in active">
 
-                      <!--Porcentagem-->
-                      <div class="control-group"> 
-                        <div class="controls">
-                          <select id="modo_desconto">
-                            <option value="a" hidden>Modo</option>
-                            <option value="valor">Valor</option>
-                            <option value="porcento">Percentual</option>
-                          </select>
-                          <input type="text" id="valor_desconto" placeholder="Valor Desconto">
-                          <button type="button" class="btn btn-primary" id="aplicar_desconto">Aplicar</button>
-                        </div>
-                      </div>
-
                       <!--Camareira-->
                       <div class="control-group"> 
                         <div class="controls">
@@ -106,13 +93,29 @@
                         </div>
                       </div>
 
+                      <!--Porcentagem-->
+                      <div class="control-group"> 
+                        <div class="controls">
+                          <select id="modo_desconto">
+                            <option value="a" hidden>Modo</option>
+                            <option value="valor">Valor</option>
+                            <option value="porcento">Percentual</option>
+                          </select>
+                          <input type="text" id="valor_desconto" placeholder="Desconto">
+                          <button type="button" class="btn btn-primary" id="aplicar_desconto">Aplicar</button>
+                          <button type="button" class="btn btn-warning" id="nao_aplicavel">Não Aplicável</button>
+                        </div>
+                      </div>
+
+
+
                       <!--Pagamento-->
                       <div class="control-group"> 
                         <div class="controls">
                           <form id="bandeiras_cartoes">
                             <select id="modo_pagamento">
                               <option value="" hidden>Método de Pagamento</option>
-                              <option value="dinheiro" selected>Dinheiro</option>
+                              <option value="dinheiro">Dinheiro</option>
                             </select>
                             <input type="number" min="1" value="1" id="numero_parcelas" placeholder="P/">
                             <button type="button" class="btn btn-primary" id="confirma_parcelas">Selecionar</button>
@@ -269,7 +272,7 @@
                             <!--Desconnto-->
                             <tr>
                                 <td>Desconto</td>
-                                <td>R$ <span id="valorDesconto">0</span></td>
+                                <td><span id="valorDesconto">0</span></td>
                             </tr>
                             <!--SubTotal-->
                             <tr>
