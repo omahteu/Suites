@@ -10,17 +10,23 @@ $(document).ready(function() {
 function buscaTarifasBandeiras() {
     $(document).on("change", "#modo_pagamento", function(){
         let forma = $("#modo_pagamento :selected")
-        if (forma.text().slice(0, 2) == "Cr"){
-            let campo_parcelas = $("#numero_parcelas")
-            campo_parcelas.css('display', 'inline')
-            let confirmacao = $("#nao_aplicavel").attr("disabled")
-            $("#confirma_parcelas").click(function() {
-                confirmacao == undefined ? alert("Selecione desconto, ou Não Aplicável") : credito(forma.val(), campo_parcelas.val())
-            })
-        } else if (forma.text().slice(0, 2) == "Dé"){
-            $("#confirma_parcelas").click(function() {
-                confirmacao == undefined ? alert("Selecione desconto, ou Não Aplicável") : debito(forma.val())
-            })
+        let confirmacao = $("#nao_aplicavel").attr("disabled")
+        if (confirmacao == undefined){
+            alert("Selecione desconto, ou Não Aplicável")
+            $('#modo_pagamento').prop('selectedIndex',0)
+
+        } else {
+            if (forma.text().slice(0, 2) == "Cr"){
+                let campo_parcelas = $("#numero_parcelas")
+                campo_parcelas.css('display', 'inline')
+                $("#confirma_parcelas").click(function() {
+                    credito(forma.val(), campo_parcelas.val())
+                })
+            } else if (forma.text().slice(0, 2) == "Dé"){
+                $("#confirma_parcelas").click(function() {
+                    debito(forma.val())
+                })
+            }
         }
     })
 }
