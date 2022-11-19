@@ -5,7 +5,7 @@ import { link } from "../../setup/index.js"
 export function registroProdutos(){
 	var descricao = $("#descricao").val()
     var quantidade = $("#quantidade").val()
-	var valorTotal = $("#valor_total").val()
+	var valorTotal = $("#valor_total").val().slice(3)
     var quarto =  $("#quarto_painel").text()
     var valorUnitario = $("#valor_unitario").val()
 	var valor = $("#valor-quarto").text()

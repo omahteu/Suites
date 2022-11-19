@@ -9,6 +9,8 @@ import { locado } from "../tags/locacao.js"
 import { manutencao } from "../tags/manutencao.js"
 import { pernoite } from '../tags/pernoite.js'
 import { tick } from '../setup/box.js'
+import { quarto } from "../checkout/_quarto.js"
+import { adicionais } from "../checkout/_adicionais.js"
 
 $(document).ready(function () {
 	setTimeout(() => {
@@ -20,6 +22,7 @@ $(document).ready(function () {
 			$(`#intervalo${e}`).text(String(t)) // VERIFICAR A NECESSIDADE DE AINDA USAR ISSO
 			restoreStatus(e, t[0], t[1], t[2])
 		})
+
 	}, 2000)
 })
 
@@ -28,6 +31,9 @@ $(document).on('click', '[class="card"]', function () {
 	var i2 = $(i1[0].children[0])
 	var i3 = $(i2[0].children[1])
 	var id = i3.text()
+	valorComanda(id)
+	quarto(id, "vq_painel")
+	adicionais(id, "vq_painel", "vh_painel")
 	setTimeout(() => {
 		var cor = $(`.cardBox .card:nth-child(${id})`).css("background-color")
 		cor == "rgb(255, 0, 0)" ? $("#tipo").text('locado') :
@@ -38,7 +44,7 @@ $(document).on('click', '[class="card"]', function () {
 			leituraProdutosPlus(id)
 			leituraVeiculosPlus(id)
 		}
-		backupInfos(id)
+		valorParcial(id)
 	}, 1000);
 })
 
@@ -138,37 +144,27 @@ function restoreStatus(suite, x, y, z) {
 	})
 }
 
-function backupInfos(suite) {
-	setTimeout(() => {
-		$.get(link[5], e => {
-			let dados = e.filter(i => i.quarto == suite)
-			let sum = 0
-			for (var a = 0; a < dados.length; a++) {
-				sum += parseFloat(dados[a].valor_total.slice(2))
-			}
-			$("#consumo_painel").text(sum.toFixed(2))
+function valorComanda(suite){
+	$.get(link[5], e => {
+		let filtroComanda = e.filter(i => i.quarto == suite)
+		let sum = 0
+		filtroComanda.forEach(el => {
+			sum += parseFloat(el.valor_total)
 		})
+		$("#consumo_painel").text(sum.toFixed(2))
+	})
+}
 
-	}, 500)
-	setTimeout(() => {
-		// var valor_quarto = parseFloat($("#valor-quarto").text())
-		var consumo = parseFloat($("#consumo_painel").text())
-		// var atualizacao_preco = $("#atualizacaoPreco").text() == "" ? "0" : $("#atualizacaoPreco").text()
-		// var novo_valor = atualizacao_preco == 0 ? valor_quarto : parseFloat(atualizacao_preco) + valor_quarto
-		// var resultado = valor_consumo + parseFloat(novo_valor)
-		// $("#parcial_painel").text(resultado.toFixed(2))
+function valorParcial(suite){
+	let consumo = parseFloat($("#consumo_painel").text())
+	$.get(link[36], l => {
+		let filtroValores = l.filter(x => x.suite == suite)
+		let sum = 0
+		for (var f = 0; f < filtroValores.length; f++){
+			sum += parseFloat(filtroValores[f].valor)
+		}
+		let total = sum + consumo
+		$("#parcial_painel").text(total.toFixed(2))
 
-		$.get(link[36], l => {
-			let filtroValores = l.filter(x => x.suite == suite)
-			let sum = 0
-			for (var f = 0; f < filtroValores.length; f++){
-				sum += parseFloat(filtroValores[f].valor)
-			}
-			let total = sum + consumo
-			$("#parcial_painel").text(total.toFixed(2))
-
-		})
-
-
-	}, 700)
+	})
 }

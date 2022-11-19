@@ -6,7 +6,6 @@ $(document).ready(function() {
     exibeDebito()
 })
 
-
 function buscaTarifasBandeiras() {
     $(document).on("change", "#modo_pagamento", function(){
         let forma = $("#modo_pagamento :selected")
