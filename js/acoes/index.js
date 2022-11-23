@@ -12,7 +12,7 @@ import { envia_dados_limpeza } from "../caixa/limpeza.js"
 import { envia_dados_faxina } from "../caixa/faxina.js"
 import { envia_dados_manutencao } from "../caixa/manutencao.js"
 import { inicioModalTroca } from "../setup/troca.js"
-import { ver_quartos_disponiveis } from "../relatorios/quartosDisponiveis.js"
+import { Suitesdisponiveis } from "../relatorios/quartosDisponiveis.js"
 import { iniciar2, parar2, zerar2 } from "../contadores/cronometros/c2.js"
 import { desligar_luz } from "../automacao/desligar.js"
 import { ligar_luz } from "../automacao/ligar.js"
@@ -113,7 +113,7 @@ export function reacao(status, suite) {
             var antigo = $("#quarto_painel").text()
             $("#quarto_antigo").val(antigo)
         }, 100)
-        ver_quartos_disponiveis()
+        Suitesdisponiveis()
     } else if (status == acao[4]) {
         if (confirm(`Encerrar a Suíte ${suite}?`)) {
             /*$.get(link[21], (e) => {
