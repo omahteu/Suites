@@ -13,8 +13,10 @@ $(document).on("click", ".faxina", function(){
     if (confirm(`Iniciar Faxina na Suíte ${suite}?`) == true){
         let t = tick[`${suite}`]
         setTimeout ( () => {faxina(suite, rota, t[0], t[1], t[2])       }, 1)
+        /*
         setTimeout ( () => {ligar_luz(suite)
                     localStorage.setItem("luz", "ligada")               }, 100)
+        */
         setTimeout ( () => {registraLimite(suite, "a", "faxina")        }, 200)
         setTimeout ( () => {fimModal()                                  }, 300)
         setTimeout ( () => {index()                                     }, 400)

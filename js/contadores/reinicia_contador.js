@@ -1,22 +1,32 @@
 import { link } from "../setup/index.js"
-import { _crnmtra1 } from "../contadores/restart/c1.js"
-import { _crnmtra2 } from "../contadores/restart/c2.js"
 import { hora_atual_segundos } from "../geradores/hora.js"
+import { inicia, para } from "../contadores/cronometros/_relogio1.js"
 
-$(document).ready(function(){
-    recuperando_tempo()
+$(document).ready(function () {
+    reiniciando()
 })
 
-async function recuperando_tempo(){
-    const requisicao = await fetch(link[11])
-    const resposta = await requisicao.json()
-    resposta.forEach(e => {
-        let inicio = e.datahora
-        let agora = hora_atual_segundos()
-        var ms = moment(agora, "HH:mm:ss").diff(moment(inicio, "HH:mm:ss"));
-        var d = moment.duration(ms);
-        var tempoPassado = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
-        var stp = tempoPassado.split(":")
-        _crnmtra1(e.quarto, stp[0], stp[1], stp[2])
-    });
+function reiniciando() {
+    setTimeout(() => {
+        $.get(link[11], e => {
+            e.forEach(el => {
+                let inicio = el.datahora
+                let tipo = el.tipo
+                let suite = el.quarto
+                if (tipo != "aguardando") {
+                    let agora = hora_atual_segundos()
+                    var ms = moment(agora, "HH:mm:ss").diff(moment(inicio, "HH:mm:ss"));
+                    var d = moment.duration(ms);
+                    var tempoPassado = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
+                    var stp = tempoPassado.split(":")
+                    inicia(suite, stp[0], stp[1], stp[2])
+                } else {
+                    let pausado = localStorage.getItem(`_${suite}`)
+                    $(`#hora${suite}`).text(pausado.split(",")[0])
+                    $(`#minuto${suite}`).text(pausado.split(",")[1])
+                    $(`#segundo${suite}`).text(pausado.split(",")[2])
+                }
+            });
+        })
+    }, 1000);
 }

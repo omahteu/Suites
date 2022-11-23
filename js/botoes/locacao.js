@@ -1,12 +1,12 @@
 import { fimModal }             from "../setup/camareiras.js"
 import { index }                from "../tags/particao.js"
-import { iniciar }              from "../contadores/cronometros/c1.js"
 import { iniciar2 }             from "../contadores/cronometros/c2.js"
 import { iniciarValor }         from "../quartos/ajax/inserir.js"
 import { link }                 from "../setup/index.js"
 import { locado }               from "../tags/locacao.js"
 import { registraLimiteTroca }  from "../../qwertyu.js"
 import { tick }                 from "../setup/box.js"
+import { inicia } from "../contadores/cronometros/_relogio1.js"
 
 $(document).on("click", ".locado", function(){
     const suite = $('#quarto_painel').text()
@@ -19,7 +19,7 @@ $(document).on("click", ".locado", function(){
         setTimeout ( () => {fimModal()                              }, 300)
         setTimeout ( () => {index()                                 }, 400)
         setTimeout ( () => {
-            suite == "1" ? iniciar(suite) : 
+            suite == "1" ? inicia(suite, "0", "0", "0") : 
             suite == "2" ? iniciar2(suite) : ""
                                                                     }, 500)
         setTimeout( () => {

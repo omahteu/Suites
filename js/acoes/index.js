@@ -13,7 +13,6 @@ import { envia_dados_faxina } from "../caixa/faxina.js"
 import { envia_dados_manutencao } from "../caixa/manutencao.js"
 import { inicioModalTroca } from "../setup/troca.js"
 import { ver_quartos_disponiveis } from "../relatorios/quartosDisponiveis.js"
-import { iniciar, parar, zerar } from "../contadores/cronometros/c1.js"
 import { iniciar2, parar2, zerar2 } from "../contadores/cronometros/c2.js"
 import { desligar_luz } from "../automacao/desligar.js"
 import { ligar_luz } from "../automacao/ligar.js"
@@ -29,6 +28,7 @@ import { registraLimiteLimpeza } from "../../qwertyu.js"
 import { link } from "../setup/index.js"
 import { acao } from "../setup/box.js"
 import { tick } from "../setup/box.js"
+import { inicia, para, zera } from "../contadores/cronometros/_relogio1.js"
 
 var rota = 'rota'
 
@@ -59,8 +59,8 @@ export function reacao(status, suite) {
         setTimeout(() => { fimModal() }, 1001)
         setTimeout(() => {
             alert(`Disponibilizar a Suíte ${suite}?`)
-            suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
-            zerar(suite)
+            suite == "1" ? para() : suite == "2" ? parar2() : "casa"
+            zera(suite)
         }, 500)
     } else if (status == acao[1]) {
         var tipo = $("#tipo").text()
@@ -68,9 +68,9 @@ export function reacao(status, suite) {
             var razao = localStorage.getItem("motivo")
             envia_dados_manutencao(usuario, data_atual(), hora_atual(), suite, razao, tempo)
             alert(`Iniciar faxina na Suíte ${suite}?`)
-            suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
-            zerar(suite)
-            iniciar(suite)
+            suite == "1" ? para() : suite == "2" ? parar2() : "casa"
+            zera(suite)
+            inicia(suite, "0", "0", "0")
             setTimeout(() => {
                 ligar_luz(suite)
                 localStorage.setItem("luz", "ligada")
@@ -80,9 +80,9 @@ export function reacao(status, suite) {
             setTimeout(() => { fimModal() }, 1001)
         } else {
             alert(`Iniciar faxina na Suíte ${suite}?`)
-            suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
-            zerar(suite)
-            iniciar(suite)
+            suite == "1" ? para() : suite == "2" ? parar2() : "casa"
+            zera(suite)
+            inicia(suite, "0", "0", "0")
             setTimeout(() => {
                 ligar_luz(suite)
                 localStorage.setItem("luz", "ligada")
@@ -94,13 +94,15 @@ export function reacao(status, suite) {
     } else if (status == acao[2]) {
         alert(`Iniciar limpeza na Suíte ${suite}?`)
         localStorage.removeItem(`troca${suite}`)
-        zerar(suite)
-        iniciar(suite)
+        zera(suite)
+        inicia(suite, "0", "0", "0")
         registraLimiteLimpeza(suite, "a", "limpeza")
+        /*
         setTimeout(() => {
             ligar_luz(suite)
             localStorage.setItem("luz", "ligada")
         }, 500)
+        */
         setTimeout(() => { limpeza(suite, flags[0], flags[1], flags[2]) }, 700)
         setTimeout(() => { atualiza_status(suite, "limpeza"), 900 })
         setTimeout(() => { fimModal() }, 1000)
@@ -121,7 +123,7 @@ export function reacao(status, suite) {
             })*/
 
             registraLimiteDesistencia(suite, "a", "desistencia")
-            suite == "1" ? parar() :
+            suite == "1" ? para() :
                 suite == "2" ? parar2() : "casa"
             setTimeout(() => { localStorage.setItem("last", suite) }, 100)
             setTimeout(() => { tempo_pausado(h, m, s, suite) }, 300)
@@ -153,9 +155,9 @@ export function reacao(status, suite) {
 
         alert('Camareira Selecionada')
 
-        suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
+        suite == "1" ? para() : suite == "2" ? parar2() : "casa"
 
-        zerar(suite)
+        zera(suite)
 
         setTimeout(() => {
             var recebido = JSON.parse(localStorage.getItem("limpeza"))
@@ -204,8 +206,8 @@ export function reacao(status, suite) {
         setTimeout(() => { fimModal() }, 1001)
         setTimeout(() => {
             alert(`Disponibilizar a Suíte ${suite}?`)
-            suite == "1" ? parar() : suite == "2" ? parar2() : "casa"
-            zerar(suite)
+            suite == "1" ? para() : suite == "2" ? parar2() : "casa"
+            zera(suite)
         }, 500)
     }
 }

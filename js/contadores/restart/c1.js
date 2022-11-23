@@ -7,8 +7,7 @@ let msegundo = 0
 let kronos
 let suite
 
-
-export  function _crnmtra1(id, a, b, c) {
+export function _crnmtra1(id, a, b, c) {
     suite = id
     hora = Number(a)
     minuto = Number(b)
@@ -50,11 +49,11 @@ export function _crnmtrd1(id) {
 }
 
 export function _crnmtre1(input) {
-    if(input >= 10){
+    if (input >= 10) {
         return input
-    } else if(input >= 1 && input <= 9){
+    } else if (input >= 1 && input <= 9) {
         return `0${input}`
-    } else if(input == 0 || String(input) == "00"){
+    } else if (input == 0 || String(input) == "00") {
         return `0${input}`
     } else {
         return `0${input}`

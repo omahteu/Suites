@@ -1,5 +1,6 @@
 import { link } from "../setup/index.js"
-import { _crnmtra1 } from "../contadores/restart/c1.js"
+import { inicia } from "../contadores/cronometros/_relogio1.js"
+
 import { _crnmtra2 } from "../contadores/restart/c2.js"
 import { parar } from "../contadores/cronometros/c1.js"
 import { parar2 } from "../contadores/cronometros/c2.js"
@@ -79,7 +80,7 @@ function iniciando(suite){
     var permanencia = [hora, minutos, segundos]
     let flags = tick[`${suite}`]
     setTimeout( () => {locado(suite, flags[0], flags[1], flags[2])}, 200)
-    setTimeout( () => {suite == "1" ? _crnmtra1(suite, permanencia[0], permanencia[1], permanencia[2]) : _crnmtra2(suite, permanencia[0], permanencia[1], permanencia[2])}, 300)
+    setTimeout( () => {suite == "1" ? inicia(suite, permanencia[0], permanencia[1], permanencia[2]) : _crnmtra2(suite, permanencia[0], permanencia[1], permanencia[2])}, 300)
     setTimeout( () => {fimModalTroca()}, 400)
     setTimeout( () => {
         $.get(link[11], function(e){

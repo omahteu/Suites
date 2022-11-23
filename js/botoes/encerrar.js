@@ -3,27 +3,23 @@ import { hora_atual } from "../geradores/hora.js"
 import { link } from "../setup/index.js"
 import { desligar_luz } from "../automacao/desligar.js"
 
-$(document).ready(function(){
-    var ultimo = localStorage.getItem("last")
-    $("#last").text(ultimo)
-})
-
-$(document).on("click", "#encerrar", function() {
-    setTimeout( () => {registrar_pagamento()}, 100)
-    setTimeout( () => {registrando()}, 200)
-    setTimeout( () => {ocupacao()}, 300)
-    setTimeout( () => {
-        let id = $("#last").text()
+$(document).on("click", "#encerrar", function () {
+    setTimeout(() => { registrar_pagamento() }, 100)
+    /*
+    setTimeout(() => { registrando() }, 200)
+    setTimeout(() => { ocupacao() }, 300)
+    setTimeout(() => {
+        let id = localStorage.getItem("last")
         desligar_luz(id)
         localStorage.setItem("luz", "desligada")
     }, 400)
-    setTimeout( () => {limpando()}, 500)
-    setTimeout( () => {
+    setTimeout(() => { limpando() }, 500)
+    setTimeout(() => {
         window.close()
-    }, 600)
+    }, 600)*/
 })
 
-function clean(id){
+function clean(id) {
     $.ajax({
         url: link[5] + id + "/",
         type: 'DELETE',
@@ -34,18 +30,18 @@ function clean(id){
     })
 }
 
-function limpando(){
+function limpando() {
     var quartx = localStorage.getItem("quarto")
-    $.get(link[5], (e) =>{
+    $.get(link[5], (e) => {
         var dados = e.filter(quartos => quartos.quarto == quartx)
         dados.forEach(element => {
             var id = element.id
             clean(id)
         });
     })
-    $.get(link[15], (e) =>{
+    $.get(link[15], (e) => {
         var dados = e.filter(quartos => quartos.quarto == quartx)
-        if(dados.length == 0){
+        if (dados.length == 0) {
             console.log("Pátio Vázio!")
         } else {
             var id = dados[0].id
@@ -61,10 +57,10 @@ function limpando(){
     localStorage.removeItem("quarto")
 }
 
-function registrando(){
+function registrando() {
     let quarto = localStorage.getItem("quarto")
     var box = []
-    $.get(link[5], (e) =>{
+    $.get(link[5], (e) => {
         var dados_comanda = e.filter(quartos => quartos.quarto == quarto)
         dados_comanda.forEach(elemento => {
             let descricao = elemento.descricao
@@ -72,10 +68,10 @@ function registrando(){
             box.push(descricao, quantidade)
         });
     })
-    $.get(link[16], (e) =>{
-        var resultado_produtos = box.filter( estadosComS  => (estadosComS.length > 2));
-        var resultado_quantidade = box.filter( estadosComS  => (estadosComS.length < 3));
-        for(var i = 0; i <= resultado_produtos.length; i++){
+    $.get(link[16], (e) => {
+        var resultado_produtos = box.filter(estadosComS => (estadosComS.length > 2));
+        var resultado_quantidade = box.filter(estadosComS => (estadosComS.length < 3));
+        for (var i = 0; i <= resultado_produtos.length; i++) {
             var conjunto = [resultado_produtos[i], resultado_quantidade[i]]
             var produto = conjunto[0]
             var produto_quantidade = conjunto[1]
@@ -107,13 +103,13 @@ function registrando(){
     })
 }
 
-function gera_codigo(){
-	var size = 5
-	var randomized = Math.ceil(Math.random() * Math.pow(10,size))
-	return randomized
+function gera_codigo() {
+    var size = 5
+    var randomized = Math.ceil(Math.random() * Math.pow(10, size))
+    return randomized
 }
 
-function ocupacao(){
+function ocupacao() {
     let usuario = $("#usuario_sistema").text()
     let quarto = localStorage.getItem("quarto")
     var box = JSON.parse(localStorage.getItem("dadosQuarto"))
@@ -137,17 +133,18 @@ function ocupacao(){
     })
 }
 
-function registrar_pagamento(){
+function registrar_pagamento() {
     let metodo_pagamento = $("#modo_pagamento :selected").text()
     let parcelas = $("#numero_parcelas").val()
     let pagamento = $("#totalGeral").text()
     let dados = {
         valor: parseFloat(pagamento).toFixed(2),
         forma: metodo_pagamento,
-        parcelas: metodo_pagamento.slice(0, 3) != "Cré" ? "*" : parcelas,
+        parcelas: parcelas,
         data: data_atual(),
         usuario: $("#usuario_sistema").text()
     }
-    $.post(link[33], dados, () => {})
-    $.post(link[30], {caixa: parseFloat(pagamento).toFixed(2)}, () => {})
+    console.log(dados)
+    //$.post(link[33], dados, () => { })
+    //$.post(link[30], { caixa: parseFloat(pagamento).toFixed(2) }, () => { })
 }

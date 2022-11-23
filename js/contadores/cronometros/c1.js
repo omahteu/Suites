@@ -7,7 +7,7 @@ let msegundo = 0;
 let contagem;
 let suite
 
-export  function iniciar(suite) {
+export function iniciar(suite) {
   parar();
   contagem = setInterval(() => { correr(suite); }, 10);
 }
@@ -45,13 +45,13 @@ export function correr(suite) {
 }
 
 export function formatar(input) {
-  if(input >= 10){
+  if (input >= 10) {
     return input
-  } else if(input >= 1 && input <= 9){
-      return `0${input}`
-  } else if(input == 0 || String(input) == "00"){
-      return `0${input}`
+  } else if (input >= 1 && input <= 9) {
+    return `0${input}`
+  } else if (input == 0 || String(input) == "00") {
+    return `0${input}`
   } else {
-      return `0${input}`
+    return `0${input}`
   }
 }

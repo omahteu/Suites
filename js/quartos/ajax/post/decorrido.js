@@ -1,4 +1,6 @@
-export function tempo_pausado(hora, minuto, segundo, quarto){
+export function tempo_pausado(hora, minuto, segundo, suite){
     let tempo = `${hora}:${minuto}:${segundo}`
-    localStorage.setItem(`troca${quarto}`, tempo)
+    let _tempo = `${hora},${minuto},${segundo}`
+    localStorage.setItem(`troca${suite}`, tempo)
+    localStorage.setItem(`_${suite}`, _tempo)
 }

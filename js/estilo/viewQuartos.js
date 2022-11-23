@@ -54,92 +54,21 @@ function restoreStatus(suite, x, y, z) {
 			let dados = e.filter(i => i.quarto == suite)
 			let condicaoDois = dados.length == 0
 			let modo = dados[0].tipo
+			let rotaf = $(".faxina").attr("class")
 			if (condicaoDois) {
 				$(`[name=${suite}]`).css('display', 'inline-block')
 				$(".acoes1").removeAttr('style')
 				$(".acoes2").removeAttr('style')
 				$(".acoes3").removeAttr('style')
 			}
-			if (modo == "locado") {
-				$(`[name=${suite}]`).css('display', 'none')
-				$(".acoes1").css('display', 'inline-block')
-				$(".acoes1").val('Trocar Suíte')
-				$(".acoes2").css('display', 'inline-block')
-				$(".acoes2").val('Encerrar')
-				$(".acoes3").css('display', 'none')
-				$(".acoes3").val('Cancelar Reserva')
-				locado(suite, x, y, z)
-			} else if (modo == "manutencao") {
-				$(`[name=${suite}]`).css('display', 'none')
-				$(".acoes1").css('display', 'inline-block')
-				$(".acoes1").val('Iniciar Faxina')
-				$(".acoes2").css('display', 'inline-block')
-				$(".acoes2").val('Disponibilizar Quarto')
-				$(".acoes3").css('display', 'inline-block')
-				$(".acoes3").val('Ligar Luz')
-				manutencao(suite, x, y, z)
-			} else if (modo == "faxina") {
-				$(`[name=${suite}]`).css('display', 'none')
-				$(".acoes1").css('display', 'inline-block')
-				$(".acoes1").val('Disponibilizar Quarto')
-				$(".acoes2").css('display', 'none')
-				$(".acoes2").val('')
-				$(".acoes3").css('display', 'none')
-				$(".acoes3").val('')
-				var rotaf = $(".faxina").attr("class")
-				faxina(suite, rotaf, x, y, z)
-			} else if (modo == "aguardando") {
-				$(`[name=${suite}]`).css('display', 'none')
-				$(".acoes1").css('display', 'inline-block')
-				$(".acoes1").val('Iniciar Limpeza')
-				$(".acoes2").css('display', 'none')
-				$(".acoes2").val('')
-				$(".acoes3").css('display', 'none')
-				$(".acoes3").val('')
-				aguardando(suite, x, y, z)
-			} else if (modo == "limpeza") {
-				$(`[name=${suite}]`).css('display', 'none')
-				$(".acoes1").css('display', 'inline-block')
-				$(".acoes1").val('Encerrar Limpeza')
-				$(".acoes2").css('display', 'none')
-				$(".acoes2").val('')
-				$(".acoes3").css('display', 'none')
-				$(".acoes3").val('')
-				limpeza(suite, x, y, z)
-			} else if (modo == "pernoite") {
-				//$(`[name=${suite}]`).css('display', 'none')
-				//(".acoes1").css('display', 'inline-block')
-				//$(".acoes1").val('Encerrar')
-				//$(".acoes2").css('display', 'none')
-				//$(".acoes2").val('')
-				//$(".acoes3").css('display', 'none')
-				//$(".acoes3").val('')
-				pernoite(suite, x, y, z)
-			}
-			/*
-			dados.forEach( re => {
-				if (modo != "pernoite"){
-					$("#numquarto").text(resultado.quarto)
-					$("#quarto_painel").text(resultado.quarto)
-					$("#vq_painel").text(resultado.valor)
-					$("#entrada").text(resultado.datahora)
-					$("#valor-quarto").text(resultado.valor)
-				} else {	
-					$("#numquarto").text(resultado.quarto)
-					$("#quarto_painel").text(resultado.quarto)	
-					$("#entrada").text(resultado.datahora)
-					$("#valor-quarto").text(resultado.valor)
-					setTimeout( () => {
-						$.get(link[21], (e) => {
-							var avalor = $("#vh_painel").text()
-							$("#vq_painel").text(parseFloat(avalor) + parseFloat(e[0].tempo_pernoite))
-						})
-					}, 100)
-				}
-	
-			})*/
+			modo == "locado" ? locado(suite, x, y, z) :
+			modo == "manutencao" ? manutencao(suite, x, y, z) :
+			modo == "faxina" ? faxina(suite, _rota, x, y, z) :
+			modo == "aguardando" ? aguardando(suite, x, y, z) :
+			modo == "limpeza" ? limpeza(suite, x, y, z) :
+			modo == "pernoite" ? pernoite(suite, x, y, z) : ""
 		} catch (error) {
-			localStorage.setItem('erro', JSON.stringify([]))
+			sessionStorage.setItem(error, [{}])
 		}
 	})
 }
