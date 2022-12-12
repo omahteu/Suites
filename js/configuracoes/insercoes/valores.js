@@ -10,7 +10,7 @@ $(document).on("click", "#SalvarConfigValores", () => {
     var valor5hora = $("#v5hQuarto").val()
     var valor6hora = $("#v6hQuarto").val()
     $.ajax({
-        url: link[21] + "3" + "/",
+        url: link[21] + "1" + "/",
         type: 'PUT',
         dataType: 'json',
         data: {

@@ -14,8 +14,8 @@ async function busca_ultimo_quarto(){
     });
 }
 
-$("#salvarFormPostQuarto").click(function() {
-    var codigoQuarto = $("#codigoQuarto").val()
+$("#salvarSuites").click(function() {
+    var codigoQuarto = $("#suiteCodigo").val()
     var numeroQuarto = nu + 1
     var percentual = $("#adicionarPercentualQuarto").val()
     var suite = $("#tipoSuiteQuarto").val()

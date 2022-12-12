@@ -16,6 +16,7 @@ $(document).on("click", "#atualizar_tempo", function(){
                 data: JSON.stringify({ "desistencia": valor }),
                 success: function () {
                     alert("Troca Com Sucesso!");
+                    location.reload()
                 },
                 error: function (textStatus, errorThrown) {
                     console.log(`ERRO: ${textStatus} - ${errorThrown}`)
@@ -34,6 +35,7 @@ $(document).on("click", "#atualizar_tempo", function(){
                 data: JSON.stringify({ "faxina": valor }),
                 success: function () {
                     alert("Troca Com Sucesso!");
+                    location.reload()
                 },
                 error: function (textStatus, errorThrown) {
                     console.log(`ERRO: ${textStatus} - ${errorThrown}`)
@@ -52,6 +54,7 @@ $(document).on("click", "#atualizar_tempo", function(){
                 data: JSON.stringify({ "limpeza": valor }),
                 success: function () {
                     alert("Troca Com Sucesso!");
+                    location.reload()
                 },
                 error: function (textStatus, errorThrown) {
                     console.log(`ERRO: ${textStatus} - ${errorThrown}`)
@@ -89,6 +92,7 @@ $(document).on("click", "#atualizar_tempo", function(){
                 data: JSON.stringify({ "troca": valor }),
                 success: function () {
                     alert("Troca Com Sucesso!");
+                    location.reload()
                 },
                 error: function (textStatus, errorThrown) {
                     console.log(`ERRO: ${textStatus} - ${errorThrown}`)
