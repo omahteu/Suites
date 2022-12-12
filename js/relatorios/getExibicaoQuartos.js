@@ -1,8 +1,8 @@
 import { link } from "../setup/index.js"
 
-$(document).ready(function() {
+$(document).ready(function () {
     busca_e_exibe_quartos()
-    $(document).on('click', '[class="card"]', function() {
+    $(document).on('click', '[class="card"]', function () {
         var passo = $(this)
         var passo2 = $(passo[0].children[0])
         var passo3 = $(passo2[0].children[1])
@@ -16,25 +16,26 @@ $(document).ready(function() {
     })
 })
 
-async function busca_e_exibe_quartos(){
+async function busca_e_exibe_quartos() {
     const resposta = await fetch(link[17])
     const dados = await resposta.json()
-    for(var i = 0; i < dados.length; i++){
+    for (var i = 0; i < dados.length; i++) {
         var indice = parseInt(i) + 1
         var nome = dados[i].nome
-        $(".cardBox").append(`<li class="card">`+
-                                '<div>'+
-                                    '<h3 id="contador">'+
-                                        `<span id="hora${indice}">00</span>:<span id="minuto${indice}">00</span>:<span id="segundo${indice}">00</span>`+
-                                    '</h3>'+
-                                    `<div class="cardName" id="suite">${indice}</div>`+
-                                    `<h4 id="tipo_suite${indice}">${nome}</h4>`+
-                                '</div>'+
-                                `<a id="botao_hub">`+
-                                    '<div class="iconBx">'+
-                                        '<i class="fa fa-gear"></i>'+
-                                    '</div>'+
-                                '</a>'+
-                            '</li>')
+        $(".cardBox").append(`<li class="card">` +
+                                '<div>' +
+                                    '<h3 id="contador">' +
+                                        `<span id="hora${indice}">00</span>:<span id="minuto${indice}">00</span>:<span id="segundo${indice}">00</span>` +
+                                    '</h3>' +
+                                    `<div class="cardName" id="suite">${indice}</div>` +
+                                    `<h4 id="tipo_suite${indice}">${nome}</h4>` +
+                                '</div>' +
+                                `<a id="botao_hub">` +
+                                    '<div class="iconBx">' +
+                                        '<i class="fa fa-gear"></i>' +
+                                    '</div>' +
+                                '</a>' +
+                            '</li>'
+        )
     }
 }

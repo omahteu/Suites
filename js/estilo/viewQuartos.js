@@ -54,7 +54,6 @@ function restoreStatus(suite, x, y, z) {
 			let dados = e.filter(i => i.quarto == suite)
 			let condicaoDois = dados.length == 0
 			let modo = dados[0].tipo
-			let rotaf = $(".faxina").attr("class")
 			if (condicaoDois) {
 				$(`[name=${suite}]`).css('display', 'inline-block')
 				$(".acoes1").removeAttr('style')

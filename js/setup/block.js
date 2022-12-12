@@ -13,6 +13,14 @@ $(".locado").click(function() {
     }) 
 })
 
+$(document).ready(function(){
+    setTimeout(() => {
+        let id = $("[id='suite']").text()
+        const suites = id.split('')
+        existeTrava(suites)
+    }, 1000);
+})
+
 function tempo_para_troca(){
     $(".acoes1").css('display', 'none')
     $(".acoes1").val('Encerrar')
@@ -23,9 +31,24 @@ function tempo_para_troca(){
 function trava(suite) {
     let ficha = {
         suite: suite,
-        modo: "tW",
+        modo: "t",
         tipo: "",
         horario: ""
     }
     $.post(link[34], ficha, () => {console.log(`Travada possibilidade de troca na Suíte ${suite}!`)})
+}
+
+function existeTrava(suite){
+    suite.forEach(ele => {
+        $.get(link[34], e => {
+            let travas = e.filter(i => i.suite == ele)
+            travas.forEach(el => {
+                let modo = el.modo
+                if (modo == "t"){
+                    
+                }
+            });
+        })
+    });
+
 }
