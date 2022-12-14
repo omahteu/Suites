@@ -89,7 +89,7 @@
                   <!-- Produtos -->
                   <div id="produto" class="tab-pane fade">
 
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="" method="post" class="form-horizontal" id="formProdutos">
                       <!--Campo Código-->
                       <div class="control-group">
                         <div class="controls">
@@ -125,7 +125,7 @@
                       <div class="form-actions" name="codProdutos">
                         <div class="span8">
                           <div class="span9">
-                            <button type="button" class="button btn btn-primary" id="salvarFormPostProduto">
+                            <button type="button" class="button btn btn-primary" id="salvarProduto">
                               <span class="button__icon">
                                 <i class="fa-solid fa-floppy-disk"></i>
                               </span>
@@ -148,7 +148,7 @@
                   <!-- Camareira -->
                   <div id="camareira" class="tab-pane fade">
 
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="" method="post" class="form-horizontal" id="formCamareira">
                       <!--Campo Nome-->
                       <div class="control-group">
                         <div class="controls">
@@ -160,7 +160,7 @@
                       <div class="form-actions">
                         <div class="span8">
                           <div class="span9">
-                            <button type="submit" class="button btn btn-primary" id="salvarFormPostCamareira">
+                            <button type="button" class="button btn btn-primary" id="salvarCamareira">
                               <span class="button__icon">
                                 <i class="fa-solid fa-floppy-disk"></i>
                               </span>
@@ -261,7 +261,7 @@
                   <!--Automação-->
                   <div id="automacao" class="tab-pane fade in active">
 
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="" method="post" class="form-horizontal" id="formAutomacao">
 
                       <!--Quartos-->
                       <div class="control-group">
@@ -298,7 +298,7 @@
                               <span class="button__icon">
                                 <i class="fa-solid fa-floppy-disk"></i>
                               </span>
-                              <span class="button__text2" id="salvarAuto">Cadastrar</span>
+                              <span class="button__text2">Cadastrar</span>
                             </button>
                             <button type="reset" class="button btn btn-danger">
                               <span class="button__icon">
@@ -363,25 +363,25 @@
                   <!--Usuário-->
                   <div id="usuario" class="tab-pane fade">
 
-                    <form action="" method="post" class="form-horizontal" id="formTipo" name="formTipo">
+                    <form action="" method="post" class="form-horizontal" id="formUsuario">
                       <!--Nome-->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="text" id="suiteCodigo" placeholder="Nome" required>
+                          <input type="text" id="usuario_nome" placeholder="Nome" required>
                         </div>
                       </div>
 
                       <!--Senha-->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="password" id="suiteNome" placeholder="Senha" required>
+                          <input type="password" id="usuario_senha" placeholder="Senha" required>
                         </div>
                       </div>
 
                       <!--Status-->
                       <div class="control-group">
                         <div class="controls">
-                          <select name="" id="">
+                          <select name="" id="usuario_permissao">
                             <option value="" hidden>Permissão</option>
                             <option value="">Administrador</option>
                             <option value="">Caixa</option>
@@ -393,7 +393,7 @@
                       <div class="form-actions">
                         <div class="span8">
                           <div class="span9">
-                            <button type="submit" class="button btn btn-primary" id="">
+                            <button type="button" class="button btn btn-primary" id="salvarUsuario">
                               <span class="button__icon">
                                 <i class="fa-solid fa-floppy-disk"></i>
                               </span>
@@ -425,51 +425,30 @@
     <div class="modau">
       <button class="fechar">X</button>
       <h3 id="titulo_caixa">Ações</h3>
-      <form id="FormMain" name="botoes">
+      <form id="FormMain" name="FormMain">
 
       </form>
     </div>
   </div>
 </body>
 <script src="../js/jquery.js"></script>
-
-<script src="../js/estilo/shortcut.js"></script>
-<script src="../js/estilo/funcoesGlobal.js"></script>
-<script src="../js/estilo/datatables.min.js"></script>
-<script src="../js/estilo/sweetalert.min.js"></script>
+<script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
 <script src="../js/estilo/bootstrap.min.js"></script>
-<script src="../js/estilo/matrix.js"></script>
-<script src="../js/estilo/nomes.js"></script>
 
+<script src="../js/estilo/nomes.js"></script>
 <script src="../js/setup/sitePath.js"></script>
-<!--<script src="../js/setup/validacao.js"></script>-->
 
 <script type="module" src="../js/contadores/auditoria.js"></script>
-
-<script type="module" src="../js/cadastros/postProduto.js"></script>
-
-<script type="module" src="../js/cadastros/postIG.js"></script>
-<script type="module" src="../js/cadastros/postEmail.js"></script>
-<script type="module" src="../js/cadastros/postCamareira.js"></script>
-
 <script type="module" src="../js/cadastros/postAuditoria.js"></script>
-<script src="https://kit.fontawesome.com/88ea2c002f.js" crossorigin="anonymous"></script>
-<!--
-<script src="../js/cadastros/estrutural/valores.js"></script>
-<script src="../js/cadastros/estrutural/excedentes.js"></script>
--->
 <script type="module" src="../js/cadastros/estrutural/botoes/nova_categoria.js"></script>
-<script type="module" src="../js/cadastros/botoes/adicionar_categoria.js"></script>
-
 <script type="module" src="../js/cadastros/exibicao/index.js"></script>
-
-
-<script type="module" src="../js/cadastros/exibicao/ig.js"></script>
-<script type="module" src="../js/cadastros/exibicao/email.js"></script>
-
-<!--<script src="../js/home/validacoes/permissao.js"></script>-->
 
 <script type="module" src="../js/cadastros/insercoes/suites.js"></script>
 <script type="module" src="../js/cadastros/insercoes/placas.js"></script>
+<script type="module" src="../js/cadastros/insercoes/automacoes.js"></script>
+<script type="module" src="../js/cadastros/insercoes/camareiras.js"></script>
+<script type="module" src="../js/cadastros/insercoes/produtos.js"></script>
+<script type="module" src="../js/cadastros/insercoes/categorias.js"></script>
+<script type="module" src="../js/cadastros/insercoes/usuarios.js"></script>
 
 </html>

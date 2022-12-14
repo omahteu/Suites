@@ -1,18 +1,5 @@
 import { data_atual } from "../geradores/data.js"
 import { link } from "../setup/index.js"
-import { gera_id } from "../geradores/id.js"
-
-$("#salvarFormPostCamareira").click(function() {
-    let camareira = $("#nomeCamareira").val()
-    var dados = {
-        nome: camareira,
-        registro: gera_id()
-    }
-    $.post(link[3], dados, () => {
-        alert("Camareira Registrado!")
-        document.getElementById('formCadastros').reset()
-    })
-})
 
 $("#camareira_limpeza").click(function() {
     var quarto = $("#quarto_painel").text()

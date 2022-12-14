@@ -1,6 +1,8 @@
 import { inicioMenu } from "../../../setup/menu.js"
 
 $(document).on("click", "#nova_categoria", function(){
+    let campo = document.getElementById("FormMain")
+    campo.innerHTML = ""
     inicioMenu("modau-menu")
     var menu = document.forms.namedItem("FormMain").id
     $(`#${menu}`).prepend(
