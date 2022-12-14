@@ -33,6 +33,6 @@ $(document).on("click", "#salvarSuites", () => {
     }
     $.post(link[17], dados, () => {
         alert("Suíte Registrada!")
-        //location.reload()
+        document.getElementById("formSuites").reset()
     })
 })

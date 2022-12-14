@@ -180,42 +180,42 @@
                   </div>
                   <!-- Camareira -->
 
-                  <!--Tipos de Suítes-->
+                  <!--Suítes-->
                   <div id="suite" class="tab-pane fade">
 
-                    <form action="" method="post" class="form-horizontal" id="formTipo" name="formTipo">
+                    <form action="" method="post" class="form-horizontal" id="formSuites" name="formSuites">
                       <!--Código-->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="text" id="suiteCodigo" placeholder="Código" required>
+                          <input type="text" name="suiteCodigo" id="suiteCodigo" placeholder="Código" required>
                         </div>
                       </div>
 
                       <!--Nome-->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="text" id="suiteNome" placeholder="Nome" required>
+                          <input type="text" name="suiteNome" id="suiteNome" placeholder="Nome" required>
                         </div>
                       </div>
 
                       <!--Horas Locação-->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="number" min="1" id="suiteHorasLocacao" placeholder="Horas Locação" required>
+                          <input type="number" min="1" name="suiteHorasLocacao" id="suiteHorasLocacao" placeholder="Horas Locação" required>
                         </div>
                       </div>
 
                       <!--Tolerância-->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="number" min="1" id="suiteTolerancia" placeholder="Tolerância (Minutos)" required>
+                          <input type="number" min="1" name="suiteTolerancia" id="suiteTolerancia" placeholder="Tolerância (Minutos)" required>
                         </div>
                       </div>
 
                       <!--Cobrança-->
                       <div class="control-group">
                         <div class="controls">
-                          <select name="" id="suiteCobranca">
+                          <select name="suiteCobranca" id="suiteCobranca">
                             <option hidden>Cobrança</option>
                             <option value="hora">Hora</option>
                             <option value="fixa">Fixa</option>
@@ -226,7 +226,7 @@
                       <!--Excedente-->
                       <div class="control-group">
                         <div class="controls">
-                          <select name="" id="suiteExcedente">
+                          <select name="suiteExcedente" id="suiteExcedente">
                             <option hidden>Excedente</option>
                             <option value="hora">Hora</option>
                             <option value="minuto">Minuto</option>
@@ -256,7 +256,7 @@
                     </form>
 
                   </div>
-                  <!--Tipos de Suítes-->
+                  <!--Suítes-->
 
                   <!--Automação-->
                   <div id="automacao" class="tab-pane fade in active">
@@ -318,19 +318,19 @@
                   <!--Placa-->
                   <div id="placa" class="tab-pane fade">
 
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="" method="post" class="form-horizontal" id="formPlaca">
 
                       <!--Nome-->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="text" name="" id="nome" placeholder="Nome" required>
+                          <input type="text" name="" id="placa_nome" placeholder="Nome" required>
                         </div>
                       </div>
 
                       <!--IP-->
                       <div class="control-group">
                         <div class="controls">
-                          <input type="text" name="" id="ip" placeholder="IP" required>
+                          <input type="text" name="" id="placa_ip" placeholder="IP" required>
                         </div>
                       </div>
 
@@ -447,7 +447,7 @@
 <script type="module" src="../js/contadores/auditoria.js"></script>
 
 <script type="module" src="../js/cadastros/postProduto.js"></script>
-<script type="module" src="../js/cadastros/postQuarto.js"></script>
+
 <script type="module" src="../js/cadastros/postIG.js"></script>
 <script type="module" src="../js/cadastros/postEmail.js"></script>
 <script type="module" src="../js/cadastros/postCamareira.js"></script>
@@ -462,11 +462,14 @@
 <script type="module" src="../js/cadastros/botoes/adicionar_categoria.js"></script>
 
 <script type="module" src="../js/cadastros/exibicao/index.js"></script>
-<!--<script type="module" src="../js/cadastros/insercoes/suites.js"></script>-->
+
 
 <script type="module" src="../js/cadastros/exibicao/ig.js"></script>
 <script type="module" src="../js/cadastros/exibicao/email.js"></script>
 
 <!--<script src="../js/home/validacoes/permissao.js"></script>-->
+
+<script type="module" src="../js/cadastros/insercoes/suites.js"></script>
+<script type="module" src="../js/cadastros/insercoes/placas.js"></script>
 
 </html>
