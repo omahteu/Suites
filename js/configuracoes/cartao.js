@@ -5,55 +5,24 @@ export async function busca_cartao(){
     const dados = await query.json()
     const query2 = await fetch(link[8])
     const dados2 = await query2.json()
-    for(var i = 0; i < dados.length; i++){
-        var string = dados[i].porcentagem
-        var metade = Math.floor(string.length / 2);
-        var resultado = string.substr(0,metade)+"."+string.substr(metade);
-        // Setar a porcentagem no placeholder
-        var form = document.forms.namedItem("taxa_cartoes").id
-        $(`#${form}`).prepend(
-            `<div class="control-group">`+
-                `<div class="controls">`+
-                    `<input type="text" class="credito" id="${dados[i].bandeira}" placeholder="${resultado}%">`+
-                    `<span>${dados[i].bandeira} | Débito</span>`+
-                `</div>`+
-            `</div>`
-        )
-    }
-    for(var i = 0; i < dados2.length; i++){
-        var string = dados2[i].porcentagem
-        var metade = Math.floor(string.length / 2);
-        var resultado2 = string.substr(0,metade)+"."+string.substr(metade);
-        var form = document.forms.namedItem("taxa_cartoes").id
-        $(`#${form}`).prepend(
-            `<div class="control-group">`+
-                `<div class="controls">`+
-                    `<input type="text" class="debito" id="${dados2[i].bandeira}" placeholder="${resultado2}%">`+
-                    `<span>${dados[i].bandeira} | Crédito</span>`+
-                `</div>`+
-            `</div>`
-        )
-    }
+    let tdebito = document.getElementById("tabela_debito")
+    tdebito.innerHTML = ""
+    dados.forEach(d => {
+        tdebito.innerHTML += '<tr>'+
+                                `<td value="${d.id}">Débito</td>`+
+                                `<td>${d.bandeira}</td>`+
+                                `<td>${d.porcentagem}</td>`+
+                                `<td><button type="button" class="btn btn-primary" id="editar_cartoes">Editar</button></td>`+
+                            '</tr>'
+    });
+    let tcredito = document.getElementById("tabela_credito")
+    tcredito.innerHTML = ""
+    dados2.forEach(c => {
+        tcredito.innerHTML += '<tr>'+
+                                `<td value="${c.id}">Crédito</td>`+
+                                `<td>${c.bandeira}</td>`+
+                                `<td>${c.porcentagem}</td>`+
+                                `<td><button type="button" class="btn btn-primary id="editar_cartoes">Editar</button></td>`+
+                            '</tr>'
+    });
 }
-/*
-$("#tipo_cartao").change(function(){
-    var selecionado = $(this).val()
-    $("#bandeira_cartao").change(function(){
-        var bandeira_selecionada = $(this).val()
-        if(selecionado == "credito" && bandeira_selecionada == "master"){
-            // crédito master
-        } else if(selecionado == "credito" && bandeira_selecionada == "visa"){
-            // crédito visa
-        } else if(selecionado == "credito" && bandeira_selecionada == "elo"){
-            // crédito elo
-        } else if(selecionado == "debito" && bandeira_selecionada == "master"){
-            // débito master
-        } else if(selecionado == "debito" && bandeira_selecionada == "visa"){
-            // débito visa
-        } else if(selecionado == "debito" && bandeira_selecionada == "elo"){
-            // débito elo
-        }
-    })
-})
-
-*/

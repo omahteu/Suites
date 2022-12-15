@@ -13,7 +13,7 @@
 
 export const link = [
     "https://startech.pythonanywhere.com/atividade/", 
-    "https://startech.pythonanywhere.com/automacao/",
+    "https://startech.pythonanywhere.com/automacaow/",
     "https://startech.pythonanywhere.com/caixa/",
     "https://startech.pythonanywhere.com/camareira/",
     "https://startech.pythonanywhere.com/credito/",
@@ -21,8 +21,8 @@ export const link = [
     "https://startech.pythonanywhere.com/index/",
     "https://startech.pythonanywhere.com/desistencia/",
     "https://startech.pythonanywhere.com/debito/",
-    "https://startech.pythonanywhere.com/emails/",
-    "https://startech.pythonanywhere.com/igs/",
+    "https://startech.pythonanywhere.com/email/",
+    "https://startech.pythonanywhere.com/ig/",
     "https://startech.pythonanywhere.com/infos/",
     "https://startech.pythonanywhere.com/limpeza/",
     "https://startech.pythonanywhere.com/ocupacao/",
