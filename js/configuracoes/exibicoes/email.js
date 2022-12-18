@@ -15,7 +15,7 @@ async function dados_email(){
         $("#email_timeout").attr("placeholder", e.timeout)
         $("#email_destino").attr("placeholder", e.email_destino)
         $("#email_contabilidade").attr("placeholder", e.email_contabilidade)
-        let autenticacao = $("#email_autenticação")
-        e.autenticacao == "0" ? autenticacao.val("nao") : autenticacao.val("sim")
+        let auth = $("#email_autenticacao")
+        e.autenticacao == "false" ? auth.val("sim") : auth.val("nao")
     });
 }
