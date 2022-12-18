@@ -56,31 +56,35 @@
                 </div>
                 <!--Tabs-->
                 <ul class="nav nav-tabs">
-                  <!--Tempo-->
+                  <!--Automação-->
                   <li class="active">
                     <a data-toggle="tab" href="#automacao">Automação</a>
                   </li>
-                  <!--Pernoite-->
+                  <!--Cartão-->
                   <li>
                     <a data-toggle="tab" href="#cartao">Cartão</a>
                   </li>
-                  <!--Cartões-->
+                  <!--Email-->
                   <li>
                     <a data-toggle="tab" href="#email">Email</a>
                   </li>
-                  <!--Valores-->
+                  <!--Informações Gerais-->
                   <li>
                     <a data-toggle="tab" href="#ig">Informações Gerais</a>
                   </li>
-                  <!--Automação-->
+                  <!--Pernoite-->
                   <li>
                     <a data-toggle="tab" href="#pernoite">Pernoite</a>
                   </li>
-                  <!--Informações Gerais-->
+                  <!--Tempo-->
                   <li>
                     <a data-toggle="tab" href="#tempo">Tempo</a>
                   </li>
-                  <!--Email-->
+                  <!--Teto-->
+                  <li>
+                    <a data-toggle="tab" href="#teto">Teto</a>
+                  </li>
+                  <!--Valor-->
                   <li>
                     <a data-toggle="tab" href="#valor">Valor</a>
                   </li>
@@ -435,6 +439,42 @@
                   </div>
                   <!-- Tempo -->
 
+                  <!--Teto-->
+                  <div id="teto" class="tab-pane fade">
+
+                    <form action="" method="post" class="form-horizontal">
+                      <!--Teto-->
+                      <div class="control-group">
+                        <div class="controls">
+                          <input type="text" id="teto_valor" placeholder="Valor Teto">
+                          <span>Valor Teto (R$)</span>
+                        </div>
+                      </div>
+
+                      <!--Botões-->
+                      <div class="form-actions">
+                        <div class="span8">
+                          <div class="span9">
+                            <button type="button" class="button btn btn-primary" id="salvarTeto">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                              </span>
+                              <span class="button__text2" id="botao_tabela">Salvar Alterações</span>
+                            </button>
+                            <button type="reset" class="button btn btn-danger">
+                              <span class="button__icon">
+                                <i class="fa-solid fa-xmark"></i>
+                              </span>
+                              <span class="button__text2">Limpar</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                  <!--Teto-->
+
                   <!--Valores-->
                   <div id="valor" class="tab-pane fade">
 
@@ -598,5 +638,6 @@
 
 <script type="module" src="../js/configuracoes/insercoes/email.js"></script>
 <script type="module" src="../js/configuracoes/insercoes/ig.js"></script>
+<script type="module" src="../js/configuracoes/insercoes/teto.js"></script>
 
 </html>
