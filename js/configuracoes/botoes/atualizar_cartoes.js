@@ -4,26 +4,9 @@ $(document).on("click", "#editar_cartoes", function() {
     let base = $(this).attr("value")
     let id = String(base).split(",")[0]
     let tipo = String(base).split(",")[1]
-    //console.log(id, tipo)
     $(document).one("click", "#atualizar_cartoes", function(){
         let nova_taxa = $("#nova_taxa").val()
-        switch (tipo) {
-            case "c":
-                //console.log(id, tipo)
-                //console.log(id, nova_taxa)
-                //cred(id, nova_taxa)
-                break;
-            
-            case "d":
-                //console.log(id, tipo)
-                //console.log(id, nova_taxa)
-                debi(id, nova_taxa)
-                
-                break
-        
-            default:
-                break;
-        }
+        tipo == "c" ? cred(id, nova_taxa) : debi(id, nova_taxa)
     })
 
 })
@@ -39,6 +22,7 @@ function cred(id, taxa){
         data: JSON.stringify({ porcentagem: taxa }),
         success: function () {
             alert("Porcentagem Alterada!")
+            location.reload()
         },
         error: function (textStatus, errorThrown) {
             console.log(`ERRO: ${textStatus} - ${errorThrown}`)
