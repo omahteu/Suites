@@ -1,11 +1,11 @@
 import { link } from "../setup/index.js"
 import { registro_movimento } from "../cadastros/postMovimentos.js"
 
-$("#SalvarMovimentoEstoque").click(function(){
+$(document).on("click", "#SalvarMovimentoEstoque", function(){
     var escolha_movimento = $("#acao_movimentacao").val()
     var quantidade_movimento = $("#quantidadeProduto").val()
     if(escolha_movimento == "" || quantidade_movimento == ""){
-        alert("Campos Inválidos")
+        alert("Campos Inválidos!")
     } else if(escolha_movimento == "entrada"){
         let id = $("#idx").text()
         var quantidade_base = $("#quantidadex").text()
@@ -17,7 +17,7 @@ $("#SalvarMovimentoEstoque").click(function(){
         let cat = $("#categoriaProduto").text()
         let dat = $("#datax").text()
         $.ajax({
-            url: link[16] + id + "/",
+            url: `${link[16]}${id}/`,
             type: "PUT",
             dataType: "json",
             data: {
@@ -48,7 +48,7 @@ $("#SalvarMovimentoEstoque").click(function(){
         let cat = $("#categoriaProduto").text()
         let dat = $("#datax").text()
         $.ajax({
-            url: link[16] + id + "/",
+            url: `${link[16]}${id}/`,
             type: "PUT",
             dataType: "json",
             data: {

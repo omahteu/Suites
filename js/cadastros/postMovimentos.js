@@ -1,3 +1,5 @@
+import { link } from "../setup/index.js"
+
 export function registro_movimento(data, nome, codigo, tipo, quantidade){ 
     var dados = {
         data: data,
@@ -6,7 +8,5 @@ export function registro_movimento(data, nome, codigo, tipo, quantidade){
         tipo: tipo,
         quantidade: quantidade
     }
-    $.post("https://demomotelapi.herokuapp.com/movimentos/", dados, () => {
-        console.log("Registrado!")
-    })
+    $.post(link[22], dados, () => {})
 }

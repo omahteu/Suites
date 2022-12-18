@@ -1,8 +1,6 @@
-$("#BuscaInfoProduto").click(function(){
+import { link } from "../setup/index.js"
 
-    var form = document.forms.namedItem("formCadastroProdutos").id
-    console.log(form)
-
+$(document).on("click", "#BuscaInfoProduto", function(){
     $("#formCadastroProdutos").append(
         `<div class="control-group">`+
             `<div class="controls">`+
@@ -38,26 +36,22 @@ $("#BuscaInfoProduto").click(function(){
             `</div>`+
         `</div>`
     )
-
-
     let codigo_pesquisado = $("#codigoProduto").val()
-    $.get("https://demomotelapi.herokuapp.com/produtos/", function(e){
+    $.get(link[16], e => {
         var dados = e.filter(el => el.codigo == codigo_pesquisado)
-        dados.forEach(elemento => {
-            $("#idx").text(elemento.id)
+        dados.forEach(i => {
+            $("#idx").text(i.id)
             $("#codigoProduto").text(codigo_pesquisado)
-            $("#descricaoProduto").text(elemento.descricao)
-            $("#quantidadex").text(elemento.quantidade)
-            $("#valorUnitarioProduto").text(elemento.valorunitario)
-            $("#categoriaProduto").text(elemento.categoria)
-            $("#datax").text(elemento.data)
+            $("#descricaoProduto").text(i.descricao)
+            $("#quantidadex").text(i.quantidade)
+            $("#valorUnitarioProduto").text(i.valorunitario)
+            $("#categoriaProduto").text(i.categoria)
+            $("#datax").text(i.data)
 
         });
     })
-    
     $(this).css("display", "none")
     $("#acao_movimentacao").css("display", "inline")
     $("#quantidadeProduto").css("display", "inline")
     $("#SalvarMovimentoEstoque").css("display", "inline")
-
 })
