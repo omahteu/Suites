@@ -34,10 +34,11 @@ $(document).on('click', '[class="card"]', function () {
 	valorComanda(id)
 	quarto(id, "vq_painel")
 	adicionais(id, "vq_painel", "vh_painel")
+	restoreBotoes()
 	setTimeout(() => {
 		var cor = $(`.cardBox .card:nth-child(${id})`).css("background-color")
 		cor == "rgb(255, 0, 0)" ? $("#tipo").text('locado') :
-			cor == "rgb(139, 0, 139)" ? $("#tipo").text("pernoite") : ""
+		cor == "rgb(139, 0, 139)" ? $("#tipo").text("pernoite") : ""
 		let tipo = $("#tipo").text()
 		let condicaoUm = tipo == "locado" || tipo == "pernoite"
 		if (condicaoUm) {
@@ -55,6 +56,8 @@ function restoreStatus(suite, x, y, z) {
 			let condicaoDois = dados.length == 0
 			let modo = dados[0].tipo
 			if (condicaoDois) {
+				console.log('qwe')
+				console.log(dados)
 				$(`[name=${suite}]`).css('display', 'inline-block')
 				$(".acoes1").removeAttr('style')
 				$(".acoes2").removeAttr('style')
@@ -94,5 +97,27 @@ function valorParcial(suite){
 		let total = sum + consumo
 		$("#parcial_painel").text(total.toFixed(2))
 
+	})
+}
+
+
+
+async function restoreBotoes(suite, x, y, z){
+	var lista_suites = []
+
+	$.get(link[17], i => {
+		i.forEach(x => {
+			lista_suites.push(x.numero)
+		})
+	})
+
+	$.get(link[11], e => {
+		let infos = e.filter(l => l.tipo == "locado")
+		infos.forEach( k => {
+			var indexes = lista_suites.indexOf(k.quarto)
+			if (indexes > -1){
+				lista_suites.splice(indexes, 1)
+			}
+		})
 	})
 }
