@@ -56,8 +56,6 @@ function restoreStatus(suite, x, y, z) {
 			let condicaoDois = dados.length == 0
 			let modo = dados[0].tipo
 			if (condicaoDois) {
-				console.log('qwe')
-				console.log(dados)
 				$(`[name=${suite}]`).css('display', 'inline-block')
 				$(".acoes1").removeAttr('style')
 				$(".acoes2").removeAttr('style')
@@ -119,5 +117,8 @@ async function restoreBotoes(suite, x, y, z){
 				lista_suites.splice(indexes, 1)
 			}
 		})
+		lista_suites.forEach( r => {
+			
+		});
 	})
 }
