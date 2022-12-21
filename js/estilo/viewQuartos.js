@@ -11,6 +11,7 @@ import { pernoite } from '../tags/pernoite.js'
 import { tick } from '../setup/box.js'
 import { quarto } from "../checkout/_quarto.js"
 import { adicionais } from "../checkout/_adicionais.js"
+import { desfazer } from "../tags/desfazer.js"
 
 $(document).ready(function () {
 	setTimeout(() => {
@@ -34,7 +35,7 @@ $(document).on('click', '[class="card"]', function () {
 	valorComanda(id)
 	quarto(id, "vq_painel")
 	adicionais(id, "vq_painel", "vh_painel")
-	restoreBotoes()
+	restoreBotoes(id)
 	setTimeout(() => {
 		var cor = $(`.cardBox .card:nth-child(${id})`).css("background-color")
 		cor == "rgb(255, 0, 0)" ? $("#tipo").text('locado') :
@@ -98,10 +99,10 @@ function valorParcial(suite){
 	})
 }
 
-
-
-async function restoreBotoes(suite, x, y, z){
+async function restoreBotoes(suite){
 	var lista_suites = []
+	var suites_ocupadas = []
+	var home = suite
 
 	$.get(link[17], i => {
 		i.forEach(x => {
@@ -118,7 +119,26 @@ async function restoreBotoes(suite, x, y, z){
 			}
 		})
 		lista_suites.forEach( r => {
-			console.log(r)
+			let t = tick[`${r}`]
+			desfazer(r, t[0], t[1], t[2])
 		})
+
+		try {
+			//console.log(infos)
+			let dados = infos.filter(i => i.quarto == home)
+			console.log(dados)
+			let modo = dados[0].tipo
+			let suite = dados[0].quarto
+			let t = tick[`${suite}`]
+			
+			modo == "locado" ? locado(suite, t[0], t[1], t[2]) :
+			modo == "manutencao" ? manutencao(suite, x, y, z) :
+			modo == "faxina" ? faxina(suite, _rota, x, y, z) :
+			modo == "aguardando" ? aguardando(suite, x, y, z) :
+			modo == "limpeza" ? limpeza(suite, x, y, z) :
+			modo == "pernoite" ? pernoite(suite, x, y, z) : ""
+		} catch (error) {
+			sessionStorage.setItem(error, [{}])
+		}
 	})
 }
