@@ -118,7 +118,7 @@ async function restoreBotoes(suite, x, y, z){
 			}
 		})
 		lista_suites.forEach( r => {
-			
-		});
+			console.log(r)
+		})
 	})
 }
