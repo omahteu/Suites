@@ -1,5 +1,5 @@
 import { hora_atual } from "../geradores/hora.js"
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 $(document).on("click", "#adicionar_produto", function(){
 	registroProduto()

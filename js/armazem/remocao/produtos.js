@@ -1,5 +1,5 @@
 import { leituraProdutos } from "../leitura/produtos.js"
-import { link } from "../../setup/index.js"
+import link from "../../setup/index.js"
 
 $(document).on("click", "#remocaoProduto", function(){
 	var id = $(this).attr("name")

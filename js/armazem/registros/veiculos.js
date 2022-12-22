@@ -1,5 +1,5 @@
 import { leituraVeiculos } from "../leitura/veiculos.js"
-import { link } from "../../setup/index.js"
+import link from "../../setup/index.js"
 
 export function registroVeiculos(){
 	var quarto =  $("#quarto_painel").text()

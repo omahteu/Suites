@@ -2,58 +2,58 @@
     ESSA FUNÇÃO SERVE PARA CALCULAR O VALOR DA LOCAÇÃO, CONFORME O TEMPO DECORRIDO
                                                                                     */
 
-import { hora_atual_segundos }  from "../../geradores/hora.js"
-import { link }                 from "../../setup/index.js"
-import { alterarValor }         from "../ajax/alterar.js"
+import { hora_atual_segundos } from "../../geradores/hora.js"
+import link from "../../setup/index.js"
+import { alterarValor } from "../ajax/alterar.js"
 
 var caixa = []
 
 /*
     FUNÇÃO PRINCIPAL
                       */
-export function atualizaValores(suite) {
+export default function atualizaValores(suite) {
   buscaHoraLocacao()
   buscaDadosQuarto()
   buscaTabelaPrecos()
   buscaLocacoes()
   try {
-    var horaLocacao =       JSON.parse(sessionStorage.getItem("test"))
-    var infoQuartos =       JSON.parse(sessionStorage.getItem("dq"))
-    var precos =            JSON.parse(sessionStorage.getItem("tp"))
-    var filtroCobranca =    infoQuartos.filter(e => e.numero == suite)
-    var infos =             horaLocacao.filter(e => e.quarto == suite)
-    var quantidadeHoras =   filtroCobranca[0].horas_locacao
-    var xquantidadeHoras =  parseInt(quantidadeHoras) + 1
-    var tipoCobranca =      filtroCobranca[0].cobranca
-    var tolerancia =        filtroCobranca[0].tolerancia
-    var datahoraLocacao =   infos[0].datahora
-    var agora =             hora_atual_segundos()
-    var valor =             infos[0].valor
-    var ms =                moment(agora, "HH:mm:ss").diff(moment(datahoraLocacao, "HH:mm:ss"))
-    var d =                 moment.duration(ms)
-    var tempoPassado =      Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss")
-    var tpFormatado =       String(tempoPassado).split(":")
-    var locacao =           precos[0].valor_locacao
-    var horaLocada =        tpFormatado[0]
-    var minutoLocado =      tpFormatado[1]
-  
-    let condicaoUm =        parseInt(horaLocada) > parseInt(quantidadeHoras)
-    let condicaoDois =      parseInt(horaLocada) == parseInt(xquantidadeHoras)
-    let condicaoTres =      parseInt(minutoLocado) > parseInt(tolerancia)
-  
-    let condicaoQuatro =    parseInt(horaLocada) > parseInt(xquantidadeHoras)
-    let diferenca =         parseInt(horaLocada) - parseInt(quantidadeHoras)
-  
+    var horaLocacao = JSON.parse(sessionStorage.getItem("test"))
+    var infoQuartos = JSON.parse(sessionStorage.getItem("dq"))
+    var precos = JSON.parse(sessionStorage.getItem("tp"))
+    var filtroCobranca = infoQuartos.filter(e => e.numero == suite)
+    var infos = horaLocacao.filter(e => e.quarto == suite)
+    var quantidadeHoras = filtroCobranca[0].horas_locacao
+    var xquantidadeHoras = parseInt(quantidadeHoras) + 1
+    var tipoCobranca = filtroCobranca[0].cobranca
+    var tolerancia = filtroCobranca[0].tolerancia
+    var datahoraLocacao = infos[0].datahora
+    var agora = hora_atual_segundos()
+    var valor = infos[0].valor
+    var ms = moment(agora, "HH:mm:ss").diff(moment(datahoraLocacao, "HH:mm:ss"))
+    var d = moment.duration(ms)
+    var tempoPassado = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss")
+    var tpFormatado = String(tempoPassado).split(":")
+    var locacao = precos[0].valor_locacao
+    var horaLocada = tpFormatado[0]
+    var minutoLocado = tpFormatado[1]
+
+    let condicaoUm = parseInt(horaLocada) > parseInt(quantidadeHoras)
+    let condicaoDois = parseInt(horaLocada) == parseInt(xquantidadeHoras)
+    let condicaoTres = parseInt(minutoLocado) > parseInt(tolerancia)
+
+    let condicaoQuatro = parseInt(horaLocada) > parseInt(xquantidadeHoras)
+    let diferenca = parseInt(horaLocada) - parseInt(quantidadeHoras)
+
     if (tipoCobranca == "hora") {
-      let um =      precos[0].vh1
-      let dois =    precos[0].vh2
-      let tres =    precos[0].vh3
-      let quatro =  precos[0].vh4
-      let cinco =   precos[0].vh5
-      let seis =    precos[0].vh6
-  
+      let um = precos[0].vh1
+      let dois = precos[0].vh2
+      let tres = precos[0].vh3
+      let quatro = precos[0].vh4
+      let cinco = precos[0].vh5
+      let seis = precos[0].vh6
+
       if (condicaoUm && condicaoDois && condicaoTres) {
-  
+
         if (diferenca == 1) {
           var acrescimo = Number(valor) + Number(um)
           alterarValor(suite, acrescimo)

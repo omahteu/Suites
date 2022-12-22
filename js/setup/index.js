@@ -11,8 +11,8 @@
 9: EMAIL        | 19: TEMPO     | 29: CATEGORIAS    |
 */
 
-export const link = [
-    "https://startech.pythonanywhere.com/atividade/", 
+const link = [
+    "https://startech.pythonanywhere.com/atividade/",
     "https://startech.pythonanywhere.com/automacaow/",
     "https://startech.pythonanywhere.com/caixa/",
     "https://startech.pythonanywhere.com/camareira/",
@@ -50,3 +50,5 @@ export const link = [
     "https://startech.pythonanywhere.com/pernoite/",
     "https://startech.pythonanywhere.com/cofre/"
 ]
+
+export default link

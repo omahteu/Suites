@@ -1,4 +1,4 @@
-import { link } from "../../../setup/index.js"
+import link from "../../../setup/index.js"
 import { _crnmtrb1, _crnmtrc1 } from "../../../contadores/restart/c1.js"
 
 $(document).ready(function(){

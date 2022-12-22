@@ -1,4 +1,4 @@
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 export async function ligar_luz(quarto) {
     const requisicao = await fetch(link[27])

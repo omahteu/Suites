@@ -1,5 +1,3 @@
-import { link } from "../setup/index.js"
-
 export function subtotal() {
 	setTimeout(() => {
 		let quarto = parseFloat($("#valorQuarto").text())

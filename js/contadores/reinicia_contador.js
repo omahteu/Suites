@@ -1,4 +1,4 @@
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 import { hora_atual_segundos } from "../geradores/hora.js"
 import { inicia, para } from "../contadores/cronometros/_relogio1.js"
 import { inicia2 } from "../contadores/cronometros/_relogio2.js"

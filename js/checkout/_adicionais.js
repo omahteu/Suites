@@ -1,4 +1,4 @@
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 export function adicionais(suite, id_quarto, id_permanencia) {
 	setTimeout(() => {

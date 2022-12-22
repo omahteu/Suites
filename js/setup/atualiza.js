@@ -1,4 +1,4 @@
-import { link } from "./index.js"
+import link from "./index.js"
 import { hora_atual_segundos } from "../geradores/hora.js"
 
 export function atualiza_status(quarto, status){

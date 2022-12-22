@@ -1,5 +1,5 @@
 import { minuto_para_segundo } from "../conversores/minutos_milisegundos.js"
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 $(".locado").click(function() {
     let suite = $(this).attr("name")

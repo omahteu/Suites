@@ -1,4 +1,4 @@
-import { link } from "./index.js"
+import link from "./index.js"
 
 window.onbeforeunload = () => {
     tempo_quarto()

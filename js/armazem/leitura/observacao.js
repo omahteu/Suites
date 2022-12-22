@@ -1,4 +1,4 @@
-import { link } from "../../setup/index.js"
+import link from "../../setup/index.js"
 
 export function leituraObservacoes(){
     $.get(link[14], (retorno) => {

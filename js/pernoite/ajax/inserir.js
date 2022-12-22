@@ -1,4 +1,4 @@
-import { link } from "../../setup/index.js"
+import link from "../../setup/index.js"
 
 export function insereValor(suite, valor, tipo){
     let mensagem = `Valor de ${valor} referente a Pernoite da Suíte ${suite} adicionado!`

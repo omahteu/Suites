@@ -1,4 +1,4 @@
-import { link } from "./index.js"
+import link from "./index.js"
 
 async function autenticacao(usuario, senha){
     const resposta = await fetch(link[20])

@@ -1,4 +1,4 @@
-import { link } from "../../setup/index.js"
+import link from "../../setup/index.js"
 
 export async function listar_camareiras(){
     const requisicao = await fetch(link[3])

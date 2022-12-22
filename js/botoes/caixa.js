@@ -1,10 +1,10 @@
-import { data_atual }   from "../geradores/data.js"
-import { hora_atual }   from "../geradores/hora.js"
-import { link }         from "../setup/index.js"
+import { data_atual } from "../geradores/data.js"
+import { hora_atual } from "../geradores/hora.js"
+import link from "../setup/index.js"
 
 var soma = 0
 
-$(document).ready(function() {
+$(document).ready(function () {
     var nomeUsuario = localStorage.getItem('nome')
     $("#usuario").val(nomeUsuario)
     bloqueiaAbertura()
@@ -14,12 +14,12 @@ $(document).ready(function() {
     bloqueioUsoEstoque()
 })
 
-$("#abrirCaixa").click(function() {
+$("#abrirCaixa").click(function () {
     var utilizar_fundo_caixa = $("#usarFundoCaixa").val()
     var usar_produtos_sem_caixa = $("#usarProdutosSemCaixa").val()
-    if(utilizar_fundo_caixa == 'Usar Fundo de Caixa?' || usar_produtos_sem_caixa == "usar_produtos_sem_caixa"){
+    if (utilizar_fundo_caixa == 'Usar Fundo de Caixa?' || usar_produtos_sem_caixa == "usar_produtos_sem_caixa") {
         alert('Escolha se ultilizará o fundo de caixa ou Produtos sem estoque!')
-    } else if(utilizar_fundo_caixa == "sim" && usar_produtos_sem_caixa == "sim") {
+    } else if (utilizar_fundo_caixa == "sim" && usar_produtos_sem_caixa == "sim") {
         localStorage.setItem('caixa', 'aberto')
         localStorage.setItem("prod", usar_produtos_sem_caixa)
         var usuario = $("#usuario").val()
@@ -39,7 +39,7 @@ $("#abrirCaixa").click(function() {
             alert('Caixa Aberto!')
             $(location).attr('href', '../html/home.html')
         })
-    } else if(utilizar_fundo_caixa == "sim" && usar_produtos_sem_caixa == "nao") {
+    } else if (utilizar_fundo_caixa == "sim" && usar_produtos_sem_caixa == "nao") {
         localStorage.setItem('caixa', 'aberto')
         localStorage.setItem("prod", usar_produtos_sem_caixa)
         var usuario = $("#usuario").val()
@@ -59,7 +59,7 @@ $("#abrirCaixa").click(function() {
             alert('Caixa Aberto!')
             $(location).attr('href', '../html/home.html')
         })
-    } else if(utilizar_fundo_caixa == "nao" && usar_produtos_sem_caixa == "sim") {
+    } else if (utilizar_fundo_caixa == "nao" && usar_produtos_sem_caixa == "sim") {
         localStorage.setItem('caixa', 'aberto')
         localStorage.setItem("prod", usar_produtos_sem_caixa)
         var usuario = $("#usuario").val()
@@ -79,7 +79,7 @@ $("#abrirCaixa").click(function() {
             alert('Caixa Aberto!')
             $(location).attr('href', '../html/home.html')
         })
-    } else if(utilizar_fundo_caixa == "nao" && usar_produtos_sem_caixa == "nao") {
+    } else if (utilizar_fundo_caixa == "nao" && usar_produtos_sem_caixa == "nao") {
         localStorage.setItem('caixa', 'aberto')
         localStorage.setItem("prod", usar_produtos_sem_caixa)
         var usuario = $("#usuario").val()
@@ -102,85 +102,85 @@ $("#abrirCaixa").click(function() {
     }
 })
 
-function bloqueiaAbertura(){
+function bloqueiaAbertura() {
     var status = localStorage.getItem('caixa')
-    if(status === 'fechado'){
+    if (status === 'fechado') {
         $("#abrirCaixa").prop('disabled', false)
     }
 }
 
-function bloqueiaFundo(){
+function bloqueiaFundo() {
     var status = localStorage.getItem('caixa')
-    if(status === 'fechado'){
+    if (status === 'fechado') {
         $("#usarFundoCaixa").prop('disabled', false)
     }
 }
 
-function bloqueioHome(){
+function bloqueioHome() {
     var status = localStorage.getItem("caixa")
-    if (status === "fechado"){
+    if (status === "fechado") {
         $("#home").css("display", "none")
     }
 }
 
-function bloqueioUsoEstoque(){
+function bloqueioUsoEstoque() {
     var status = localStorage.getItem("caixa")
-    if (status === "aberto"){
+    if (status === "aberto") {
         $("#usarProdutosSemCaixa").css("display", "none")
     }
 }
 
-function validarUsoFundoCaixa(){
-    $("#usarFundoCaixa").change(function() {
+function validarUsoFundoCaixa() {
+    $("#usarFundoCaixa").change(function () {
         var escolha = $(this).val()
-        if(escolha == 'sim'){
-            $("#valorFundoCaixa").css('display', 'inline')              
+        if (escolha == 'sim') {
+            $("#valorFundoCaixa").css('display', 'inline')
         } else {
             $("#valorFundoCaixa").removeAttr('style')
         }
     })
 }
 
-$("#fecharCaixa").click(function() {
+$("#fecharCaixa").click(function () {
     enviando_relatorio()
-    setTimeout( () => {
+    setTimeout(() => {
         busca_de_valores_de_caixa()
         localStorage.removeItem("prod")
     }, 200)
 })
 
-async function busca_de_valores_de_caixa(){
+async function busca_de_valores_de_caixa() {
     var hoje = data_atual()
     var soma = 0
     const query_dois = await fetch(link[13])
     const resposta_query_dois = await query_dois.json()
     resposta_query_dois.forEach(e => {
         var totalPrecoProdutos = []
-        if(e.data == hoje){
+        if (e.data == hoje) {
             totalPrecoProdutos.push(e.total)
-            for(var a = 0; a < totalPrecoProdutos.length; a++){
+            for (var a = 0; a < totalPrecoProdutos.length; a++) {
                 soma += parseFloat(totalPrecoProdutos[a])
             }
         }
     });
     $.get(link[2], (el) => {
-        var id = el[el.length -1].id
-        var data = el[el.length -1].data
-        var entrada = el[el.length -1].entrada
-        var usuario = el[el.length -1].usuario
+        var id = el[el.length - 1].id
+        var data = el[el.length - 1].data
+        var entrada = el[el.length - 1].entrada
+        var usuario = el[el.length - 1].usuario
         localStorage.setItem("id", id)
         localStorage.setItem("data", data)
         localStorage.setItem("entrada", entrada)
         localStorage.setItem("usuario", usuario)
         var soma_fundo = el[el.length - 1].fundo
-        if(soma_fundo == ""){
+        if (soma_fundo == "") {
             localStorage.setItem("fundo", "0")
         } else {
             localStorage.setItem("fundo", soma_fundo)
-        }   
+        }
     })
-    
-    setTimeout( () => {
+
+    setTimeout(() => {
         var valor_fundo = localStorage.getItem("fundo")
         var id_caixa = localStorage.getItem("id")
         var total = parseFloat(soma) + parseFloat(valor_fundo)
@@ -201,7 +201,7 @@ async function busca_de_valores_de_caixa(){
             type: "PUT",
             dataType: "json",
             data: dados,
-            success:  () => {
+            success: () => {
                 console.log("Atualizado.")
             }
         })
@@ -209,13 +209,13 @@ async function busca_de_valores_de_caixa(){
     }, 200)
 }
 
-async function enviando_relatorio(){
+async function enviando_relatorio() {
     var hoje = data_atual()
     var nome = localStorage.getItem("nome")
     const query = await fetch(link[1])
     const dados = await query.json()
     dados.forEach(element => {
-        if(element.nome == nome && element.data == hoje){
+        if (element.nome == nome && element.data == hoje) {
             soma += Number(element.tempo)
         }
     })

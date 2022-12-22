@@ -1,4 +1,4 @@
-import { link } from "../../setup/index.js"
+import link from "../../setup/index.js"
 
 async function limite(suite, tipo){
     const requisicao = await fetch(link[19])

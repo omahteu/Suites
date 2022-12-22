@@ -1,5 +1,3 @@
-import { link } from "../setup/index.js"
-
 export function naoAplicavel() {
 	$(document).on("click", "#aplicar_desconto", function () {
 		let forma = $("#modo_desconto :selected").text()

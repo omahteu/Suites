@@ -1,4 +1,4 @@
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 export function comanda(suite) {
 	$.get(link[5], e => {

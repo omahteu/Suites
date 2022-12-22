@@ -1,4 +1,4 @@
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 export function somaComanda(suite) {
 	let total = 0

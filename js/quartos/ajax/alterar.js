@@ -1,4 +1,4 @@
-import { link } from "../../setup/index.js"
+import link from "../../setup/index.js"
 
 export function alterarValor(suitex, valorx){
     $.get(link[36], (e) => {

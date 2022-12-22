@@ -1,5 +1,5 @@
 import { data_atual } from "../geradores/data.js"
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 $("#camareira_limpeza").click(function() {
     var quarto = $("#quarto_painel").text()

@@ -1,4 +1,4 @@
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 export function envia_dados_faxina(caixa, data, hora, quarto, duracao, camareira){
     var dados = {

@@ -1,4 +1,4 @@
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 $(document).ready(function () {
     busca_e_exibe_quartos()

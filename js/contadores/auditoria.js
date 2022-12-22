@@ -1,6 +1,5 @@
 import { hora_atual_segundos } from "../geradores/hora.js"
 import { data_atual } from "../geradores/data.js";
-import { link } from "../setup/index.js"
 
 var lp = []
 

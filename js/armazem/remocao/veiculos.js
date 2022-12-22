@@ -1,5 +1,5 @@
 import { leituraVeiculos } from "../leitura/veiculos.js"
-import { link } from "../../setup/index.js"
+import link from "../../setup/index.js"
 
 $(document).on("click", "#remocaoVeiculo", function(){
 	var id = $(this).attr("name")

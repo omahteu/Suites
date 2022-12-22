@@ -1,17 +1,17 @@
-import { aguardando } from "../tags/aguardo.js"
-import { atualizaValores } from "../quartos/calculos/porHora.js"
-import { faxina } from "../tags/faxina.js"
+import aguardando from "../tags/aguardo.js"
+import atualizaValores from "../quartos/calculos/porHora.js"
+import faxina from "../tags/faxina.js"
 import { leituraProdutosPlus } from "../armazem/leitura/produtos.js"
 import { leituraVeiculosPlus } from "../armazem/leitura/veiculos.js"
-import { limpeza } from "../tags/limpeza.js"
-import { link } from "../setup/index.js"
-import { locado } from "../tags/locacao.js"
+import limpeza from "../tags/limpeza.js"
+import link from "../setup/index.js"
+import locado from "../tags/locacao.js"
 import { manutencao } from "../tags/manutencao.js"
 import { pernoite } from '../tags/pernoite.js'
 import { tick } from '../setup/box.js'
 import { quarto } from "../checkout/_quarto.js"
 import { adicionais } from "../checkout/_adicionais.js"
-import { desfazer } from "../tags/desfazer.js"
+import { padrao } from "../tags/default.js"
 
 $(document).ready(function () {
 	setTimeout(() => {
@@ -101,7 +101,6 @@ function valorParcial(suite){
 
 async function restoreBotoes(suite){
 	var lista_suites = []
-	var suites_ocupadas = []
 	var home = suite
 
 	$.get(link[17], i => {
@@ -120,13 +119,11 @@ async function restoreBotoes(suite){
 		})
 		lista_suites.forEach( r => {
 			let t = tick[`${r}`]
-			desfazer(r, t[0], t[1], t[2])
+			padrao(r)
 		})
 
 		try {
-			//console.log(infos)
 			let dados = infos.filter(i => i.quarto == home)
-			console.log(dados)
 			let modo = dados[0].tipo
 			let suite = dados[0].quarto
 			let t = tick[`${suite}`]

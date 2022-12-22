@@ -1,5 +1,3 @@
-import { link } from "../setup/index.js"
-
 export function total() {
     $(document).on("click", "#confirma_parcelas", function () {
         let forma = $("#modo_pagamento :selected").text()

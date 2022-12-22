@@ -1,7 +1,7 @@
 import { hora_atual } from "../geradores/hora.js"
 import { valoresIniciais } from "../quartos/calculos/inicial.js"
 
-export function locado(q, x, y, z) {
+export default function locado(q, x, y, z) {
     $(`.cardBox .card:nth-child(${q})`).css({
         "background": "#FF0000"
     })

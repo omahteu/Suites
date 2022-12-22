@@ -1,5 +1,5 @@
 import { hora_atual_segundos } from "../geradores/hora.js"
-import { link } from "../setup/index.js";
+import link from "../setup/index.js";
 
 export function index(){
     var datahora = hora_atual_segundos()

@@ -1,4 +1,4 @@
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 export function ultima_limpeza(suite){
     localStorage.removeItem("dadosQuarto")

@@ -1,5 +1,3 @@
-import { link } from "../setup/index.js"
-
 export function desconto() {
 	$(document).on("change", "#modo_desconto", function () {
 		let tpd = $("#modo_desconto :selected").text()

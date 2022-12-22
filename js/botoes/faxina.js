@@ -1,4 +1,4 @@
-import { faxina }           from "../tags/faxina.js"
+import faxina               from "../tags/faxina.js"
 import { index }            from "../tags/particao.js"
 import { fimModal }         from "../setup/camareiras.js"
 import { iniciar }          from "../contadores/cronometros/c1.js"

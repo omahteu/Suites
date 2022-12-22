@@ -1,5 +1,3 @@
-import { desfazer } from "../tags/desfazer.js";
-
 var tempoDeEspera = 5 * 10 * 100;
 var timeout = setTimeout(inativo, tempoDeEspera);
 

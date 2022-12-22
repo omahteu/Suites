@@ -1,6 +1,6 @@
 import { leituraProdutos } from "../leitura/produtos.js"
 import { hora_atual } from "../../geradores/hora.js"
-import { link } from "../../setup/index.js"
+import link from "../../setup/index.js"
 
 export function registroProdutos(){
 	var descricao = $("#descricao").val()

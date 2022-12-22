@@ -1,4 +1,4 @@
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 $(document).ready(function() {
     $.get(link[20], (resultado) => {

@@ -1,6 +1,6 @@
 import { hora_atual } from "../geradores/hora.js"
 
-export function faxina(q, t, x, y, z) {
+export default function faxina(q, t, x, y, z) {
     $(`.cardBox .card:nth-child(${q})`).css({
         "background": "#FFE4C4"
     })

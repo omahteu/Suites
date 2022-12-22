@@ -1,4 +1,4 @@
-import { link } from "../../../setup/index.js"
+import link from "../../../setup/index.js"
 import { hora_atual_segundos } from "../../../geradores/hora.js"
 
 export function recupera_permanencia(suite){

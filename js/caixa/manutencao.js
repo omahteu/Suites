@@ -1,4 +1,4 @@
-import { link } from "../setup/index.js"
+import link from "../setup/index.js"
 
 export function envia_dados_manutencao(caixa, data, hora, quarto, motivo, duracao){
     var dados = {
