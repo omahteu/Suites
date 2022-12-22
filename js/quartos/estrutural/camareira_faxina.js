@@ -1,4 +1,4 @@
-export function camareira_faxina(){
+export default function camareira_faxina(){
     $("#titulo_menu").text("Menu")
     var fm = document.forms.namedItem("menu").id
     $(`#${fm}`).append(

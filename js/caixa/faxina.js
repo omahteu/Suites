@@ -1,6 +1,6 @@
 import link from "../setup/index.js"
 
-export function envia_dados_faxina(caixa, data, hora, quarto, duracao, camareira){
+export default function envia_dados_faxina(caixa, data, hora, quarto, duracao, camareira){
     var dados = {
         caixa: caixa,
         data: data,

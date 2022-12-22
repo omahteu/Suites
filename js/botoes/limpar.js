@@ -1,6 +1,6 @@
 import link from "../setup/index.js"
 
-export function ultima_limpeza(suite){
+export default function ultima_limpeza(suite){
     localStorage.removeItem("dadosQuarto")
     localStorage.removeItem(`codigo${suite}`)
     localStorage.removeItem("quarto")

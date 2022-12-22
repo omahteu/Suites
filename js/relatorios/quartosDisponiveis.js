@@ -1,6 +1,6 @@
 import link from "../setup/index.js"
 
-export function Suitesdisponiveis() {
+export default function Suitesdisponiveis() {
     let suites = []
     $.get(link[11], e => {
         e.forEach(el => {

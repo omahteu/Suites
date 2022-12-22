@@ -1,6 +1,6 @@
 import link from "../setup/index.js"
 
-export async function ligar_luz(quarto) {
+export default async function ligar_luz(quarto) {
     const requisicao = await fetch(link[27])
     const resposta = await requisicao.json()
     var dados = resposta.filter(e => e.quarto == quarto)

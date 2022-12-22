@@ -1,4 +1,4 @@
-export function padrao(suite){
+export default function padrao(suite){
     $(`.cardBox .card:nth-child(${suite})`). removeAttr('style')
     $(`[name=${suite}]`).css('display', 'inline-block')
     $(".acoes1"). removeAttr('style')

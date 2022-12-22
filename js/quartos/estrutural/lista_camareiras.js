@@ -1,6 +1,6 @@
 import link from "../../setup/index.js"
 
-export async function listar_camareiras(){
+export default async function listar_camareiras(){
     const requisicao = await fetch(link[3])
     const retorno = await requisicao.json()
     retorno.forEach(e => {

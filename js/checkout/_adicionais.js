@@ -1,6 +1,6 @@
 import link from "../setup/index.js"
 
-export function adicionais(suite, id_quarto, id_permanencia) {
+export default function adicionais(suite, id_quarto, id_permanencia) {
 	setTimeout(() => {
 		let quarto = $(`#${id_quarto}`).text()
 		let valor = 0

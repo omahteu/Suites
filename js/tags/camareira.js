@@ -1,4 +1,4 @@
-export function camareiras(){
+export default function camareiras(){
     $("[name=1]").css('display', 'none')
     $(".acoes1").css('display', 'none')
     $(".acoes2").css('display', 'none')

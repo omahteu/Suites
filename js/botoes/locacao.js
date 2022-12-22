@@ -1,5 +1,5 @@
 import { fimModal } from "../setup/camareiras.js"
-import { index } from "../tags/particao.js"
+import index from "../tags/particao.js"
 import { iniciar2 } from "../contadores/cronometros/c2.js"
 import { iniciarValor } from "../quartos/ajax/inserir.js"
 import link from "../setup/index.js"

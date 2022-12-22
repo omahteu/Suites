@@ -4,9 +4,9 @@ import { inicia2, para2 } from "../contadores/cronometros/_relogio2.js"
 import locado from "../tags/locacao.js"
 import { fimModalTroca } from "../setup/troca.js"
 import aguardando from "../tags/aguardo.js"
-import { desfazer } from "../tags/desfazer.js"
+import desfazer from "../tags/desfazer.js"
 import { registra_troca } from "../quartos/ajax/post/troca.js"
-import { tempo_pausado } from "../quartos/ajax/post/decorrido.js"
+import tempo_pausado from "../quartos/ajax/post/decorrido.js"
 import { tick } from "../setup/box.js"
 
 $("#substituir").click(function () {

@@ -1,6 +1,6 @@
 import { hora_atual } from "../geradores/hora.js"
 
-export function manutencao(q, x, y, z) {
+export default function manutencao(q, x, y, z) {
     $(`.cardBox .card:nth-child(${q})`).css({
         "background": "rgb(169, 169, 169)"
     })

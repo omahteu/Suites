@@ -1,5 +1,5 @@
 import link from "./js/setup/index.js"
-import { desligar_luz } from './js/automacao/desligar.js'
+import desligar_luz from './js/automacao/desligar.js'
 import { bloqueio } from "./js/quartos/estrutural/bloqueio.js"
 import { hora_atual } from "./js/geradores/hora.js"
 import { numero } from "./js/geradores/numero.js"

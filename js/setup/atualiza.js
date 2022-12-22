@@ -1,7 +1,7 @@
 import link from "./index.js"
 import { hora_atual_segundos } from "../geradores/hora.js"
 
-export function atualiza_status(quarto, status){
+export default function atualiza_status(quarto, status){
     $.get(link[11], (e) =>{
         var dados = e.filter(quartos => quartos.quarto == quarto)
         let id = dados[0].id

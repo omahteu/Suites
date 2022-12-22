@@ -1,6 +1,6 @@
 import { hora_atual } from "../geradores/hora.js"
 
-export function pernoite(q, x, y, z) {
+export default function pernoite(q, x, y, z) {
     $(`.cardBox .card:nth-child(${q})`).css({
         "background": "#8B008B"
     })

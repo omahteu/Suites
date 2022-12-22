@@ -1,4 +1,4 @@
-export function desfazer(q, x, y, z) {
+export default function desfazer(q, x, y, z) {
     $(`.cardBox .card:nth-child(${q})`). removeAttr('style')
     $(`[name=${q}]`).css('display', 'inline-block')
     $(".acoes1"). removeAttr('style')

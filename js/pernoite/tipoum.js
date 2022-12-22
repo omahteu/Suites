@@ -2,7 +2,7 @@
 // import { desfazer }             from "../tags/desfazer.js"
 import link from "../setup/index.js"
 import { hora_atual_segundos } from "../geradores/hora.js"
-import { pernoite } from "../tags/pernoite.js"
+import pernoite from "../tags/pernoite.js"
 import { tick } from "../setup/box.js"
 import { insereValor } from "./ajax/inserir.js"
 

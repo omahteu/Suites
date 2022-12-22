@@ -6,12 +6,12 @@ import { leituraVeiculosPlus } from "../armazem/leitura/veiculos.js"
 import limpeza from "../tags/limpeza.js"
 import link from "../setup/index.js"
 import locado from "../tags/locacao.js"
-import { manutencao } from "../tags/manutencao.js"
-import { pernoite } from '../tags/pernoite.js'
+import manutencao from "../tags/manutencao.js"
+import pernoite from '../tags/pernoite.js'
 import { tick } from '../setup/box.js'
-import { quarto } from "../checkout/_quarto.js"
-import { adicionais } from "../checkout/_adicionais.js"
-import { padrao } from "../tags/default.js"
+import quarto from "../checkout/_quarto.js"
+import adicionais from "../checkout/_adicionais.js"
+import padrao from "../tags/default.js"
 
 $(document).ready(function () {
 	setTimeout(() => {

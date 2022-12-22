@@ -1,7 +1,7 @@
 import { hora_atual_segundos } from "../geradores/hora.js"
 import link from "../setup/index.js";
 
-export function index(){
+export default function index(){
     var datahora = hora_atual_segundos()
     var valor = $("#valor-quarto").text()
     var quarto = $("#quarto_painel").text()
