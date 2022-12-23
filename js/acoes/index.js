@@ -1,33 +1,43 @@
-import aguardando from "../tags/aguardo.js"
-import desfazer from "../tags/desfazer.js"
-import faxina from "../tags/faxina.js"
-import limpeza from "../tags/limpeza.js"
-import camareiras from "../tags/camareira.js"
-import { fimModal } from "../setup/camareiras.js"
-import atualiza_status from "../setup/atualiza.js"
+// Imports listados por ordem alfabética das pastas
+import { finalizaTarefa } from "../../qwertyu.js"
+import { registraLimiteManutencao } from "../../qwertyu.js"
+import { registraLimiteDesistencia } from "../../qwertyu.js"
+import { registraLimiteLimpeza } from "../../qwertyu.js"
+
+import desligar_luz from "../automacao/desligar.js"
+import ligar_luz from "../automacao/ligar.js"
+
 import ultima_limpeza from "../botoes/limpar.js"
-import { data_atual } from "../geradores/data.js"
-import { hora_atual } from "../geradores/hora.js"
+
 import envia_dados_limpeza from "../caixa/limpeza.js"
 import envia_dados_faxina from "../caixa/faxina.js"
 import envia_dados_manutencao from "../caixa/manutencao.js"
-import { inicioModalTroca } from "../setup/troca.js"
-import Suitesdisponiveis from "../relatorios/quartosDisponiveis.js"
+
+import { inicia, para, zera } from "../contadores/cronometros/_relogio1.js"
 import { parar2 } from "../contadores/cronometros/c2.js"
-import desligar_luz from "../automacao/desligar.js"
-import ligar_luz from "../automacao/ligar.js"
+
+import { data_atual } from "../geradores/data.js"
+import { hora_atual } from "../geradores/hora.js"
+
 import tempo_pausado from "../quartos/ajax/post/decorrido.js"
 import { abrirMenu } from "../quartos/estrutural/caixas.js"
 import { fecharMenu } from "../quartos/estrutural/caixas.js"
 import camareira_faxina from "../quartos/estrutural/camareira_faxina.js"
 import listar_camareiras from "../quartos/estrutural/lista_camareiras.js"
-import { finalizaTarefa } from "../../qwertyu.js"
-import { registraLimiteManutencao } from "../../qwertyu.js"
-import { registraLimiteDesistencia } from "../../qwertyu.js"
-import { registraLimiteLimpeza } from "../../qwertyu.js"
+
+import Suitesdisponiveis from "../relatorios/quartosDisponiveis.js"
+
+import { fimModal } from "../setup/camareiras.js"
+import atualiza_status from "../setup/atualiza.js"
+import { inicioModalTroca } from "../setup/troca.js"
 import { acao } from "../setup/box.js"
 import { tick } from "../setup/box.js"
-import { inicia, para, zera } from "../contadores/cronometros/_relogio1.js"
+
+import aguardando from "../tags/aguardo.js"
+import desfazer from "../tags/desfazer.js"
+import faxina from "../tags/faxina.js"
+import limpeza from "../tags/limpeza.js"
+import camareiras from "../tags/camareira.js"
 
 var rota = 'rota'
 
