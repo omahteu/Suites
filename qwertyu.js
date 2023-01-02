@@ -4,30 +4,7 @@ import { bloqueio } from "./js/quartos/estrutural/bloqueio.js"
 import { hora_atual } from "./js/geradores/hora.js"
 import { numero } from "./js/geradores/numero.js"
 
-function formatarData(data) {
-    const hora = numero(data.getHours())
-    const minuto = numero(data.getMinutes())
-    return `${hora}:${minuto}`
-}
-
-export function finalizaTarefa(suite) {
-    $.get(link[34], (e) => {
-        const chave = e.filter(el => el.suite == suite)
-        const id = chave[0].id
-        $.ajax({
-            url: `${link[34]}${id}/`,
-            method: 'DELETE',
-            dataType: 'json',
-            success: () => {
-                console.log('tarefa finalizada!')
-            }
-        })
-    })
-}
-
-
 $(document).ready(function () {
-
     setInterval(() => {
         async function et() {
             const requisicao = await fetch(link[34])
@@ -39,9 +16,10 @@ $(document).ready(function () {
                     let modo = e.modo
                     let tipo = e.tipo
                     let horario = e.horario
-                    
+
                     switch (tipo) {
                         case "desistencia":
+                            registraTarefa(horario, id, modo)/*
                             if (modo != "b") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
@@ -65,10 +43,11 @@ $(document).ready(function () {
                                 }
                             } else {
                                 $("#desisto").css("display", "none")
-                            }
+                            }*/
                             break
 
                         case "faxina":
+                            registraTarefa(horario, id, modo)/*
                             if (modo != "b") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
@@ -90,10 +69,11 @@ $(document).ready(function () {
                                         })
                                     }, 30000)
                                 }
-                            }
+                            }*/
                             break
 
                         case "limpeza":
+                            registraTarefa(horario, id, modo)/*
                             if (modo != "b") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
@@ -115,10 +95,11 @@ $(document).ready(function () {
                                         })
                                     }, 30000)
                                 }
-                            }
+                            }*/
                             break
 
                         case "manutencao":
+                            registraTarefa(horario, id, modo)/*
                             if (modo != "b") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
@@ -143,10 +124,11 @@ $(document).ready(function () {
                                 }
                             } else {
                                 $("#botao_inferior_tres").css("display", "none")
-                            }
+                            }*/
                             break
 
                         case "troca":
+                            registraTarefa(horario, id, modo)/*
                             if (modo != "b") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
@@ -168,7 +150,7 @@ $(document).ready(function () {
                                         })
                                     })
                                 }
-                            }
+                            }*/
                             break
 
                         case "pernoite":
@@ -187,6 +169,27 @@ $(document).ready(function () {
         et()
     }, 1000)
 })
+
+function formatarData(data) {
+    const hora = numero(data.getHours())
+    const minuto = numero(data.getMinutes())
+    return `${hora}:${minuto}`
+}
+
+export function finalizaTarefa(suite) {
+    $.get(link[34], (e) => {
+        const chave = e.filter(el => el.suite == suite)
+        const id = chave[0].id
+        $.ajax({
+            url: `${link[34]}${id}/`,
+            method: 'DELETE',
+            dataType: 'json',
+            success: () => {
+                console.log('tarefa finalizada!')
+            }
+        })
+    })
+}
 
 export function registraLimite(suite, modo, tipo) {
     $.get(link[19], (e) => {
@@ -271,4 +274,31 @@ export function registraLimiteTroca(suite, modo, tipo) {
             console.log("Registrado")
         })
     })
+}
+
+function registraTarefa(horario, id, modo) {
+    if (modo != "b") {
+        if (String(horario) == String(hora_atual())) {
+            setTimeout(() => {
+                bloqueio("#desisto")
+                $.ajax({
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    url: `${link[34]}${id}/`,
+                    type: 'PATCH',
+                    data: JSON.stringify({ "modo": "b" }),
+                    success: function () {
+                        console.log("Registro de Tarefa!");
+                    },
+                    error: function (textStatus, errorThrown) {
+                        console.log(`ERRO: ${textStatus} - ${errorThrown}`)
+                    }
+                })
+            })
+        }
+    } else {
+        $("#desisto").css("display", "none")
+    }
 }

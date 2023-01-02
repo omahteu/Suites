@@ -1,7 +1,7 @@
 import { data_atual } from "../geradores/data.js"
 import { hora_atual } from "../geradores/hora.js"
 import link from "../setup/index.js"
-import { desligar_luz } from "../automacao/desligar.js"
+import desligar_luz from "../automacao/desligar.js"
 
 $(document).on("click", "#encerrar", function () {
     setTimeout(() => { registrar_pagamento() }, 100)
