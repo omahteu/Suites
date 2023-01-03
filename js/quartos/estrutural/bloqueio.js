@@ -1,3 +1,3 @@
-export function bloqueio(tempo, id){
+export function bloqueio(id){
     $(id).css('display', 'none')
 }

@@ -5,60 +5,55 @@ import desligar_luz from "../automacao/desligar.js"
 
 $(document).on("click", "#encerrar", function () {
     setTimeout(() => { registrar_pagamento() }, 100)
-    /*
     setTimeout(() => { registrando() }, 200)
-    setTimeout(() => { ocupacao() }, 300)
+    setTimeout(() => { ocupacao() }, 300)/*
     setTimeout(() => {
         let id = localStorage.getItem("last")
         desligar_luz(id)
         localStorage.setItem("luz", "desligada")
-    }, 400)
+    }, 400)*/
     setTimeout(() => { limpando() }, 500)
     setTimeout(() => {
         window.close()
-    }, 600)*/
+    }, 600)
 })
 
-function clean(id) {
+function clean(id, indice) {
     $.ajax({
-        url: link[5] + id + "/",
+        url: `${link[indice]}${id}/`,
         type: 'DELETE',
         success: () => {
-            console.log("apagado")
+            console.log(`[SUCESSO] | Item Excluído | ${data_atual} - ${hora_atual}`)
         },
         async: true
     })
 }
 
 function limpando() {
-    var quartx = localStorage.getItem("quarto")
+    let suite = localStorage.getItem("last")
     $.get(link[5], (e) => {
-        var dados = e.filter(quartos => quartos.quarto == quartx)
+        let dados = e.filter(quartos => quartos.quarto == suite)
         dados.forEach(element => {
             var id = element.id
-            clean(id)
+            clean(id, "5")
         });
     })
     $.get(link[15], (e) => {
-        var dados = e.filter(quartos => quartos.quarto == quartx)
+        let dados = e.filter(quartos => quartos.quarto == suite)
         if (dados.length == 0) {
             console.log("Pátio Vázio!")
         } else {
             var id = dados[0].id
-            $.ajax({
-                url: link[15] + id + "/",
-                type: 'DELETE'
-            });
+            clean(id, 15)
         }
     })
-    localStorage.removeItem(quartx)
-    localStorage.removeItem("dadosQuarto")
-    localStorage.removeItem(quartx)
-    localStorage.removeItem("quarto")
+    localStorage.removeItem("last")
+    localStorage.removeItem(`_${suite}`)
+    localStorage.removeItem(`troca${suite}`)
 }
 
 function registrando() {
-    let quarto = localStorage.getItem("quarto")
+    let quarto = localStorage.getItem("last")
     var box = []
     $.get(link[5], (e) => {
         var dados_comanda = e.filter(quartos => quartos.quarto == quarto)
@@ -85,8 +80,9 @@ function registrando() {
                 var categoria_estoque = el.categoria
                 var novo_estoque = parseInt(estoque) - parseInt(produto_quantidade)
                 var data_estoque = el.data
+                console.log(codigo_estoque, descricao_estoque, valorunitario_estoque, novo_estoque, categoria_estoque, data_estoque)
                 $.ajax({
-                    url: link[16] + id_estoque + "/",
+                    url: `${link[16]}${id_estoque}/`,
                     type: "PUT",
                     dataType: "json",
                     data: {
@@ -96,6 +92,9 @@ function registrando() {
                         quantidade: novo_estoque,
                         categoria: categoria_estoque,
                         data: data_estoque
+                    },
+                    success: function () {
+                        console.log(`[SUCESSO] | Estoque Atualizado | ${data_atual} - ${hora_atual}`)
                     }
                 })
             });
@@ -111,11 +110,11 @@ function gera_codigo() {
 
 function ocupacao() {
     let usuario = $("#usuario_sistema").text()
-    let quarto = localStorage.getItem("quarto")
-    var box = JSON.parse(localStorage.getItem("dadosQuarto"))
+    let quarto = localStorage.getItem("last")
+    var box = JSON.parse(sessionStorage.getItem("bl"))
     let dataAtual = data_atual()
     let codigo_ocupacao = gera_codigo()
-    let entrada = box[0].tempo
+    let entrada = box[0].datahora
     let saida = hora_atual()
     let total = $("#totalGeral").text()
     localStorage.setItem(`codigo${quarto}`, codigo_ocupacao)
@@ -129,7 +128,7 @@ function ocupacao() {
         total: total
     }
     $.post(link[13], dados, () => {
-        console.log("Relatório Criado")
+        console.log(`[SUCESSO] | Ocupação Registrada | ${data_atual} - ${hora_atual}`)
     })
 }
 
@@ -144,7 +143,10 @@ function registrar_pagamento() {
         data: data_atual(),
         usuario: $("#usuario_sistema").text()
     }
-    console.log(dados)
-    //$.post(link[33], dados, () => { })
-    //$.post(link[30], { caixa: parseFloat(pagamento).toFixed(2) }, () => { })
+    $.post(link[33], dados, () => { 
+        console.log(`[SUCESSO] | Pagamento Registrado | ${data_atual} - ${hora_atual}`) 
+    })
+    $.post(link[30], { caixa: parseFloat(pagamento).toFixed(2) }, () => { 
+        console.log(`[SUCESSO] | Saldo Adicionado ao Caixa | ${data_atual} - ${hora_atual}`) 
+    })
 }

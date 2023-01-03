@@ -11,6 +11,7 @@ $(document).ready(function () {
             const retorno = await requisicao.json()
             if (retorno.length > 0) {
                 retorno.forEach(e => {
+
                     let id = e.id
                     let suite = e.suite
                     let modo = e.modo
@@ -19,138 +20,63 @@ $(document).ready(function () {
 
                     switch (tipo) {
                         case "desistencia":
-                            registraTarefa(horario, id, modo)/*
                             if (modo != "b") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
                                         bloqueio("#desisto")
-                                        $.ajax({
-                                            headers: {
-                                                'Accept': 'application/json',
-                                                'Content-Type': 'application/json'
-                                            },
-                                            url: link[34] + id + "/",
-                                            type: 'PATCH',
-                                            data: JSON.stringify({ "modo": "b" }),
-                                            success: function () {
-                                                console.log("Troca Com Sucesso!");
-                                            },
-                                            error: function (textStatus, errorThrown) {
-                                                console.log(`ERRO: ${textStatus} - ${errorThrown}`)
-                                            }
-                                        })
-                                    })
+                                        atualizarTarefa(id)
+                                    }, 30000)
                                 }
                             } else {
-                                $("#desisto").css("display", "none")
-                            }*/
+                                $("#aba_desistencia").css("display", "none")
+                            }
                             break
 
                         case "faxina":
-                            registraTarefa(horario, id, modo)/*
                             if (modo != "b") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
                                         desligar_luz(suite)
-                                        $.ajax({
-                                            headers: {
-                                                'Accept': 'application/json',
-                                                'Content-Type': 'application/json'
-                                            },
-                                            url: link[34] + id + "/",
-                                            type: 'PATCH',
-                                            data: JSON.stringify({ "modo": "b" }),
-                                            success: function () {
-                                                console.log("Troca Com Sucesso!");
-                                            },
-                                            error: function (textStatus, errorThrown) {
-                                                console.log(`ERRO: ${textStatus} - ${errorThrown}`)
-                                            }
-                                        })
+                                        atualizarTarefa(id)
                                     }, 30000)
                                 }
-                            }*/
+                            }
                             break
 
                         case "limpeza":
-                            registraTarefa(horario, id, modo)/*
                             if (modo != "b") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
                                         desligar_luz(suite)
-                                        $.ajax({
-                                            headers: {
-                                                'Accept': 'application/json',
-                                                'Content-Type': 'application/json'
-                                            },
-                                            url: link[34] + id + "/",
-                                            type: 'PATCH',
-                                            data: JSON.stringify({ "modo": "b" }),
-                                            success: function () {
-                                                console.log("Troca Com Sucesso!");
-                                            },
-                                            error: function (textStatus, errorThrown) {
-                                                console.log(`ERRO: ${textStatus} - ${errorThrown}`)
-                                            }
-                                        })
+                                        atualizarTarefa(id)
                                     }, 30000)
                                 }
-                            }*/
+                            }
                             break
 
                         case "manutencao":
-                            registraTarefa(horario, id, modo)/*
                             if (modo != "b") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
                                         desligar_luz(suite)
-                                        $.ajax({
-                                            headers: {
-                                                'Accept': 'application/json',
-                                                'Content-Type': 'application/json'
-                                            },
-                                            url: link[34] + id + "/",
-                                            type: 'PATCH',
-                                            data: JSON.stringify({ "modo": "b" }),
-                                            success: function () {
-                                                console.log("Troca Com Sucesso!");
-                                            },
-                                            error: function (textStatus, errorThrown) {
-                                                console.log(`ERRO: ${textStatus} - ${errorThrown}`)
-                                            }
-                                        })
+                                        atualizarTarefa(id)
                                         $("#botao_inferior_tres").css("display", "none")
                                     }, 30000)
                                 }
                             } else {
                                 $("#botao_inferior_tres").css("display", "none")
-                            }*/
+                            }
                             break
 
                         case "troca":
-                            registraTarefa(horario, id, modo)/*
                             if (modo != "b") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
                                         bloqueio("#botao_inferior_um")
-                                        $.ajax({
-                                            headers: {
-                                                'Accept': 'application/json',
-                                                'Content-Type': 'application/json'
-                                            },
-                                            url: link[34] + id + "/",
-                                            type: 'PATCH',
-                                            data: JSON.stringify({ "modo": "b", "tipo": "pernoite" }),
-                                            success: function () {
-                                                console.log("Troca Com Sucesso!");
-                                            },
-                                            error: function (textStatus, errorThrown) {
-                                                console.log(`ERRO: ${textStatus} - ${errorThrown}`)
-                                            }
-                                        })
+                                        atualizarTarefa(id)
                                     })
                                 }
-                            }*/
+                            }
                             break
 
                         case "pernoite":
@@ -276,29 +202,20 @@ export function registraLimiteTroca(suite, modo, tipo) {
     })
 }
 
-function registraTarefa(horario, id, modo) {
-    if (modo != "b") {
-        if (String(horario) == String(hora_atual())) {
-            setTimeout(() => {
-                bloqueio("#desisto")
-                $.ajax({
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    url: `${link[34]}${id}/`,
-                    type: 'PATCH',
-                    data: JSON.stringify({ "modo": "b" }),
-                    success: function () {
-                        console.log("Registro de Tarefa!");
-                    },
-                    error: function (textStatus, errorThrown) {
-                        console.log(`ERRO: ${textStatus} - ${errorThrown}`)
-                    }
-                })
-            })
+function atualizarTarefa(id) {
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        url: `${link[34]}${id}/`,
+        type: 'PATCH',
+        data: JSON.stringify({ "modo": "b" }),
+        success: function () {
+            console.log("Registro de Tarefa!");
+        },
+        error: function (textStatus, errorThrown) {
+            console.log(`ERRO: ${textStatus} - ${errorThrown}`)
         }
-    } else {
-        $("#desisto").css("display", "none")
-    }
+    })
 }

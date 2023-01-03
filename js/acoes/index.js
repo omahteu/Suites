@@ -137,7 +137,7 @@ export function reacao(status, suite) {
             setTimeout(() => { localStorage.setItem("last", suite) }, 100)
             setTimeout(() => { tempo_pausado(h, m, s, suite) }, 300)
             setTimeout(() => { desfazer(suite, flags[0], flags[1], flags[2]) }, 1000)
-            sessionStorage.setItem('quarto', suite)
+            // sessionStorage.setItem('quarto', suite)
             window.open('../html/checkout.html', '_blank')
             setTimeout(() => { aguardando(suite, rota, flags[0], flags[1], flags[2]) }, 1500)
             setTimeout(() => { atualiza_status(suite, "aguardando"), 1500 })
