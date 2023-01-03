@@ -1,6 +1,7 @@
 import link from "./js/setup/index.js"
 import desligar_luz from './js/automacao/desligar.js'
 import { bloqueio } from "./js/quartos/estrutural/bloqueio.js"
+import { data_atual } from "./js/geradores/data.js"
 import { hora_atual } from "./js/geradores/hora.js"
 import { numero } from "./js/geradores/numero.js"
 
@@ -186,7 +187,7 @@ export function registraLimiteLimpeza(suite, modo, tipo) {
 }
 
 export function registraLimiteTroca(suite, modo, tipo) {
-    $.get(link[19], (e) => {
+    $.get(link[19], e => {
         const tempoTroca = e[0].troca
         const data = new Date()
         data.setMinutes(data.getMinutes() + parseInt(tempoTroca))
@@ -197,7 +198,7 @@ export function registraLimiteTroca(suite, modo, tipo) {
             horario: String(formatarData(data))
         }
         $.post(link[34], dados, () => {
-            console.log("Registrado")
+            console.log(`[SUCESSO] | Iniciado monitoramento do tempo para troca da suíte! | ${data_atual()} - ${hora_atual()}`)
         })
     })
 }

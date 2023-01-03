@@ -43,7 +43,6 @@ $(document).on('click', '[class="card"]', function () {
 		let tipo = $("#tipo").text()
 		let condicaoUm = tipo == "locado" || tipo == "pernoite"
 		if (condicaoUm) {
-			console.log('richa')
 			leituraProdutosPlus(id)
 			leituraVeiculosPlus(id)
 		}
