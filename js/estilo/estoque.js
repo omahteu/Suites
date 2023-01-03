@@ -1,35 +1,4 @@
 $(document).ready(function () {
-    $(document).on('click', 'a', function (event) {
-        var produto = $(this).attr('produto');
-        var estoque = $(this).attr('estoque');
-        $('.idProduto').val(produto);
-        $('#estoqueAtual').val(estoque);
-    });
-
-    $('#formEstoque').validate({
-        rules: {
-            estoque: {
-                required: true,
-                number: true
-            }
-        },
-        messages: {
-            estoque: {
-                required: 'Campo Requerido.',
-                number: 'Informe um número válido.'
-            }
-        },
-        errorClass: "help-inline",
-        errorElement: "span",
-        highlight: function (element, errorClass, validClass) {
-            $(element).parents('.control-group').addClass('error');
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).parents('.control-group').removeClass('error');
-            $(element).parents('.control-group').addClass('success');
-        }
-    });
-
     var srcCalendarEl = document.getElementById('source-calendar');
     var srcCalendar = new FullCalendar.Calendar(srcCalendarEl, {
         locale: 'pt-br',
@@ -48,7 +17,7 @@ $(document).ready(function () {
                 };
             },
             failure: function () {
-                console.log('Falha ao buscar OS de calendário!');
+                sessionStorage.setItem("estoque.js", "[LOGS] | Falha ao buscar OS de calendário!")
             },
         },
         eventClick: function (info) {
