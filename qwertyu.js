@@ -4,6 +4,7 @@ import { bloqueio } from "./js/quartos/estrutural/bloqueio.js"
 import { data_atual } from "./js/geradores/data.js"
 import { hora_atual } from "./js/geradores/hora.js"
 import { numero } from "./js/geradores/numero.js"
+import atualizarTarefa from "./js/quartos/estrutural/tarefa.js"
 
 $(document).ready(function () {
     setInterval(() => {
@@ -21,11 +22,11 @@ $(document).ready(function () {
 
                     switch (tipo) {
                         case "desistencia":
-                            if (modo != "b") {
+                            if (modo != "ad") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
-                                        bloqueio("#desisto")
-                                        atualizarTarefa(id)
+                                        $("#aba_desistencia").css("display", "none")
+                                        atualizarTarefa(id, "ad")
                                     }, 30000)
                                 }
                             } else {
@@ -38,7 +39,7 @@ $(document).ready(function () {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
                                         desligar_luz(suite)
-                                        atualizarTarefa(id)
+                                        //atualizarTarefa(id)
                                     }, 30000)
                                 }
                             }
@@ -49,7 +50,7 @@ $(document).ready(function () {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
                                         desligar_luz(suite)
-                                        atualizarTarefa(id)
+                                        //atualizarTarefa(id)
                                     }, 30000)
                                 }
                             }
@@ -60,7 +61,7 @@ $(document).ready(function () {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
                                         desligar_luz(suite)
-                                        atualizarTarefa(id)
+                                        //atualizarTarefa(id)
                                         $("#botao_inferior_tres").css("display", "none")
                                     }, 30000)
                                 }
@@ -70,11 +71,11 @@ $(document).ready(function () {
                             break
 
                         case "troca":
-                            if (modo != "b") {
+                            if (modo != "at") {
                                 if (String(horario) == String(hora_atual())) {
                                     setTimeout(() => {
                                         bloqueio("#botao_inferior_um")
-                                        atualizarTarefa(id)
+                                        atualizarTarefa(id, "at")
                                     })
                                 }
                             }
@@ -153,7 +154,7 @@ export function registraLimiteManutencao(suite, modo, tipo) {
 }
 
 export function registraLimiteDesistencia(suite, modo, tipo) {
-    $.get(link[19], (e) => {
+    $.get(link[19], e => {
         const tempoDesistencia = e[0].desistencia
         const data = new Date
         data.setMinutes(data.getMinutes() + parseInt(tempoDesistencia))
@@ -164,7 +165,7 @@ export function registraLimiteDesistencia(suite, modo, tipo) {
             horario: String(formatarData(data))
         }
         $.post(link[34], dados, () => {
-            console.log("Registrado")
+            console.log(`[SUCESSO] | Registrado tempo limite para desistência | ${hora_atual()}`)
         })
     })
 }
@@ -198,25 +199,7 @@ export function registraLimiteTroca(suite, modo, tipo) {
             horario: String(formatarData(data))
         }
         $.post(link[34], dados, () => {
-            console.log(`[SUCESSO] | Iniciado monitoramento do tempo para troca da suíte! | ${data_atual()} - ${hora_atual()}`)
+            console.log(`[SUCESSO] | Iniciado monitoramento do tempo para troca da suíte! | ${hora_atual()}`)
         })
-    })
-}
-
-function atualizarTarefa(id) {
-    $.ajax({
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        url: `${link[34]}${id}/`,
-        type: 'PATCH',
-        data: JSON.stringify({ "modo": "b" }),
-        success: function () {
-            console.log("Registro de Tarefa!");
-        },
-        error: function (textStatus, errorThrown) {
-            console.log(`ERRO: ${textStatus} - ${errorThrown}`)
-        }
     })
 }

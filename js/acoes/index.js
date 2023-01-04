@@ -133,7 +133,7 @@ export function reacao(status, suite) {
 
             registraLimiteDesistencia(suite, "a", "desistencia")
             suite == "1" ? para() :
-                suite == "2" ? parar2() : "casa"
+            suite == "2" ? parar2() : "casa"
             setTimeout(() => { localStorage.setItem("last", suite) }, 100)
             setTimeout(() => { tempo_pausado(h, m, s, suite) }, 300)
             setTimeout(() => { desfazer(suite, flags[0], flags[1], flags[2]) }, 1000)

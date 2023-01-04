@@ -4,7 +4,7 @@ import { hora_atual } from "../../geradores/hora.js"
 
 
 export function iniciarValor(suite, valor){
-    let mensagem = `[SUCESSO] | Cofre aberto para a Suíte ${suite}! | ${data_atual()} - ${hora_atual()}`
+    let mensagem = `[SUCESSO] | Cofre aberto para a Suíte ${suite}! | ${hora_atual()}`
     let dados = {
         suite: suite,
         valor: valor,

@@ -23,7 +23,7 @@ function clean(id, indice) {
         url: `${link[indice]}${id}/`,
         type: 'DELETE',
         success: () => {
-            console.log(`[SUCESSO] | Item Excluído | ${data_atual} - ${hora_atual}`)
+            console.log(`[SUCESSO] | Item Excluído | ${hora_atual()}`)
         },
         async: true
     })
@@ -40,16 +40,14 @@ function limpando() {
     })
     $.get(link[15], (e) => {
         let dados = e.filter(quartos => quartos.quarto == suite)
-        if (dados.length == 0) {
-            console.log("Pátio Vázio!")
-        } else {
-            var id = dados[0].id
+        if (dados.length != 0) {
             clean(id, 15)
         }
     })
     localStorage.removeItem("last")
     localStorage.removeItem(`_${suite}`)
     localStorage.removeItem(`troca${suite}`)
+    localStorage.removeItem(`codigo${suite}`)
 }
 
 function registrando() {
@@ -80,7 +78,6 @@ function registrando() {
                 var categoria_estoque = el.categoria
                 var novo_estoque = parseInt(estoque) - parseInt(produto_quantidade)
                 var data_estoque = el.data
-                console.log(codigo_estoque, descricao_estoque, valorunitario_estoque, novo_estoque, categoria_estoque, data_estoque)
                 $.ajax({
                     url: `${link[16]}${id_estoque}/`,
                     type: "PUT",
@@ -94,7 +91,7 @@ function registrando() {
                         data: data_estoque
                     },
                     success: function () {
-                        console.log(`[SUCESSO] | Estoque Atualizado | ${data_atual} - ${hora_atual}`)
+                        console.log(`[SUCESSO] | Estoque Atualizado | ${hora_atual()}`)
                     }
                 })
             });
@@ -128,7 +125,7 @@ function ocupacao() {
         total: total
     }
     $.post(link[13], dados, () => {
-        console.log(`[SUCESSO] | Ocupação Registrada | ${data_atual} - ${hora_atual}`)
+        console.log(`[SUCESSO] | Ocupação Registrada | ${hora_atual()}`)
     })
 }
 
@@ -144,9 +141,9 @@ function registrar_pagamento() {
         usuario: $("#usuario_sistema").text()
     }
     $.post(link[33], dados, () => { 
-        console.log(`[SUCESSO] | Pagamento Registrado | ${data_atual} - ${hora_atual}`) 
+        console.log(`[SUCESSO] | Pagamento Registrado | ${hora_atual()}`) 
     })
     $.post(link[30], { caixa: parseFloat(pagamento).toFixed(2) }, () => { 
-        console.log(`[SUCESSO] | Saldo Adicionado ao Caixa | ${data_atual} - ${hora_atual}`) 
+        console.log(`[SUCESSO] | Saldo Adicionado ao Caixa | ${hora_atual()}`) 
     })
 }

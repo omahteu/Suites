@@ -1,3 +1,5 @@
+import { fimModal } from "./camareiras.js"
+
 var tempoDeEspera = 5 * 10 * 100;
 var timeout = setTimeout(inativo, tempoDeEspera);
 
@@ -27,6 +29,7 @@ function inativo() {
   el[0].setAttribute("name", '')
   el[1].setAttribute("name", '')
   el[2].setAttribute("name", '')
+  fimModal()
 }
 
 ['keyup', 'touchmove' in window ? 'touchmove' : 'mousemove', "onwheel" in document.createElement("div") ? "wheel" : document.onmousewheel !== undefined ? "mousewheel" : "DOMMouseScroll"].forEach( (ev) => {

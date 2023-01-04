@@ -18,6 +18,7 @@ function handleVisibilityChange() {
        //$.post(link[0], dados, () => {})
     } else {
         lp.push(hora_atual_segundos())
+        location.reload()
     }
 }
 
