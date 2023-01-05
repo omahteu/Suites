@@ -20,9 +20,8 @@
     width: 21%;
 
     padding: 20px;
-    border: 5px solid 
-    #998888;
-    box-shadow: 0 0 0 10px whitesmoke;
+    border: 5px solid #FFF68F;
+    box-shadow: 0 0 0 10px #FFF68F;
     position: relative;
 }
 
@@ -48,9 +47,9 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 4px solid white;
-    background-color: #988;
-    color: white;
+    border: 4px solid #333649;
+    background-color: #FFF68F;
+    color: #333649;
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;

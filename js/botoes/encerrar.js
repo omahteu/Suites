@@ -45,7 +45,6 @@ function limpando() {
         }
     })
     localStorage.removeItem("last")
-    localStorage.removeItem(`_${suite}`)
     localStorage.removeItem(`troca${suite}`)
     localStorage.removeItem(`codigo${suite}`)
 }

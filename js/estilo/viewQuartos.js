@@ -122,11 +122,15 @@ async function restoreBotoes(suite){
 			padrao(r)
 		})
 
+		console.log(infos)
+
 		try {
 			let dados = infos.filter(i => i.quarto == home)
 			let modo = dados[0].tipo
 			let suite = dados[0].quarto
 			let t = tick[`${suite}`]
+
+			console.log(modo)
 			
 			modo == "locado" ? locado(suite, t[0], t[1], t[2]) :
 			modo == "manutencao" ? manutencao(suite, x, y, z) :
