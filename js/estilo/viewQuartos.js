@@ -110,27 +110,32 @@ async function restoreBotoes(suite){
 	})
 
 	$.get(link[11], e => {
+
 		let infos = e.filter(l => l.tipo == "locado")
+		let boxA = e.filter(b => b.tipo == "aguardando")
+		
+
 		infos.forEach( k => {
 			var indexes = lista_suites.indexOf(k.quarto)
 			if (indexes > -1){
 				lista_suites.splice(indexes, 1)
 			}
 		})
-		lista_suites.forEach( r => {
-			let t = tick[`${r}`]
-			padrao(r)
-		})
 
-		console.log(infos)
+		boxA.forEach(box => {
+			let suite = box.quarto
+			let boxD = lista_suites.filter(d => d != suite)
+			boxD.forEach(item => {
+				//console.log(item)
+				//padrao(item)
+			});
+		});
 
 		try {
-			let dados = infos.filter(i => i.quarto == home)
+			let dados = e.filter(i => i.quarto == home)
 			let modo = dados[0].tipo
 			let suite = dados[0].quarto
 			let t = tick[`${suite}`]
-
-			console.log(modo)
 			
 			modo == "locado" ? locado(suite, t[0], t[1], t[2]) :
 			modo == "manutencao" ? manutencao(suite, x, y, z) :

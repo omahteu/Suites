@@ -102,19 +102,20 @@ export function reacao(status, suite) {
         }
     } else if (status == acao[2]) {
         alert(`Iniciar limpeza na Suíte ${suite}?`)
+        /*
         localStorage.removeItem(`troca${suite}`)
         zera(suite)
         inicia(suite, "0", "0", "0")
-        registraLimiteLimpeza(suite, "a", "limpeza")
+        registraLimiteLimpeza(suite, "a", "limpeza")*/
         /*
         setTimeout(() => {
             ligar_luz(suite)
             localStorage.setItem("luz", "ligada")
         }, 500)
-        */
+        *//*
         setTimeout(() => { limpeza(suite, flags[0], flags[1], flags[2]) }, 700)
         setTimeout(() => { atualiza_status(suite, "limpeza"), 900 })
-        setTimeout(() => { fimModal() }, 1000)
+        setTimeout(() => { fimModal() }, 1000)*/
     } else if (status == acao[3]) {
         inicioModalTroca("modau-troca")
         fimModal()
