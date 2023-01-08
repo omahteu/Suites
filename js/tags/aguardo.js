@@ -4,7 +4,7 @@ export default function aguardando(q, x, y, z) {
     $(`.cardBox .card:nth-child(${q})`).css({
         "background": "#FFFFFF"
     })
-    $("[name=1]").css('display', 'none')
+    $(`[name=${q}]`).css('display', 'none')
     $(".acoes1").css('display', 'inline-block')
     $(".acoes1").val('Iniciar Limpeza')
     var hora = hora_atual()

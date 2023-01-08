@@ -112,6 +112,8 @@ async function restoreBotoes(suite){
 
 	$.get(link[11], e => {
 
+		let off = e.filter(v => v.tipo == "locado" || v.tipo == "aguardando" || v.tipo == "manutencao" || v.tipo == "faxina" || v.tipo == "limpeza")
+
 		let infos = e.filter(l => l.tipo == "locado")
 		let boxA = e.filter(b => b.tipo == "aguardando")
 		
@@ -130,6 +132,12 @@ async function restoreBotoes(suite){
 			boxD.forEach(item => {
 				padrao(item)
 			});
+		});
+
+		off.forEach(o => {
+			let off_suites = o.quarto
+			let on_suites = lista_suites.filter(on => on != off_suites)
+			console.log(lista_suites	)
 		});
 
 		try {

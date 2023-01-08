@@ -18,9 +18,7 @@ export default function locado(q, x, y, z) {
     $.get(link[34], e => {
         let travas = e.filter(i => i.suite == q)
         travas.forEach(el => {
-            let id = el.id
             let modo = el.modo
-            
             if (modo == "at") {
                 $(".acoes1").css('display', 'none')
                 $(".acoes1").val('Trocar Suíte')
