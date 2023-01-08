@@ -1,5 +1,4 @@
 export default function padrao(suite){
-    console.log(suite)
     $(`.cardBox .card:nth-child(${suite})`). removeAttr('style')
     $(`[name=${suite}]`).css('display', 'inline-block')
     $(".acoes1"). removeAttr('style')

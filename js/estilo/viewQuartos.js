@@ -103,6 +103,7 @@ async function restoreBotoes(suite){
 	var lista_suites = []
 	var home = suite
 
+	// Armazena o número de suites na lista
 	$.get(link[17], i => {
 		i.forEach(x => {
 			lista_suites.push(x.numero)
@@ -114,7 +115,7 @@ async function restoreBotoes(suite){
 		let infos = e.filter(l => l.tipo == "locado")
 		let boxA = e.filter(b => b.tipo == "aguardando")
 		
-
+		// Separa suítes locadas e não locadas
 		infos.forEach( k => {
 			var indexes = lista_suites.indexOf(k.quarto)
 			if (indexes > -1){
@@ -122,12 +123,12 @@ async function restoreBotoes(suite){
 			}
 		})
 
+		// Coloca os botões das suítes disponíveis em padrão
 		boxA.forEach(box => {
 			let suite = box.quarto
 			let boxD = lista_suites.filter(d => d != suite)
 			boxD.forEach(item => {
-				//console.log(item)
-				//padrao(item)
+				padrao(item)
 			});
 		});
 
@@ -138,13 +139,13 @@ async function restoreBotoes(suite){
 			let t = tick[`${suite}`]
 			
 			modo == "locado" ? locado(suite, t[0], t[1], t[2]) :
-			modo == "manutencao" ? manutencao(suite, x, y, z) :
-			modo == "faxina" ? faxina(suite, _rota, x, y, z) :
-			modo == "aguardando" ? aguardando(suite, x, y, z) :
-			modo == "limpeza" ? limpeza(suite, x, y, z) :
-			modo == "pernoite" ? pernoite(suite, x, y, z) : ""
+			modo == "manutencao" ? manutencao(suite, t[0], t[1], t[2]) :
+			modo == "faxina" ? faxina(suite, _rota, t[0], t[1], t[2]) :
+			modo == "aguardando" ? aguardando(suite, t[0], t[1], t[2]) :
+			modo == "limpeza" ? limpeza(suite, t[0], t[1], t[2]) :
+			modo == "pernoite" ? pernoite(suite, t[0], t[1], t[2]) : ""
 		} catch (error) {
-			sessionStorage.setItem(error, [{}])
+			sessionStorage.setItem("viewquartos.js", `[LOGS] | ${error}`)
 		}
 	})
 }

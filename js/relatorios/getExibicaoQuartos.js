@@ -36,7 +36,6 @@ $(document).on('click', '[class="card"]', function () {
     $("#quarto_painel").text(passo4)
     var fm = document.forms['botoes']
     var el = fm.elements
-    console.log(el)
     el[0].setAttribute("name", passo4)
     el[1].setAttribute("name", passo4)
     el[2].setAttribute("name", passo4)
