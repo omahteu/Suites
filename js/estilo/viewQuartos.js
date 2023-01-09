@@ -36,14 +36,15 @@ $(document).on('click', '[class="card"]', function () {
 	valorComanda(id)
 	quarto(id, "vq_painel")
 	adicionais(id, "vq_painel", "vh_painel")
-	restoreBotoes(id)
-	normal(id)
-	//console.log(id)
+	//restoreBotoes(id)
+	normal()
+
+
 	setTimeout(() => {
 		var cor = $(`.cardBox .card:nth-child(${id})`).css("background-color")
 		cor == "rgb(255, 0, 0)" ? $("#tipo").text('locado') :
-		cor == "rgb(139, 0, 139)" ? $("#tipo").text("pernoite") : 
-		cor == "rgb(255, 255, 255)" ? $("#tipo").text("aguardando") : ""
+			cor == "rgb(139, 0, 139)" ? $("#tipo").text("pernoite") :
+				cor == "rgb(255, 255, 255)" ? $("#tipo").text("aguardando") : ""
 		let tipo = $("#tipo").text()
 		let condicaoUm = tipo == "locado" || tipo == "pernoite"
 		if (condicaoUm) {
@@ -67,18 +68,18 @@ function restoreStatus(suite, x, y, z) {
 				$(".acoes3").removeAttr('style')
 			}
 			modo == "locado" ? locado(suite, x, y, z) :
-			modo == "manutencao" ? manutencao(suite, x, y, z) :
-			modo == "faxina" ? faxina(suite, _rota, x, y, z) :
-			modo == "aguardando" ? aguardando(suite, x, y, z) :
-			modo == "limpeza" ? limpeza(suite, x, y, z) :
-			modo == "pernoite" ? pernoite(suite, x, y, z) : ""
+				modo == "manutencao" ? manutencao(suite, x, y, z) :
+					modo == "faxina" ? faxina(suite, _rota, x, y, z) :
+						modo == "aguardando" ? aguardando(suite, x, y, z) :
+							modo == "limpeza" ? limpeza(suite, x, y, z) :
+								modo == "pernoite" ? pernoite(suite, x, y, z) : ""
 		} catch (error) {
-			sessionStorage.setItem(error, [{}])
+			sessionStorage.setItem("viewquartos.js", `[LOGS] | ${error}`)
 		}
 	})
 }
 
-function valorComanda(suite){
+function valorComanda(suite) {
 	$.get(link[5], e => {
 		let filtroComanda = e.filter(i => i.quarto == suite)
 		let sum = 0
@@ -89,12 +90,12 @@ function valorComanda(suite){
 	})
 }
 
-function valorParcial(suite){
+function valorParcial(suite) {
 	let consumo = parseFloat($("#consumo_painel").text())
 	$.get(link[36], l => {
 		let filtroValores = l.filter(x => x.suite == suite)
 		let sum = 0
-		for (var f = 0; f < filtroValores.length; f++){
+		for (var f = 0; f < filtroValores.length; f++) {
 			sum += parseFloat(filtroValores[f].valor)
 		}
 		let total = sum + consumo
@@ -103,7 +104,7 @@ function valorParcial(suite){
 	})
 }
 
-async function restoreBotoes(suite){
+async function restoreBotoes(suite) {
 	var lista_suites = []
 	var home = suite
 
@@ -148,7 +149,7 @@ async function restoreBotoes(suite){
 			});
 		})
 		*/
-		
+
 
 		try {
 			let dados = e.filter(i => i.quarto == suite)
@@ -163,27 +164,85 @@ async function restoreBotoes(suite){
 			let t = tick[`${suite}`]
 			//console.log(suite)
 			modo == "locado" ? locado(suite, t[0], t[1], t[2]) :
-			modo == "manutencao" ? manutencao(suite, t[0], t[1], t[2]) :
-			modo == "faxina" ? faxina(suite, _rota, t[0], t[1], t[2]) :
-			modo == "aguardando" ? aguardando(suite, t[0], t[1], t[2]) :
-			modo == "limpeza" ? limpeza(suite, t[0], t[1], t[2]) :
-			modo == "pernoite" ? pernoite(suite, t[0], t[1], t[2]) : padrao(suite)
+				modo == "manutencao" ? manutencao(suite, t[0], t[1], t[2]) :
+					modo == "faxina" ? faxina(suite, _rota, t[0], t[1], t[2]) :
+						modo == "aguardando" ? aguardando(suite, t[0], t[1], t[2]) :
+							modo == "limpeza" ? limpeza(suite, t[0], t[1], t[2]) :
+								modo == "pernoite" ? pernoite(suite, t[0], t[1], t[2]) : padrao(suite)
 		} catch (error) {
 			sessionStorage.setItem("viewquartos.js", `[LOGS] | ${error}`)
 		}
 	})
 }
 
-async function normal(suite){
+
+async function normal() {
+
 	let off_suites = []
+	var lista_suites = []
+
+	const rqs = await fetch(link[17])
+	const rss = await rqs.json()
 
 	const rq = await fetch(link[11])
 	const rs = await rq.json()
-	rs.forEach(it => {
-		let suites = it.quarto
-		off_suites.push(suites)
-	});
-	
-	
 
+
+	rss.forEach(element => {
+		lista_suites.push(element)
+	});
+
+
+
+
+
+	off_suites.forEach(off => {
+		let t = tick[`${off}`]
+		restoreStatus(off, t[0], t[1], t[2])
+	});
+	console.log(lista_suites)
+	
+	setTimeout(() => {
+
+		off_suites.forEach(el => {
+			var indexes = lista_suites.indexOf(element.quarto)
+			if (indexes > -1) {
+				lista_suites.splice(indexes, 1)
+			}
+		});
+		console.log(off_suites)
+	}, 200);
+
+	/*
+	setTimeout(() => {
+		$.get(link[17], i => {
+			i.forEach(x => {
+				lista_suites.push(x.numero)
+			})
+		})
+	}, 200);
+
+	setTimeout(() => {
+		rs.forEach(it => {
+			let suites = it.quarto
+			off_suites.push(suites)
+
+		});
+	}, 400);
+
+	setTimeout(() => {
+		rs.forEach(k => {
+			var indexes = lista_suites.indexOf(k.quarto)
+			if (indexes > -1) {
+				lista_suites.splice(indexes, 1)
+			}
+		})
+	}, 600);
+
+	setTimeout(() => {
+		lista_suites.forEach(element => {
+			//padrao(element)
+		});
+	}, 800);*/
 }
+
