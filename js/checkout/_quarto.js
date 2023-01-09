@@ -6,7 +6,7 @@ export default function quarto(suite, id) {
 		try {
 			$(`#${id}`).text(parseFloat(ficha[0].valor).toFixed(2))
 		} catch (error) {
-			sessionStorage.setItem('error', error)
+			sessionStorage.setItem('_quarto.js', `[LOGS] | ${error}`)
 		}
 	})
 }

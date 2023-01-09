@@ -32,14 +32,18 @@ $(document).on('click', '[class="card"]', function () {
 	var i2 = $(i1[0].children[0])
 	var i3 = $(i2[0].children[1])
 	var id = i3.text()
+	//console.log(id)
 	valorComanda(id)
 	quarto(id, "vq_painel")
 	adicionais(id, "vq_painel", "vh_painel")
 	restoreBotoes(id)
+	normal(id)
+	//console.log(id)
 	setTimeout(() => {
 		var cor = $(`.cardBox .card:nth-child(${id})`).css("background-color")
 		cor == "rgb(255, 0, 0)" ? $("#tipo").text('locado') :
-		cor == "rgb(139, 0, 139)" ? $("#tipo").text("pernoite") : ""
+		cor == "rgb(139, 0, 139)" ? $("#tipo").text("pernoite") : 
+		cor == "rgb(255, 255, 255)" ? $("#tipo").text("aguardando") : ""
 		let tipo = $("#tipo").text()
 		let condicaoUm = tipo == "locado" || tipo == "pernoite"
 		if (condicaoUm) {
@@ -111,8 +115,17 @@ async function restoreBotoes(suite){
 	})
 
 	$.get(link[11], e => {
+		/*
+		e.forEach(ei => {
+			let on_suites = ei.quarto
+			let off_suites = lista_suites.indexOf(on_suites)
+			console.log(off_suites)
+			if (off_suites > -1){
+				lista_suites.splice(off_suites, 1)
+			}
+		})
 
-		let off = e.filter(v => v.tipo == "locado" || v.tipo == "aguardando" || v.tipo == "manutencao" || v.tipo == "faxina" || v.tipo == "limpeza")
+		// let off = e.filter(v => v.tipo == "locado" || v.tipo == "aguardando" || v.tipo == "manutencao" || v.tipo == "faxina" || v.tipo == "limpeza")
 
 		let infos = e.filter(l => l.tipo == "locado")
 		let boxA = e.filter(b => b.tipo == "aguardando")
@@ -130,30 +143,47 @@ async function restoreBotoes(suite){
 			let suite = box.quarto
 			let boxD = lista_suites.filter(d => d != suite)
 			boxD.forEach(item => {
+				console.log(item)
 				padrao(item)
 			});
-		});
-
-		off.forEach(o => {
-			let off_suites = o.quarto
-			let on_suites = lista_suites.filter(on => on != off_suites)
-			console.log(lista_suites	)
-		});
+		})
+		*/
+		
 
 		try {
-			let dados = e.filter(i => i.quarto == home)
+			let dados = e.filter(i => i.quarto == suite)
+			let condicaoDois = dados.length == 0
 			let modo = dados[0].tipo
-			let suite = dados[0].quarto
+			if (condicaoDois) {
+				$(`[name=${suite}]`).css('display', 'inline-block')
+				$(".acoes1").removeAttr('style')
+				$(".acoes2").removeAttr('style')
+				$(".acoes3").removeAttr('style')
+			}
 			let t = tick[`${suite}`]
-			
+			//console.log(suite)
 			modo == "locado" ? locado(suite, t[0], t[1], t[2]) :
 			modo == "manutencao" ? manutencao(suite, t[0], t[1], t[2]) :
 			modo == "faxina" ? faxina(suite, _rota, t[0], t[1], t[2]) :
 			modo == "aguardando" ? aguardando(suite, t[0], t[1], t[2]) :
 			modo == "limpeza" ? limpeza(suite, t[0], t[1], t[2]) :
-			modo == "pernoite" ? pernoite(suite, t[0], t[1], t[2]) : ""
+			modo == "pernoite" ? pernoite(suite, t[0], t[1], t[2]) : padrao(suite)
 		} catch (error) {
 			sessionStorage.setItem("viewquartos.js", `[LOGS] | ${error}`)
 		}
 	})
+}
+
+async function normal(suite){
+	let off_suites = []
+
+	const rq = await fetch(link[11])
+	const rs = await rq.json()
+	rs.forEach(it => {
+		let suites = it.quarto
+		off_suites.push(suites)
+	});
+	
+	
+
 }
