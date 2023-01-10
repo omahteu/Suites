@@ -113,11 +113,11 @@ function valorParcial(suite) {
 }
 
 function restoreBotoes(suite) {
-	if (on.includes(suite)){
+	if (on.includes(suite)) {
 		padrao(suite)
 	}
 
-	if (off.includes(suite)){
+	if (off.includes(suite)) {
 		$.get(link[11], e => {
 			try {
 				let ficha = e.filter(i => i.quarto == suite)
