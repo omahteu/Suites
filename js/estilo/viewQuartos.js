@@ -13,6 +13,10 @@ import quarto from "../checkout/_quarto.js"
 import adicionais from "../checkout/_adicionais.js"
 import padrao from "../tags/default.js"
 
+var off = []
+var on = []
+var suites = []
+
 $(document).ready(function () {
 	setTimeout(() => {
 		let id = $("[id='suite']").text()
@@ -37,8 +41,10 @@ $(document).on('click', '[class="card"]', function () {
 	quarto(id, "vq_painel")
 	adicionais(id, "vq_painel", "vh_painel")
 	//restoreBotoes(id)
-	normal()
-
+	setTimeout(() => {suits()}, 200);
+	setTimeout(() => {ocupados()}, 400);
+	setTimeout(() => {disponiveis()}, 600);
+	setTimeout(() => {suites_off()}, 800);
 
 	setTimeout(() => {
 		var cor = $(`.cardBox .card:nth-child(${id})`).css("background-color")
@@ -104,11 +110,10 @@ function valorParcial(suite) {
 	})
 }
 
-async function restoreBotoes(suite) {
+function restoreBotoes(suite) {
 	var lista_suites = []
 	var home = suite
 
-	// Armazena o número de suites na lista
 	$.get(link[17], i => {
 		i.forEach(x => {
 			lista_suites.push(x.numero)
@@ -175,74 +180,42 @@ async function restoreBotoes(suite) {
 	})
 }
 
-
-async function normal() {
-
-	let off_suites = []
-	var lista_suites = []
-
-	const rqs = await fetch(link[17])
-	const rss = await rqs.json()
-
-	const rq = await fetch(link[11])
+async function suits(){
+	const rq = await fetch(link[17])
 	const rs = await rq.json()
-
-
-	rss.forEach(element => {
-		lista_suites.push(element)
-	});
-
-
-
-
-
-	off_suites.forEach(off => {
-		let t = tick[`${off}`]
-		restoreStatus(off, t[0], t[1], t[2])
-	});
-	console.log(lista_suites)
-	
-	setTimeout(() => {
-
-		off_suites.forEach(el => {
-			var indexes = lista_suites.indexOf(element.quarto)
-			if (indexes > -1) {
-				lista_suites.splice(indexes, 1)
-			}
-		});
-		console.log(off_suites)
-	}, 200);
-
-	/*
-	setTimeout(() => {
-		$.get(link[17], i => {
-			i.forEach(x => {
-				lista_suites.push(x.numero)
-			})
-		})
-	}, 200);
-
-	setTimeout(() => {
-		rs.forEach(it => {
-			let suites = it.quarto
-			off_suites.push(suites)
-
-		});
-	}, 400);
-
-	setTimeout(() => {
-		rs.forEach(k => {
-			var indexes = lista_suites.indexOf(k.quarto)
-			if (indexes > -1) {
-				lista_suites.splice(indexes, 1)
-			}
-		})
-	}, 600);
-
-	setTimeout(() => {
-		lista_suites.forEach(element => {
-			//padrao(element)
-		});
-	}, 800);*/
+	rs.forEach(e => {
+		suites.push(e.numero)
+	})
 }
 
+async function ocupados(){
+	const rq = await fetch(link[11])
+	const rs = await rq.json()
+	rs.forEach(e => {
+		off.push(e.quarto)
+	})
+}
+
+async function disponiveis(){
+	const rq = await fetch(link[11])
+	const rs = await rq.json()
+	rs.forEach(e => {
+		let off_suites = e.quarto
+		let on_suites = suites.indexOf(off_suites)
+		if (on_suites > -1){
+			suites.splice(on_suites, 1)
+		}
+	})
+	var unique = [...new Set(suites)]
+	unique.forEach(i => {
+		padrao(i)
+	});
+	
+}
+
+async function suites_off(){
+	off.forEach(e => {
+		let t = tick[`${e}`]
+		restoreStatus(e, t[0], t[1], t[2])
+	});
+}
