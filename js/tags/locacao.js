@@ -12,8 +12,8 @@ export default function locado(q, x, y, z) {
     var hora = hora_atual()
     $("#tipo").text('locado')
     $("#quarto_painel").text(q)
-    $("#intervalo").text(`${x},${y},${z}`)
-    $("#entrada").text(hora)
+    //$("#intervalo").text(`${x},${y},${z}`)
+    //$("#entrada").text(hora)
 
     $.get(link[34], e => {
         let travas = e.filter(i => i.suite == q)

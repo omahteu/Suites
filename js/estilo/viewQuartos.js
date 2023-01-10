@@ -15,7 +15,6 @@ import padrao from "../tags/default.js"
 
 var off = []
 var on = []
-var suites = []
 
 $(document).ready(function () {
 	setTimeout(() => {
@@ -36,21 +35,24 @@ $(document).on('click', '[class="card"]', function () {
 	var i2 = $(i1[0].children[0])
 	var i3 = $(i2[0].children[1])
 	var id = i3.text()
-	//console.log(id)
+
+	suits()
+
+	ocupados()
+
 	valorComanda(id)
 	quarto(id, "vq_painel")
 	adicionais(id, "vq_painel", "vh_painel")
-	//restoreBotoes(id)
-	setTimeout(() => {suits()}, 200);
-	setTimeout(() => {ocupados()}, 400);
-	setTimeout(() => {disponiveis()}, 600);
-	setTimeout(() => {suites_off()}, 800);
+
+	setTimeout(() => { disponiveis() }, 200);
+	setTimeout(() => { restoreBotoes(id) }, 500);
 
 	setTimeout(() => {
 		var cor = $(`.cardBox .card:nth-child(${id})`).css("background-color")
 		cor == "rgb(255, 0, 0)" ? $("#tipo").text('locado') :
 			cor == "rgb(139, 0, 139)" ? $("#tipo").text("pernoite") :
-				cor == "rgb(255, 255, 255)" ? $("#tipo").text("aguardando") : ""
+				cor == "rgb(255, 255, 255)" ? $("#tipo").text("aguardando") :
+					cor == "rgb(75, 192, 192)" ? $("#tipo").text("0") : 0
 		let tipo = $("#tipo").text()
 		let condicaoUm = tipo == "locado" || tipo == "pernoite"
 		if (condicaoUm) {
@@ -111,111 +113,56 @@ function valorParcial(suite) {
 }
 
 function restoreBotoes(suite) {
-	var lista_suites = []
-	var home = suite
+	if (on.includes(suite)){
+		padrao(suite)
+	}
 
-	$.get(link[17], i => {
-		i.forEach(x => {
-			lista_suites.push(x.numero)
-		})
-	})
-
-	$.get(link[11], e => {
-		/*
-		e.forEach(ei => {
-			let on_suites = ei.quarto
-			let off_suites = lista_suites.indexOf(on_suites)
-			console.log(off_suites)
-			if (off_suites > -1){
-				lista_suites.splice(off_suites, 1)
+	if (off.includes(suite)){
+		$.get(link[11], e => {
+			try {
+				let ficha = e.filter(i => i.quarto == suite)
+				let modo = ficha[0].tipo
+				let t = tick[`${suite}`]
+				modo == "locado" ? locado(suite, t[0], t[1], t[2]) :
+					modo == "manutencao" ? manutencao(suite, t[0], t[1], t[2]) :
+						modo == "faxina" ? faxina(suite, _rota, t[0], t[1], t[2]) :
+							modo == "aguardando" ? aguardando(suite, t[0], t[1], t[2]) :
+								modo == "limpeza" ? limpeza(suite, t[0], t[1], t[2]) :
+									modo == "pernoite" ? pernoite(suite, t[0], t[1], t[2]) : ""
+			} catch (error) {
+				sessionStorage.setItem('viewquartos.js', `[LOGS] | ${error}`)
 			}
 		})
-
-		// let off = e.filter(v => v.tipo == "locado" || v.tipo == "aguardando" || v.tipo == "manutencao" || v.tipo == "faxina" || v.tipo == "limpeza")
-
-		let infos = e.filter(l => l.tipo == "locado")
-		let boxA = e.filter(b => b.tipo == "aguardando")
-		
-		// Separa suítes locadas e não locadas
-		infos.forEach( k => {
-			var indexes = lista_suites.indexOf(k.quarto)
-			if (indexes > -1){
-				lista_suites.splice(indexes, 1)
-			}
-		})
-
-		// Coloca os botões das suítes disponíveis em padrão
-		boxA.forEach(box => {
-			let suite = box.quarto
-			let boxD = lista_suites.filter(d => d != suite)
-			boxD.forEach(item => {
-				console.log(item)
-				padrao(item)
-			});
-		})
-		*/
-
-
-		try {
-			let dados = e.filter(i => i.quarto == suite)
-			let condicaoDois = dados.length == 0
-			let modo = dados[0].tipo
-			if (condicaoDois) {
-				$(`[name=${suite}]`).css('display', 'inline-block')
-				$(".acoes1").removeAttr('style')
-				$(".acoes2").removeAttr('style')
-				$(".acoes3").removeAttr('style')
-			}
-			let t = tick[`${suite}`]
-			//console.log(suite)
-			modo == "locado" ? locado(suite, t[0], t[1], t[2]) :
-				modo == "manutencao" ? manutencao(suite, t[0], t[1], t[2]) :
-					modo == "faxina" ? faxina(suite, _rota, t[0], t[1], t[2]) :
-						modo == "aguardando" ? aguardando(suite, t[0], t[1], t[2]) :
-							modo == "limpeza" ? limpeza(suite, t[0], t[1], t[2]) :
-								modo == "pernoite" ? pernoite(suite, t[0], t[1], t[2]) : padrao(suite)
-		} catch (error) {
-			sessionStorage.setItem("viewquartos.js", `[LOGS] | ${error}`)
-		}
-	})
+	}
+	off.length = 0
+	on.length = 0
 }
 
-async function suits(){
+async function suits() {
 	const rq = await fetch(link[17])
 	const rs = await rq.json()
 	rs.forEach(e => {
-		suites.push(e.numero)
+		on.push(e.numero)
 	})
 }
 
-async function ocupados(){
+async function ocupados() {
 	const rq = await fetch(link[11])
 	const rs = await rq.json()
 	rs.forEach(e => {
 		off.push(e.quarto)
 	})
+
 }
 
-async function disponiveis(){
+async function disponiveis() {
 	const rq = await fetch(link[11])
 	const rs = await rq.json()
 	rs.forEach(e => {
 		let off_suites = e.quarto
-		let on_suites = suites.indexOf(off_suites)
-		if (on_suites > -1){
-			suites.splice(on_suites, 1)
+		let on_suites = on.indexOf(off_suites)
+		if (on_suites > -1) {
+			on.splice(on_suites, 1)
 		}
 	})
-	var unique = [...new Set(suites)]
-	unique.forEach(i => {
-		padrao(i)
-	});
-	
-}
-
-async function suites_off(){
-	off.forEach(e => {
-		let t = tick[`${e}`]
-		restoreStatus(e, t[0], t[1], t[2])
-	});
 }
